@@ -1,0 +1,2067 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legion TD NewEdition 2.7 — Patch Notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ─── CSS Reset & Base ──────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg-dark: #0a0d13;
+            --bg-card: #111827;
+            --bg-card-hover: #1a2332;
+            --bg-section: #0f1520;
+            --border-color: #1e2a3a;
+            --border-accent: #2d4a6f;
+            --gold: #f0b429;
+            --gold-light: #ffd166;
+            --gold-dark: #c4901c;
+            --red: #ef4444;
+            --red-light: #fca5a5;
+            --green: #22c55e;
+            --green-light: #86efac;
+            --blue: #3b82f6;
+            --blue-light: #93c5fd;
+            --purple: #a855f7;
+            --purple-light: #d8b4fe;
+            --cyan: #06b6d4;
+            --orange: #f97316;
+            --text-primary: #e5e7eb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --font-display: 'Cinzel', serif;
+            --font-body: 'Inter', 'Noto Sans Thai', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ─── Scrollbar ──────────────────────────────────── */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--border-accent); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dark); }
+
+        /* ─── Hero Banner ────────────────────────────────── */
+        .hero-banner {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(180deg, #0a0d13 0%, #111827 40%, #1a1030 70%, #0a0d13 100%);
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 600px 400px at 30% 50%, rgba(168, 85, 247, 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 600px 400px at 70% 40%, rgba(240, 180, 41, 0.10) 0%, transparent 70%),
+                radial-gradient(ellipse 800px 300px at 50% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0;
+            animation: float-up 6s ease-in infinite;
+        }
+
+        @keyframes float-up {
+            0% { opacity: 0; transform: translateY(100vh) scale(0); }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.2; }
+            100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1.5rem;
+            background: linear-gradient(135deg, rgba(240, 180, 41, 0.15), rgba(240, 180, 41, 0.05));
+            border: 1px solid rgba(240, 180, 41, 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 0.8s ease-out;
+            text-shadow: none;
+            filter: drop-shadow(0 0 30px rgba(240, 180, 41, 0.3));
+        }
+
+        .hero-version {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .hero-divider {
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 2rem auto;
+            animation: fadeIn 1s ease-out 0.6s backwards;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ─── Animations ─────────────────────────────────── */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── Navigation ─────────────────────────────────── */
+        .toc-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 13, 19, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0;
+        }
+
+        .toc-nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .toc-nav-inner::-webkit-scrollbar { display: none; }
+
+        .toc-link {
+            flex-shrink: 0;
+            padding: 1rem 1.2rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .toc-link:hover, .toc-link.active {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        /* ─── Main Content ───────────────────────────────── */
+        .content-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* ─── Section Headers ────────────────────────────── */
+        .section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 70px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 12px;
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--bg-dark);
+            flex-shrink: 0;
+        }
+
+        .section-title-group {
+            flex: 1;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-top: 0.2rem;
+        }
+
+        /* ─── Subsection ─────────────────────────────────── */
+        .subsection {
+            margin-bottom: 2rem;
+        }
+
+        .subsection-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .subsection-title .icon {
+            font-size: 1.2rem;
+        }
+
+        /* ─── Cards ──────────────────────────────────────── */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--border-accent);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 10px;
+            border: 2px solid var(--border-accent);
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #1a1a2e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            image-rendering: auto;
+        }
+
+        .card-icon-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #1a1a2e, #2a2a4e);
+        }
+
+        .card-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .card-type {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-body ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card-body li {
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 0.93rem;
+        }
+
+        .card-body li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* ─── Unit Row (compact display) ─────────────────── */
+        .unit-row {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.6rem 0.8rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            margin-bottom: 0.4rem;
+            transition: background 0.2s;
+        }
+
+        .unit-row:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .unit-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            border: 1.5px solid var(--border-accent);
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #1a1a2e;
+        }
+
+        .unit-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .unit-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            min-width: 140px;
+        }
+
+        .unit-desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        /* ─── Change Tags ────────────────────────────────── */
+        .tag {
+            display: inline-block;
+            padding: 0.15rem 0.55rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tag-buff { background: rgba(34, 197, 94, 0.15); color: var(--green); border: 1px solid rgba(34, 197, 94, 0.3); }
+        .tag-nerf { background: rgba(239, 68, 68, 0.15); color: var(--red); border: 1px solid rgba(239, 68, 68, 0.3); }
+        .tag-rework { background: rgba(168, 85, 247, 0.15); color: var(--purple); border: 1px solid rgba(168, 85, 247, 0.3); }
+        .tag-removed { background: rgba(107, 114, 128, 0.15); color: var(--text-muted); border: 1px solid rgba(107, 114, 128, 0.3); }
+        .tag-new { background: rgba(59, 130, 246, 0.15); color: var(--blue); border: 1px solid rgba(59, 130, 246, 0.3); }
+        .tag-fix { background: rgba(249, 115, 22, 0.15); color: var(--orange); border: 1px solid rgba(249, 115, 22, 0.3); }
+        .tag-adjust { background: rgba(6, 182, 212, 0.15); color: var(--cyan); border: 1px solid rgba(6, 182, 212, 0.3); }
+
+        /* ─── Value Change Display ───────────────────────── */
+        .value-change {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+
+        .old-val {
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+
+        .arrow {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .new-val-up { color: var(--green); font-weight: 700; }
+        .new-val-down { color: var(--red); font-weight: 700; }
+
+        /* ─── Tables ─────────────────────────────────────── */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.88rem;
+        }
+
+        .data-table th {
+            background: rgba(240, 180, 41, 0.08);
+            color: var(--gold);
+            padding: 0.7rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--border-accent);
+        }
+
+        .data-table td {
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .data-table .hero-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .data-table .hero-cell img {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            border: 1px solid var(--border-accent);
+        }
+
+        /* ─── Removed Unit Grid ──────────────────────────── */
+        .removed-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .removed-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1rem;
+            opacity: 0.7;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .removed-card::after {
+            content: 'REMOVED';
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            background: rgba(239, 68, 68, 0.8);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.15rem 2rem;
+            transform: rotate(45deg);
+            letter-spacing: 1px;
+        }
+
+        .removed-card .unit-row {
+            background: none;
+            padding: 0.3rem 0;
+        }
+
+        .removed-card-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* ─── Hero Grid ──────────────────────────────────── */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .hero-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .hero-card:hover {
+            border-color: var(--gold-dark);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(240, 180, 41, 0.1);
+        }
+
+        .hero-portrait {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            border: 3px solid var(--border-accent);
+            overflow: hidden;
+            margin: 0 auto 0.8rem;
+            background: #1a1a2e;
+        }
+
+        .hero-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-card-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .hero-card-type {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ─── Info Callout ────────────────────────────────── */
+        .callout {
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .callout-info {
+            background: rgba(59, 130, 246, 0.08);
+            border-left: 3px solid var(--blue);
+            color: var(--blue-light);
+        }
+
+        .callout-warning {
+            background: rgba(249, 115, 22, 0.08);
+            border-left: 3px solid var(--orange);
+            color: #fdba74;
+        }
+
+        .callout-success {
+            background: rgba(34, 197, 94, 0.08);
+            border-left: 3px solid var(--green);
+            color: var(--green-light);
+        }
+
+        /* ─── Skill Detail Block ─────────────────────────── */
+        .skill-block {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 0.6rem 0;
+        }
+
+        .skill-name {
+            font-weight: 700;
+            color: var(--gold-light);
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .skill-detail {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ─── Footer ─────────────────────────────────────── */
+        .footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ─── Responsive ─────────────────────────────────── */
+        @media (max-width: 768px) {
+            .content-wrapper { padding: 1.5rem 1rem 3rem; }
+            .section-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .hero-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+            .removed-grid { grid-template-columns: 1fr; }
+            .data-table { font-size: 0.78rem; }
+            .data-table th, .data-table td { padding: 0.5rem 0.6rem; }
+            .toc-link { padding: 0.8rem 0.8rem; font-size: 0.72rem; }
+        }
+
+        /* ─── Image fallback styling ─────────────────────── */
+        .img-fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, #1a1a2e, #2a2040);
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════ HERO BANNER ═══════════════════ -->
+<header class="hero-banner">
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+        <div class="hero-badge">Major Patch</div>
+        <h1 class="hero-title">Legion TD</h1>
+        <div class="hero-version">NewEdition 2.7 — Patch Notes</div>
+        <div class="hero-divider"></div>
+        <p class="hero-description">
+            แพตช์ใหญ่ที่มุ่งเน้นการเพิ่มความลื่นไหลในช่วงท้ายเกม ปรับสมดุล King, ยูนิต, ฮีโร่ทั้ง 10 ตัว<br>
+            และแก้ไขปัญหาความถูกต้องของข้อมูลภายในเกม
+        </p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-value">10</div>
+                <div class="hero-stat-label">Heroes Overhauled</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">12</div>
+                <div class="hero-stat-label">Units Removed</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">25+</div>
+                <div class="hero-stat-label">Balance Changes</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">7</div>
+                <div class="hero-stat-label">Major Sections</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+<nav class="toc-nav">
+    <div class="toc-nav-inner">
+        <a href="#section1" class="toc-link active">⚙️ ระบบ</a>
+        <a href="#section2" class="toc-link">🗑️ ถอดยูนิต</a>
+        <a href="#section3" class="toc-link">👑 King & บอส</a>
+        <a href="#section4" class="toc-link">⚔️ ยูนิต</a>
+        <a href="#section5" class="toc-link">🦸 ฮีโร่</a>
+        <a href="#section6" class="toc-link">✨ ออร่า</a>
+        <a href="#section7" class="toc-link">🐛 บั๊กฟิกซ์</a>
+    </div>
+</nav>
+
+<!-- ═══════════════════ MAIN CONTENT ═══════════════════ -->
+<main class="content-wrapper">
+
+<!-- ─────────── SECTION 1: System & Performance ─────────── -->
+<section class="section reveal" id="section1">
+    <div class="section-header">
+        <div class="section-number">1</div>
+        <div class="section-title-group">
+            <h2 class="section-title">ระบบและประสิทธิภาพของเกม</h2>
+            <div class="section-subtitle">Optimization & Performance · Observer Camera</div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <h3 class="subsection-title"><span class="icon">⚡</span> Optimization & Performance</h3>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">🖥️</div></div>
+                <div>
+                    <div class="card-name">การปรับปรุงประสิทธิภาพ</div>
+                    <div class="card-type">Performance Improvements</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>แก้ไขปัญหาเกมกระตุกและแลคในช่วงท้ายเกม</li>
+                    <li>แก้ไขปัญหา <strong>Memory Leak</strong> ทั่วทั้งแผนที่</li>
+                    <li>เพิ่มความเสถียรของ FPS แม้มีจำนวนยูนิตเต็มกระดาน หรือเล่นไปจนถึงเวฟระดับสูง</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <h3 class="subsection-title"><span class="icon">📷</span> Observer Camera</h3>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">🎥</div></div>
+                <div>
+                    <div class="card-name">ระบบกล้องผู้ชม</div>
+                    <div class="card-type">Spectator QoL</div>
+                </div>
+                <span class="tag tag-new" style="margin-left:auto;">NEW</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>ผู้ชมสามารถใช้ลูกกลิ้งเมาส์เพื่อ <strong>ซูมเข้าและซูมออก</strong> ได้อย่างอิสระ</li>
+                    <li>ยกเลิกการดึงกล้องกลับทุก ๆ 1 วินาที</li>
+                    <li>ปรับรอบการตรวจสอบมุมกล้องเป็นทุก ๆ <strong>30 วินาที</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────── SECTION 2: Removed Units ─────────── -->
+<section class="section reveal" id="section2">
+    <div class="section-header">
+        <div class="section-number">2</div>
+        <div class="section-title-group">
+            <h2 class="section-title">ถอดยูนิตและสกิลที่ไม่ได้ใช้งาน</h2>
+            <div class="section-subtitle">Removed Units & Skills — 4 สาย · 12 ยูนิต</div>
+        </div>
+    </div>
+
+    <div class="callout callout-info">
+        ⓘ ถอดยูนิตและสกิลที่ไม่ได้ใช้งานออกจากเกมอย่างถาวร เพื่อปรับโครงสร้างแผนที่ให้กระชับ ลดความซ้ำซ้อน และลดขนาดไฟล์แผนที่
+    </div>
+
+    <div class="removed-grid">
+        <!-- Defender — Royal Guard -->
+        <div class="removed-card">
+            <div class="removed-card-title">🛡️ Defender — Royal Guard</div>
+            <div class="unit-row">
+                <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/ltd-elite-guard.png" alt="Elite Guard" onerror="this.parentElement.innerHTML='<div class=img-fallback>⚔️</div>'"></div>
+                <div><div class="unit-name">Elite Guard</div><div class="unit-desc">ยูนิตพื้นฐาน</div></div>
+            </div>
+            <div class="unit-row">
+                <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/ltd-imperial-bulwark.png" alt="Imperial Bulwark" onerror="this.parentElement.innerHTML='<div class=img-fallback>🛡️</div>'"></div>
+                <div><div class="unit-name">Imperial Bulwark</div><div class="unit-desc">อัปเกรดสายแทงค์ & สะท้อนดาเมจ</div></div>
+            </div>
+            <div class="unit-row">
+                <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/ltd-royal-marshal.png" alt="Royal Marshal" onerror="this.parentElement.innerHTML='<div class=img-fallback>🔥</div>'"></div>
+                <div><div class="unit-name">Royal Marshal</div><div class="unit-desc">อัปเกรดสายไฟ & อัญเชิญ Fire Mage</div></div>
+            </div>
+        </div>
+
+        <!-- Lancer & Phantom -->
+        <div class="removed-card">
+            <div class="removed-card-title">🗡️ Lancer & Phantom</div>
+            <div class="unit-row">
+                <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/ltd-royal-lancer.png" alt="Royal Lancer" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐴</div>'"></div>
+                <div><div class="unit-name">Royal Lancer</div><div class="unit-desc">ยูนิตพื้นฐานสายหอก</div></div>
+            </div>
+            <div class="unit-row">
+                <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/ltd-royal-lancer.png" alt="Royal Vanguard" onerror="this.parentElement.innerHTML='<div class=img-fallback>🛡️</div>'"></div>
+                <div><div class="unit-name">Royal Vanguard</div><div class="unit-desc">อัปเกรดสายหอก</div></div>
+            </div>
+            <div class="unit-row">
+                <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/ltd-phantom-bladeguard.png" alt="Phantom Bladeguard" onerror="this.parentElement.innerHTML='<div class=img-fallback>👻</div>'"></div>
+                <div><div class="unit-name">Phantom Bladeguard</div><div class="unit-desc">อัปเกรดสายดาบวิญญาณ</div></div>
+            </div>
+        </div>
+
+        <!-- Time -->
+        <div class="removed-card">
+            <div class="removed-card-title">⏳ Time</div>
+            <div class="unit-row">
+                <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnevilillidan-96a7920274.png" alt="Time Hunter" loading="lazy"></div>
+                <div><div class="unit-name">Time Hunter</div><div class="unit-desc">ร่างพื้นฐาน</div></div>
+            </div>
+            <div class="unit-row">
+                <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnevilillidan-96a7920274.png" alt="Time Destroyer" loading="lazy"></div>
+                <div><div class="unit-name">Time Destroyer</div><div class="unit-desc">ร่างขั้นที่ 2</div></div>
+            </div>
+            <div class="unit-row">
+                <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnevilillidan-96a7920274.png" alt="Time Executor" loading="lazy"></div>
+                <div><div class="unit-name">Time Executor</div><div class="unit-desc">ร่างขั้นที่ 3</div></div>
+            </div>
+            <div class="unit-row">
+                <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnevilillidan-96a7920274.png" alt="Time Bringer" loading="lazy"></div>
+                <div><div class="unit-name">Time Bringer</div><div class="unit-desc">ร่างขั้นที่ 4</div></div>
+            </div>
+        </div>
+
+        <!-- Elf / Sorceress -->
+        <div class="removed-card">
+            <div class="removed-card-title">🧝 Elf / Sorceress</div>
+            <div class="unit-row">
+                <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnfemaleelfvillager-be8af0a3ef.png" alt="Female Elf" onerror="this.parentElement.innerHTML='<div class=img-fallback>🧝‍♀️</div>'"></div>
+                <div><div class="unit-name">Female Elf</div><div class="unit-desc">ร่างพื้นฐาน</div></div>
+            </div>
+            <div class="unit-row">
+                <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnsorceress-90b847f843.png" alt="Flame Slayer" onerror="this.parentElement.innerHTML='<div class=img-fallback>🔥</div>'"></div>
+                <div><div class="unit-name">Flame Slayer</div><div class="unit-desc">อัปเกรดสายเวทไฟ</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────── SECTION 3: King, Presence & Wave 10 ─────────── -->
+<section class="section reveal" id="section3">
+    <div class="section-header">
+        <div class="section-number">3</div>
+        <div class="section-title-group">
+            <h2 class="section-title">ปรับสมดุล King และบอสเวฟ 10</h2>
+            <div class="section-subtitle">King, Presence & Wave 10</div>
+        </div>
+    </div>
+
+    <!-- King's Random Skills -->
+    <div class="subsection">
+        <h3 class="subsection-title"><span class="icon">👑</span> สกิลสุ่มของ King</h3>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://static.wikia.nocookie.net/wowpedia/images/3/3a/BTNWarStomp.png" alt="War Stomp" onerror="this.parentElement.innerHTML='<div class=img-fallback>💥</div>'"></div>
+                <div>
+                    <div class="card-name">King's War Stomp</div>
+                    <div class="card-type">AoE Stun</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>ลดดาเมจและระยะเวลาสตันในช่วงต้นเกม ระดับ Lv.1–Lv.2 ลง <span class="new-val-down">5%</span></li>
+                    <li>เพิ่มรัศมีวงสตันขึ้น <span class="new-val-up">+10%</span> ในทุกระดับเลเวล</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://static.wikia.nocookie.net/wowpedia/images/0/00/BTNShockwave.png" alt="Shockwave" onerror="this.parentElement.innerHTML='<div class=img-fallback>🌊</div>'"></div>
+                <div>
+                    <div class="card-name">King's Shockwave</div>
+                    <div class="card-type">Projectile AoE</div>
+                </div>
+                <span class="tag tag-nerf" style="margin-left:auto;">NERF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>ลดดาเมจจากการปะทะครั้งแรกลง <span class="new-val-down">7.5%</span> ในทุกระดับเลเวล</li>
+                    <li>ลดดาเมจเผาไหม้ลง <span class="new-val-down">7.5%</span> ในทุกระดับเลเวล</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://static.wikia.nocookie.net/wowpedia/images/5/5d/BTNImmolationOn.png" alt="Immolation" onerror="this.parentElement.innerHTML='<div class=img-fallback>🔥</div>'"></div>
+                <div>
+                    <div class="card-name">King's Immolation</div>
+                    <div class="card-type">AoE Burn</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>เพิ่มดาเมจเผาไหม้ต่อวินาทีในทุกระดับเลเวล</li>
+                    <li>ลดการใช้มานาลง <span class="new-val-up">2 หน่วยต่อวินาที</span></li>
+                    <li>เพิ่มรัศมีวงไฟขึ้น <span class="new-val-up">+25 หน่วย</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- King Shop Buffs -->
+    <div class="subsection">
+        <h3 class="subsection-title"><span class="icon">🏪</span> บัฟจากร้านค้า King</h3>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://static.wikia.nocookie.net/wowpedia/images/4/42/BTNDivineIntervention.png" alt="Royal Presence" onerror="this.parentElement.innerHTML='<div class=img-fallback>👑</div>'"></div>
+                <div>
+                    <div class="card-name">Royal Presence</div>
+                    <div class="card-type">HP Burn Aura</div>
+                </div>
+                <span class="tag tag-rework" style="margin-left:auto;">REWORK</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>เผาเลือดเป้าหมาย <strong>2.5% ของ Max HP</strong> ต่อวินาที เป็นเวลา 10 วินาที</li>
+                    <li>ลด HP ได้สูงสุด <strong>25%</strong></li>
+                    <li>เป้าหมายจะเหลือ HP อย่างน้อย 1% — ไม่สามารถถูกสกิลนี้สังหารได้</li>
+                    <li>เพิ่มรัศมีสกิลเป็น <span class="new-val-up">800 AoE</span></li>
+                    <li>ปรับคูลดาวน์เป็น <strong>30 วินาที</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnherodreadlord-0e7bbaec74.png" alt="Dark Presence" onerror="this.parentElement.innerHTML='<div class=img-fallback>😈</div>'"></div>
+                <div>
+                    <div class="card-name">Dark Presence</div>
+                    <div class="card-type">Attack Buff</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>เพิ่มพลังโจมตีของ King เป็น <span class="new-val-up">+775%</span></li>
+                    <li>การโจมตีระยะไกลสามารถชิ่งเป้าหมายได้สูงสุด <strong>3 ตัว</strong></li>
+                    <li>เป้าหมายรองได้รับดาเมจ <strong>75%</strong> และ <strong>56%</strong> ตามลำดับ</li>
+                    <li>เพิ่ม Lifesteal เป็น <span class="new-val-up">45%</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wave 10 Boss -->
+    <div class="subsection">
+        <h3 class="subsection-title"><span class="icon">💀</span> บอสเวฟ 10 — Illidan</h3>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://static.wikia.nocookie.net/wowpedia/images/e/ee/BTNHeroDemonHunter.png" alt="Illidan" onerror="this.parentElement.innerHTML='<div class=img-fallback>😈</div>'"></div>
+                <div>
+                    <div class="card-name">Illidan — Wave 10 Boss</div>
+                    <div class="card-type">Final Boss</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>รายการ</th>
+                            <th>ค่าเดิม</th>
+                            <th>ค่าใหม่</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>HP</td>
+                            <td><span class="old-val">4,675</span></td>
+                            <td><span class="new-val-up">5,000</span></td>
+                        </tr>
+                        <tr>
+                            <td>พลังโจมตี</td>
+                            <td><span class="old-val">180</span></td>
+                            <td><span class="new-val-up">195</span></td>
+                        </tr>
+                        <tr>
+                            <td>ความถี่การโจมตี</td>
+                            <td><span class="old-val">0.41 วินาที</span></td>
+                            <td><span class="new-val-up">0.31 วินาที</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">🏆</div></div>
+                <div>
+                    <div class="card-name">Challenge Champion — CC</div>
+                    <div class="card-type">Wave 10 Challenge Mode</div>
+                </div>
+                <span class="tag tag-new" style="margin-left:auto;">NEW</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>เมื่อเปิดรับคำท้า CC ในเวฟ 10 แชมเปี้ยนจะได้รับพลังโจมตีเพิ่มขึ้น <span class="new-val-up">+100 Damage</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────── SECTION 4: Unit Balance ─────────── -->
+<section class="section reveal" id="section4">
+    <div class="section-header">
+        <div class="section-number">4</div>
+        <div class="section-title-group">
+            <h2 class="section-title">ปรับสมดุลยูนิตและสิ่งก่อสร้าง</h2>
+            <div class="section-subtitle">Towers, Builders & Unit Balance</div>
+        </div>
+    </div>
+
+    <!-- Leviathan & Tempest -->
+    <div class="subsection">
+        <h3 class="subsection-title"><span class="icon">🤖</span> Towers & Builders</h3>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnundeadairbarge-03e8a7ea66.png" alt="Leviathan" onerror="this.parentElement.innerHTML='<div class=img-fallback>🤖</div>'"></div>
+                <div>
+                    <div class="card-name">Leviathan & Tempest</div>
+                    <div class="card-type">Mech Builder</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>ปรับพื้นที่ช่องการสร้างให้เหลือขนาดมาตรฐาน <strong>1 ช่อง (2×2 Cells)</strong></li>
+                    <li>ขนาดพื้นที่เท่ากับ Axe Master และ Blademaster</li>
+                    <li>เมื่ออัปเกรดเป็น Leviathan <strong>จะไม่กินพื้นที่เพิ่ม</strong></li>
+                    <li>ช่วยให้ผู้เล่นสาย Mech จัดเส้นทางและอุดเลนได้สะดวกขึ้น</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnnagamyrmidonroyalguard-5501ba9dd2.png" alt="Naga Royal Guard" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐍</div>'"></div>
+                <div>
+                    <div class="card-name">Naga Royal Guard</div>
+                    <div class="card-type">Naga Builder</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>ปรับตำแหน่งการอัญเชิญ Oceanus ให้อยู่ <strong>ด้านหลัง 500 หน่วย</strong> เสมอ</li>
+                    <li>ลดปัญหาการเกิดยูนิตขวางทางเดินแนวหน้า</li>
+                    <li>ช่วยให้ Oceanus อยู่แนวหลังและโจมตีได้ต่อเนื่อง</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnhellscream-221afbcf30.png" alt="Axe Master" onerror="this.parentElement.innerHTML='<div class=img-fallback>🪓</div>'"></div>
+                <div>
+                    <div class="card-name">Axe Master</div>
+                    <div class="card-type">Orc Builder</div>
+                </div>
+                <span class="tag tag-nerf" style="margin-left:auto;">NERF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>เพิ่มราคา Gold จาก <span class="old-val">375</span> <span class="arrow">→</span> <span class="new-val-down">425</span></li>
+                    <li>ราคาสะสมรวมหลังอัปเกรดเป็น <strong>725 Gold</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnchaosgrom-a208c41e60.png" alt="Chaos Axe Master" onerror="this.parentElement.innerHTML='<div class=img-fallback>🪓</div>'"></div>
+                <div>
+                    <div class="card-name">Chaos Axe Master</div>
+                    <div class="card-type">Orc Builder — Chaos Upgrade</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>ปรับค่าอัปเกรดเป็นใช้ไม้ <strong>400 หน่วย</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unit Buffs -->
+    <div class="subsection">
+        <h3 class="subsection-title"><span class="icon">💪</span> บัฟยูนิต</h3>
+
+        <!-- Gnoll -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btngnoll-eba32d78da.png" alt="Gnoll" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐺</div>'"></div>
+                <div>
+                    <div class="card-name">Gnoll</div>
+                    <div class="card-type">Beast Fighter</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <div class="skill-block">
+                    <div class="skill-name">Gnoll Savage</div>
+                    <div class="skill-detail">เพิ่มความเร็วโจมตีจาก <span class="old-val">0.94</span> <span class="arrow">→</span> <span class="new-val-up">0.80</span></div>
+                </div>
+                <div class="skill-block">
+                    <div class="skill-name">Gnoll Marauder</div>
+                    <div class="skill-detail">เพิ่ม HP สูงสุดจาก <span class="old-val">2,250</span> <span class="arrow">→</span> <span class="new-val-up">2,625</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skeletor -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnskeletalorc-c475dd8fee.png" alt="Skeletor" onerror="this.parentElement.innerHTML='<div class=img-fallback>💀</div>'"></div>
+                <div>
+                    <div class="card-name">Skeletor</div>
+                    <div class="card-type">Undead</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>เพิ่ม HP สูงสุดจาก <span class="old-val">1,200</span> <span class="arrow">→</span> <span class="new-val-up">1,320</span></li>
+                    <li>เพิ่มความเร็วโจมตีจาก <span class="old-val">0.90</span> <span class="arrow">→</span> <span class="new-val-up">0.75</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Flaming Shooter -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnskeletonarcher-0b59158846.png" alt="Flaming Shooter" onerror="this.parentElement.innerHTML='<div class=img-fallback>🏹</div>'"></div>
+                <div>
+                    <div class="card-name">Flaming Shooter</div>
+                    <div class="card-type">Human — Ranged</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>เพิ่มอัตราฟื้นฟูมานาจาก <span class="old-val">12.5</span> <span class="arrow">→</span> <span class="new-val-up">15</span></li>
+                </ul>
+                <div class="skill-block">
+                    <div class="skill-name">🔥 Flaming Arrows</div>
+                    <div class="skill-detail">เพิ่มดาเมจจาก <span class="old-val">100</span> <span class="arrow">→</span> <span class="new-val-up">125</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Veteran -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnthecaptain-cf40fe6876.png" alt="Veteran" onerror="this.parentElement.innerHTML='<div class=img-fallback>⚔️</div>'"></div>
+                <div>
+                    <div class="card-name">Veteran</div>
+                    <div class="card-type">Human — Melee</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>เพิ่ม HP สูงสุดจาก <span class="old-val">1,300</span> <span class="arrow">→</span> <span class="new-val-up">1,450</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Defiler -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnmurgulbloodgill-f0380e5cca.png" alt="Defiler" onerror="this.parentElement.innerHTML='<div class=img-fallback>☠️</div>'"></div>
+                <div>
+                    <div class="card-name">Defiler</div>
+                    <div class="card-type">Mutant</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>เพิ่มความเร็วโจมตีจาก <span class="old-val">0.94</span> <span class="arrow">→</span> <span class="new-val-up">0.80</span></li>
+                </ul>
+                <div class="skill-block">
+                    <div class="skill-name">☠️ Biotoxin</div>
+                    <div class="skill-detail">
+                        เพิ่มดาเมจพิษจาก <span class="old-val">35</span> <span class="arrow">→</span> <span class="new-val-up">50</span> หน่วยต่อวินาที<br>
+                        เพิ่มผลลดความเร็วเดินและความเร็วโจมตีจาก <span class="old-val">24%</span> <span class="arrow">→</span> <span class="new-val-up">35%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mutant on Steroids & Mutant -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnheroalchemist-a4558b3814.png" alt="Mutant" onerror="this.parentElement.innerHTML='<div class=img-fallback>👹</div>'"></div>
+                <div>
+                    <div class="card-name">Mutant on Steroids & Mutant</div>
+                    <div class="card-type">Mutant</div>
+                </div>
+                <span class="tag tag-nerf" style="margin-left:auto;">NERF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li><strong>Mutant on Steroids:</strong> ลดดาเมจลง <span class="new-val-down">30 หน่วย</span></li>
+                    <li><strong>Mutant:</strong> ลดดาเมจลง <span class="new-val-down">30 หน่วย</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Giant Sea Turtle -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnseaturtlered-6103da77ae.png" alt="Giant Sea Turtle" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐢</div>'"></div>
+                <div>
+                    <div class="card-name">Giant Sea Turtle</div>
+                    <div class="card-type">Nature / Beast — Tank</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>เพิ่ม HP สูงสุดจาก <span class="old-val">1,635</span> <span class="arrow">→</span> <span class="new-val-up">2,000</span></li>
+                </ul>
+                <div class="skill-block">
+                    <div class="skill-name">🛡️ Turtle Shell</div>
+                    <div class="skill-detail">เพิ่มดาเมจที่บล็อกได้จาก <span class="old-val">30</span> <span class="arrow">→</span> <span class="new-val-up">45</span> หน่วย</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ancient Wendigoo -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnwendigo-e4b7dff63a.png" alt="Ancient Wendigoo" onerror="this.parentElement.innerHTML='<div class=img-fallback>🦣</div>'"></div>
+                <div>
+                    <div class="card-name">Ancient Wendigoo</div>
+                    <div class="card-type">Nature / Beast</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <div class="skill-block">
+                    <div class="skill-name">🏃 Animal Agility</div>
+                    <div class="skill-detail">เพิ่มประสิทธิภาพจาก <span class="old-val">50%</span> <span class="arrow">→</span> <span class="new-val-up">60%</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Elite Archer -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnsylvanuswindrunner-25599a1cee.png" alt="Elite Archer" onerror="this.parentElement.innerHTML='<div class=img-fallback>🏹</div>'"></div>
+                <div>
+                    <div class="card-name">Elite Archer</div>
+                    <div class="card-type">Archer</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>เพิ่มดาเมจจาก <span class="old-val">33</span> <span class="arrow">→</span> <span class="new-val-up">36</span> หน่วย</li>
+                </ul>
+                <div class="skill-block">
+                    <div class="skill-name">🎯 Multishot</div>
+                    <div class="skill-detail">
+                        แก้ไขบั๊กจำนวนเป้าหมาย<br>
+                        แก้ไขค่าดาเมจให้ตรงกับค่าของยูนิต
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thunderbird -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnchimaera-53afdf9ff6.png" alt="Thunderbird" onerror="this.parentElement.innerHTML='<div class=img-fallback>⚡</div>'"></div>
+                <div>
+                    <div class="card-name">Thunderbird</div>
+                    <div class="card-type">Elemental / Caster</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <div class="skill-block">
+                    <div class="skill-name">⚡ Aftershock</div>
+                    <div class="skill-detail">เพิ่มดาเมจจาก <span class="old-val">60</span> <span class="arrow">→</span> <span class="new-val-up">90</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hellraiser -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnhellraiser2-65214b53d4.png" alt="Hellraiser" onerror="this.parentElement.innerHTML='<div class=img-fallback>🔥</div>'"></div>
+                <div>
+                    <div class="card-name">Hellraiser</div>
+                    <div class="card-type">Elemental / Caster</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>เพิ่มระยะโจมตีจาก <span class="old-val">380</span> <span class="arrow">→</span> <span class="new-val-up">450</span></li>
+                </ul>
+                <div class="skill-block">
+                    <div class="skill-name">💀 Death Bass</div>
+                    <div class="skill-detail">เพิ่มระยะร่ายจาก <span class="old-val">675</span> <span class="arrow">→</span> <span class="new-val-up">700</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ice Troll Shaman -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnwitchdoctor-06c6d84534.png" alt="Ice Troll" onerror="this.parentElement.innerHTML='<div class=img-fallback>❄️</div>'"></div>
+                <div>
+                    <div class="card-name">Ice Troll Shaman</div>
+                    <div class="card-type">Elemental / Caster — Support</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <div class="skill-block">
+                    <div class="skill-name">❄️ Ice Shield</div>
+                    <div class="skill-detail">เพิ่มประสิทธิภาพบัฟจาก <span class="old-val">16%</span> <span class="arrow">→</span> <span class="new-val-up">20%</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Oracle -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnshaman-6857ed301a.png" alt="Oracle" onerror="this.parentElement.innerHTML='<div class=img-fallback>✝️</div>'"></div>
+                <div>
+                    <div class="card-name">Oracle</div>
+                    <div class="card-type">Elemental / Caster — Healer</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>เพิ่ม HP สูงสุดจาก <span class="old-val">935</span> <span class="arrow">→</span> <span class="new-val-up">1,000</span></li>
+                </ul>
+                <div class="skill-block">
+                    <div class="skill-name">💚 High Mend</div>
+                    <div class="skill-detail">
+                        เพิ่มพลังรักษาจาก <span class="old-val">260</span> <span class="arrow">→</span> <span class="new-val-up">300</span> หน่วย<br>
+                        เพิ่มจำนวนเป้าหมายที่รักษาได้จาก <span class="old-val">7</span> <span class="arrow">→</span> <span class="new-val-up">8</span> ตัว<br>
+                        ปรับการใช้มานาจาก <span class="old-val">25</span> <span class="arrow">→</span> <span class="new-val-down">30</span><br>
+                        ปรับคูลดาวน์จาก <span class="old-val">7</span> <span class="arrow">→</span> <span class="new-val-down">8 วินาที</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Goblin Blaster -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnjunkgolem-0c18167c70.png" alt="Goblin Blaster" onerror="this.parentElement.innerHTML='<div class=img-fallback>💣</div>'"></div>
+                <div>
+                    <div class="card-name">Goblin Blaster</div>
+                    <div class="card-type">Goblin</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <div class="skill-block">
+                    <div class="skill-name">⚙️ Overclocking</div>
+                    <div class="skill-detail">
+                        เพิ่มพลังรักษาจาก <span class="old-val">260</span> <span class="arrow">→</span> <span class="new-val-up">400</span><br>
+                        เพิ่มเกราะจาก <span class="old-val">35</span> <span class="arrow">→</span> <span class="new-val-up">45</span> หน่วย
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admiral -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnproudmoore-14a839d220.png" alt="Admiral" onerror="this.parentElement.innerHTML='<div class=img-fallback>⚓</div>'"></div>
+                <div>
+                    <div class="card-name">Admiral</div>
+                    <div class="card-type">Naval</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <div class="skill-block">
+                    <div class="skill-name">⚓ Captain of the Seas</div>
+                    <div class="skill-detail">เพิ่มประสิทธิภาพบัฟจาก <span class="old-val">15%</span> <span class="arrow">→</span> <span class="new-val-up">22%</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Juggernaut -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnjuggernaut-1c83976f36.png" alt="Juggernaut" onerror="this.parentElement.innerHTML='<div class=img-fallback>🚢</div>'"></div>
+                <div>
+                    <div class="card-name">Juggernaut</div>
+                    <div class="card-type">Naval — Heavy</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>เพิ่มค่าอัปเกรดไม้จาก <span class="old-val">225</span> <span class="arrow">→</span> <span class="new-val-up">360</span></li>
+                    <li>เพิ่ม HP สูงสุดจาก <span class="old-val">2,150</span> <span class="arrow">→</span> <span class="new-val-up">2,300</span></li>
+                    <li>เพิ่มดาเมจจาก <span class="old-val">150–166</span> <span class="arrow">→</span> <span class="new-val-up">190–206</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────── SECTION 5: Hero Overhaul ─────────── -->
+<section class="section reveal" id="section5">
+    <div class="section-header">
+        <div class="section-number">5</div>
+        <div class="section-title-group">
+            <h2 class="section-title">ยกเครื่องฮีโร่ทั้ง 10 ตัว</h2>
+            <div class="section-subtitle">Hero Overhaul — Lv.1 – Lv.3 ทั้งร่างป้อมและร่างลงสนาม</div>
+        </div>
+    </div>
+
+    <!-- Hero Grid -->
+    <div class="hero-grid">
+        <div class="hero-card">
+            <div class="hero-portrait"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnherodeathknight-b363d8fc76.png" alt="Death Knight" onerror="this.parentElement.innerHTML='<div class=img-fallback>💀</div>'"></div>
+            <div class="hero-card-name">Death Knight</div>
+            <div class="hero-card-type">Melee Hero</div>
+        </div>
+        <div class="hero-card">
+            <div class="hero-portrait"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnheromountainking-605b5bdd60.png" alt="Mountain King" onerror="this.parentElement.innerHTML='<div class=img-fallback>⛰️</div>'"></div>
+            <div class="hero-card-name">Mountain King</div>
+            <div class="hero-card-type">Melee Hero</div>
+        </div>
+        <div class="hero-card">
+            <div class="hero-portrait"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnherotaurenchieftain-5ca3f3ef00.png" alt="Tauren Chieftain" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐂</div>'"></div>
+            <div class="hero-card-name">Tauren Chieftain</div>
+            <div class="hero-card-type">Melee Hero</div>
+        </div>
+        <div class="hero-card">
+            <div class="hero-portrait"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnheropaladin-9429867f65.png" alt="Paladin" onerror="this.parentElement.innerHTML='<div class=img-fallback>⚜️</div>'"></div>
+            <div class="hero-card-name">Paladin</div>
+            <div class="hero-card-type">Melee Hero</div>
+        </div>
+        <div class="hero-card">
+            <div class="hero-portrait"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnherodreadlord-0e7bbaec74.png" alt="Dread Lord" onerror="this.parentElement.innerHTML='<div class=img-fallback>🧛</div>'"></div>
+            <div class="hero-card-name">Dread Lord</div>
+            <div class="hero-card-type">Melee Hero</div>
+        </div>
+        <div class="hero-card">
+            <div class="hero-portrait"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnbansheeranger-5a3fabe79f.png" alt="Dark Ranger" onerror="this.parentElement.innerHTML='<div class=img-fallback>🏹</div>'"></div>
+            <div class="hero-card-name">Dark Ranger</div>
+            <div class="hero-card-type">Ranged Hero</div>
+        </div>
+        <div class="hero-card">
+            <div class="hero-portrait"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnkeeperofthegrove-7e61666ecf.png" alt="Keeper of the Grove" onerror="this.parentElement.innerHTML='<div class=img-fallback>🌿</div>'"></div>
+            <div class="hero-card-name">Keeper of the Grove</div>
+            <div class="hero-card-type">Ranged Hero</div>
+        </div>
+        <div class="hero-card">
+            <div class="hero-portrait"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnpriestessofthemoon-75dc571443.png" alt="Priestess of the Moon" onerror="this.parentElement.innerHTML='<div class=img-fallback>🌙</div>'"></div>
+            <div class="hero-card-name">Priestess of the Moon</div>
+            <div class="hero-card-type">Ranged Hero</div>
+        </div>
+        <div class="hero-card">
+            <div class="hero-portrait"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnheroarchmage-63f25ab843.png" alt="Archmage" onerror="this.parentElement.innerHTML='<div class=img-fallback>🧙</div>'"></div>
+            <div class="hero-card-name">Archmage</div>
+            <div class="hero-card-type">Ranged Hero</div>
+        </div>
+        <div class="hero-card">
+            <div class="hero-portrait"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnnagaseawitch-a5ac3f8966.png" alt="Medusa" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐍</div>'"></div>
+            <div class="hero-card-name">Medusa</div>
+            <div class="hero-card-type">Ranged Hero</div>
+        </div>
+    </div>
+
+    <!-- Base Stats -->
+    <div class="subsection">
+        <h3 class="subsection-title"><span class="icon">📊</span> ค่าพื้นฐานของฮีโร่ทุกตัว</h3>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="skill-block">
+                    <div class="skill-name">⚔️ ประเภทการโจมตี → Chaos Damage</div>
+                    <div class="skill-detail">โจมตีศัตรูทุกประเภทเกราะได้เต็มประสิทธิภาพ <strong>100%</strong></div>
+                </div>
+                <div class="skill-block">
+                    <div class="skill-name">🛡️ ประเภทเกราะ → Hero Armor</div>
+                    <div class="skill-detail">ได้รับดาเมจลดลงตามคุณสมบัติเกราะฮีโร่</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">⚔️</div></div>
+                <div>
+                    <div class="card-name">พลังโจมตีมาตรฐาน</div>
+                    <div class="card-type">Standard Damage — All Heroes</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="data-table">
+                    <thead>
+                        <tr><th>ระดับ</th><th>ดาเมจ</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Lv.1</td><td><span class="new-val-up">101–110</span></td></tr>
+                        <tr><td>Lv.2</td><td><span class="new-val-up">151–170</span></td></tr>
+                        <tr><td>Lv.3</td><td><span class="new-val-up">261–290</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Melee Heroes -->
+    <div class="subsection">
+        <h3 class="subsection-title"><span class="icon">⚔️</span> ฮีโร่ระยะประชิด — Melee Heroes</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">
+            ประกอบด้วย Death Knight, Mountain King, Tauren Chieftain, Paladin และ Dread Lord
+        </p>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">📏</div></div>
+                <div>
+                    <div class="card-name">ระยะโจมตี → 275 หน่วย</div>
+                    <div class="card-type">ทุกระดับเลเวล — ลดปัญหาเดินชนกันและยืนขวางทาง</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">❤️</div></div>
+                <div>
+                    <div class="card-name">พลังชีวิต Melee Heroes</div>
+                    <div class="card-type">HP by Level</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="data-table">
+                    <thead>
+                        <tr><th>ฮีโร่</th><th>Lv.1</th><th>Lv.2</th><th>Lv.3</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div class="hero-cell"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnherodeathknight-b363d8fc76.png" alt="" onerror="this.style.display='none'">Death Knight</div></td>
+                            <td>1,400 HP</td><td>2,400 HP</td><td>3,400 HP</td>
+                        </tr>
+                        <tr>
+                            <td><div class="hero-cell"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnheromountainking-605b5bdd60.png" alt="" onerror="this.style.display='none'">Mountain King</div></td>
+                            <td>1,500 HP</td><td>2,500 HP</td><td>3,500 HP</td>
+                        </tr>
+                        <tr>
+                            <td><div class="hero-cell"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnherotaurenchieftain-5ca3f3ef00.png" alt="" onerror="this.style.display='none'">Tauren Chieftain</div></td>
+                            <td>1,500 HP</td><td>2,500 HP</td><td>3,500 HP</td>
+                        </tr>
+                        <tr>
+                            <td><div class="hero-cell"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnheropaladin-9429867f65.png" alt="" onerror="this.style.display='none'">Paladin</div></td>
+                            <td>1,400 HP</td><td>2,400 HP</td><td>3,400 HP</td>
+                        </tr>
+                        <tr>
+                            <td><div class="hero-cell"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnherodreadlord-0e7bbaec74.png" alt="" onerror="this.style.display='none'">Dread Lord</div></td>
+                            <td>1,500 HP</td><td>2,500 HP</td><td>3,500 HP</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">🛡️</div></div>
+                <div>
+                    <div class="card-name">Durable Skin — T11R</div>
+                    <div class="card-type">Passive — Melee Heroes ทุกตัว ทุกเลเวล</div>
+                </div>
+                <span class="tag tag-new" style="margin-left:auto;">NEW</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>ติดตั้งให้กับฮีโร่ระยะประชิดทั้ง 5 ตัวในทุกระดับเลเวล</li>
+                    <li>มีโอกาส <strong>75%</strong> ที่จะลดดาเมจที่ต่ำกว่า 150 ให้เหลือ <strong>2 หน่วย</strong></li>
+                    <li>เพิ่มความสามารถในการยืนรับดาเมจและแทงค์ครีปแนวหน้า</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ranged Heroes -->
+    <div class="subsection">
+        <h3 class="subsection-title"><span class="icon">🏹</span> ฮีโร่ระยะไกล — Ranged Heroes</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">
+            ประกอบด้วย Dark Ranger, Keeper of the Grove, Priestess of the Moon, Archmage และ Medusa
+        </p>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">📏</div></div>
+                <div>
+                    <div class="card-name">ระยะโจมตี → 500 หน่วย</div>
+                    <div class="card-type">เท่ากันทุกตัว</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">❤️</div></div>
+                <div>
+                    <div class="card-name">พลังชีวิต Ranged Heroes</div>
+                    <div class="card-type">HP by Level — ทุกตัวเท่ากัน</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="data-table">
+                    <thead>
+                        <tr><th>ระดับ</th><th>HP</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Lv.1</td><td>500 HP</td></tr>
+                        <tr><td>Lv.2</td><td>1,200 HP</td></tr>
+                        <tr><td>Lv.3</td><td>2,000 HP</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Medusa Special -->
+    <div class="subsection">
+        <h3 class="subsection-title"><span class="icon">🐍</span> Medusa — ปรับพิเศษ</h3>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnnagaseawitch-a5ac3f8966.png" alt="Medusa" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐍</div>'"></div>
+                <div>
+                    <div class="card-name">Medusa</div>
+                    <div class="card-type">Ranged Hero — Special Adjustments</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>เพิ่ม HP ของ Medusa Lv.1 เป็น <span class="new-val-up">500 HP</span></li>
+                    <li>ปรับดาเมจของ Medusa Lv.1 ให้เป็น <strong>101–110</strong></li>
+                    <li>ปรับระยะโจมตีของร่างต่อสู้จาก <span class="old-val">600</span> <span class="arrow">→</span> <span class="new-val-down">500 หน่วย</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Removed Ultimate Skills -->
+    <div class="subsection">
+        <h3 class="subsection-title"><span class="icon">❌</span> ถอดสกิลอัลติเมทของฮีโร่ Lv.3</h3>
+        <div class="callout callout-warning">
+            ⚠️ ลบสกิลไม้ตายเดิมของฮีโร่ Lv.3 ออกจากเกม — ช่วยให้เกมเน้นการจัดทัพ ออร่า และสกิลเฉพาะตัวมากขึ้น รวมถึงลดเอฟเฟกต์ที่อาจทำให้เกิดแลคในสนาม
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                    <span class="tag tag-removed">Walking Dead</span>
+                    <span class="tag tag-removed">Avatar</span>
+                    <span class="tag tag-removed">Thunderclap</span>
+                    <span class="tag tag-removed">War Stomp</span>
+                    <span class="tag tag-removed">Inferno</span>
+                    <span class="tag tag-removed">Starfall</span>
+                    <span class="tag tag-removed">Silence</span>
+                    <span class="tag tag-removed">Monsoon</span>
+                    <span class="tag tag-removed">Blizzard</span>
+                    <span class="tag tag-removed">Water Elemental</span>
+                    <span class="tag tag-removed">Tranquility</span>
+                    <span class="tag tag-removed">Treants</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Divine Intervention -->
+    <div class="subsection">
+        <h3 class="subsection-title"><span class="icon">🚫</span> ลบระบบ Divine Intervention</h3>
+        <div class="card">
+            <div class="card-body">
+                <ul>
+                    <li>นำระบบอมตะของ Paladin ออกจากสคริปต์แผนที่อย่างถาวร</li>
+                    <li>แก้ไขปัญหาการค้างและการติดลูปที่อาจเกิดจากระบบอมตะ</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────── SECTION 6: Hero Aura Buffs ─────────── -->
+<section class="section reveal" id="section6">
+    <div class="section-header">
+        <div class="section-number">6</div>
+        <div class="section-title-group">
+            <h2 class="section-title">ปรับสมดุลออร่าฮีโร่</h2>
+            <div class="section-subtitle">Hero Aura Buffs</div>
+        </div>
+    </div>
+
+    <div class="card" style="overflow-x: auto;">
+        <div class="card-body">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ฮีโร่</th>
+                        <th>ออร่า</th>
+                        <th>ค่าเดิม (Lv.1 / 2 / 3)</th>
+                        <th>ค่าใหม่ (Lv.1 / 2 / 3)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="hero-cell">
+                                <img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnheropaladin-9429867f65.png" alt="" onerror="this.style.display='none'">
+                                Paladin
+                            </div>
+                        </td>
+                        <td>Devotion Aura</td>
+                        <td>เกราะ +0.7 / +1.5 / +2.2</td>
+                        <td><span class="new-val-up">เกราะ +1.0 / +2.0 / +3.0</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="hero-cell">
+                                <img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnherodeathknight-b363d8fc76.png" alt="" onerror="this.style.display='none'">
+                                Death Knight
+                            </div>
+                        </td>
+                        <td>Unholy Aura</td>
+                        <td>ความเร็ว 5% / 10% / 15%<br>ฟื้นฟู HP 0.5% / 0.8% / 1.2%</td>
+                        <td><span class="new-val-up">ความเร็ว 10% / 16% / 22%<br>ฟื้นฟู HP 0.8% / 1.2% / 1.6%</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="hero-cell">
+                                <img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnheroarchmage-63f25ab843.png" alt="" onerror="this.style.display='none'">
+                                Archmage
+                            </div>
+                        </td>
+                        <td>Brilliance Aura</td>
+                        <td>มานา +0.05 / +0.10 / +0.15</td>
+                        <td><span class="new-val-up">มานา +0.07 / +0.12 / +0.18</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="hero-cell">
+                                <img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnherodreadlord-0e7bbaec74.png" alt="" onerror="this.style.display='none'">
+                                Dread Lord
+                            </div>
+                        </td>
+                        <td>Vampiric Aura</td>
+                        <td>Lifesteal 10% / 18% / 26%</td>
+                        <td><span class="new-val-up">Lifesteal 15% / 25% / 35%</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="hero-cell">
+                                <img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnnagaseawitch-a5ac3f8966.png" alt="" onerror="this.style.display='none'">
+                                Medusa
+                            </div>
+                        </td>
+                        <td>Slow Aura</td>
+                        <td>ลดความเร็ว 15% / 30% / 45%</td>
+                        <td><span class="new-val-up">ลดความเร็ว 20% / 35% / 50%</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="hero-cell">
+                                <img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnheromountainking-605b5bdd60.png" alt="" onerror="this.style.display='none'">
+                                Mountain King
+                            </div>
+                        </td>
+                        <td>Command Aura</td>
+                        <td>ดาเมจ +7% / +11% / +15%</td>
+                        <td><span class="new-val-up">ดาเมจ +8% / +12% / +16%</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="hero-cell">
+                                <img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnherotaurenchieftain-5ca3f3ef00.png" alt="" onerror="this.style.display='none'">
+                                Tauren Chieftain
+                            </div>
+                        </td>
+                        <td>Endurance Aura</td>
+                        <td>ความเร็วโจมตี +5% / +7% / +10%</td>
+                        <td><span class="new-val-up">ความเร็วโจมตี +8% / +12% / +16%</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="hero-cell">
+                                <img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnpriestessofthemoon-75dc571443.png" alt="" onerror="this.style.display='none'">
+                                Priestess of the Moon
+                            </div>
+                        </td>
+                        <td>Trueshot Aura</td>
+                        <td>ดาเมจระยะไกล +6% / +9% / +12%</td>
+                        <td><span class="new-val-up">ดาเมจระยะไกล +10% / +15% / +20%</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="hero-cell">
+                                <img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnkeeperofthegrove-7e61666ecf.png" alt="" onerror="this.style.display='none'">
+                                Keeper of the Grove
+                            </div>
+                        </td>
+                        <td>Thorns Aura</td>
+                        <td>สะท้อนดาเมจ 15% / 30% / 45%</td>
+                        <td><span class="new-val-up">สะท้อนดาเมจ 20% / 40% / 60%</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="hero-cell">
+                                <img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnbansheeranger-5a3fabe79f.png" alt="" onerror="this.style.display='none'">
+                                Dark Ranger
+                            </div>
+                        </td>
+                        <td>Darkness Aura</td>
+                        <td>ลดดาเมจศัตรู 5% / 10% / 15%</td>
+                        <td><span class="new-val-up">ลดดาเมจศัตรู 8% / 15% / 22%</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────── SECTION 7: Bug Fixes ─────────── -->
+<section class="section reveal" id="section7">
+    <div class="section-header">
+        <div class="section-number">7</div>
+        <div class="section-title-group">
+            <h2 class="section-title">แก้ไขบั๊กและข้อมูลในเกม</h2>
+            <div class="section-subtitle">Bug Fixes & Tooltips</div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <h3 class="subsection-title"><span class="icon">📝</span> ข้อมูลฮีโร่</h3>
+        <div class="card">
+            <div class="card-body">
+                <ul>
+                    <li>ซิงก์ค่าดาเมจและ Tooltip ของฮีโร่ทุกตัวให้ตรงกับค่าจริงในระบบ</li>
+                    <li>แก้ไขรายละเอียดสกิลและค่าพลังที่แสดงไม่ถูกต้อง</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <h3 class="subsection-title"><span class="icon">🧙</span> Archmage Lv.2</h3>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnheroarchmage-63f25ab843.png" alt="Archmage" onerror="this.parentElement.innerHTML='<div class=img-fallback>🧙</div>'"></div>
+                <div>
+                    <div class="card-name">Archmage Lv.2</div>
+                    <div class="card-type">Tooltip Fix</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>แก้ไขช่วงดาเมจใน Tooltip จาก <span class="old-val">150–171</span> <span class="arrow">→</span> <span class="new-val-up">151–170</span></li>
+                    <li>เพิ่มรายละเอียดสกิล Brilliance Aura และ Mana Burst ให้ครบถ้วน</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <h3 class="subsection-title"><span class="icon">🐍</span> Medusa Lv.2 และ Lv.3</h3>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnnagaseawitch-a5ac3f8966.png" alt="Medusa" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐍</div>'"></div>
+                <div>
+                    <div class="card-name">Medusa Lv.2 & Lv.3</div>
+                    <div class="card-type">Tooltip & Icon Fix</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>แก้ไขชื่อสกิลให้ถูกต้องเป็น <strong>Slow Aura</strong> และ <strong>Water Shield</strong></li>
+                    <li>แก้ไขชื่อสกิลเดิมที่แสดงผิดเป็น Trueshot Aura</li>
+                    <li>แก้ไขไอคอนร่างต่อสู้ให้แสดงเป็น <strong>Naga Sea Witch</strong></li>
+                    <li>แก้ไขจากไอคอนเดิมที่แสดงเป็น Priestess of the Moon</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="footer">
+    <div class="footer-logo">Legion TD NewEdition</div>
+    <p>Version 2.7 — Patch Notes</p>
+    <p style="margin-top: 0.5rem; color: var(--text-muted);">© 2024 Legion TD NewEdition Community</p>
+</footer>
+
+<!-- ═══════════════════ SCRIPTS ═══════════════════ -->
+<script>
+// ─── Particle Effect ───
+(function() {
+    const container = document.getElementById('particles');
+    const count = 30;
+    for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.classList.add('particle');
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDelay = Math.random() * 6 + 's';
+        p.style.animationDuration = (4 + Math.random() * 4) + 's';
+        p.style.width = (2 + Math.random() * 3) + 'px';
+        p.style.height = p.style.width;
+        p.style.opacity = 0;
+        const colors = ['#f0b429', '#ffd166', '#a855f7', '#3b82f6', '#22c55e'];
+        p.style.background = colors[Math.floor(Math.random() * colors.length)];
+        container.appendChild(p);
+    }
+})();
+
+// ─── Scroll Reveal ───
+(function() {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+})();
+
+// ─── Active Nav Link ───
+(function() {
+    const links = document.querySelectorAll('.toc-link');
+    const sections = document.querySelectorAll('.section');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                links.forEach(link => link.classList.remove('active'));
+                const activeLink = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+                if (activeLink) activeLink.classList.add('active');
+            }
+        });
+    }, { threshold: 0.2, rootMargin: '-70px 0px -50% 0px' });
+
+    sections.forEach(section => observer.observe(section));
+})();
+
+// ─── Smooth scroll for nav ───
+document.querySelectorAll('.toc-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+</script>
+
+</body>
+</html>
