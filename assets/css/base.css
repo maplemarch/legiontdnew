@@ -63,8 +63,12 @@
     /* ความสูงแถบเมนู ใช้อ้างอิงตอนเว้นที่ให้แถบแท็บและพื้นหลัง hero */
     --nav-h: 64px;
 
-    /* ความกว้างสูงสุดของเนื้อหา ใช้ร่วมกันทุกหน้าทุกแถบ ให้ขอบซ้ายขวาตรงกันหมด */
-    --page-max: 1320px;
+    /* กรอบนอกของเว็บ ใช้กับแถบเมนูและ footer กว้างเท่ากันทุกหน้า */
+    --shell-max: 1320px;
+
+    /* ความกว้างของเนื้อหา แถบแท็บ และ footer
+       หน้าแรกกว้างกว่า ดูที่ .page-home ใน landing.css */
+    --page-max: 1000px;
 
     /* จังหวะการเคลื่อนไหว */
     --ease-fluid: cubic-bezier(0.32, 0.72, 0, 1);
@@ -135,7 +139,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 
 .site-nav-inner {
     width: 100%;
-    max-width: var(--page-max);
+    max-width: var(--shell-max);
     margin: 0 auto;
     height: var(--nav-h);
     /* สามช่อง: แบรนด์ชิดซ้าย เมนูอยู่กึ่งกลางจอ ปุ่มอยู่ขวา */
@@ -357,7 +361,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 
 .footer-inner {
     width: 100%;
-    max-width: var(--page-max);
+    max-width: var(--shell-max);
     margin: 0 auto;
     padding: var(--space-700) var(--space-300) var(--space-600);
     /* คอลัมน์แบรนด์กว้างกว่า เพราะมีคำบรรยายด้วย */
@@ -416,7 +420,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 
 .footer-bottom-inner {
     width: 100%;
-    max-width: var(--page-max);
+    max-width: var(--shell-max);
     margin: 0 auto;
     padding: var(--space-300);
     display: flex;

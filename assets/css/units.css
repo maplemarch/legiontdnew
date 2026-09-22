@@ -3,6 +3,22 @@
    (โหลดต่อจาก base.css และ landing.css)
    =========================================================== */
 
+/* ===== กล่องคุมตารางยูนิต ===== */
+.unit-panel {
+    margin-top: var(--space-400);
+    padding: var(--space-300);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-3xl);
+    /* ยกขึ้นจากพื้นหน้าบางๆ แทนการใช้สีเข้มกว่า จะได้ไม่ทึบจนแยกตัวออกมา */
+    background: rgba(255, 255, 255, 0.012);
+}
+/* toolbar อยู่ในกล่องแล้ว ไม่ต้องเว้นบนซ้ำอีก */
+.unit-panel .unit-toolbar { margin-top: 0; }
+
+@media (max-width: 768px) {
+    .unit-panel { padding: var(--space-200); border-radius: var(--radius-2xl); }
+}
+
 /* ===== แถบค้นหาและตัวกรอง ===== */
 .unit-toolbar {
     display: flex;
@@ -114,13 +130,6 @@
 }
 .unit-card-cost i { font-size: 14px; }
 
-.unit-source {
-    margin-top: var(--space-300);
-    font-size: 0.75rem;
-    line-height: 16px;
-    color: var(--text-muted);
-}
-.unit-source a { color: var(--text-secondary); }
 
 .unit-empty-note {
     font-size: 0.875rem;
