@@ -31,7 +31,7 @@
         </a>
         <ul class="nav-links">
             <li><a class="nav-link" href="../">หน้าแรก</a></li>
-            <li><a class="nav-link" href="./" aria-current="page">Unit</a></li>
+            <li><a class="nav-link" href="./" aria-current="page">ข้อมูลแมพ</a></li>
             <li><a class="nav-link" href="../patch-notes/">Patch</a></li>
             <li><a class="nav-link" href="../download/">Download</a></li>
             <li><a class="nav-link" href="../contact/">Contact</a></li>
@@ -52,7 +52,7 @@
 <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
     <ul class="nav-overlay-list">
         <li><a href="../">หน้าแรก</a></li>
-        <li><a href="./" aria-current="page">Unit</a></li>
+        <li><a href="./" aria-current="page">ข้อมูลแมพ</a></li>
         <li><a href="../patch-notes/">Patch</a></li>
         <li><a href="../download/">Download</a></li>
         <li><a href="../contact/">Contact</a></li>
@@ -65,9 +65,11 @@
 <nav class="toc-nav" aria-label="หมวดข้อมูล">
     <div class="toc-nav-inner">
         <div class="toc-links">
-            <a href="#unit" class="toc-link active">⚔️ Unit</a>
+            <a href="#map" class="toc-link active">🗺️ Map</a>
+            <a href="#unit" class="toc-link">⚔️ Unit</a>
             <a href="#creep" class="toc-link">🐾 Creep</a>
             <a href="#king" class="toc-link">👑 King</a>
+            <a href="#wisp" class="toc-link">🌳 Wisp &amp; Tree</a>
         </div>
     </div>
 </nav>
@@ -78,7 +80,18 @@
     แต่ละหมวดคือหนึ่ง section ข้างล่างนี้
     เวลามีข้อมูลจริง แทนที่บล็อก empty-state ด้วยตารางหรือการ์ดได้เลย
 -->
-<section class="section" id="unit" aria-labelledby="unit-title">
+<section class="section" id="map" aria-labelledby="map-title">
+    <h2 class="section-heading" id="map-title">แผนที่</h2>
+    <p class="section-lede">ผังแผนที่ของเวอร์ชัน 2.7 เลนสองข้าง ฐาน King อยู่กลาง</p>
+    <figure class="map-card reveal">
+        <img src="../assets/img/map-preview.jpg"
+             alt="ผังแผนที่ Legion TD NewEdition มองจากด้านบน เห็นเลนสองข้างและฐาน King กลางแผนที่"
+             width="256" height="256" loading="lazy" decoding="async">
+        <figcaption>Legion TD NewEdition 2.7</figcaption>
+    </figure>
+</section>
+
+<section class="section" id="unit" aria-labelledby="unit-title" style="margin-top: var(--space-900);">
     <h2 class="section-heading" id="unit-title">ยูนิต</h2>
     <p class="section-lede">ยูนิตที่ผู้เล่นสร้างเอง ค่าพลังชีวิต ดาเมจ ราคา และสายอัปเกรด</p>
     <div class="empty-state reveal">
@@ -126,6 +139,22 @@
     </div>
 </section>
 
+<section class="section" id="wisp" aria-labelledby="wisp-title" style="margin-top: var(--space-900);">
+    <h2 class="section-heading" id="wisp-title">Wisp &amp; Tree</h2>
+    <p class="section-lede">ค่าของ Wisp และ Tree ที่ใช้ในเกม</p>
+    <div class="empty-state reveal">
+        <div class="empty-mark"><i class="ph ph-tree" aria-hidden="true"></i></div>
+        <h3 class="empty-title">กำลังรวบรวมข้อมูล</h3>
+        <p class="empty-body">ยังไม่ได้ลงข้อมูลส่วนนี้</p>
+        <div class="hero-actions" style="justify-content: center; margin-bottom: 0;">
+            <a class="btn btn-ghost" href="../contact/">
+                <i class="ph ph-users-three" aria-hidden="true"></i>
+                ช่วยส่งข้อมูล
+            </a>
+        </div>
+    </div>
+</section>
+
 </main>
 
 <footer class="footer">
@@ -139,7 +168,7 @@
             <h2 class="footer-heading" id="footer-menu">เมนู</h2>
             <ul>
                 <li><a href="../">หน้าแรก</a></li>
-                <li><a href="./">Unit</a></li>
+                <li><a href="./">ข้อมูลแมพ</a></li>
                 <li><a href="../patch-notes/">Patch</a></li>
                 <li><a href="../download/">Download</a></li>
                 <li><a href="../contact/">Contact</a></li>

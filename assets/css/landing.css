@@ -591,3 +591,36 @@
 .back-link:hover { color: var(--gold); transform: translateX(-2px); }
 .back-link i { font-size: 16px; line-height: 1; }
 
+
+/* ===== การ์ดรูปแผนที่ในหน้าข้อมูลแมพ ===== */
+.map-card {
+    width: max-content;
+    max-width: 100%;
+    margin: var(--space-500) auto 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-3xl);
+    background: var(--bg-card);
+    padding: var(--space-100);
+}
+
+.map-card img {
+    display: block;
+    width: 420px;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    /* ต้นฉบับเป็นมินิแมพ 256px ถ้าไม่สั่ง pixelated ตอนขยายจะเบลอ */
+    image-rendering: pixelated;
+    /* กรอบนอก 24px ลบระยะห่าง 12px เหลือ 12px ตามสูตรมุมซ้อน */
+    border-radius: var(--radius-xl);
+    background: var(--bg-section);
+}
+
+.map-card figcaption {
+    padding: var(--space-100) var(--space-75) var(--space-50);
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 16px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+}
