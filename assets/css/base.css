@@ -417,3 +417,16 @@ main {
     min-height: 100vh;
     min-height: 100svh;
 }
+
+/* ซ่อนจากสายตาแต่ยังอ่านได้ด้วยโปรแกรมอ่านหน้าจอและเครื่องมือค้นหา */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

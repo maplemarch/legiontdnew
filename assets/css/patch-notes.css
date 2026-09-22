@@ -3,146 +3,11 @@
    (โหลดต่อจาก base.css เท่านั้น)
    =========================================================== */
 
-/* ─── Hero Banner ────────────────────────────────── */
-.hero-banner {
-    position: relative;
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-    background: linear-gradient(180deg, #0a0d13 0%, #111827 40%, #1a1030 70%, #0a0d13 100%);
-}
-
-.hero-banner::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(ellipse 600px 400px at 30% 50%, rgba(168, 85, 247, 0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 600px 400px at 70% 40%, rgba(240, 180, 41, 0.10) 0%, transparent 70%),
-        radial-gradient(ellipse 800px 300px at 50% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
-    pointer-events: none;
-}
-
-.hero-particles {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.particle {
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: var(--gold);
-    border-radius: 50%;
-    opacity: 0;
-    animation: float-up 6s ease-in infinite;
-}
-
-@keyframes float-up {
-    0% { opacity: 0; transform: translateY(100vh) scale(0); }
-    10% { opacity: 0.8; }
-    90% { opacity: 0.2; }
-    100% { opacity: 0; transform: translateY(-10vh) scale(1); }
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 2rem;
-}
-
-.hero-badge {
-    display: inline-block;
-    padding: 0.4rem 1.5rem;
-    background: linear-gradient(135deg, rgba(240, 180, 41, 0.15), rgba(240, 180, 41, 0.05));
-    border: 1px solid rgba(240, 180, 41, 0.3);
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--gold);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 1.5rem;
-    animation: fadeInDown 0.8s ease-out;
-}
-
-.hero-title {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.1;
-    margin-bottom: 0.5rem;
-    animation: fadeInUp 0.8s ease-out;
-    text-shadow: none;
-    filter: drop-shadow(0 0 30px rgba(240, 180, 41, 0.3));
-}
-
-.hero-version {
-    font-family: var(--font-display);
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 1.5rem;
-    animation: fadeInUp 0.8s ease-out 0.2s backwards;
-}
-
-.hero-description {
-    max-width: 700px;
-    margin: 0 auto;
-    font-size: 1.05rem;
-    color: var(--text-secondary);
-    line-height: 1.8;
-    animation: fadeInUp 0.8s ease-out 0.4s backwards;
-}
-
-.hero-divider {
-    width: 120px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 2rem auto;
-    animation: fadeIn 1s ease-out 0.6s backwards;
-}
-
-.hero-stats {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-    animation: fadeInUp 0.8s ease-out 0.6s backwards;
-}
-
-.hero-stat {
-    text-align: center;
-}
-
-.hero-stat-value {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--gold);
-}
-
-.hero-stat-label {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-
 /* ─── Navigation ─────────────────────────────────── */
 .toc-nav {
     position: sticky;
+    /* เริ่มต้นอยู่ใต้แถบเมนูพอดี แล้วค่อยหนึบไว้ที่เดิมตอนเลื่อน */
+    margin-top: 64px;
     top: 64px;
     z-index: 90;
     background: rgba(10, 13, 19, 0.92);
@@ -152,21 +17,47 @@
 }
 
 .toc-nav-inner {
-    max-width: 1200px;
+    /* กว้างและมีขอบในเท่าแถบเมนูด้านบน เพื่อให้ขอบซ้ายตรงกัน */
+    width: 100%;
+    max-width: 1120px;
     margin: 0 auto;
+    padding: 0 var(--space-300);
+    display: flex;
+    align-items: stretch;
+    gap: var(--space-300);
+}
+
+.toc-back {
     display: flex;
     align-items: center;
-    gap: 0;
+    gap: var(--space-75);
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 400ms var(--ease-fluid);
+}
+.toc-back:hover { color: var(--gold); }
+.toc-back i { font-size: 15px; line-height: 1; }
+
+.toc-links {
+    display: flex;
+    align-items: stretch;
+    gap: var(--space-300);
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
 }
-
-.toc-nav-inner::-webkit-scrollbar { display: none; }
+.toc-links::-webkit-scrollbar { display: none; }
 
 .toc-link {
     flex-shrink: 0;
-    padding: 1rem 1.2rem;
+    display: flex;
+    align-items: center;
+    padding: var(--space-200) 0;
     font-size: 0.8rem;
     font-weight: 500;
     color: var(--text-muted);
@@ -174,7 +65,7 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
     border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
+    transition: color 400ms var(--ease-fluid), border-color 400ms var(--ease-fluid);
     white-space: nowrap;
 }
 
@@ -185,9 +76,11 @@
 
 /* ─── Main Content ───────────────────────────────── */
 .content-wrapper {
-    max-width: 1000px;
+    /* ความกว้างและขอบในชุดเดียวกับแถบเมนูและสารบัญ ขอบซ้ายจะได้ตรงกันทั้งหน้า */
+    width: 100%;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 2rem 1.5rem 4rem;
+    padding: var(--space-500) var(--space-300) var(--space-900);
 }
 
 /* ─── Section Headers ────────────────────────────── */
@@ -625,19 +518,19 @@
 
 /* ─── Responsive ─────────────────────────────────── */
 @media (max-width: 768px) {
-    .content-wrapper { padding: 1.5rem 1rem 3rem; }
+    .content-wrapper { padding: var(--space-300) var(--space-200) var(--space-700); }
     .section-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
     .hero-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
     .removed-grid { grid-template-columns: 1fr; }
     .data-table { font-size: 0.78rem; }
     .data-table th, .data-table td { padding: 0.5rem 0.6rem; }
-    .toc-link { padding: 0.8rem 0.8rem; font-size: 0.72rem; }
+    .toc-link { padding: var(--space-100) 0; font-size: 0.72rem; }
+    .toc-nav-inner { padding: 0 var(--space-200); gap: var(--space-200); }
+    .toc-links { gap: var(--space-200); }
+    .toc-back span { display: none; }
 }
 
 
-/* --- เว้นที่ให้เมนูลอยด้านบนไม่ทับหัวเรื่อง --- */
-.hero-banner { padding: 128px var(--space-300) var(--space-600); }
 @media (max-width: 860px) {
-    .hero-banner { padding: 112px var(--space-200) var(--space-500); }
     .toc-nav { top: 64px; }
 }
