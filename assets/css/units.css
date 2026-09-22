@@ -94,7 +94,7 @@
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-accent);
     background: var(--bg-section);
-    object-fit: cover;
+    object-fit: contain;
 }
 .unit-icon-blank { display: grid; place-items: center; color: var(--text-muted); }
 
@@ -192,7 +192,7 @@
     border-radius: var(--radius-xl);
     border: 1px solid var(--border-accent);
     background: var(--bg-section);
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .unit-badge {
@@ -291,7 +291,7 @@
     flex-shrink: 0;
     border-radius: var(--radius-md);
     border: 1px solid var(--border-color);
-    object-fit: cover;
+    object-fit: contain;
 }
 .unit-skill-name { font-size: 0.875rem; line-height: 20px; font-weight: 600; }
 .unit-skill-desc {
@@ -328,7 +328,7 @@
     flex-shrink: 0;
     border-radius: var(--radius-md);
     border: 1px solid var(--border-color);
-    object-fit: cover;
+    object-fit: contain;
 }
 .unit-link-tier { font-size: 0.75rem; line-height: 16px; color: var(--text-muted); }
 
