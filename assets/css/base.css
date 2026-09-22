@@ -74,7 +74,13 @@
     --ease-fluid: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+    /* จองที่ให้แถบเลื่อนไว้เสมอ หน้าที่เนื้อหาสั้นจะได้ไม่กว้างกว่าหน้ายาว 8px
+       ไม่งั้นพอสลับหน้า เมนูกับเนื้อหาจะขยับข้างละ 4px เห็นเป็นอาการหน้ากระตุก
+       ใส่ both-edges เพื่อจองทางซ้ายด้วย ถ้าจองแค่ขวา เนื้อหาจะเยื้องซ้าย 4px */
+    scrollbar-gutter: stable both-edges;
+}
 
 body {
     font-family: var(--font-body);
