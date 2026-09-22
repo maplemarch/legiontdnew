@@ -312,7 +312,8 @@ h1, h2, h3, h4 { text-wrap: balance; }
 
 .btn-sm { font-size: 0.875rem; line-height: 20px; padding: var(--space-75) var(--space-100); }
 
-.btn[aria-disabled="true"] { opacity: 0.45; pointer-events: none; }
+.btn[aria-disabled="true"],
+.btn:disabled { opacity: 0.4; pointer-events: none; cursor: not-allowed; }
 
 /* ===== เอฟเฟกต์ตอนเลื่อนเข้ามาในจอ ===== */
 .reveal {
@@ -408,3 +409,9 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .btn i { font-size: 18px; line-height: 1; }
 
 .nav-overlay-list a[aria-current="page"] { color: var(--gold); }
+
+/* ทุกหน้าสูงอย่างน้อยเต็มจอ เพื่อไม่ให้ขอบ footer โผล่มาตั้งแต่ยังไม่เลื่อน */
+main {
+    min-height: 100vh;
+    min-height: 100svh;
+}

@@ -76,91 +76,21 @@
                     <!-- TODO: แก้ขนาดไฟล์จริงหลังอัปโหลด -->
                     <div class="file-sub">เวอร์ชันล่าสุด · อัปเดต 22 กันยายน 2569</div>
                 </div>
-                <!-- TODO: เปลี่ยน href เป็นลิงก์ไฟล์จริง เช่น GitHub Releases -->
-                <a class="btn btn-primary" href="https://github.com/maplemarch/legiontdnew/releases">
+                <!-- TODO: เปลี่ยนเป็น <a class="btn btn-primary" href="ลิงก์ไฟล์จริง"> เมื่ออัปโหลดไฟล์แล้ว -->
+                <button class="btn btn-primary" type="button" disabled>
                     <i class="ph ph-download-simple" aria-hidden="true"></i>
                     ดาวน์โหลด
-                </a>
+                </button>
             </div>
 
             <div class="file-row reveal">
                 <div class="contact-mark mail"><i class="ph ph-clock-counter-clockwise" aria-hidden="true"></i></div>
                 <div class="file-meta">
                     <div class="file-name">เวอร์ชันเก่า</div>
-                    <div class="file-sub">สำหรับห้องที่ยังไม่ได้อัปเดต เก็บไว้ในหน้า Releases</div>
+                    <div class="file-sub">สำหรับห้องที่ยังไม่ได้อัปเดตเป็น 2.7</div>
                 </div>
-                <a class="btn btn-ghost" href="https://github.com/maplemarch/legiontdnew/releases">ดูทั้งหมด</a>
-            </div>
-        </div>
-
-        <p class="note" style="margin-top: var(--space-400);">
-            <strong>ลบไฟล์ 2.6 ออกด้วย</strong> ถ้าเก็บทั้งสองเวอร์ชันไว้ในโฟลเดอร์เดียวกัน
-            เกมมักเลือกไฟล์ผิดตอนเข้าห้อง ทำให้เวอร์ชันไม่ตรงกับเพื่อนในทีม
-        </p>
-    </div>
-</section>
-
-<section class="page-section" aria-labelledby="install">
-    <div class="container">
-        <span class="eyebrow">วิธีติดตั้ง</span>
-        <h2 class="section-heading" id="install">สามขั้นตอน ใช้เวลาไม่ถึงสองนาที</h2>
-
-        <div class="step-grid">
-            <article class="step-card reveal">
-                <div class="step-number">1</div>
-                <h3 class="step-title">โหลดไฟล์ .w3x</h3>
-                <p class="step-body">กดปุ่มดาวน์โหลดด้านบน ถ้าเบราว์เซอร์เตือนว่าไฟล์ไม่ปลอดภัย ให้เลือกเก็บไฟล์ไว้ เป็นเรื่องปกติของไฟล์แผนที่</p>
-            </article>
-
-            <article class="step-card reveal">
-                <div class="step-number">2</div>
-                <h3 class="step-title">วางในโฟลเดอร์ Maps</h3>
-                <p class="step-body">
-                    Reforged อยู่ที่ Documents แล้วเข้า Warcraft III จากนั้น Maps
-                    ส่วนคลาสสิกอยู่ในโฟลเดอร์ที่ติดตั้งเกม แนะนำให้สร้างโฟลเดอร์ย่อยชื่อ LegionTD
-                </p>
-            </article>
-
-            <article class="step-card reveal">
-                <div class="step-number">3</div>
-                <h3 class="step-title">เข้า Custom Game</h3>
-                <p class="step-body">เปิดเกม เลือก Custom Game แล้วหาชื่อ Legion TD NewEdition 2.7 ถ้าไม่เจอให้ปิดเกมแล้วเปิดใหม่หนึ่งครั้ง</p>
-            </article>
-        </div>
-    </div>
-</section>
-
-<section class="page-section" aria-labelledby="requirements">
-    <div class="container narrow">
-        <span class="eyebrow">ข้อกำหนด</span>
-        <h2 class="section-heading" id="requirements">รองรับเวอร์ชันไหนบ้าง</h2>
-        <div class="faq-list" style="margin-top: var(--space-400);">
-            <details class="faq-item" open>
-                <summary>Warcraft III คลาสสิก 1.26 ถึง 1.31</summary>
-                <div class="faq-answer">ใช้งานได้ปกติ ถ้าใช้ 1.27 หรือต่ำกว่าและตัวอักษรไทยเพี้ยน ให้ลง patch ภาษาไทยเพิ่มก่อน</div>
-            </details>
-            <details class="faq-item">
-                <summary>Warcraft III Reforged</summary>
-                <div class="faq-answer">ใช้งานได้ ต้องวางไฟล์ในโฟลเดอร์ Maps ใต้ Documents ไม่ใช่โฟลเดอร์ที่ติดตั้งเกม</div>
-            </details>
-            <details class="faq-item">
-                <summary>เข้าห้องแล้วขึ้นว่าเวอร์ชันไม่ตรงกัน</summary>
-                <div class="faq-answer">แปลว่าไฟล์ในเครื่องคนละตัวกับของคนเปิดห้อง ให้ทุกคนลบไฟล์เก่าออกแล้วโหลดไฟล์เดียวกันจากหน้านี้</div>
-            </details>
-        </div>
-
-        <div class="final-cta reveal" style="margin-top: var(--space-700);">
-            <h2 class="section-heading">ติดตั้งแล้วแต่ยังติดปัญหา</h2>
-            <p class="section-lede narrow" style="margin: 0 auto var(--space-400);">ถามในชุมชนได้ ปกติมีคนตอบภายในไม่กี่ชั่วโมง</p>
-            <div class="hero-actions">
-                <a class="btn btn-primary" href="../contact/">
-                    <i class="ph ph-users-three" aria-hidden="true"></i>
-                    ไปหน้าติดต่อ
-                </a>
-                <a class="btn btn-ghost" href="../patch-notes/">
-                    <i class="ph ph-scroll" aria-hidden="true"></i>
-                    อ่าน Patch Notes
-                </a>
+                <!-- TODO: เปลี่ยนเป็น <a class="btn btn-ghost" href="ลิงก์รวมเวอร์ชันเก่า"> -->
+                <button class="btn btn-ghost" type="button" disabled>ดูทั้งหมด</button>
             </div>
         </div>
     </div>
