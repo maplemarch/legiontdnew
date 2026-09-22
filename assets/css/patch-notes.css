@@ -7,7 +7,7 @@
 .content-wrapper {
     /* ความกว้างและขอบในชุดเดียวกับแถบเมนูและสารบัญ ขอบซ้ายจะได้ตรงกันทั้งหน้า */
     width: 100%;
-    max-width: 1120px;
+    max-width: var(--page-max);
     margin: 0 auto;
     padding: var(--space-500) var(--space-300) var(--space-900);
 }

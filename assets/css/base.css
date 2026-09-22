@@ -60,6 +60,9 @@
     --radius-3xl: 24px;
     --radius-full: 9999px;
 
+    /* ความกว้างสูงสุดของเนื้อหา ใช้ร่วมกันทุกแถบให้ขอบซ้ายขวาตรงกัน */
+    --page-max: 1320px;
+
     /* จังหวะการเคลื่อนไหว */
     --ease-fluid: cubic-bezier(0.32, 0.72, 0, 1);
 }
@@ -129,7 +132,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 
 .site-nav-inner {
     width: 100%;
-    max-width: 1120px;
+    max-width: var(--page-max);
     margin: 0 auto;
     height: 64px;
     /* สามช่อง: แบรนด์ชิดซ้าย เมนูอยู่กึ่งกลางจอ ปุ่มอยู่ขวา */
@@ -331,22 +334,35 @@ h1, h2, h3, h4 { text-wrap: balance; }
     50% { transform: translateY(-10px); }
 }
 @keyframes particle-rise {
-    0% { transform: translateY(100%) scale(0); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
+    /* เริ่มที่ขอบล่างพอดีและสว่างเต็มใน 4% ของรอบ จะได้เห็นว่าโผล่จากล่างสุดจริง
+       เดิมเริ่มที่ scale(0) และค่อยสว่างถึง 10% จุดแสงจึงเหมือนโผล่กลางจอ */
+    0% { transform: translateY(0) scale(0.7); opacity: 0; }
+    4% { opacity: 1; }
+    88% { opacity: 1; }
     100% { transform: translateY(-100vh) scale(1); opacity: 0; }
 }
 
-/* ===== Footer ===== */
+
+/* ===== Footer แบ่งเป็นคอลัมน์ ===== */
 .footer {
     border-top: 1px solid var(--border-color);
     background: var(--bg-section);
-    padding: var(--space-700) var(--space-300) var(--space-500);
-    text-align: center;
     color: var(--text-secondary);
     font-size: 0.875rem;
     line-height: 20px;
 }
+
+.footer-inner {
+    width: 100%;
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: var(--space-700) var(--space-300) var(--space-600);
+    /* คอลัมน์แบรนด์กว้างกว่า เพราะมีคำบรรยายด้วย */
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: var(--space-600) var(--space-400);
+}
+
 .footer-logo {
     font-family: var(--font-display);
     font-size: 1.25rem;
@@ -354,23 +370,71 @@ h1, h2, h3, h4 { text-wrap: balance; }
     font-weight: 700;
     color: var(--gold);
     letter-spacing: 0.08em;
-    margin-bottom: var(--space-75);
+    margin-bottom: var(--space-100);
 }
-.footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-300);
+
+.footer-tagline {
+    color: var(--text-secondary);
+    max-width: 320px;
+}
+
+.footer-heading {
+    font-size: 0.75rem;
+    line-height: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: var(--space-200);
+}
+
+.footer-col ul {
     list-style: none;
-    margin: var(--space-300) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-100);
 }
-.footer-links a {
+
+.footer-col a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-75);
+    width: max-content;
     color: var(--text-secondary);
     text-decoration: none;
-    transition: color 400ms var(--ease-fluid);
+    transition: color 400ms var(--ease-fluid), transform 400ms var(--ease-fluid);
 }
-.footer-links a:hover { color: var(--gold); }
-.footer-note { color: var(--text-muted); font-size: 0.75rem; line-height: 16px; }
+.footer-col a:hover { color: var(--gold); transform: translateX(2px); }
+.footer-col a i { font-size: 14px; line-height: 1; }
+
+.footer-bottom {
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-bottom-inner {
+    width: 100%;
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: var(--space-300);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-100) var(--space-300);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    line-height: 16px;
+}
+
+@media (max-width: 860px) {
+    .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        padding: var(--space-600) var(--space-200) var(--space-500);
+        gap: var(--space-500) var(--space-300);
+    }
+    /* คอลัมน์แบรนด์กินเต็มแถวบนจอแคบ */
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-bottom-inner { padding: var(--space-300) var(--space-200); }
+}
 
 /* ===== ไอคอนสำรองเมื่อโหลดรูปไม่สำเร็จ ===== */
 .img-fallback {
@@ -448,7 +512,7 @@ main {
     /* กว้างและมีขอบในเท่าแถบเมนูด้านบน เพื่อให้ขอบซ้ายตรงกัน
        สามช่องเหมือนแถบเมนู ปุ่มกลับชิดซ้าย แท็บอยู่กลางจอ */
     width: 100%;
-    max-width: 1120px;
+    max-width: var(--page-max);
     margin: 0 auto;
     padding: 0 var(--space-300);
     display: grid;

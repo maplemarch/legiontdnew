@@ -5,7 +5,7 @@
 
 .container {
     width: 100%;
-    max-width: 1120px;
+    max-width: var(--page-max);
     margin: 0 auto;
     padding: 0 var(--space-300);
 }
@@ -529,3 +529,46 @@
 }
 .back-link:hover { color: var(--gold); transform: translateX(-2px); }
 .back-link i { font-size: 16px; line-height: 1; }
+
+/* ===== Hero สองคอลัมน์: ข้อความซ้าย แผนที่ขวา ===== */
+.hero-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+    align-items: center;
+    gap: var(--space-700);
+}
+
+.hero-map {
+    position: relative;
+    margin: 0;
+    /* ขยับขึ้นลงเบาๆ ให้ไม่ดูเป็นรูปนิ่ง */
+    animation: float 7s ease-in-out infinite;
+}
+
+.hero-map img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    /* ไฟล์ต้นฉบับเป็นมินิแมพ 256px ขยายขึ้นมา ถ้าไม่สั่ง pixelated จะเบลอ */
+    image-rendering: pixelated;
+    border-radius: var(--radius-2xl);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-map { animation: none; }
+}
+
+@media (max-width: 1024px) {
+    .hero-split { gap: var(--space-500); }
+}
+
+@media (max-width: 860px) {
+    /* จอแคบวางแผนที่ไว้ใต้ข้อความ และย่อลงไม่ให้กินพื้นที่ทั้งจอ */
+    .hero-split { grid-template-columns: 1fr; gap: var(--space-500); }
+    .hero-map { max-width: 360px; margin: 0 auto; animation: none; }
+}
+
+/* ถ้าโหลดรูปแผนที่ไม่ได้ ให้ยุบเหลือคอลัมน์เดียว ไม่ทิ้งช่องว่างไว้ */
+.hero-split.no-map { grid-template-columns: 1fr; }

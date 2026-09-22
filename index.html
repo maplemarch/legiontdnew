@@ -28,7 +28,7 @@
     <div class="site-nav-inner">
         <a class="nav-brand" href="./">
             <span class="nav-brand-mark" aria-hidden="true"><i class="ph ph-sword"></i></span>
-            Legion TD
+            Legion TD NE
         </a>
         <ul class="nav-links">
             <li><a class="nav-link" href="./" aria-current="page">หน้าแรก</a></li>
@@ -66,7 +66,8 @@
 <!-- ===== HERO ===== -->
 <header class="landing-hero">
     <div class="hero-particles" id="particles" aria-hidden="true"></div>
-    <div class="container">
+    <div class="container hero-split">
+      <div class="hero-copy">
         <span class="eyebrow">แพตช์ 2.7 ปล่อยแล้ว</span>
         <h1 class="hero-title">Legion TD NewEdition<br>สมดุลใหม่ทั้งแผ่น ฝีมือชุมชนไทย</h1>
         <p class="hero-sub">
@@ -87,6 +88,14 @@
             <i class="ph ph-clock-counter-clockwise" aria-hidden="true"></i>
             ปรับปรุงล่าสุด <strong>22 กันยายน 2569</strong> · ข้อมูลยูนิตอ้างอิงจาก LTD Wiki ภาษาไทย
         </p>
+      </div>
+
+      <figure class="hero-map reveal">
+        <img src="assets/img/map-preview.jpg"
+             alt="แผนที่ Legion TD NewEdition มองจากด้านบน เห็นเลนสองข้างและฐาน King กลางแผนที่"
+             width="256" height="256" loading="eager" decoding="async"
+             onerror="this.closest(&quot;.hero-split&quot;).classList.add(&quot;no-map&quot;); this.closest(&quot;.hero-map&quot;).remove();">
+      </figure>
     </div>
 </header>
 
@@ -94,19 +103,47 @@
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
-    <div class="footer-logo">Legion TD NewEdition</div>
-    <p>แผนที่ Warcraft III ที่ดูแลโดยชุมชนผู้เล่นไทย</p>
-    <ul class="footer-links">
-        <li><a href="unit/">Unit</a></li>
-        <li><a href="patch-notes/">Patch Notes</a></li>
-        <li><a href="download/">Download</a></li>
-        <li><a href="contact/">Contact</a></li>
-    </ul>
-    <p class="footer-note">ปรับปรุงล่าสุด 22 กันยายน 2569 · เนื้อหาโดยชุมชน Legion TD NewEdition · Warcraft III เป็นเครื่องหมายการค้าของ Blizzard Entertainment</p>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="footer-logo">Legion TD NewEdition</div>
+            <p class="footer-tagline">แผนที่ Warcraft III ที่ดูแลโดยชุมชนผู้เล่นไทย แก้สมดุลและแจกฟรีมาตลอด</p>
+        </div>
+
+        <nav class="footer-col" aria-labelledby="footer-menu">
+            <h2 class="footer-heading" id="footer-menu">เมนู</h2>
+            <ul>
+                <li><a href="./">หน้าแรก</a></li>
+                <li><a href="unit/">Unit</a></li>
+                <li><a href="patch-notes/">Patch</a></li>
+                <li><a href="download/">Download</a></li>
+                <li><a href="contact/">Contact</a></li>
+            </ul>
+        </nav>
+
+        <nav class="footer-col" aria-labelledby="footer-community">
+            <h2 class="footer-heading" id="footer-community">ชุมชน</h2>
+            <ul>
+                <li><a href="contact/#discord">Discord</a></li>
+                <li><a href="contact/#line">LINE</a></li>
+                <li><a href="https://wc3th.com" target="_blank" rel="noopener">
+                    WC3TH
+                    <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+                </a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+            <span>ปรับปรุงล่าสุด 22 กันยายน 2569</span>
+            <span>เนื้อหาโดยชุมชน Legion TD NewEdition</span>
+        </div>
+    </div>
 </footer>
 
 <script src="assets/js/nav.js" defer></script>
 <script src="assets/js/particles.js" defer></script>
+<script src="assets/js/reveal.js" defer></script>
 
 </body>
 </html>
