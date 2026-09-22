@@ -3,77 +3,6 @@
    (โหลดต่อจาก base.css เท่านั้น)
    =========================================================== */
 
-/* ─── Navigation ─────────────────────────────────── */
-.toc-nav {
-    position: sticky;
-    /* เริ่มต้นอยู่ใต้แถบเมนูพอดี แล้วค่อยหนึบไว้ที่เดิมตอนเลื่อน */
-    margin-top: 64px;
-    top: 64px;
-    z-index: 90;
-    background: rgba(10, 13, 19, 0.92);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-color);
-    padding: 0;
-}
-
-.toc-nav-inner {
-    /* กว้างและมีขอบในเท่าแถบเมนูด้านบน เพื่อให้ขอบซ้ายตรงกัน */
-    width: 100%;
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 var(--space-300);
-    display: flex;
-    align-items: stretch;
-    gap: var(--space-300);
-}
-
-.toc-back {
-    display: flex;
-    align-items: center;
-    gap: var(--space-75);
-    flex-shrink: 0;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    text-decoration: none;
-    white-space: nowrap;
-    border-bottom: 2px solid transparent;
-    transition: color 400ms var(--ease-fluid);
-}
-.toc-back:hover { color: var(--gold); }
-.toc-back i { font-size: 15px; line-height: 1; }
-
-.toc-links {
-    display: flex;
-    align-items: stretch;
-    gap: var(--space-300);
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-}
-.toc-links::-webkit-scrollbar { display: none; }
-
-.toc-link {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    padding: var(--space-200) 0;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--text-muted);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-bottom: 2px solid transparent;
-    transition: color 400ms var(--ease-fluid), border-color 400ms var(--ease-fluid);
-    white-space: nowrap;
-}
-
-.toc-link:hover, .toc-link.active {
-    color: var(--gold);
-    border-bottom-color: var(--gold);
-}
-
 /* ─── Main Content ───────────────────────────────── */
 .content-wrapper {
     /* ความกว้างและขอบในชุดเดียวกับแถบเมนูและสารบัญ ขอบซ้ายจะได้ตรงกันทั้งหน้า */
@@ -524,13 +453,4 @@
     .removed-grid { grid-template-columns: 1fr; }
     .data-table { font-size: 0.78rem; }
     .data-table th, .data-table td { padding: 0.5rem 0.6rem; }
-    .toc-link { padding: var(--space-100) 0; font-size: 0.72rem; }
-    .toc-nav-inner { padding: 0 var(--space-200); gap: var(--space-200); }
-    .toc-links { gap: var(--space-200); }
-    .toc-back span { display: none; }
-}
-
-
-@media (max-width: 860px) {
-    .toc-nav { top: 64px; }
 }

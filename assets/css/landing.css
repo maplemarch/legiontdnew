@@ -512,3 +512,20 @@
     max-width: 520px;
     margin: 0 auto var(--space-400);
 }
+
+/* ลิงก์กลับไปหน้าก่อน วางไว้เหนือหัวเรื่อง */
+.back-link {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    gap: var(--space-75);
+    font-size: 0.875rem;
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: var(--space-300);
+    transition: color 400ms var(--ease-fluid), transform 400ms var(--ease-fluid);
+}
+.back-link:hover { color: var(--gold); transform: translateX(-2px); }
+.back-link i { font-size: 16px; line-height: 1; }
