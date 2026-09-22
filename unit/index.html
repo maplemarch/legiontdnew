@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="../assets/css/landing.css">
+    <link rel="stylesheet" href="../assets/css/units.css">
 </head>
 <body>
 
@@ -93,18 +94,37 @@
 
 <section class="section" id="unit" aria-labelledby="unit-title" style="margin-top: var(--space-900);">
     <h2 class="section-heading" id="unit-title">ยูนิต</h2>
-    <p class="section-lede">ยูนิตที่ผู้เล่นสร้างเอง ค่าพลังชีวิต ดาเมจ ราคา และสายอัปเกรด</p>
-    <div class="empty-state reveal">
-        <div class="empty-mark"><i class="ph ph-sword" aria-hidden="true"></i></div>
-        <h3 class="empty-title">กำลังรวบรวมข้อมูล</h3>
-        <p class="empty-body">ระหว่างนี้ดูยูนิตที่เปลี่ยนในแพตช์ล่าสุดได้ก่อน</p>
-        <div class="hero-actions" style="justify-content: center; margin-bottom: 0;">
-            <a class="btn btn-ghost" href="../patch-notes/2.7/#section4">
-                <i class="ph ph-scroll" aria-hidden="true"></i>
-                ยูนิตในแพตช์ 2.7
-            </a>
-        </div>
+    <p class="section-lede">ค่าพลังชีวิต ดาเมจ ราคา สกิล และสายอัปเกรด เริ่มจากร่างแรก กดเข้าไปดูร่างอัปเกรดต่อได้</p>
+
+    <div class="unit-toolbar">
+        <label class="unit-field">
+            <span class="sr-only">ค้นหายูนิต</span>
+            <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+            <input type="search" id="unit-search" placeholder="ชื่อ รหัส หรือชื่อสกิล" autocomplete="off">
+        </label>
+        <label class="unit-field unit-field-select">
+            <span class="sr-only">กรองตามระดับ</span>
+            <select id="unit-tier">
+                <option value="base" selected>ร่างแรกเท่านั้น</option>
+                <option value="">ทุกร่าง</option>
+                <option value="1">Tier 1</option>
+                <option value="2">Tier 2</option>
+                <option value="3">Tier 3</option>
+                <option value="4">Tier 4</option>
+            </select>
+            <i class="ph ph-caret-down" aria-hidden="true"></i>
+        </label>
+        <button class="btn btn-ghost btn-sm" type="button" id="unit-clear">ล้างตัวกรอง</button>
     </div>
+
+    <p class="unit-count" id="unit-count" role="status">กำลังโหลดข้อมูล</p>
+    <div class="unit-grid" id="unit-grid"></div>
+
+    <p class="unit-source">
+        ข้อมูลยูนิตและไอคอนอ้างอิงจาก
+        <a href="https://cybergamethai.com/legion-td/wiki" target="_blank" rel="noopener">LTD Wiki ของ cybergamethai</a>
+        ซึ่งเป็นข้อมูลเวอร์ชัน 2.5b จึงอาจไม่ตรงกับแพตช์ 2.7 ทุกจุด
+    </p>
 </section>
 
 <section class="section" id="creep" aria-labelledby="creep-title" style="margin-top: var(--space-900);">
@@ -196,9 +216,15 @@
     </div>
 </footer>
 
+<dialog class="unit-dialog" id="unit-dialog" aria-label="รายละเอียดยูนิต">
+    <button class="unit-dialog-close" type="button" aria-label="ปิด"><i class="ph ph-x" aria-hidden="true"></i></button>
+    <div class="unit-dialog-body" id="unit-dialog-body"></div>
+</dialog>
+
 <script src="../assets/js/nav.js" defer></script>
 <script src="../assets/js/reveal.js" defer></script>
 <script src="../assets/js/toc.js" defer></script>
+<script src="../assets/js/units.js" defer></script>
 
 </body>
 </html>
