@@ -1,0 +1,472 @@
+/* ===========================================================
+   landing.css — สไตล์เฉพาะหน้าแรก / download / contact / 404
+   (โหลดต่อจาก base.css เท่านั้น)
+   =========================================================== */
+
+.container {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 var(--space-300);
+}
+
+.narrow { max-width: 680px; }
+
+.page-section { padding: var(--space-900) 0; }
+.page-section-tight { padding: var(--space-700) 0; }
+
+.eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    line-height: 16px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(240, 180, 41, 0.1);
+    border: 1px solid rgba(240, 180, 41, 0.28);
+    border-radius: var(--radius-full);
+    padding: var(--space-50) var(--space-100);
+    margin-bottom: var(--space-200);
+}
+
+.section-heading {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    line-height: 40px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-100);
+}
+
+.section-lede {
+    font-size: 1.125rem;
+    line-height: 28px;
+    color: var(--text-secondary);
+    max-width: 680px;
+}
+
+/* ===== Hero ===== */
+.landing-hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh; /* กันแถบเบราว์เซอร์บนมือถือกินพื้นที่ */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #0a0d13;
+    padding: var(--space-900) 0 var(--space-700);
+}
+
+.landing-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(760px 420px at 50% 6%, rgba(240, 180, 41, 0.12), transparent 70%),
+        radial-gradient(620px 420px at 80% 80%, rgba(168, 85, 247, 0.1), transparent 70%);
+    pointer-events: none;
+}
+
+.landing-hero .container { position: relative; z-index: 2; }
+
+.hero-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    bottom: 0;
+    border-radius: var(--radius-full);
+    animation: particle-rise linear infinite;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    max-width: 680px;
+    margin-bottom: var(--space-300);
+    background: linear-gradient(90deg, #ffffff 0%, #9b9b9b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-sub {
+    font-size: 1.125rem;
+    line-height: 28px;
+    color: var(--text-secondary);
+    max-width: 680px;
+    margin-bottom: var(--space-400);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-100);
+    margin-bottom: var(--space-500);
+}
+
+.hero-proof {
+    display: flex;
+    align-items: center;
+    gap: var(--space-100);
+    font-size: 0.875rem;
+    line-height: 20px;
+    color: var(--text-muted);
+}
+.hero-proof strong { color: var(--text-primary); font-weight: 600; }
+
+/* ===== แถบตัวเลข ===== */
+.stat-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-100);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-2xl);
+    background: var(--bg-card);
+    padding: var(--space-100);
+}
+
+.stat-cell {
+    text-align: center;
+    padding: var(--space-300) var(--space-100);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.stat-value {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    line-height: 40px;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    line-height: 16px;
+    color: var(--text-secondary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: var(--space-50);
+}
+
+/* ===== Tagline reveal (ไล่สีทีละคำ) ===== */
+.tagline-reveal {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.tagline-line {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    line-height: 1.24;
+    font-weight: 600;
+}
+
+.tagline-word {
+    color: rgba(229, 231, 235, 0.28);
+    transition: color 700ms var(--ease-fluid);
+}
+.tagline-word.lit { color: var(--text-primary); }
+.tagline-word.accent.lit { color: var(--gold); }
+
+/* ===== การ์ดจุดเด่น ===== */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-300);
+    margin-top: var(--space-500);
+}
+
+.feature-card {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-2xl);
+    background: var(--bg-card);
+    padding: var(--space-300);
+    transition: transform 700ms var(--ease-fluid), border-color 700ms var(--ease-fluid), background 700ms var(--ease-fluid);
+}
+.feature-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-accent);
+    background: var(--bg-card-hover);
+}
+
+.feature-icon {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-lg);
+    background: rgba(240, 180, 41, 0.12);
+    color: var(--gold);
+    margin-bottom: var(--space-200);
+}
+.feature-icon svg { width: 22px; height: 22px; }
+
+.feature-title {
+    font-size: 1.125rem;
+    line-height: 28px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-75);
+}
+
+.feature-body {
+    font-size: 0.875rem;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+.feature-body strong { color: var(--text-primary); font-weight: 600; }
+
+/* ===== ขั้นตอน ===== */
+.step-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-300);
+    margin-top: var(--space-500);
+    counter-reset: step;
+}
+
+.step-card {
+    position: relative;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-2xl);
+    background: var(--bg-section);
+    padding: var(--space-400) var(--space-300) var(--space-300);
+}
+
+.step-number {
+    position: absolute;
+    top: calc(var(--space-300) * -1);
+    left: var(--space-300);
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-full);
+    background: var(--gold);
+    color: #0a0d13;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    line-height: 28px;
+    font-weight: 700;
+}
+
+.step-title {
+    font-size: 1.125rem;
+    line-height: 28px;
+    font-weight: 600;
+    margin: var(--space-200) 0 var(--space-75);
+}
+
+.step-body {
+    font-size: 0.875rem;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+
+/* ===== ช่องทางติดต่อ ===== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-300);
+    margin-top: var(--space-500);
+}
+
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-200);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-2xl);
+    background: var(--bg-card);
+    padding: var(--space-300);
+    transition: transform 700ms var(--ease-fluid), border-color 700ms var(--ease-fluid);
+}
+.contact-card:hover { transform: translateY(-4px); border-color: var(--border-accent); }
+
+.contact-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-100);
+}
+
+.contact-mark {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-lg);
+    flex-shrink: 0;
+}
+.contact-mark svg { width: 22px; height: 22px; }
+.contact-mark.discord { background: rgba(88, 101, 242, 0.16); color: #a3aaf7; }
+.contact-mark.line { background: rgba(6, 199, 85, 0.14); color: #5ce49a; }
+.contact-mark.mail { background: rgba(240, 180, 41, 0.12); color: var(--gold); }
+
+.contact-name {
+    font-size: 1.125rem;
+    line-height: 28px;
+    font-weight: 600;
+}
+.contact-meta {
+    font-size: 0.75rem;
+    line-height: 16px;
+    color: var(--text-muted);
+}
+.contact-body {
+    font-size: 0.875rem;
+    line-height: 20px;
+    color: var(--text-secondary);
+    flex-grow: 1;
+}
+.contact-card .btn { align-self: flex-start; }
+
+.contact-handle {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    line-height: 24px;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    background: rgba(240, 180, 41, 0.08);
+    border: 1px solid rgba(240, 180, 41, 0.22);
+    border-radius: var(--radius-lg);
+    padding: var(--space-75) var(--space-100);
+    display: inline-block;
+}
+
+/* ===== FAQ ===== */
+.faq-list {
+    max-width: 680px;
+    margin: var(--space-500) auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-100);
+}
+
+.faq-item {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    background: var(--bg-card);
+    overflow: hidden;
+    transition: border-color 700ms var(--ease-fluid);
+}
+.faq-item[open] { border-color: var(--border-accent); }
+
+.faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: var(--space-200);
+    font-size: 1rem;
+    line-height: 24px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-100);
+    transition: color 400ms var(--ease-fluid);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--gold); }
+.faq-item summary::after {
+    content: '+';
+    font-size: 1.25rem;
+    line-height: 28px;
+    color: var(--gold);
+    flex-shrink: 0;
+    transition: transform 700ms var(--ease-fluid);
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+
+.faq-answer {
+    padding: 0 var(--space-200) var(--space-200);
+    font-size: 0.875rem;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+
+/* ===== แถบปิดท้าย ===== */
+.final-cta {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-3xl);
+    background: var(--bg-section);
+    padding: var(--space-700) var(--space-400);
+    text-align: center;
+}
+.final-cta .hero-actions { justify-content: center; margin-bottom: 0; }
+
+/* ===== กล่องเตือน / เกร็ด ===== */
+.note {
+    border: 1px solid var(--border-color);
+    border-left-color: var(--border-color);
+    border-radius: var(--radius-xl);
+    background: rgba(59, 130, 246, 0.06);
+    padding: var(--space-200);
+    font-size: 0.875rem;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+.note strong { color: var(--text-primary); }
+
+/* ===== ตารางไฟล์ดาวน์โหลด ===== */
+.file-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-100);
+    margin-top: var(--space-400);
+}
+
+.file-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-200);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-2xl);
+    background: var(--bg-card);
+    padding: var(--space-200);
+}
+.file-meta { flex-grow: 1; min-width: 200px; }
+.file-name { font-size: 1rem; line-height: 24px; font-weight: 600; }
+.file-sub { font-size: 0.75rem; line-height: 16px; color: var(--text-muted); }
+
+/* ===== 404 ===== */
+.error-page {
+    min-height: 80vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: var(--space-900) 0;
+}
+.error-code {
+    font-family: var(--font-display);
+    font-size: 6rem;
+    line-height: 1;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+@media (max-width: 860px) {
+    .hero-title { font-size: 2.25rem; line-height: 1.16; }
+    .tagline-line { font-size: 1.875rem; }
+    .stat-strip { grid-template-columns: repeat(2, 1fr); }
+    .section-heading { font-size: 1.875rem; line-height: 36px; }
+    .page-section { padding: var(--space-700) 0; }
+    .landing-hero { padding: var(--space-900) 0 var(--space-600); }
+}
+
+/* --- ขนาดไอคอน Phosphor (ใช้เป็นฟอนต์ ไม่ใช่ svg) --- */
+.feature-icon i, .contact-mark i { font-size: 22px; line-height: 1; }
+.nav-brand-mark i { font-size: 14px; line-height: 1; }
+.btn i { font-size: 18px; line-height: 1; }
+.hero-proof i { font-size: 16px; line-height: 1; color: var(--gold); }
