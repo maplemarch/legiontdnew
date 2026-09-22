@@ -54,26 +54,85 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    background: #0a0d13;
     padding: var(--space-900) 0 var(--space-700);
+    background: #0a0d13;
+}
+
+/* พื้นหลังเป็นเลเยอร์แยก เริ่มใต้แถบเมนูพอดี
+   ถ้าใส่ไว้กับ .landing-hero ตรงๆ ภาพจะลอดขึ้นไปอยู่หลังแถบเมนูที่โปร่งแสง */
+.hero-bg {
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;  /* ชั้นล่างสุด */
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+}
+
+.hero-bg img {
+    /* กล่องของ img เท่ากับตัวภาพพอดี หมอกจึงอยู่ที่ขอบรูปจริง */
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    /* ลูกของ grid มี min-height เป็น auto อยู่เดิม ทำให้ไม่ยอมย่อลงต่ำกว่าขนาดจริงของภาพ
+       รูปเลยล้นออกนอกกรอบและโดนตัดด้านล่าง ต้องปลดด้วย min-width กับ min-height เป็น 0 */
+    min-width: 0;
+    min-height: 0;
+    /* ลดความสว่างของภาพลง */
+    filter: brightness(0.55) saturate(0.9);
+    /* ชั้นแรก หมอกไล่ขอบทั้งสี่ด้าน ชั้นสอง หมอกหนาเพิ่มเฉพาะฝั่งขวา
+       ซ้อนกันแบบ intersect คือจุดไหนที่ชั้นใดชั้นหนึ่งจาง ผลรวมก็จาง */
+    -webkit-mask-image:
+        radial-gradient(112% 108% at 50% 50%, #000 42%, rgba(0, 0, 0, 0.55) 74%, transparent 100%),
+        linear-gradient(270deg, transparent 0%, rgba(0, 0, 0, 0.35) 10%, rgba(0, 0, 0, 0.8) 22%, #000 36%);
+    mask-image:
+        radial-gradient(112% 108% at 50% 50%, #000 42%, rgba(0, 0, 0, 0.55) 74%, transparent 100%),
+        linear-gradient(270deg, transparent 0%, rgba(0, 0, 0, 0.35) 10%, rgba(0, 0, 0, 0.8) 22%, #000 36%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+
+/* ผ้าคลุมมืดทับพื้นหลัง ไม่มีอันนี้ตัวหนังสือจะอ่านไม่ออกเพราะภาพสว่างและลายเยอะ
+   ไล่เข้มจากซ้ายไปขวา ฝั่งซ้ายมีข้อความจึงต้องทึบกว่า
+   แล้วเข้มที่ขอบบนกับล่างเพื่อให้แถบเมนูและรอยต่อ footer ไม่โดดออกมา */
+.landing-hero::before {
+    content: '';
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;  /* ผ้าคลุมต้องอยู่เหนือรูป */
+    background:
+        linear-gradient(90deg, rgba(10, 13, 19, 0.85) 0%, rgba(10, 13, 19, 0.62) 30%, rgba(10, 13, 19, 0.18) 55%, rgba(10, 13, 19, 0) 75%),
+        linear-gradient(180deg, rgba(10, 13, 19, 0.55) 0%, rgba(10, 13, 19, 0) 20%, rgba(10, 13, 19, 0) 70%, rgba(10, 13, 19, 0.7) 100%);
+    pointer-events: none;
 }
 
 .landing-hero::after {
     content: '';
     position: absolute;
     inset: 0;
+    z-index: 2;  /* แสงเรืองอยู่เหนือผ้าคลุม */
     background:
         radial-gradient(760px 420px at 50% 6%, rgba(240, 180, 41, 0.12), transparent 70%),
         radial-gradient(620px 420px at 80% 80%, rgba(168, 85, 247, 0.1), transparent 70%);
     pointer-events: none;
 }
 
-.landing-hero .container { position: relative; z-index: 2; }
+.landing-hero .container { position: relative; z-index: 4; }
 
 .hero-particles {
     position: absolute;
-    inset: 0;
-    z-index: 1;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
     pointer-events: none;
 }
 
@@ -101,6 +160,7 @@
 }
 
 .hero-sub {
+    text-shadow: 0 1px 14px rgba(10, 13, 19, 0.95);
     font-size: 1.125rem;
     line-height: 28px;
     color: var(--text-secondary);
@@ -116,6 +176,7 @@
 }
 
 .hero-proof {
+    text-shadow: 0 1px 14px rgba(10, 13, 19, 0.95);
     display: flex;
     align-items: center;
     gap: var(--space-100);
@@ -530,45 +591,3 @@
 .back-link:hover { color: var(--gold); transform: translateX(-2px); }
 .back-link i { font-size: 16px; line-height: 1; }
 
-/* ===== Hero สองคอลัมน์: ข้อความซ้าย แผนที่ขวา ===== */
-.hero-split {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
-    align-items: center;
-    gap: var(--space-700);
-}
-
-.hero-map {
-    position: relative;
-    margin: 0;
-    /* ขยับขึ้นลงเบาๆ ให้ไม่ดูเป็นรูปนิ่ง */
-    animation: float 7s ease-in-out infinite;
-}
-
-.hero-map img {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1;
-    object-fit: cover;
-    /* ไฟล์ต้นฉบับเป็นมินิแมพ 256px ขยายขึ้นมา ถ้าไม่สั่ง pixelated จะเบลอ */
-    image-rendering: pixelated;
-    border-radius: var(--radius-2xl);
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .hero-map { animation: none; }
-}
-
-@media (max-width: 1024px) {
-    .hero-split { gap: var(--space-500); }
-}
-
-@media (max-width: 860px) {
-    /* จอแคบวางแผนที่ไว้ใต้ข้อความ และย่อลงไม่ให้กินพื้นที่ทั้งจอ */
-    .hero-split { grid-template-columns: 1fr; gap: var(--space-500); }
-    .hero-map { max-width: 360px; margin: 0 auto; animation: none; }
-}
-
-/* ถ้าโหลดรูปแผนที่ไม่ได้ ให้ยุบเหลือคอลัมน์เดียว ไม่ทิ้งช่องว่างไว้ */
-.hero-split.no-map { grid-template-columns: 1fr; }
