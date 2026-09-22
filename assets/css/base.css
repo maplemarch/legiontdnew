@@ -33,7 +33,9 @@
     --text-muted: #6b7280;
 
     /* ตัวอักษร */
-    --font-display: 'Cinzel', serif;
+    /* Cinzel ไม่มีตัวอักษรไทย ต้องต่อด้วย Noto Sans Thai
+       ไม่งั้นไทยจะตกไปใช้ serif ของระบบ ซึ่งทำวรรณยุกต์ซ้อนสระหาย เช่น อื่ */
+    --font-display: 'Cinzel', 'Noto Sans Thai', serif;
     --font-body: 'Noto Sans Thai', system-ui, sans-serif;
 
     /* ระยะห่าง: ใช้เฉพาะค่าพวกนี้เท่านั้นทั้งเว็บ */
