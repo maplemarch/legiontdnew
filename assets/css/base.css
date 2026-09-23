@@ -481,6 +481,13 @@ h1, h2, h3, h4 { text-wrap: balance; }
         scroll-behavior: auto !important;
     }
     .reveal { opacity: 1; transform: none; filter: none; }
+    /* จุดแสงแบนเนอร์ยังคงลอยขึ้นต่อ แม้ผู้ใช้ตั้งค่าลดการเคลื่อนไหว
+       (หนี้นี้ได้ถูกตั้งใจไว้ — เป็นจุดเล็ก ๆ ไม่ใช่การเคลื่อนไหวที่รบกวน)
+       ใช้ specificity สูงกว่า rule ของ * ข้างบน คาบของแต่ละจุดมาจาก --dur ที่ JS ตั้งไว้ */
+    .hero-particles .particle {
+        animation-duration: var(--dur, 4s) !important;
+        animation-iteration-count: infinite !important;
+    }
 }
 
 /* --- ไอคอน Phosphor ในเมนู (ใช้เป็นฟอนต์) --- */
