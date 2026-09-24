@@ -1,6 +1,6 @@
 /* scene3d.js — ฉากสามมิติด้วย Three.js
  *
- *   หน้าแรก  data-scene="hero"     วงเวทสองชั้นหมุนสวนกัน เสาแสงจางๆ คริสตัลลอย
+ *   หน้าแรก  data-scene="hero"     วงเวทสองชั้นหมุนสวนกัน เสาแสงจางๆ
  *                                  และประกายไฟลอยขึ้น ตั้งใจให้เบา ไม่แย่งข้อความ
  *   หน้าอื่น data-scene="ambient"  ประกายไฟจางๆ กับวงเวทใหญ่มุมจอ อยู่หลังเนื้อหา
  *
@@ -166,13 +166,8 @@ function start(host) {
     floorGlow.position.z = -0.02;
     circle.add(floorGlow);
 
-    /* ── เสาแสงกับคริสตัล (เฉพาะหน้าแรก) ───────── */
-    let crystal = null;
+    /* ── เสาแสง (เฉพาะหน้าแรก) ───────── */
     let beam = null;
-    const coreSprite = new THREE.Sprite(new THREE.SpriteMaterial({
-        map: glowTex, color: goldLight, transparent: true, opacity: 0,
-        depthWrite: false, blending: THREE.AdditiveBlending,
-    }));
 
     if (isHero) {
         beam = new THREE.Mesh(
@@ -202,35 +197,6 @@ function start(host) {
         );
         beam.position.y = 2.2;
         rig.add(beam);
-
-        const lightA = new THREE.PointLight(0xffc34d, 16, 12, 1.6);
-        lightA.position.set(2.5, 3, 4);
-        const lightB = new THREE.PointLight(0x8b5cf6, 22, 12, 1.6);
-        lightB.position.set(-3, -1, 2);
-        rig.add(lightA, lightB, new THREE.AmbientLight(0x404060, 1.2));
-
-        const crystalGeo = new THREE.OctahedronGeometry(0.85, 0);
-        crystalGeo.scale(1, 1.7, 1);
-        crystal = new THREE.Group();
-        const body = new THREE.Mesh(crystalGeo, new THREE.MeshStandardMaterial({
-            // เนื้อด้านกึ่งโลหะ แต่ละหน้าสว่างไม่เท่ากันตามทิศแสง คริสตัลจึงดูเป็นเหลี่ยมมีมิติ
-            color: 0x8a5a12,
-            emissive: 0xf0b429,
-            emissiveIntensity: 0.04,
-            metalness: 0.2,
-            roughness: 0.5,
-            flatShading: true,
-            transparent: true,
-            opacity: 0.92,
-        }));
-        const edges = new THREE.LineSegments(
-            new THREE.EdgesGeometry(crystalGeo),
-            new THREE.LineBasicMaterial({ color: goldLight, transparent: true, opacity: 0.9, blending: THREE.AdditiveBlending })
-        );
-        coreSprite.scale.set(3.4, 3.4, 1);
-        crystal.add(body, edges, coreSprite);
-        crystal.position.y = 1.9;
-        rig.add(crystal);
     }
 
     /* ── วางตำแหน่งตามขนาดจอ ─────────────────────────────── */
@@ -325,14 +291,6 @@ function start(host) {
         if (isHero) {
             beam.material.uniforms.uTime.value = t;
             beam.material.uniforms.uOpacity.value = easeOut((t - 0.6) / 1.4) * dim;
-
-            // คริสตัลค่อยๆ ลงมาจากด้านบน แล้วลอยขึ้นลงเบาๆ
-            const drop = easeOut((t - 0.3) / 1.6);
-            crystal.position.y = 1.9 + (1 - drop) * 3 + Math.sin(t * 1.2) * 0.14;
-            crystal.rotation.y = t * 0.5 + pointer.x * 0.6;
-            crystal.rotation.x = pointer.y * 0.25;
-            crystal.scale.setScalar(0.2 + 0.8 * drop);
-            coreSprite.material.opacity = (0.35 + Math.sin(t * 2.2) * 0.08) * drop * dim;
         }
 
         renderer.render(scene, camera);
