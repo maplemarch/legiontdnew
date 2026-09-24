@@ -83,6 +83,8 @@ html {
 }
 
 body {
+    /* เคอร์เซอร์ลูกศรทองแบบเกมแฟนตาซี ถ้าโหลดรูปไม่ได้จะใช้ลูกศรปกติ */
+    cursor: url('../img/cursor.svg?v=acdafd3a') 2 2, auto;
     font-family: var(--font-body);
     background: var(--bg-dark);
     color: var(--text-primary);
@@ -229,7 +231,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
     border: 1px solid var(--border-color);
     border-radius: var(--radius-full);
     background: transparent;
-    cursor: pointer;
+    cursor: url('../img/cursor-link.svg?v=54df678c') 2 2, pointer;
     transition: border-color 700ms var(--ease-fluid), background 700ms var(--ease-fluid);
 }
 .nav-toggle:hover { background: rgba(255, 255, 255, 0.05); border-color: var(--border-accent); }
@@ -303,7 +305,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
     line-height: 24px;
     font-weight: 600;
     text-decoration: none;
-    cursor: pointer;
+    cursor: url('../img/cursor-link.svg?v=54df678c') 2 2, pointer;
     border: 1px solid transparent;
     border-radius: var(--radius-full);
     padding: var(--space-100) var(--space-300);
@@ -600,3 +602,36 @@ main {
     .toc-link { padding: var(--space-100) 0; font-size: 0.72rem; }
     .toc-back span { display: none; }
 }
+
+/* ===== ฉากสามมิติ (scene3d.js) ===== */
+.scene3d {
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+.scene3d canvas { display: block; width: 100%; height: 100%; }
+
+/* หน้าอื่นวางฉากไว้หลังเนื้อหาทั้งหน้า ไม่เลื่อนตาม */
+.scene3d-ambient { position: fixed; inset: 0; z-index: 0; }
+body > main { position: relative; z-index: 1; }
+
+/* ฉาก WebGL มีประกายไฟของตัวเองแล้ว ซ่อนจุดแสง CSS ไม่ให้ซ้อนกัน */
+.has-webgl .hero-particles { display: none; }
+
+/* ===== การ์ดเอียงสามมิติ (tilt.js) =====
+   :is() + .is-tilting + :hover ได้ specificity สูงกว่า .reveal.visible และ :hover ของการ์ดแต่ละแบบ */
+:is(.file-row, .contact-card, .unit-card, .map-card).is-tilting:hover {
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-4px);
+    transition: transform 160ms ease-out, border-color 400ms var(--ease-fluid), box-shadow 400ms var(--ease-fluid);
+    border-color: rgba(240, 180, 41, 0.45);
+    background-image: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 209, 102, 0.1), transparent 60%);
+    box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(240, 180, 41, 0.08), 0 0 32px -8px rgba(240, 180, 41, 0.25);
+}
+
+/* ลิงก์กับปุ่มทุกตัวใช้เคอร์เซอร์เรืองแสง ช่องพิมพ์ยังเป็นเคอร์เซอร์ตัวอักษรตามปกติ */
+a, button, summary, label, select, [role="button"] { cursor: url('../img/cursor-link.svg?v=54df678c') 2 2, pointer; }
+input:not([type="checkbox"]):not([type="radio"]), textarea { cursor: text; }

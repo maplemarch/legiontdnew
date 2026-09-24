@@ -62,7 +62,7 @@
 .unit-field-select { flex: 0 1 200px; }
 .unit-field-select select {
     appearance: none;
-    cursor: pointer;
+    cursor: url('../img/cursor-link.svg?v=54df678c') 2 2, pointer;
 }
 .unit-field-select option { background: var(--bg-card); color: var(--text-primary); }
 
@@ -92,7 +92,7 @@
     background: var(--bg-card);
     color: var(--text-primary);
     font-family: var(--font-body);
-    cursor: pointer;
+    cursor: url('../img/cursor-link.svg?v=54df678c') 2 2, pointer;
     text-align: center;
     transition: transform 400ms var(--ease-fluid), border-color 400ms var(--ease-fluid), background 400ms var(--ease-fluid);
 }
@@ -174,7 +174,7 @@
     border-radius: var(--radius-full);
     background: var(--bg-card);
     color: var(--text-primary);
-    cursor: pointer;
+    cursor: url('../img/cursor-link.svg?v=54df678c') 2 2, pointer;
     transition: background 400ms var(--ease-fluid), border-color 400ms var(--ease-fluid);
 }
 .unit-dialog-close:hover { background: var(--bg-card-hover); border-color: var(--border-accent); }
@@ -325,7 +325,7 @@
     line-height: 20px;
     padding: var(--space-75) var(--space-200);
     margin-bottom: var(--space-75);
-    cursor: pointer;
+    cursor: url('../img/cursor-link.svg?v=54df678c') 2 2, pointer;
     text-align: left;
     transition: border-color 400ms var(--ease-fluid), background 400ms var(--ease-fluid), transform 400ms var(--ease-fluid);
 }
