@@ -4,10 +4,19 @@
  *                                  และประกายไฟลอยขึ้น ตั้งใจให้เบา ไม่แย่งข้อความ
  *   หน้าอื่น data-scene="ambient"  ประกายไฟจางๆ กับวงเวทใหญ่มุมจอ อยู่หลังเนื้อหา
  *
+ *   กล้องใช้ GSAP ทั้งฉากเปิด (บินลงมาหาวงเวท) และตอนชี้ปุ่ม (ขยับเข้าใกล้วงเวท)
+ *
  *   ถ้าเบราว์เซอร์ไม่มี WebGL หรือโหลดไลบรารีไม่ได้ ไฟล์นี้จะหยุดเงียบๆ
  *   หน้าหลักยังเหลือจุดแสงแบบ CSS ของ particles.js ไว้แทน
  */
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js';
+
+// โหลด GSAP แยก ถ้าโหลดไม่ได้ฉากยังทำงานต่อ แค่กล้องจะอยู่นิ่งที่ตำแหน่งปกติ
+const gsap = await import('https://cdn.jsdelivr.net/npm/gsap@3.13.0/+esm')
+    .then((m) => m.gsap || m.default)
+    .catch(() => null);
+
+const CAM_Z = 10; // ระยะกล้องปกติ ใช้คำนวณขนาดฉากให้พอดีจอ
 
 const host = document.querySelector('[data-scene]');
 if (host) start(host);
@@ -32,7 +41,11 @@ function start(host) {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-    camera.position.set(0, 0, 10);
+    camera.position.set(0, 0, CAM_Z);
+
+    /* ตำแหน่งกล้องที่ GSAP ควบคุม ส่วนการเอียงตามเมาส์บวกเพิ่มทีหลังในแต่ละเฟรม
+       x y z คือตำแหน่งกล้อง lookX lookY คือจุดที่กล้องมอง */
+    const cam = { x: 0, y: 0, z: CAM_Z, lookX: 0, lookY: 0 };
 
     const gold = new THREE.Color('#f0b429');
     const goldLight = new THREE.Color('#ffd166');
@@ -210,7 +223,7 @@ function start(host) {
         camera.aspect = w / h;
         camera.updateProjectionMatrix();
 
-        viewH = 2 * camera.position.z * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+        viewH = 2 * CAM_Z * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
         viewW = viewH * camera.aspect;
         emberMat.uniforms.uWidth.value = viewW * 0.75;
 
@@ -252,6 +265,41 @@ function start(host) {
 
     document.documentElement.classList.add('has-webgl');
 
+    /* ── กล้องด้วย GSAP ─────────────────────────────────────── */
+    if (gsap) {
+        if (isHero) {
+            // ฉากเปิด กล้องเริ่มจากมุมสูงและไกล แล้วร่อนลงมาหยุดที่ตำแหน่งปกติ
+            gsap.from(cam, { y: 4.5, z: 15, lookY: -1.5, duration: 2.4, ease: 'power3.out', delay: 0.1 });
+
+            // ชี้ปุ่มหรือช่อง 270 แล้วกล้องขยับเข้าใกล้วงเวท ปล่อยเมาส์แล้วกลับที่เดิม
+            const focus = () => gsap.to(cam, {
+                x: rig.position.x * 0.18,
+                y: -0.35,
+                z: CAM_Z - 1.3,
+                lookX: rig.position.x * 0.3,
+                lookY: rig.position.y * 0.3,
+                duration: 1.1,
+                ease: 'power2.out',
+                overwrite: true,
+            });
+            const rest = () => gsap.to(cam, {
+                x: 0, y: 0, z: CAM_Z, lookX: 0, lookY: 0,
+                duration: 1.3,
+                ease: 'power2.inOut',
+                overwrite: true,
+            });
+            document.querySelectorAll('.hero-actions .btn, .hero-stat-link').forEach((el) => {
+                el.addEventListener('pointerenter', focus);
+                el.addEventListener('pointerleave', rest);
+                el.addEventListener('focus', focus);
+                el.addEventListener('blur', rest);
+            });
+        } else {
+            // หน้าอื่นเปิดแบบเบาๆ กล้องถอยออกนิดเดียว ไม่ให้แย่งเนื้อหา
+            gsap.from(cam, { z: 12, duration: 1.8, ease: 'power2.out' });
+        }
+    }
+
     const clock = new THREE.Clock();
     let elapsed = 0;
     const easeOut = (t) => 1 - Math.pow(1 - Math.min(Math.max(t, 0), 1), 3);
@@ -269,9 +317,9 @@ function start(host) {
         pointer.x += (pointer.tx - pointer.x) * 0.045;
         pointer.y += (pointer.ty - pointer.y) * 0.045;
 
-        camera.position.x = pointer.x * 0.5;
-        camera.position.y = -pointer.y * 0.3 - (isHero ? 0 : scrollY * 0.0015);
-        camera.lookAt(0, isHero ? 0 : -scrollY * 0.0015, 0);
+        const scrollShift = isHero ? 0 : scrollY * 0.0015;
+        camera.position.set(cam.x + pointer.x * 0.5, cam.y - pointer.y * 0.3 - scrollShift, cam.z);
+        camera.lookAt(cam.lookX, cam.lookY - scrollShift, 0);
 
         emberMat.uniforms.uTime.value = t;
 
