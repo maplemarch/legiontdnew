@@ -219,14 +219,18 @@ function start(host) {
                 // จอกว้าง วงเวทอยู่ฝั่งขวา ข้อความอยู่ซ้าย
                 baseScale = Math.min(1.05, viewW / 15);
                 rig.position.set(viewW * 0.22, -viewH * 0.14, 0);
+                rig.rotation.y = -1.1; // หันวงเวทกลับด้านให้เอียงเข้าหาข้อความ
             } else {
                 // จอแนวตั้ง วางไว้ครึ่งล่างหลังปุ่ม ย่อลงและจางลงไม่ให้แย่งข้อความ
                 baseScale = Math.min(0.62, viewW / 7);
                 rig.position.set(0, -viewH * 0.46, -1.5);
+                rig.rotation.y = 0;
             }
         } else {
             baseScale = 1.8;
-            rig.position.set(viewW * 0.42, -viewH * 0.42, -2);
+            rig.position.set(-viewW * 0.42, -viewH * 0.42, -2); // มุมซ้ายล่าง
+            // วงเวทอยู่ซ้ายกล้อง มุมมองจึงเอียงกลับด้านจากตอนอยู่ขวา หมุนชดเชยให้หันเข้ากลางจอ
+            rig.rotation.y = 0.9;
         }
     }
     layout();
