@@ -24,6 +24,8 @@ if (host) start(host);
 function start(host) {
     const mode = host.dataset.scene;
     const isHero = mode === 'hero';
+    const centered = host.dataset.circle === 'center'; // หน้าเนื้อหาน้อย วางวงเวทกลางจอแทนมุมซ้ายล่าง
+    const dual = host.dataset.circle === 'dual';       // เพิ่มอีกวงที่มุมขวาบน
     const small = window.matchMedia('(max-width: 720px)').matches;
 
     let renderer;
@@ -212,6 +214,13 @@ function start(host) {
         rig.add(beam);
     }
 
+    // วงที่สองก๊อปจากวงแรก ใช้ลายและวัสดุร่วมกัน หมุนสวนทางกัน
+    let rig2 = null;
+    if (dual) {
+        rig2 = rig.clone();
+        scene.add(rig2);
+    }
+
     /* ── วางตำแหน่งตามขนาดจอ ─────────────────────────────── */
     let viewW = 10;
     let viewH = 8;
@@ -239,25 +248,35 @@ function start(host) {
                 rig.position.set(0, -viewH * 0.46, -1.5);
                 rig.rotation.y = 0;
             }
+        } else if (centered) {
+            baseScale = 2.4;
+            rig.position.set(0, -viewH * 0.42, -2); // กลางจอด้านล่าง
+            rig.rotation.y = 0;
         } else {
             baseScale = 1.8;
             rig.position.set(-viewW * 0.42, -viewH * 0.42, -2); // มุมซ้ายล่าง
             // วงเวทอยู่ซ้ายกล้อง มุมมองจึงเอียงกลับด้านจากตอนอยู่ขวา หมุนชดเชยให้หันเข้ากลางจอ
             rig.rotation.y = 0.9;
         }
+        if (rig2) {
+            // มุมขวาบน สมมาตรกับวงแรก แต่ขยับลงเท่าความสูงแถบเมนูกับแถบแท็บ ไม่ให้โดนบัง
+            const navBottom = Math.max(0, ...[...document.querySelectorAll('.site-nav, .toc-nav')]
+                .map((el) => el.getBoundingClientRect().bottom));
+            const pxToWorld = (viewH / h) * (CAM_Z - rig.position.z) / CAM_Z; // วงอยู่ลึกกว่าระนาบ z=0 จึงต้องคูณเพิ่ม
+            rig2.position.set(-rig.position.x, -rig.position.y - navBottom * pxToWorld, rig.position.z);
+            // กลับหัววงแรก 180 องศารอบแกนกลางจอ สองวงจึงสมมาตรกันแบบทแยง
+            rig2.quaternion.setFromAxisAngle(new THREE.Vector3(0, 0, 1), Math.PI).multiply(rig.quaternion);
+        }
     }
     layout();
     new ResizeObserver(layout).observe(host);
 
-    /* ── เมาส์กับการเลื่อนหน้า ─────────────────────────────── */
+    /* ── เมาส์ ────────────────────────────────────────── */
     const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
     window.addEventListener('pointermove', (e) => {
         pointer.tx = (e.clientX / window.innerWidth) * 2 - 1;
         pointer.ty = (e.clientY / window.innerHeight) * 2 - 1;
     }, { passive: true });
-
-    let scrollY = window.scrollY;
-    window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
 
     /* ── หยุดเรนเดอร์เมื่อมองไม่เห็น ─────────────────────────── */
     let visible = true;
@@ -317,9 +336,9 @@ function start(host) {
         pointer.x += (pointer.tx - pointer.x) * 0.045;
         pointer.y += (pointer.ty - pointer.y) * 0.045;
 
-        const scrollShift = isHero ? 0 : scrollY * 0.0015;
-        camera.position.set(cam.x + pointer.x * 0.5, cam.y - pointer.y * 0.3 - scrollShift, cam.z);
-        camera.lookAt(cam.lookX, cam.lookY - scrollShift, 0);
+        // ไม่เลื่อนกล้องตามการ scroll วงเวทจึงค้างอยู่ที่เดิมบนจอไม่ว่าจะเลื่อนลงลึกแค่ไหน
+        camera.position.set(cam.x + pointer.x * 0.5, cam.y - pointer.y * 0.3, cam.z);
+        camera.lookAt(cam.lookX, cam.lookY, 0);
 
         emberMat.uniforms.uTime.value = t;
 
@@ -339,6 +358,16 @@ function start(host) {
             wave.scale.setScalar(0.4 + k * 2.6);
             wave.material.opacity = (1 - k) * (isHero ? 0.25 : 0.08) * intro * dim;
         });
+
+        if (rig2) {
+            rig2.scale.copy(rig.scale).multiplyScalar(0.45);
+            const circle2 = rig2.children[0];
+            circle2.rotation.y = circle.rotation.y;
+            circle.children.forEach((part, i) => {
+                circle2.children[i].rotation.z = -part.rotation.z;
+                circle2.children[i].scale.copy(part.scale);
+            });
+        }
 
         if (isHero) {
             beam.material.uniforms.uTime.value = t;
