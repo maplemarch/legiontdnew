@@ -8,7 +8,10 @@
     padding: var(--space-300);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-3xl);
-    background: rgba(255, 255, 255, 0.012);
+    /* พื้นทึบ ไม่ให้วงเวทกับประกายไฟด้านหลังทะลุขึ้นมาแย่งตัวเลข */
+    background: rgba(12, 16, 24, 0.94);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
 }
 
 .game-icon-blank {
@@ -272,7 +275,7 @@
 .game-cost-max { color: var(--text-secondary); font-weight: 500; }
 
 /* ===== ตารางอัปเกรดเก็บไม้ ===== */
-.lumber-wrap { overflow-x: auto; border: 1px solid var(--border-color); border-radius: var(--radius-xl); }
+.lumber-wrap { overflow-x: auto; border: 1px solid var(--border-color); border-radius: var(--radius-xl); background: var(--bg-card); }
 .lumber-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; line-height: 20px; }
 .lumber-table th, .lumber-table td { padding: var(--space-75) var(--space-200); text-align: left; white-space: nowrap; }
 .lumber-table th { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); background: var(--bg-section); }
