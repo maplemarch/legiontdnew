@@ -160,7 +160,7 @@
     });
 
     /* ── โหลดข้อมูล ── */
-    fetch('../assets/data/units.json?v=f5f9c11a')
+    fetch('../assets/data/units.json?v=927e22c8')
         .then((r) => {
             if (!r.ok) throw new Error('โหลดข้อมูลไม่สำเร็จ ' + r.status);
             return r.json();

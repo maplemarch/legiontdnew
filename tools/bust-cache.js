@@ -36,6 +36,26 @@ const htmlFiles = files.filter((f) => f.endsWith('.html'));
 
 let changed = 0;
 
+/* ── 0) ไฟล์ข้อมูลที่ JS โหลดเอง (fetch('../assets/data/xxx.json'))
+   ต้องทำก่อนข้อ 1 เพราะแก้เนื้อไฟล์ JS รหัสของไฟล์ JS ในหน้า HTML จึงต้องคำนวณทีหลัง ── */
+const jsFiles = files.filter((f) => f.endsWith('.js') && f.includes(path.join('assets', 'js')));
+for (const js of jsFiles) {
+  let src = fs.readFileSync(js, 'utf8');
+  const before = src;
+  src = src.replace(
+    /(fetch\('\.\.\/assets\/data\/([\w-]+\.json))(?:\?v=[\w]+)?(')/g,
+    (m, pre, name, post) => {
+      const h = hashOf(path.join(ROOT, 'assets/data', name));
+      return h ? `${pre}?v=${h}${post}` : m;
+    }
+  );
+  if (src !== before) {
+    fs.writeFileSync(js, src);
+    changed += 1;
+    console.log('  ' + path.relative(ROOT, js) + '  (ไฟล์ข้อมูล)');
+  }
+}
+
 /* ── 1) ไฟล์ CSS กับ JS ที่หน้า HTML เรียกใช้ ── */
 for (const html of htmlFiles) {
   const dir = path.dirname(html);
@@ -76,22 +96,6 @@ for (const css of cssFiles) {
     fs.writeFileSync(css, src);
     changed += 1;
     console.log('  ' + path.relative(ROOT, css));
-  }
-}
-
-/* ── 3) ไฟล์ข้อมูลที่ JS โหลดเอง ── */
-const unitsJs = path.join(ROOT, 'assets/js/units.js');
-if (fs.existsSync(unitsJs)) {
-  let src = fs.readFileSync(unitsJs, 'utf8');
-  const before = src;
-  const h = hashOf(path.join(ROOT, 'assets/data/units.json'));
-  if (h) {
-    src = src.replace(/(fetch\('\.\.\/assets\/data\/units\.json)(?:\?v=[\w]+)?(')/, `$1?v=${h}$2`);
-  }
-  if (src !== before) {
-    fs.writeFileSync(unitsJs, src);
-    changed += 1;
-    console.log('  assets/js/units.js  (units.json)');
   }
 }
 

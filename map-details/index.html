@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../assets/css/base.css?v=ea6a18ff">
     <link rel="stylesheet" href="../assets/css/landing.css?v=b983d960">
     <link rel="stylesheet" href="../assets/css/units.css?v=a76b923f">
+    <link rel="stylesheet" href="../assets/css/game.css?v=60dc7cd1">
 </head>
 <body>
 
@@ -71,6 +72,7 @@
             <a href="#map" class="toc-link active">🗺️ Map</a>
             <a href="#unit" class="toc-link">⚔️ Unit</a>
             <a href="#creep" class="toc-link">🐾 Creep</a>
+            <a href="#champion" class="toc-link">🏆 Champion</a>
             <a href="#king" class="toc-link">👑 King</a>
             <a href="#wisp" class="toc-link">🌳 Wisp &amp; Tree</a>
         </div>
@@ -128,6 +130,7 @@
 <section class="section" id="creep" aria-labelledby="creep-title" style="margin-top: var(--space-900);">
     <h2 class="section-heading" id="creep-title">ครีป</h2>
     <p class="section-lede">ศัตรูที่เดินมาแต่ละรอบ ค่าพลังชีวิต เกราะ และจำนวนต่อรอบ</p>
+    <div class="game-panel" id="creep-data" hidden></div>
     <div class="empty-state reveal">
         <div class="empty-mark"><i class="ph ph-paw-print" aria-hidden="true"></i></div>
         <h3 class="empty-title">กำลังรวบรวมข้อมูล</h3>
@@ -141,9 +144,16 @@
     </div>
 </section>
 
+<section class="section" id="champion" aria-labelledby="champion-title" style="margin-top: var(--space-900);">
+    <h2 class="section-heading" id="champion-title">Challenge Champion</h2>
+    <p class="section-lede">ท้าแชมเปี้ยนแต่ละเวฟได้ทองเท่าไหร่ โบนัส stack และแชมเปี้ยนแข็งขึ้นแค่ไหน</p>
+    <div class="game-panel" id="champion-data" hidden></div>
+</section>
+
 <section class="section" id="king" aria-labelledby="king-title" style="margin-top: var(--space-900);">
     <h2 class="section-heading" id="king-title">King</h2>
     <p class="section-lede">ค่าพลังชีวิต สกิล และการอัปเกรดของ King</p>
+    <div class="game-panel" id="king-data" hidden></div>
     <div class="empty-state reveal">
         <div class="empty-mark"><i class="ph ph-crown-simple" aria-hidden="true"></i></div>
         <h3 class="empty-title">กำลังรวบรวมข้อมูล</h3>
@@ -159,7 +169,8 @@
 
 <section class="section" id="wisp" aria-labelledby="wisp-title" style="margin-top: var(--space-900);">
     <h2 class="section-heading" id="wisp-title">Wisp &amp; Tree</h2>
-    <p class="section-lede">ค่าของ Wisp และ Tree ที่ใช้ในเกม</p>
+    <p class="section-lede">Wisp คนงานเก็บไม้ และค่าอัปเกรดการเก็บไม้ (tree) แต่ละขั้น</p>
+    <div class="game-panel" id="wisp-data" hidden></div>
     <div class="empty-state reveal">
         <div class="empty-mark"><i class="ph ph-tree" aria-hidden="true"></i></div>
         <h3 class="empty-title">กำลังรวบรวมข้อมูล</h3>
@@ -184,9 +195,10 @@
 <script src="../assets/js/nav.js?v=7e7d7ae5" defer></script>
 <script src="../assets/js/reveal.js?v=5a51c84e" defer></script>
 <script src="../assets/js/toc.js?v=232eddc7" defer></script>
-<script src="../assets/js/units.js?v=6619442a" defer></script>
+<script src="../assets/js/units.js?v=234d2a3c" defer></script>
+<script src="../assets/js/game.js?v=7e44a85f" defer></script>
 <script src="../assets/js/tilt.js?v=fed32629" defer></script>
-<script type="module" src="../assets/js/scene3d.js?v=2347e136"></script>
+<script type="module" src="../assets/js/scene3d.js?v=bb5a3885"></script>
 
 </body>
 </html>

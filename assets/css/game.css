@@ -1,0 +1,392 @@
+/* ===========================================================
+   game.css — แท็บ Creep, King และ Wisp & Tree (game.js)
+   ใช้ต่อจาก units.css เพราะยืมกล่องค่าสถานะกับกล่องสกิลของหน้ายูนิต
+   =========================================================== */
+
+.game-panel {
+    margin-top: var(--space-400);
+    padding: var(--space-300);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-3xl);
+    background: rgba(255, 255, 255, 0.012);
+}
+
+.game-icon-blank {
+    display: grid;
+    place-items: center;
+    background: var(--bg-section);
+    color: var(--text-muted);
+}
+
+.game-note {
+    margin-top: var(--space-200);
+    font-size: 0.8125rem;
+    line-height: 20px;
+    color: var(--text-muted);
+}
+
+/* ===== ป้ายชนิดโจมตีและเกราะ สีตามที่เกมประกาศ ===== */
+.type-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-50);
+    font-size: 0.75rem;
+    line-height: 16px;
+    font-weight: 600;
+    padding: 2px var(--space-75);
+    border-radius: var(--radius-full);
+    border: 1px solid currentColor;
+    background: color-mix(in srgb, currentColor 10%, transparent);
+    white-space: nowrap;
+}
+.type-tag i { font-size: 12px; }
+.type-pierce { color: #ffff66; }
+.type-normal { color: #9a9aff; }
+.type-magic { color: #ff8cff; }
+.type-siege { color: #b4b4b4; }
+.type-chaos { color: #ff6b6b; }
+.type-light { color: #eebc86; }
+.type-medium { color: #ff9a33; }
+.type-heavy { color: #6fbf6f; }
+.type-fort { color: #c98a44; }
+.type-unarmored { color: #d4d4d4; }
+.type-enchanted { color: #4ee04e; }
+
+/* ===== รายการเวฟ ===== */
+/* คอลัมน์: เลขเวฟ | ไอคอน | ชื่อ | HP | โจมตี | เกราะ | จำนวน | ทอง/ตัว | ทองจบเวฟ | ลูกศร */
+.wave-head,
+.wave-sum {
+    display: grid;
+    grid-template-columns: 52px 44px minmax(0, 1fr) 80px 88px 48px 76px 56px 64px 20px;
+    align-items: center;
+    gap: var(--space-100);
+}
+
+.wave-head {
+    padding: 0 var(--space-200) var(--space-100);
+    font-size: 0.75rem;
+    line-height: 16px;
+    color: var(--text-muted);
+}
+
+.wave-list { display: grid; gap: var(--space-75); }
+
+.wave {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    background: var(--bg-card);
+    transition: border-color 400ms var(--ease-fluid), background 400ms var(--ease-fluid);
+}
+.wave:hover, .wave[open] { border-color: var(--border-accent); }
+.wave-boss {
+    border-color: rgba(240, 180, 41, 0.35);
+    background: linear-gradient(90deg, rgba(240, 180, 41, 0.08), var(--bg-card) 45%);
+}
+
+.wave-sum {
+    list-style: none;
+    padding: var(--space-100) var(--space-200);
+}
+.wave-sum::-webkit-details-marker { display: none; }
+
+.wave-no {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    line-height: 22px;
+    font-weight: 700;
+    color: var(--gold);
+}
+.wave-no small {
+    font-family: var(--font-body);
+    font-size: 0.625rem;
+    line-height: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.wave-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    object-fit: contain;
+}
+
+.wave-main { display: flex; flex-direction: column; gap: var(--space-50); min-width: 0; }
+.wave-name {
+    font-size: 0.9375rem;
+    line-height: 20px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.wave-types { display: flex; flex-wrap: wrap; gap: var(--space-50); }
+
+.wave-flag {
+    display: inline-block;
+    vertical-align: 1px;
+    margin-left: var(--space-50);
+    font-size: 0.6875rem;
+    line-height: 14px;
+    font-weight: 600;
+    padding: 1px var(--space-75);
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-secondary);
+}
+.wave-flag-boss { background: rgba(240, 180, 41, 0.15); color: var(--gold-light); }
+
+.wave-num {
+    display: flex;
+    align-items: center;
+    gap: var(--space-50);
+    font-size: 0.875rem;
+    line-height: 20px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+.wave-num i { font-size: 14px; color: var(--text-muted); }
+.wave-gold { color: var(--gold-light); }
+.wave-gold i { color: var(--gold); }
+
+.wave-caret { color: var(--text-muted); transition: transform 400ms var(--ease-fluid); }
+.wave[open] .wave-caret { transform: rotate(180deg); }
+
+.wave-body {
+    padding: 0 var(--space-200) var(--space-200);
+    border-top: 1px solid var(--border-color);
+}
+.wave-body .unit-stat-grid { margin: var(--space-200) 0; }
+
+/* จอกว้าง ตัวเลขแต่ละช่องเป็นคอลัมน์ของ grid เอง กล่องห่อจึงต้องหายไปจากเลย์เอาต์ */
+.wave-nums { display: contents; }
+
+/* จอแคบ: ตัวเลขทั้งห้าลงไปเป็นแถวที่สองใต้ชื่อ */
+@media (max-width: 820px) {
+    .wave-head { display: none; }
+    .wave-sum {
+        grid-template-columns: 44px 40px minmax(0, 1fr) 20px;
+        grid-template-areas:
+            "no icon main caret"
+            "nums nums nums nums";
+        row-gap: var(--space-100);
+    }
+    .wave-no { grid-area: no; }
+    .wave-icon { grid-area: icon; width: 40px; height: 40px; }
+    .wave-main { grid-area: main; }
+    .wave-caret { grid-area: caret; }
+    .wave-nums {
+        grid-area: nums;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-75) var(--space-100);
+        padding-top: var(--space-75);
+        border-top: 1px dashed var(--border-color);
+    }
+    .wave-num { font-size: 0.8125rem; }
+    .wave-body .unit-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    /* กล่องแคบ เอาไอคอนออกให้ตัวเลขไม่ต้องตัดบรรทัด */
+    .wave-body .unit-stat { grid-template-columns: 1fr; padding: var(--space-75) var(--space-100); }
+    .wave-body .unit-stat-icon { display: none; }
+}
+
+/* ===== King / Wisp ===== */
+.game-hero {
+    display: flex;
+    align-items: center;
+    gap: var(--space-200);
+}
+.game-hero-icon {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(240, 180, 41, 0.35);
+    object-fit: contain;
+}
+.game-hero-name { font-family: var(--font-display); font-size: 1.5rem; line-height: 32px; font-weight: 700; }
+.game-hero-sub { font-size: 0.875rem; line-height: 22px; color: var(--text-secondary); white-space: pre-line; }
+
+.game-sub {
+    display: flex;
+    align-items: center;
+    gap: var(--space-75);
+    margin: var(--space-500) 0 var(--space-200);
+    font-size: 1.0625rem;
+    line-height: 24px;
+    font-weight: 700;
+    color: var(--gold-light);
+}
+.game-sub i { font-size: 20px; }
+.game-sub small { font-size: 0.75rem; font-weight: 500; color: var(--text-muted); }
+
+.shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-100); }
+.shop-grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+
+.shop-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-100);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-2xl);
+    background: var(--bg-card);
+    padding: var(--space-200);
+}
+.shop-head { display: flex; align-items: center; gap: var(--space-100); }
+.shop-icon { width: 44px; height: 44px; flex-shrink: 0; border-radius: var(--radius-md); border: 1px solid var(--border-color); object-fit: contain; }
+.shop-name { font-size: 0.9375rem; line-height: 20px; font-weight: 600; }
+.shop-costs { display: flex; flex-wrap: wrap; gap: var(--space-75); margin-top: var(--space-25); }
+.shop-desc { font-size: 0.8125rem; line-height: 20px; color: var(--text-secondary); white-space: pre-line; }
+
+.shop-options { display: grid; gap: var(--space-50); margin-top: auto; }
+.shop-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-100);
+    font-size: 0.8125rem;
+    line-height: 20px;
+    padding: var(--space-75) var(--space-100);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.03);
+}
+.shop-option .shop-costs { margin-top: 0; }
+
+.game-cost {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-25);
+    font-size: 0.8125rem;
+    line-height: 18px;
+    font-weight: 600;
+    color: var(--gold-light);
+    font-variant-numeric: tabular-nums;
+}
+.game-cost i { font-size: 14px; }
+.game-cost-lumber { color: var(--green-light); }
+.game-cost-max { color: var(--text-secondary); font-weight: 500; }
+
+/* ===== ตารางอัปเกรดเก็บไม้ ===== */
+.lumber-wrap { overflow-x: auto; border: 1px solid var(--border-color); border-radius: var(--radius-xl); }
+.lumber-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; line-height: 20px; }
+.lumber-table th, .lumber-table td { padding: var(--space-75) var(--space-200); text-align: left; white-space: nowrap; }
+.lumber-table th { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); background: var(--bg-section); }
+.lumber-table tbody tr + tr td { border-top: 1px solid var(--border-color); }
+.lumber-table tbody tr:hover td { background: rgba(255, 255, 255, 0.02); }
+.lumber-total { font-weight: 700; color: var(--green-light); }
+
+@media (max-width: 768px) {
+    .game-panel { padding: var(--space-200); border-radius: var(--radius-2xl); }
+    .shop-grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ===== ป้ายโหมดเกม ===== */
+.game-mode {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-75);
+    margin-bottom: var(--space-200);
+    font-size: 0.8125rem;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+.game-mode i { font-size: 16px; color: var(--gold); }
+.game-mode code {
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: 0.8125rem;
+    color: var(--gold-light);
+    background: rgba(240, 180, 41, 0.1);
+    border: 1px solid rgba(240, 180, 41, 0.28);
+    border-radius: var(--radius-md);
+    padding: 0 var(--space-75);
+}
+
+/* ===== ปุ่มสลับค่า King (เริ่มเกม / อัปเต็ม) ===== */
+/* อยู่มุมขวาบนของหัวการ์ด King จอแคบค่อยตกลงไปบรรทัดใหม่ */
+.game-hero { flex-wrap: wrap; }
+.king-toggle {
+    display: inline-flex;
+    gap: var(--space-50);
+    margin-left: auto;
+    align-self: flex-start;
+    padding: var(--space-50);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-full);
+    background: var(--bg-section);
+}
+.king-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-50);
+    border: 0;
+    border-radius: var(--radius-full);
+    background: transparent;
+    color: var(--text-secondary);
+    font: inherit;
+    font-size: 0.875rem;
+    line-height: 20px;
+    font-weight: 600;
+    padding: var(--space-75) var(--space-200);
+    cursor: url('../img/cursor-link.svg?v=54df678c') 2 2, pointer;
+    transition: background 300ms var(--ease-fluid), color 300ms var(--ease-fluid);
+}
+.king-toggle-btn:hover { color: var(--text-primary); }
+.king-toggle-btn[aria-pressed="true"] { background: var(--gold); color: #0a0d13; }
+.king-max-note { margin-top: var(--space-200); }
+
+/* ตารางค่าสกิล King: หัวแถวซ้ายเป็นชื่อค่า */
+.skill-table th[scope="row"] { color: var(--text-muted); font-weight: 500; background: transparent; }
+.skill-table td { font-variant-numeric: tabular-nums; font-weight: 600; }
+.skill-table th, .skill-table td { padding: var(--space-50) var(--space-100); }
+.king-swap .unit-stat-value { transition: color 300ms var(--ease-fluid); }
+.king-swap.is-max { border-color: rgba(240, 180, 41, 0.45); }
+.king-swap.is-max .unit-stat-value { color: var(--gold-light); }
+
+/* ===== สรุปและรายละเอียดสกิลแบบข้อๆ ===== */
+.shop-summary {
+    font-size: 0.875rem;
+    line-height: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.shop-bullets {
+    display: grid;
+    gap: var(--space-50);
+    padding-left: 0;
+    list-style: none;
+}
+.shop-bullets li {
+    position: relative;
+    padding-left: var(--space-200);
+    font-size: 0.8125rem;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+.shop-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 8px;
+    width: 5px;
+    height: 5px;
+    border-radius: var(--radius-full);
+    background: var(--gold);
+}
+
+/* ===== Challenge Champion ===== */
+.champ-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-400); }
+.champ-table td { vertical-align: middle; }
+.champ-table .wave-no { flex-direction: row; align-items: baseline; gap: var(--space-50); font-size: 1rem; }
+.champ-creep { display: inline-flex; align-items: center; gap: var(--space-100); }
+.champ-icon { width: 28px; height: 28px; border-radius: var(--radius-md); flex-shrink: 0; }
+.champ-stack { color: var(--green-light); font-weight: 600; }
+.champ-total { font-weight: 700; color: var(--gold-light); }
+.champ-extra { font-size: 0.75rem; color: var(--red-light); margin-left: var(--space-50); }
+.champ-off td { color: var(--text-muted); }
+.lumber-min { font-size: 0.75rem; color: var(--text-muted); }
