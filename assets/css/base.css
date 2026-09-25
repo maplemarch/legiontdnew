@@ -344,6 +344,16 @@ h1, h2, h3, h4 { text-wrap: balance; }
 }
 .reveal.visible { opacity: 1; transform: translateY(0); filter: blur(0); }
 
+/* แบบเบาสำหรับการ์ดและแถวจำนวนมาก (reveal.js ข้อ 3) ใส่ !important เพราะการ์ดแต่ละแบบมี transition ของตัวเอง
+   ช่วงที่กำลังเล่นต้องใช้ของเราก่อน เล่นจบ JS ถอดคลาสออก การ์ดจะกลับไปใช้ของตัวเอง */
+.reveal-sm { opacity: 0; transform: translateY(18px); }
+.reveal-sm.is-in {
+    opacity: 1;
+    transform: none;
+    transition: opacity 520ms var(--ease-fluid), transform 520ms var(--ease-fluid) !important;
+    transition-delay: var(--rd, 0ms) !important;
+}
+
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
@@ -482,7 +492,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
-    .reveal { opacity: 1; transform: none; filter: none; }
+    .reveal, .reveal-sm { opacity: 1; transform: none; filter: none; }
     /* จุดแสงแบนเนอร์ยังคงลอยขึ้นต่อ แม้ผู้ใช้ตั้งค่าลดการเคลื่อนไหว
        (หนี้นี้ได้ถูกตั้งใจไว้ — เป็นจุดเล็ก ๆ ไม่ใช่การเคลื่อนไหวที่รบกวน)
        ใช้ specificity สูงกว่า rule ของ * ข้างบน คาบของแต่ละจุดมาจาก --dur ที่ JS ตั้งไว้ */
