@@ -506,6 +506,7 @@
 .file-meta { flex-grow: 1; min-width: 200px; }
 .file-name { font-size: 1rem; line-height: 24px; font-weight: 600; }
 .file-sub { font-size: 0.75rem; line-height: 16px; color: var(--text-muted); }
+.file-sub a { color: var(--gold-light); text-underline-offset: 2px; }
 
 /* ===== 404 ===== */
 .error-page {
