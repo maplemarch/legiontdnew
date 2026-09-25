@@ -1,4 +1,4 @@
-/* game.js — แท็บ Creep, King และ Wisp & Tree ในหน้าข้อมูลแมพ
+/* game.js — แท็บ Creep, King และ Wisp & Tree ในหน้า Wiki
    ข้อมูลมาจาก assets/data/game.json ซึ่ง tools/build-game.js สร้างจากไฟล์แมพ
    ถ้าโหลดไม่ได้ กล่อง "กำลังรวบรวมข้อมูล" เดิมยังแสดงอยู่ตามปกติ */
 (function () {
