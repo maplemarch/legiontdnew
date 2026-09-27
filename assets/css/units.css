@@ -59,11 +59,19 @@
 }
 .unit-field input::placeholder { color: var(--text-muted); }
 
-.unit-field-select { flex: 0 1 200px; }
+/* ช่องเลือกกางเต็มกล่อง กดตรงไหนของกล่องก็เปิดได้ ลูกศรให้คลิกทะลุลงไปที่ช่องเลือก */
+.unit-field-select { flex: 0 1 180px; height: 46px; }
 .unit-field-select select {
     appearance: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 calc(var(--space-200) + 24px) 0 var(--space-200);
+    border-radius: inherit;
     cursor: url('../img/cursor-link.svg?v=54df678c') 2 2, pointer;
 }
+.unit-field-select i { margin-left: auto; pointer-events: none; }
 .unit-field-select option { background: var(--bg-card); color: var(--text-primary); }
 
 .unit-count {

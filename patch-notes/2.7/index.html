@@ -16,24 +16,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-    <link rel="stylesheet" href="../../assets/css/base.css?v=b7443688">
+    <link rel="stylesheet" href="../../assets/css/base.css?v=d3fd3e27">
+    <script src="../../assets/js/i18n.js?v=22cbfaa5"></script>
     <link rel="stylesheet" href="../../assets/css/patch-notes.css?v=d2a2e6d3">
 </head>
 <body>
 
-<a class="skip-link" href="#main">ข้ามไปเนื้อหาหลัก</a>
+<a class="skip-link" href="#main" data-en="Skip to main content">ข้ามไปเนื้อหาหลัก</a>
 
 <div class="scene3d scene3d-ambient" data-scene="ambient" data-circle="center" aria-hidden="true"></div>
 
 <!-- ===== เมนูหลัก ===== -->
-<nav class="site-nav" aria-label="เมนูหลัก">
+<nav class="site-nav" aria-label="เมนูหลัก" data-en-aria-label="Main menu">
     <div class="site-nav-inner">
         <a class="nav-brand" href="../../">
             <span class="nav-brand-mark" aria-hidden="true"><i class="ph ph-sword"></i></span>
             Legion TD NE
         </a>
         <ul class="nav-links">
-            <li><a class="nav-link" href="../../">หน้าแรก</a></li>
+            <li><a class="nav-link" href="../../" data-en="Home">หน้าแรก</a></li>
             <li><a class="nav-link" href="../../wiki/">Wiki</a></li>
             <li><a class="nav-link" href="../" aria-current="page">Patch</a></li>
             <li><a class="nav-link" href="../../download/">Download</a></li>
@@ -44,7 +45,7 @@
                 WC3TH
                 <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
             </a>
-            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-overlay" aria-label="เปิดเมนู">
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-overlay" aria-label="เปิดเมนู" data-en-aria-label="Open menu">
                 <span class="nav-toggle-bar"></span>
                 <span class="nav-toggle-bar"></span>
             </button>
@@ -54,7 +55,7 @@
 
 <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
     <ul class="nav-overlay-list">
-        <li><a href="../../">หน้าแรก</a></li>
+        <li><a href="../../" data-en="Home">หน้าแรก</a></li>
         <li><a href="../../wiki/">Wiki</a></li>
         <li><a href="../" aria-current="page">Patch</a></li>
         <li><a href="../../download/">Download</a></li>
@@ -63,20 +64,20 @@
     </ul>
 </div>
 
-<nav class="toc-nav" aria-label="สารบัญแพตช์">
+<nav class="toc-nav" aria-label="สารบัญแพตช์" data-en-aria-label="Patch contents">
     <div class="toc-nav-inner">
-        <a class="toc-back" href="../" aria-label="กลับไปหน้าแพตช์ทั้งหมด" title="แพตช์ทั้งหมด">
+        <a class="toc-back" href="../" aria-label="กลับไปหน้าแพตช์ทั้งหมด" data-en-aria-label="Back to all patches" title="แพตช์ทั้งหมด" data-en-title="All patches">
             <i class="ph ph-arrow-left" aria-hidden="true"></i>
-            <span>แพตช์ทั้งหมด</span>
+            <span data-en="All Patches">แพตช์ทั้งหมด</span>
         </a>
         <div class="toc-links">
-            <a href="#section1" class="toc-link active">⚙️ ระบบ</a>
-            <a href="#section2" class="toc-link">🗑️ ถอดยูนิต</a>
-            <a href="#section3" class="toc-link">👑 King & บอส</a>
-            <a href="#section4" class="toc-link">⚔️ ยูนิต</a>
-            <a href="#section5" class="toc-link">🦸 ฮีโร่</a>
-            <a href="#section6" class="toc-link">✨ ออร่า</a>
-            <a href="#section7" class="toc-link">🐛 บั๊กฟิกซ์</a>
+            <a href="#section1" class="toc-link active" data-en="⚙️ System">⚙️ ระบบ</a>
+            <a href="#section2" class="toc-link" data-en="🗑️ Removed">🗑️ ถอดยูนิต</a>
+            <a href="#section3" class="toc-link" data-en="👑 King &amp; Boss">👑 King & บอส</a>
+            <a href="#section4" class="toc-link" data-en="⚔️ Units">⚔️ ยูนิต</a>
+            <a href="#section5" class="toc-link" data-en="🦸 Heroes">🦸 ฮีโร่</a>
+            <a href="#section6" class="toc-link" data-en="✨ Auras">✨ ออร่า</a>
+            <a href="#section7" class="toc-link" data-en="🐛 Bug Fixes">🐛 บั๊กฟิกซ์</a>
         </div>
     </div>
 </nav>
@@ -84,7 +85,7 @@
 
 <header class="patch-intro">
     <h1 class="patch-intro-title">LTD Patch 2.7</h1>
-    <p class="patch-intro-meta">Legion TD NewEdition · อัปเดต 22 กันยายน 2569</p>
+    <p class="patch-intro-meta" data-en="Legion TD NewEdition · Updated September 22, 2026">Legion TD NewEdition · อัปเดต 22 กันยายน 2569</p>
 </header>
 
 <!-- ─────────── SECTION 1: System & Performance ─────────── -->
@@ -92,7 +93,7 @@
     <div class="section-header">
         <div class="section-number">1</div>
         <div class="section-title-group">
-            <h2 class="section-title">ระบบและประสิทธิภาพของเกม</h2>
+            <h2 class="section-title" data-en="System &amp; Game Performance">ระบบและประสิทธิภาพของเกม</h2>
             <div class="section-subtitle">Optimization & Performance · Observer Camera</div>
         </div>
     </div>
@@ -103,16 +104,16 @@
             <div class="card-header">
                 <div class="card-icon"><div class="card-icon-placeholder">🖥️</div></div>
                 <div>
-                    <div class="card-name">การปรับปรุงประสิทธิภาพ</div>
+                    <div class="card-name" data-en="Performance Improvements">การปรับปรุงประสิทธิภาพ</div>
                     <div class="card-type">Performance Improvements</div>
                 </div>
                 <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
             </div>
             <div class="card-body">
                 <ul>
-                    <li>แก้ไขปัญหาเกมกระตุกและแลคในช่วงท้ายเกม</li>
-                    <li>แก้ไขปัญหา <strong>Memory Leak</strong> ทั่วทั้งแผนที่</li>
-                    <li>เพิ่มความเสถียรของ FPS แม้มีจำนวนยูนิตเต็มกระดาน หรือเล่นไปจนถึงเวฟระดับสูง</li>
+                    <li data-en="Fixed stuttering and lag in the late game">แก้ไขปัญหาเกมกระตุกและแลคในช่วงท้ายเกม</li>
+                    <li data-en="Fixed <strong>Memory Leaks</strong> across the entire map">แก้ไขปัญหา <strong>Memory Leak</strong> ทั่วทั้งแผนที่</li>
+                    <li data-en="Improved FPS stability, even with a full board of units or deep into high Waves">เพิ่มความเสถียรของ FPS แม้มีจำนวนยูนิตเต็มกระดาน หรือเล่นไปจนถึงเวฟระดับสูง</li>
                 </ul>
             </div>
         </div>
@@ -124,16 +125,16 @@
             <div class="card-header">
                 <div class="card-icon"><div class="card-icon-placeholder">🎥</div></div>
                 <div>
-                    <div class="card-name">ระบบกล้องผู้ชม</div>
+                    <div class="card-name" data-en="Observer Camera System">ระบบกล้องผู้ชม</div>
                     <div class="card-type">Spectator QoL</div>
                 </div>
                 <span class="tag tag-new" style="margin-left:auto;">NEW</span>
             </div>
             <div class="card-body">
                 <ul>
-                    <li>ผู้ชมสามารถใช้ลูกกลิ้งเมาส์เพื่อ <strong>ซูมเข้าและซูมออก</strong> ได้อย่างอิสระ</li>
-                    <li>ยกเลิกการดึงกล้องกลับทุก ๆ 1 วินาที</li>
-                    <li>ปรับรอบการตรวจสอบมุมกล้องเป็นทุก ๆ <strong>30 วินาที</strong></li>
+                    <li data-en="Observers can use the mouse wheel to <strong>zoom in and out</strong> freely">ผู้ชมสามารถใช้ลูกกลิ้งเมาส์เพื่อ <strong>ซูมเข้าและซูมออก</strong> ได้อย่างอิสระ</li>
+                    <li data-en="Removed the camera reset that snapped back every 1 second">ยกเลิกการดึงกล้องกลับทุก ๆ 1 วินาที</li>
+                    <li data-en="Camera angle check now runs every <strong>30 seconds</strong>">ปรับรอบการตรวจสอบมุมกล้องเป็นทุก ๆ <strong>30 วินาที</strong></li>
                 </ul>
             </div>
         </div>
@@ -145,12 +146,12 @@
     <div class="section-header">
         <div class="section-number">2</div>
         <div class="section-title-group">
-            <h2 class="section-title">ถอดยูนิตและสกิลที่ไม่ได้ใช้งาน</h2>
-            <div class="section-subtitle">Removed Units & Skills — 4 สาย · 12 ยูนิต</div>
+            <h2 class="section-title" data-en="Removed Unused Units &amp; Skills">ถอดยูนิตและสกิลที่ไม่ได้ใช้งาน</h2>
+            <div class="section-subtitle" data-en="Removed Units &amp; Skills — 4 lines · 12 units">Removed Units & Skills — 4 สาย · 12 ยูนิต</div>
         </div>
     </div>
 
-    <div class="callout callout-info">
+    <div class="callout callout-info" data-en="ⓘ Unused units and skills have been permanently removed from the game to streamline the map, cut redundancy, and reduce the map file size">
         ⓘ ถอดยูนิตและสกิลที่ไม่ได้ใช้งานออกจากเกมอย่างถาวร เพื่อปรับโครงสร้างแผนที่ให้กระชับ ลดความซ้ำซ้อน และลดขนาดไฟล์แผนที่
     </div>
 
@@ -160,15 +161,15 @@
             <div class="removed-card-title">🛡️ Defender — Royal Guard</div>
             <div class="unit-row">
                 <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/ltd-elite-guard.png" alt="Elite Guard" onerror="this.parentElement.innerHTML='<div class=img-fallback>⚔️</div>'"></div>
-                <div><div class="unit-name">Elite Guard</div><div class="unit-desc">ยูนิตพื้นฐาน</div></div>
+                <div><div class="unit-name">Elite Guard</div><div class="unit-desc" data-en="Base unit">ยูนิตพื้นฐาน</div></div>
             </div>
             <div class="unit-row">
                 <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/ltd-imperial-bulwark.png" alt="Imperial Bulwark" onerror="this.parentElement.innerHTML='<div class=img-fallback>🛡️</div>'"></div>
-                <div><div class="unit-name">Imperial Bulwark</div><div class="unit-desc">อัปเกรดสายแทงค์ & สะท้อนดาเมจ</div></div>
+                <div><div class="unit-name">Imperial Bulwark</div><div class="unit-desc" data-en="Tank &amp; damage reflect upgrade">อัปเกรดสายแทงค์ & สะท้อนดาเมจ</div></div>
             </div>
             <div class="unit-row">
                 <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/ltd-royal-marshal.png" alt="Royal Marshal" onerror="this.parentElement.innerHTML='<div class=img-fallback>🔥</div>'"></div>
-                <div><div class="unit-name">Royal Marshal</div><div class="unit-desc">อัปเกรดสายไฟ & อัญเชิญ Fire Mage</div></div>
+                <div><div class="unit-name">Royal Marshal</div><div class="unit-desc" data-en="Fire upgrade &amp; summons Fire Mage">อัปเกรดสายไฟ & อัญเชิญ Fire Mage</div></div>
             </div>
         </div>
 
@@ -177,15 +178,15 @@
             <div class="removed-card-title">🗡️ Lancer & Phantom</div>
             <div class="unit-row">
                 <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/ltd-royal-lancer.png" alt="Royal Lancer" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐴</div>'"></div>
-                <div><div class="unit-name">Royal Lancer</div><div class="unit-desc">ยูนิตพื้นฐานสายหอก</div></div>
+                <div><div class="unit-name">Royal Lancer</div><div class="unit-desc" data-en="Base spear unit">ยูนิตพื้นฐานสายหอก</div></div>
             </div>
             <div class="unit-row">
                 <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/ltd-royal-lancer.png" alt="Royal Vanguard" onerror="this.parentElement.innerHTML='<div class=img-fallback>🛡️</div>'"></div>
-                <div><div class="unit-name">Royal Vanguard</div><div class="unit-desc">อัปเกรดสายหอก</div></div>
+                <div><div class="unit-name">Royal Vanguard</div><div class="unit-desc" data-en="Spear upgrade">อัปเกรดสายหอก</div></div>
             </div>
             <div class="unit-row">
                 <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/ltd-phantom-bladeguard.png" alt="Phantom Bladeguard" onerror="this.parentElement.innerHTML='<div class=img-fallback>👻</div>'"></div>
-                <div><div class="unit-name">Phantom Bladeguard</div><div class="unit-desc">อัปเกรดสายดาบวิญญาณ</div></div>
+                <div><div class="unit-name">Phantom Bladeguard</div><div class="unit-desc" data-en="Spirit blade upgrade">อัปเกรดสายดาบวิญญาณ</div></div>
             </div>
         </div>
 
@@ -194,19 +195,19 @@
             <div class="removed-card-title">⏳ Time</div>
             <div class="unit-row">
                 <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnevilillidan-96a7920274.png" alt="Time Hunter" loading="lazy"></div>
-                <div><div class="unit-name">Time Hunter</div><div class="unit-desc">ร่างพื้นฐาน</div></div>
+                <div><div class="unit-name">Time Hunter</div><div class="unit-desc" data-en="Base form">ร่างพื้นฐาน</div></div>
             </div>
             <div class="unit-row">
                 <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnevilillidan-96a7920274.png" alt="Time Destroyer" loading="lazy"></div>
-                <div><div class="unit-name">Time Destroyer</div><div class="unit-desc">ร่างขั้นที่ 2</div></div>
+                <div><div class="unit-name">Time Destroyer</div><div class="unit-desc" data-en="Tier 2 form">ร่างขั้นที่ 2</div></div>
             </div>
             <div class="unit-row">
                 <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnevilillidan-96a7920274.png" alt="Time Executor" loading="lazy"></div>
-                <div><div class="unit-name">Time Executor</div><div class="unit-desc">ร่างขั้นที่ 3</div></div>
+                <div><div class="unit-name">Time Executor</div><div class="unit-desc" data-en="Tier 3 form">ร่างขั้นที่ 3</div></div>
             </div>
             <div class="unit-row">
                 <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnevilillidan-96a7920274.png" alt="Time Bringer" loading="lazy"></div>
-                <div><div class="unit-name">Time Bringer</div><div class="unit-desc">ร่างขั้นที่ 4</div></div>
+                <div><div class="unit-name">Time Bringer</div><div class="unit-desc" data-en="Tier 4 form">ร่างขั้นที่ 4</div></div>
             </div>
         </div>
 
@@ -215,11 +216,11 @@
             <div class="removed-card-title">🧝 Elf / Sorceress</div>
             <div class="unit-row">
                 <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnfemaleelfvillager-be8af0a3ef.png" alt="Female Elf" onerror="this.parentElement.innerHTML='<div class=img-fallback>🧝‍♀️</div>'"></div>
-                <div><div class="unit-name">Female Elf</div><div class="unit-desc">ร่างพื้นฐาน</div></div>
+                <div><div class="unit-name">Female Elf</div><div class="unit-desc" data-en="Base form">ร่างพื้นฐาน</div></div>
             </div>
             <div class="unit-row">
                 <div class="unit-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnsorceress-90b847f843.png" alt="Flame Slayer" onerror="this.parentElement.innerHTML='<div class=img-fallback>🔥</div>'"></div>
-                <div><div class="unit-name">Flame Slayer</div><div class="unit-desc">อัปเกรดสายเวทไฟ</div></div>
+                <div><div class="unit-name">Flame Slayer</div><div class="unit-desc" data-en="Fire magic upgrade">อัปเกรดสายเวทไฟ</div></div>
             </div>
         </div>
     </div>
@@ -230,14 +231,14 @@
     <div class="section-header">
         <div class="section-number">3</div>
         <div class="section-title-group">
-            <h2 class="section-title">ปรับสมดุล King และบอสเวฟ 10</h2>
+            <h2 class="section-title" data-en="King &amp; Wave 10 Boss Balance">ปรับสมดุล King และบอสเวฟ 10</h2>
             <div class="section-subtitle">King, Presence & Wave 10</div>
         </div>
     </div>
 
     <!-- King's Random Skills -->
     <div class="subsection">
-        <h3 class="subsection-title"><span class="icon">👑</span> สกิลสุ่มของ King</h3>
+        <h3 class="subsection-title" data-en="<span class=&quot;icon&quot;>👑</span> King's Random Skills"><span class="icon">👑</span> สกิลสุ่มของ King</h3>
 
         <div class="card">
             <div class="card-header">
@@ -250,8 +251,8 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>ลดดาเมจและระยะเวลาสตันในช่วงต้นเกม ระดับ Lv.1–Lv.2 ลง <span class="new-val-down">5%</span></li>
-                    <li>เพิ่มรัศมีวงสตันขึ้น <span class="new-val-up">+10%</span> ในทุกระดับเลเวล</li>
+                    <li data-en="Early-game damage and stun duration at Lv.1–Lv.2 reduced by <span class=&quot;new-val-down&quot;>5%</span>">ลดดาเมจและระยะเวลาสตันในช่วงต้นเกม ระดับ Lv.1–Lv.2 ลง <span class="new-val-down">5%</span></li>
+                    <li data-en="Stun radius increased by <span class=&quot;new-val-up&quot;>+10%</span> at all levels">เพิ่มรัศมีวงสตันขึ้น <span class="new-val-up">+10%</span> ในทุกระดับเลเวล</li>
                 </ul>
             </div>
         </div>
@@ -267,8 +268,8 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>ลดดาเมจจากการปะทะครั้งแรกลง <span class="new-val-down">7.5%</span> ในทุกระดับเลเวล</li>
-                    <li>ลดดาเมจเผาไหม้ลง <span class="new-val-down">7.5%</span> ในทุกระดับเลเวล</li>
+                    <li data-en="Initial impact damage reduced by <span class=&quot;new-val-down&quot;>7.5%</span> at all levels">ลดดาเมจจากการปะทะครั้งแรกลง <span class="new-val-down">7.5%</span> ในทุกระดับเลเวล</li>
+                    <li data-en="Burn damage reduced by <span class=&quot;new-val-down&quot;>7.5%</span> at all levels">ลดดาเมจเผาไหม้ลง <span class="new-val-down">7.5%</span> ในทุกระดับเลเวล</li>
                 </ul>
             </div>
         </div>
@@ -284,9 +285,9 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>เพิ่มดาเมจเผาไหม้ต่อวินาทีในทุกระดับเลเวล</li>
-                    <li>ลดการใช้มานาลง <span class="new-val-up">2 หน่วยต่อวินาที</span></li>
-                    <li>เพิ่มรัศมีวงไฟขึ้น <span class="new-val-up">+25 หน่วย</span></li>
+                    <li data-en="Burn damage per second increased at all levels">เพิ่มดาเมจเผาไหม้ต่อวินาทีในทุกระดับเลเวล</li>
+                    <li data-en="Mana drain reduced by <span class=&quot;new-val-up&quot;>2 per second</span>">ลดการใช้มานาลง <span class="new-val-up">2 หน่วยต่อวินาที</span></li>
+                    <li data-en="Fire radius increased by <span class=&quot;new-val-up&quot;>+25</span>">เพิ่มรัศมีวงไฟขึ้น <span class="new-val-up">+25 หน่วย</span></li>
                 </ul>
             </div>
         </div>
@@ -294,7 +295,7 @@
 
     <!-- King Shop Buffs -->
     <div class="subsection">
-        <h3 class="subsection-title"><span class="icon">🏪</span> บัฟจากร้านค้า King</h3>
+        <h3 class="subsection-title" data-en="<span class=&quot;icon&quot;>🏪</span> King Shop Buffs"><span class="icon">🏪</span> บัฟจากร้านค้า King</h3>
 
         <div class="card">
             <div class="card-header">
@@ -307,11 +308,11 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>เผาเลือดเป้าหมาย <strong>2.5% ของ Max HP</strong> ต่อวินาที เป็นเวลา 10 วินาที</li>
-                    <li>ลด HP ได้สูงสุด <strong>25%</strong></li>
-                    <li>เป้าหมายจะเหลือ HP อย่างน้อย 1% — ไม่สามารถถูกสกิลนี้สังหารได้</li>
-                    <li>เพิ่มรัศมีสกิลเป็น <span class="new-val-up">800 AoE</span></li>
-                    <li>ปรับคูลดาวน์เป็น <strong>30 วินาที</strong></li>
+                    <li data-en="Burns the target for <strong>2.5% of Max HP</strong> per second for 10 seconds">เผาเลือดเป้าหมาย <strong>2.5% ของ Max HP</strong> ต่อวินาที เป็นเวลา 10 วินาที</li>
+                    <li data-en="Can remove up to <strong>25%</strong> HP">ลด HP ได้สูงสุด <strong>25%</strong></li>
+                    <li data-en="Targets are left with at least 1% HP — this skill cannot kill">เป้าหมายจะเหลือ HP อย่างน้อย 1% — ไม่สามารถถูกสกิลนี้สังหารได้</li>
+                    <li data-en="Skill radius increased to <span class=&quot;new-val-up&quot;>800 AoE</span>">เพิ่มรัศมีสกิลเป็น <span class="new-val-up">800 AoE</span></li>
+                    <li data-en="Cooldown set to <strong>30 seconds</strong>">ปรับคูลดาวน์เป็น <strong>30 วินาที</strong></li>
                 </ul>
             </div>
         </div>
@@ -327,10 +328,10 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>เพิ่มพลังโจมตีของ King เป็น <span class="new-val-up">+775%</span></li>
-                    <li>การโจมตีระยะไกลสามารถชิ่งเป้าหมายได้สูงสุด <strong>3 ตัว</strong></li>
-                    <li>เป้าหมายรองได้รับดาเมจ <strong>75%</strong> และ <strong>56%</strong> ตามลำดับ</li>
-                    <li>เพิ่ม Lifesteal เป็น <span class="new-val-up">45%</span></li>
+                    <li data-en="King's attack damage increased to <span class=&quot;new-val-up&quot;>+775%</span>">เพิ่มพลังโจมตีของ King เป็น <span class="new-val-up">+775%</span></li>
+                    <li data-en="Ranged attacks bounce to up to <strong>3 targets</strong>">การโจมตีระยะไกลสามารถชิ่งเป้าหมายได้สูงสุด <strong>3 ตัว</strong></li>
+                    <li data-en="Secondary targets take <strong>75%</strong> and <strong>56%</strong> damage respectively">เป้าหมายรองได้รับดาเมจ <strong>75%</strong> และ <strong>56%</strong> ตามลำดับ</li>
+                    <li data-en="Lifesteal increased to <span class=&quot;new-val-up&quot;>45%</span>">เพิ่ม Lifesteal เป็น <span class="new-val-up">45%</span></li>
                 </ul>
             </div>
         </div>
@@ -338,7 +339,7 @@
 
     <!-- Wave 10 Boss -->
     <div class="subsection">
-        <h3 class="subsection-title"><span class="icon">💀</span> บอสเวฟ 10 — Illidan</h3>
+        <h3 class="subsection-title" data-en="<span class=&quot;icon&quot;>💀</span> Wave 10 Boss — Illidan"><span class="icon">💀</span> บอสเวฟ 10 — Illidan</h3>
 
         <div class="card">
             <div class="card-header">
@@ -353,9 +354,9 @@
                 <table class="data-table">
                     <thead>
                         <tr>
-                            <th>รายการ</th>
-                            <th>ค่าเดิม</th>
-                            <th>ค่าใหม่</th>
+                            <th data-en="Stat">รายการ</th>
+                            <th data-en="Old">ค่าเดิม</th>
+                            <th data-en="New">ค่าใหม่</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -365,14 +366,14 @@
                             <td><span class="new-val-up">5,000</span></td>
                         </tr>
                         <tr>
-                            <td>พลังโจมตี</td>
+                            <td data-en="Attack damage">พลังโจมตี</td>
                             <td><span class="old-val">180</span></td>
                             <td><span class="new-val-up">195</span></td>
                         </tr>
                         <tr>
-                            <td>ความถี่การโจมตี</td>
-                            <td><span class="old-val">0.41 วินาที</span></td>
-                            <td><span class="new-val-up">0.31 วินาที</span></td>
+                            <td data-en="Attack cooldown">ความถี่การโจมตี</td>
+                            <td><span class="old-val" data-en="0.41s">0.41 วินาที</span></td>
+                            <td><span class="new-val-up" data-en="0.31s">0.31 วินาที</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -390,7 +391,7 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>เมื่อเปิดรับคำท้า CC ในเวฟ 10 แชมเปี้ยนจะได้รับพลังโจมตีเพิ่มขึ้น <span class="new-val-up">+100 Damage</span></li>
+                    <li data-en="When the CC challenge is accepted on Wave 10, the Champion gains <span class=&quot;new-val-up&quot;>+100 Damage</span>">เมื่อเปิดรับคำท้า CC ในเวฟ 10 แชมเปี้ยนจะได้รับพลังโจมตีเพิ่มขึ้น <span class="new-val-up">+100 Damage</span></li>
                 </ul>
             </div>
         </div>
@@ -402,7 +403,7 @@
     <div class="section-header">
         <div class="section-number">4</div>
         <div class="section-title-group">
-            <h2 class="section-title">ปรับสมดุลยูนิตและสิ่งก่อสร้าง</h2>
+            <h2 class="section-title" data-en="Unit &amp; Tower Balance">ปรับสมดุลยูนิตและสิ่งก่อสร้าง</h2>
             <div class="section-subtitle">Towers, Builders & Unit Balance</div>
         </div>
     </div>
@@ -422,10 +423,10 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>ปรับพื้นที่ช่องการสร้างให้เหลือขนาดมาตรฐาน <strong>1 ช่อง (2×2 Cells)</strong></li>
-                    <li>ขนาดพื้นที่เท่ากับ Axe Master และ Blademaster</li>
-                    <li>เมื่ออัปเกรดเป็น Leviathan <strong>จะไม่กินพื้นที่เพิ่ม</strong></li>
-                    <li>ช่วยให้ผู้เล่นสาย Mech จัดเส้นทางและอุดเลนได้สะดวกขึ้น</li>
+                    <li data-en="Build footprint reduced to the standard <strong>1 slot (2×2 Cells)</strong>">ปรับพื้นที่ช่องการสร้างให้เหลือขนาดมาตรฐาน <strong>1 ช่อง (2×2 Cells)</strong></li>
+                    <li data-en="Same footprint as Axe Master and Blademaster">ขนาดพื้นที่เท่ากับ Axe Master และ Blademaster</li>
+                    <li data-en="Upgrading to Leviathan <strong>no longer takes up extra space</strong>">เมื่ออัปเกรดเป็น Leviathan <strong>จะไม่กินพื้นที่เพิ่ม</strong></li>
+                    <li data-en="Makes it easier for Mech players to shape paths and block the lane">ช่วยให้ผู้เล่นสาย Mech จัดเส้นทางและอุดเลนได้สะดวกขึ้น</li>
                 </ul>
             </div>
         </div>
@@ -441,9 +442,9 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>ปรับตำแหน่งการอัญเชิญ Oceanus ให้อยู่ <strong>ด้านหลัง 500 หน่วย</strong> เสมอ</li>
-                    <li>ลดปัญหาการเกิดยูนิตขวางทางเดินแนวหน้า</li>
-                    <li>ช่วยให้ Oceanus อยู่แนวหลังและโจมตีได้ต่อเนื่อง</li>
+                    <li data-en="Oceanus now always spawns <strong>500 units behind</strong>">ปรับตำแหน่งการอัญเชิญ Oceanus ให้อยู่ <strong>ด้านหลัง 500 หน่วย</strong> เสมอ</li>
+                    <li data-en="Reduces summons blocking the frontline path">ลดปัญหาการเกิดยูนิตขวางทางเดินแนวหน้า</li>
+                    <li data-en="Keeps Oceanus in the backline so it can attack continuously">ช่วยให้ Oceanus อยู่แนวหลังและโจมตีได้ต่อเนื่อง</li>
                 </ul>
             </div>
         </div>
@@ -459,8 +460,8 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>เพิ่มราคา Gold จาก <span class="old-val">375</span> <span class="arrow">→</span> <span class="new-val-down">425</span></li>
-                    <li>ราคาสะสมรวมหลังอัปเกรดเป็น <strong>725 Gold</strong></li>
+                    <li data-en="Gold cost increased from <span class=&quot;old-val&quot;>375</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>425</span>">เพิ่มราคา Gold จาก <span class="old-val">375</span> <span class="arrow">→</span> <span class="new-val-down">425</span></li>
+                    <li data-en="Total cost after upgrading is now <strong>725 Gold</strong>">ราคาสะสมรวมหลังอัปเกรดเป็น <strong>725 Gold</strong></li>
                 </ul>
             </div>
         </div>
@@ -476,7 +477,7 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>ปรับค่าอัปเกรดเป็นใช้ไม้ <strong>400 หน่วย</strong></li>
+                    <li data-en="Upgrade cost changed to <strong>400 lumber</strong>">ปรับค่าอัปเกรดเป็นใช้ไม้ <strong>400 หน่วย</strong></li>
                 </ul>
             </div>
         </div>
@@ -484,7 +485,7 @@
 
     <!-- Unit Buffs -->
     <div class="subsection">
-        <h3 class="subsection-title"><span class="icon">💪</span> บัฟยูนิต</h3>
+        <h3 class="subsection-title" data-en="<span class=&quot;icon&quot;>💪</span> Unit Buffs"><span class="icon">💪</span> บัฟยูนิต</h3>
 
         <!-- Gnoll -->
         <div class="card">
@@ -499,11 +500,11 @@
             <div class="card-body">
                 <div class="skill-block">
                     <div class="skill-name">Gnoll Savage</div>
-                    <div class="skill-detail">เพิ่มความเร็วโจมตีจาก <span class="old-val">0.94</span> <span class="arrow">→</span> <span class="new-val-up">0.80</span></div>
+                    <div class="skill-detail" data-en="Attack speed improved from <span class=&quot;old-val&quot;>0.94</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>0.80</span>">เพิ่มความเร็วโจมตีจาก <span class="old-val">0.94</span> <span class="arrow">→</span> <span class="new-val-up">0.80</span></div>
                 </div>
                 <div class="skill-block">
                     <div class="skill-name">Gnoll Marauder</div>
-                    <div class="skill-detail">เพิ่ม HP สูงสุดจาก <span class="old-val">2,250</span> <span class="arrow">→</span> <span class="new-val-up">2,625</span></div>
+                    <div class="skill-detail" data-en="Max HP increased from <span class=&quot;old-val&quot;>2,250</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>2,625</span>">เพิ่ม HP สูงสุดจาก <span class="old-val">2,250</span> <span class="arrow">→</span> <span class="new-val-up">2,625</span></div>
                 </div>
             </div>
         </div>
@@ -520,8 +521,8 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>เพิ่ม HP สูงสุดจาก <span class="old-val">1,200</span> <span class="arrow">→</span> <span class="new-val-up">1,320</span></li>
-                    <li>เพิ่มความเร็วโจมตีจาก <span class="old-val">0.90</span> <span class="arrow">→</span> <span class="new-val-up">0.75</span></li>
+                    <li data-en="Max HP increased from <span class=&quot;old-val&quot;>1,200</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>1,320</span>">เพิ่ม HP สูงสุดจาก <span class="old-val">1,200</span> <span class="arrow">→</span> <span class="new-val-up">1,320</span></li>
+                    <li data-en="Attack speed improved from <span class=&quot;old-val&quot;>0.90</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>0.75</span>">เพิ่มความเร็วโจมตีจาก <span class="old-val">0.90</span> <span class="arrow">→</span> <span class="new-val-up">0.75</span></li>
                 </ul>
             </div>
         </div>
@@ -538,11 +539,11 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>เพิ่มอัตราฟื้นฟูมานาจาก <span class="old-val">12.5</span> <span class="arrow">→</span> <span class="new-val-up">15</span></li>
+                    <li data-en="Mana regen increased from <span class=&quot;old-val&quot;>12.5</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>15</span>">เพิ่มอัตราฟื้นฟูมานาจาก <span class="old-val">12.5</span> <span class="arrow">→</span> <span class="new-val-up">15</span></li>
                 </ul>
                 <div class="skill-block">
                     <div class="skill-name">🔥 Flaming Arrows</div>
-                    <div class="skill-detail">เพิ่มดาเมจจาก <span class="old-val">100</span> <span class="arrow">→</span> <span class="new-val-up">125</span></div>
+                    <div class="skill-detail" data-en="Damage increased from <span class=&quot;old-val&quot;>100</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>125</span>">เพิ่มดาเมจจาก <span class="old-val">100</span> <span class="arrow">→</span> <span class="new-val-up">125</span></div>
                 </div>
             </div>
         </div>
@@ -559,7 +560,7 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>เพิ่ม HP สูงสุดจาก <span class="old-val">1,300</span> <span class="arrow">→</span> <span class="new-val-up">1,450</span></li>
+                    <li data-en="Max HP increased from <span class=&quot;old-val&quot;>1,300</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>1,450</span>">เพิ่ม HP สูงสุดจาก <span class="old-val">1,300</span> <span class="arrow">→</span> <span class="new-val-up">1,450</span></li>
                 </ul>
             </div>
         </div>
@@ -576,11 +577,11 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>เพิ่มความเร็วโจมตีจาก <span class="old-val">0.94</span> <span class="arrow">→</span> <span class="new-val-up">0.80</span></li>
+                    <li data-en="Attack speed improved from <span class=&quot;old-val&quot;>0.94</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>0.80</span>">เพิ่มความเร็วโจมตีจาก <span class="old-val">0.94</span> <span class="arrow">→</span> <span class="new-val-up">0.80</span></li>
                 </ul>
                 <div class="skill-block">
                     <div class="skill-name">☠️ Biotoxin</div>
-                    <div class="skill-detail">
+                    <div class="skill-detail" data-en="Poison damage increased from <span class=&quot;old-val&quot;>35</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>50</span> per second<br>Movement and attack speed slow increased from <span class=&quot;old-val&quot;>24%</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>35%</span>">
                         เพิ่มดาเมจพิษจาก <span class="old-val">35</span> <span class="arrow">→</span> <span class="new-val-up">50</span> หน่วยต่อวินาที<br>
                         เพิ่มผลลดความเร็วเดินและความเร็วโจมตีจาก <span class="old-val">24%</span> <span class="arrow">→</span> <span class="new-val-up">35%</span>
                     </div>
@@ -600,8 +601,8 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li><strong>Mutant on Steroids:</strong> ลดดาเมจลง <span class="new-val-down">30 หน่วย</span></li>
-                    <li><strong>Mutant:</strong> ลดดาเมจลง <span class="new-val-down">30 หน่วย</span></li>
+                    <li data-en="<strong>Mutant on Steroids:</strong> Damage reduced by <span class=&quot;new-val-down&quot;>30</span>"><strong>Mutant on Steroids:</strong> ลดดาเมจลง <span class="new-val-down">30 หน่วย</span></li>
+                    <li data-en="<strong>Mutant:</strong> Damage reduced by <span class=&quot;new-val-down&quot;>30</span>"><strong>Mutant:</strong> ลดดาเมจลง <span class="new-val-down">30 หน่วย</span></li>
                 </ul>
             </div>
         </div>
@@ -618,11 +619,11 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>เพิ่ม HP สูงสุดจาก <span class="old-val">1,635</span> <span class="arrow">→</span> <span class="new-val-up">2,000</span></li>
+                    <li data-en="Max HP increased from <span class=&quot;old-val&quot;>1,635</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>2,000</span>">เพิ่ม HP สูงสุดจาก <span class="old-val">1,635</span> <span class="arrow">→</span> <span class="new-val-up">2,000</span></li>
                 </ul>
                 <div class="skill-block">
                     <div class="skill-name">🛡️ Turtle Shell</div>
-                    <div class="skill-detail">เพิ่มดาเมจที่บล็อกได้จาก <span class="old-val">30</span> <span class="arrow">→</span> <span class="new-val-up">45</span> หน่วย</div>
+                    <div class="skill-detail" data-en="Damage blocked increased from <span class=&quot;old-val&quot;>30</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>45</span>">เพิ่มดาเมจที่บล็อกได้จาก <span class="old-val">30</span> <span class="arrow">→</span> <span class="new-val-up">45</span> หน่วย</div>
                 </div>
             </div>
         </div>
@@ -640,7 +641,7 @@
             <div class="card-body">
                 <div class="skill-block">
                     <div class="skill-name">🏃 Animal Agility</div>
-                    <div class="skill-detail">เพิ่มประสิทธิภาพจาก <span class="old-val">50%</span> <span class="arrow">→</span> <span class="new-val-up">60%</span></div>
+                    <div class="skill-detail" data-en="Effect increased from <span class=&quot;old-val&quot;>50%</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>60%</span>">เพิ่มประสิทธิภาพจาก <span class="old-val">50%</span> <span class="arrow">→</span> <span class="new-val-up">60%</span></div>
                 </div>
             </div>
         </div>
@@ -657,11 +658,11 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>เพิ่มดาเมจจาก <span class="old-val">33</span> <span class="arrow">→</span> <span class="new-val-up">36</span> หน่วย</li>
+                    <li data-en="Damage increased from <span class=&quot;old-val&quot;>33</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>36</span>">เพิ่มดาเมจจาก <span class="old-val">33</span> <span class="arrow">→</span> <span class="new-val-up">36</span> หน่วย</li>
                 </ul>
                 <div class="skill-block">
                     <div class="skill-name">🎯 Multishot</div>
-                    <div class="skill-detail">
+                    <div class="skill-detail" data-en="Fixed a bug with the number of targets<br>Fixed damage to match the unit's actual damage">
                         แก้ไขบั๊กจำนวนเป้าหมาย<br>
                         แก้ไขค่าดาเมจให้ตรงกับค่าของยูนิต
                     </div>
@@ -682,7 +683,7 @@
             <div class="card-body">
                 <div class="skill-block">
                     <div class="skill-name">⚡ Aftershock</div>
-                    <div class="skill-detail">เพิ่มดาเมจจาก <span class="old-val">60</span> <span class="arrow">→</span> <span class="new-val-up">90</span></div>
+                    <div class="skill-detail" data-en="Damage increased from <span class=&quot;old-val&quot;>60</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>90</span>">เพิ่มดาเมจจาก <span class="old-val">60</span> <span class="arrow">→</span> <span class="new-val-up">90</span></div>
                 </div>
             </div>
         </div>
@@ -699,11 +700,11 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>เพิ่มระยะโจมตีจาก <span class="old-val">380</span> <span class="arrow">→</span> <span class="new-val-up">450</span></li>
+                    <li data-en="Attack range increased from <span class=&quot;old-val&quot;>380</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>450</span>">เพิ่มระยะโจมตีจาก <span class="old-val">380</span> <span class="arrow">→</span> <span class="new-val-up">450</span></li>
                 </ul>
                 <div class="skill-block">
                     <div class="skill-name">💀 Death Bass</div>
-                    <div class="skill-detail">เพิ่มระยะร่ายจาก <span class="old-val">675</span> <span class="arrow">→</span> <span class="new-val-up">700</span></div>
+                    <div class="skill-detail" data-en="Cast range increased from <span class=&quot;old-val&quot;>675</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>700</span>">เพิ่มระยะร่ายจาก <span class="old-val">675</span> <span class="arrow">→</span> <span class="new-val-up">700</span></div>
                 </div>
             </div>
         </div>
@@ -721,7 +722,7 @@
             <div class="card-body">
                 <div class="skill-block">
                     <div class="skill-name">❄️ Ice Shield</div>
-                    <div class="skill-detail">เพิ่มประสิทธิภาพบัฟจาก <span class="old-val">16%</span> <span class="arrow">→</span> <span class="new-val-up">20%</span></div>
+                    <div class="skill-detail" data-en="Buff strength increased from <span class=&quot;old-val&quot;>16%</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>20%</span>">เพิ่มประสิทธิภาพบัฟจาก <span class="old-val">16%</span> <span class="arrow">→</span> <span class="new-val-up">20%</span></div>
                 </div>
             </div>
         </div>
@@ -738,11 +739,11 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>เพิ่ม HP สูงสุดจาก <span class="old-val">935</span> <span class="arrow">→</span> <span class="new-val-up">1,000</span></li>
+                    <li data-en="Max HP increased from <span class=&quot;old-val&quot;>935</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>1,000</span>">เพิ่ม HP สูงสุดจาก <span class="old-val">935</span> <span class="arrow">→</span> <span class="new-val-up">1,000</span></li>
                 </ul>
                 <div class="skill-block">
                     <div class="skill-name">💚 High Mend</div>
-                    <div class="skill-detail">
+                    <div class="skill-detail" data-en="Healing increased from <span class=&quot;old-val&quot;>260</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>300</span><br>Max heal targets increased from <span class=&quot;old-val&quot;>7</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>8</span><br>Mana cost changed from <span class=&quot;old-val&quot;>25</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>30</span><br>Cooldown changed from <span class=&quot;old-val&quot;>7</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>8 seconds</span>">
                         เพิ่มพลังรักษาจาก <span class="old-val">260</span> <span class="arrow">→</span> <span class="new-val-up">300</span> หน่วย<br>
                         เพิ่มจำนวนเป้าหมายที่รักษาได้จาก <span class="old-val">7</span> <span class="arrow">→</span> <span class="new-val-up">8</span> ตัว<br>
                         ปรับการใช้มานาจาก <span class="old-val">25</span> <span class="arrow">→</span> <span class="new-val-down">30</span><br>
@@ -765,7 +766,7 @@
             <div class="card-body">
                 <div class="skill-block">
                     <div class="skill-name">⚙️ Overclocking</div>
-                    <div class="skill-detail">
+                    <div class="skill-detail" data-en="Healing increased from <span class=&quot;old-val&quot;>260</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>400</span><br>Armor increased from <span class=&quot;old-val&quot;>35</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>45</span>">
                         เพิ่มพลังรักษาจาก <span class="old-val">260</span> <span class="arrow">→</span> <span class="new-val-up">400</span><br>
                         เพิ่มเกราะจาก <span class="old-val">35</span> <span class="arrow">→</span> <span class="new-val-up">45</span> หน่วย
                     </div>
@@ -786,7 +787,7 @@
             <div class="card-body">
                 <div class="skill-block">
                     <div class="skill-name">⚓ Captain of the Seas</div>
-                    <div class="skill-detail">เพิ่มประสิทธิภาพบัฟจาก <span class="old-val">15%</span> <span class="arrow">→</span> <span class="new-val-up">22%</span></div>
+                    <div class="skill-detail" data-en="Buff strength increased from <span class=&quot;old-val&quot;>15%</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>22%</span>">เพิ่มประสิทธิภาพบัฟจาก <span class="old-val">15%</span> <span class="arrow">→</span> <span class="new-val-up">22%</span></div>
                 </div>
             </div>
         </div>
@@ -803,9 +804,9 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>เพิ่มค่าอัปเกรดไม้จาก <span class="old-val">225</span> <span class="arrow">→</span> <span class="new-val-up">360</span></li>
-                    <li>เพิ่ม HP สูงสุดจาก <span class="old-val">2,150</span> <span class="arrow">→</span> <span class="new-val-up">2,300</span></li>
-                    <li>เพิ่มดาเมจจาก <span class="old-val">150–166</span> <span class="arrow">→</span> <span class="new-val-up">190–206</span></li>
+                    <li data-en="Lumber upgrade cost increased from <span class=&quot;old-val&quot;>225</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>360</span>">เพิ่มค่าอัปเกรดไม้จาก <span class="old-val">225</span> <span class="arrow">→</span> <span class="new-val-up">360</span></li>
+                    <li data-en="Max HP increased from <span class=&quot;old-val&quot;>2,150</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>2,300</span>">เพิ่ม HP สูงสุดจาก <span class="old-val">2,150</span> <span class="arrow">→</span> <span class="new-val-up">2,300</span></li>
+                    <li data-en="Damage increased from <span class=&quot;old-val&quot;>150–166</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>190–206</span>">เพิ่มดาเมจจาก <span class="old-val">150–166</span> <span class="arrow">→</span> <span class="new-val-up">190–206</span></li>
                 </ul>
             </div>
         </div>
@@ -817,8 +818,8 @@
     <div class="section-header">
         <div class="section-number">5</div>
         <div class="section-title-group">
-            <h2 class="section-title">ยกเครื่องฮีโร่ทั้ง 10 ตัว</h2>
-            <div class="section-subtitle">Hero Overhaul — Lv.1 – Lv.3 ทั้งร่างป้อมและร่างลงสนาม</div>
+            <h2 class="section-title" data-en="Overhaul of All 10 Heroes">ยกเครื่องฮีโร่ทั้ง 10 ตัว</h2>
+            <div class="section-subtitle" data-en="Hero Overhaul — Lv.1 – Lv.3, both tower and battle forms">Hero Overhaul — Lv.1 – Lv.3 ทั้งร่างป้อมและร่างลงสนาม</div>
         </div>
     </div>
 
@@ -878,17 +879,17 @@
 
     <!-- Base Stats -->
     <div class="subsection">
-        <h3 class="subsection-title"><span class="icon">📊</span> ค่าพื้นฐานของฮีโร่ทุกตัว</h3>
+        <h3 class="subsection-title" data-en="<span class=&quot;icon&quot;>📊</span> Base Stats for All Heroes"><span class="icon">📊</span> ค่าพื้นฐานของฮีโร่ทุกตัว</h3>
 
         <div class="card">
             <div class="card-body">
                 <div class="skill-block">
-                    <div class="skill-name">⚔️ ประเภทการโจมตี → Chaos Damage</div>
-                    <div class="skill-detail">โจมตีศัตรูทุกประเภทเกราะได้เต็มประสิทธิภาพ <strong>100%</strong></div>
+                    <div class="skill-name" data-en="⚔️ Attack Type → Chaos Damage">⚔️ ประเภทการโจมตี → Chaos Damage</div>
+                    <div class="skill-detail" data-en="Deals full <strong>100%</strong> damage against every armor type">โจมตีศัตรูทุกประเภทเกราะได้เต็มประสิทธิภาพ <strong>100%</strong></div>
                 </div>
                 <div class="skill-block">
-                    <div class="skill-name">🛡️ ประเภทเกราะ → Hero Armor</div>
-                    <div class="skill-detail">ได้รับดาเมจลดลงตามคุณสมบัติเกราะฮีโร่</div>
+                    <div class="skill-name" data-en="🛡️ Armor Type → Hero Armor">🛡️ ประเภทเกราะ → Hero Armor</div>
+                    <div class="skill-detail" data-en="Takes reduced damage according to Hero Armor properties">ได้รับดาเมจลดลงตามคุณสมบัติเกราะฮีโร่</div>
                 </div>
             </div>
         </div>
@@ -897,14 +898,14 @@
             <div class="card-header">
                 <div class="card-icon"><div class="card-icon-placeholder">⚔️</div></div>
                 <div>
-                    <div class="card-name">พลังโจมตีมาตรฐาน</div>
+                    <div class="card-name" data-en="Standard Attack Damage">พลังโจมตีมาตรฐาน</div>
                     <div class="card-type">Standard Damage — All Heroes</div>
                 </div>
             </div>
             <div class="card-body">
                 <table class="data-table">
                     <thead>
-                        <tr><th>ระดับ</th><th>ดาเมจ</th></tr>
+                        <tr><th data-en="Level">ระดับ</th><th data-en="Damage">ดาเมจ</th></tr>
                     </thead>
                     <tbody>
                         <tr><td>Lv.1</td><td><span class="new-val-up">101–110</span></td></tr>
@@ -918,8 +919,8 @@
 
     <!-- Melee Heroes -->
     <div class="subsection">
-        <h3 class="subsection-title"><span class="icon">⚔️</span> ฮีโร่ระยะประชิด — Melee Heroes</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">
+        <h3 class="subsection-title" data-en="<span class=&quot;icon&quot;>⚔️</span> Melee Heroes"><span class="icon">⚔️</span> ฮีโร่ระยะประชิด — Melee Heroes</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;" data-en="Includes Death Knight, Mountain King, Tauren Chieftain, Paladin and Dread Lord">
             ประกอบด้วย Death Knight, Mountain King, Tauren Chieftain, Paladin และ Dread Lord
         </p>
 
@@ -927,8 +928,8 @@
             <div class="card-header">
                 <div class="card-icon"><div class="card-icon-placeholder">📏</div></div>
                 <div>
-                    <div class="card-name">ระยะโจมตี → 275 หน่วย</div>
-                    <div class="card-type">ทุกระดับเลเวล — ลดปัญหาเดินชนกันและยืนขวางทาง</div>
+                    <div class="card-name" data-en="Attack Range → 275">ระยะโจมตี → 275 หน่วย</div>
+                    <div class="card-type" data-en="All levels — less bumping into each other and blocking the path">ทุกระดับเลเวล — ลดปัญหาเดินชนกันและยืนขวางทาง</div>
                 </div>
             </div>
         </div>
@@ -937,14 +938,14 @@
             <div class="card-header">
                 <div class="card-icon"><div class="card-icon-placeholder">❤️</div></div>
                 <div>
-                    <div class="card-name">พลังชีวิต Melee Heroes</div>
+                    <div class="card-name" data-en="Melee Hero HP">พลังชีวิต Melee Heroes</div>
                     <div class="card-type">HP by Level</div>
                 </div>
             </div>
             <div class="card-body">
                 <table class="data-table">
                     <thead>
-                        <tr><th>ฮีโร่</th><th>Lv.1</th><th>Lv.2</th><th>Lv.3</th></tr>
+                        <tr><th data-en="Hero">ฮีโร่</th><th>Lv.1</th><th>Lv.2</th><th>Lv.3</th></tr>
                     </thead>
                     <tbody>
                         <tr>
@@ -977,15 +978,15 @@
                 <div class="card-icon"><div class="card-icon-placeholder">🛡️</div></div>
                 <div>
                     <div class="card-name">Durable Skin — T11R</div>
-                    <div class="card-type">Passive — Melee Heroes ทุกตัว ทุกเลเวล</div>
+                    <div class="card-type" data-en="Passive — All Melee Heroes, all levels">Passive — Melee Heroes ทุกตัว ทุกเลเวล</div>
                 </div>
                 <span class="tag tag-new" style="margin-left:auto;">NEW</span>
             </div>
             <div class="card-body">
                 <ul>
-                    <li>ติดตั้งให้กับฮีโร่ระยะประชิดทั้ง 5 ตัวในทุกระดับเลเวล</li>
-                    <li>มีโอกาส <strong>75%</strong> ที่จะลดดาเมจที่ต่ำกว่า 150 ให้เหลือ <strong>2 หน่วย</strong></li>
-                    <li>เพิ่มความสามารถในการยืนรับดาเมจและแทงค์ครีปแนวหน้า</li>
+                    <li data-en="Given to all 5 melee heroes at every level">ติดตั้งให้กับฮีโร่ระยะประชิดทั้ง 5 ตัวในทุกระดับเลเวล</li>
+                    <li data-en="<strong>75%</strong> chance to reduce incoming damage below 150 to <strong>2</strong>">มีโอกาส <strong>75%</strong> ที่จะลดดาเมจที่ต่ำกว่า 150 ให้เหลือ <strong>2 หน่วย</strong></li>
+                    <li data-en="Better at soaking damage and tanking creeps on the frontline">เพิ่มความสามารถในการยืนรับดาเมจและแทงค์ครีปแนวหน้า</li>
                 </ul>
             </div>
         </div>
@@ -993,8 +994,8 @@
 
     <!-- Ranged Heroes -->
     <div class="subsection">
-        <h3 class="subsection-title"><span class="icon">🏹</span> ฮีโร่ระยะไกล — Ranged Heroes</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">
+        <h3 class="subsection-title" data-en="<span class=&quot;icon&quot;>🏹</span> Ranged Heroes"><span class="icon">🏹</span> ฮีโร่ระยะไกล — Ranged Heroes</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;" data-en="Includes Dark Ranger, Keeper of the Grove, Priestess of the Moon, Archmage and Medusa">
             ประกอบด้วย Dark Ranger, Keeper of the Grove, Priestess of the Moon, Archmage และ Medusa
         </p>
 
@@ -1002,8 +1003,8 @@
             <div class="card-header">
                 <div class="card-icon"><div class="card-icon-placeholder">📏</div></div>
                 <div>
-                    <div class="card-name">ระยะโจมตี → 500 หน่วย</div>
-                    <div class="card-type">เท่ากันทุกตัว</div>
+                    <div class="card-name" data-en="Attack Range → 500">ระยะโจมตี → 500 หน่วย</div>
+                    <div class="card-type" data-en="Same for every hero">เท่ากันทุกตัว</div>
                 </div>
             </div>
         </div>
@@ -1012,14 +1013,14 @@
             <div class="card-header">
                 <div class="card-icon"><div class="card-icon-placeholder">❤️</div></div>
                 <div>
-                    <div class="card-name">พลังชีวิต Ranged Heroes</div>
-                    <div class="card-type">HP by Level — ทุกตัวเท่ากัน</div>
+                    <div class="card-name" data-en="Ranged Hero HP">พลังชีวิต Ranged Heroes</div>
+                    <div class="card-type" data-en="HP by Level — same for every hero">HP by Level — ทุกตัวเท่ากัน</div>
                 </div>
             </div>
             <div class="card-body">
                 <table class="data-table">
                     <thead>
-                        <tr><th>ระดับ</th><th>HP</th></tr>
+                        <tr><th data-en="Level">ระดับ</th><th>HP</th></tr>
                     </thead>
                     <tbody>
                         <tr><td>Lv.1</td><td>500 HP</td></tr>
@@ -1033,7 +1034,7 @@
 
     <!-- Medusa Special -->
     <div class="subsection">
-        <h3 class="subsection-title"><span class="icon">🐍</span> Medusa — ปรับพิเศษ</h3>
+        <h3 class="subsection-title" data-en="<span class=&quot;icon&quot;>🐍</span> Medusa — Special Adjustments"><span class="icon">🐍</span> Medusa — ปรับพิเศษ</h3>
         <div class="card">
             <div class="card-header">
                 <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnnagaseawitch-a5ac3f8966.png" alt="Medusa" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐍</div>'"></div>
@@ -1045,9 +1046,9 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>เพิ่ม HP ของ Medusa Lv.1 เป็น <span class="new-val-up">500 HP</span></li>
-                    <li>ปรับดาเมจของ Medusa Lv.1 ให้เป็น <strong>101–110</strong></li>
-                    <li>ปรับระยะโจมตีของร่างต่อสู้จาก <span class="old-val">600</span> <span class="arrow">→</span> <span class="new-val-down">500 หน่วย</span></li>
+                    <li data-en="Medusa Lv.1 HP increased to <span class=&quot;new-val-up&quot;>500 HP</span>">เพิ่ม HP ของ Medusa Lv.1 เป็น <span class="new-val-up">500 HP</span></li>
+                    <li data-en="Medusa Lv.1 damage set to <strong>101–110</strong>">ปรับดาเมจของ Medusa Lv.1 ให้เป็น <strong>101–110</strong></li>
+                    <li data-en="Battle form attack range changed from <span class=&quot;old-val&quot;>600</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>500</span>">ปรับระยะโจมตีของร่างต่อสู้จาก <span class="old-val">600</span> <span class="arrow">→</span> <span class="new-val-down">500 หน่วย</span></li>
                 </ul>
             </div>
         </div>
@@ -1055,8 +1056,8 @@
 
     <!-- Removed Ultimate Skills -->
     <div class="subsection">
-        <h3 class="subsection-title"><span class="icon">❌</span> ถอดสกิลอัลติเมทของฮีโร่ Lv.3</h3>
-        <div class="callout callout-warning">
+        <h3 class="subsection-title" data-en="<span class=&quot;icon&quot;>❌</span> Removed Lv.3 Hero Ultimates"><span class="icon">❌</span> ถอดสกิลอัลติเมทของฮีโร่ Lv.3</h3>
+        <div class="callout callout-warning" data-en="⚠️ The old Lv.3 hero ultimates have been removed — the game now focuses more on army composition, auras, and signature skills, with fewer effects that could cause lag on the field">
             ⚠️ ลบสกิลไม้ตายเดิมของฮีโร่ Lv.3 ออกจากเกม — ช่วยให้เกมเน้นการจัดทัพ ออร่า และสกิลเฉพาะตัวมากขึ้น รวมถึงลดเอฟเฟกต์ที่อาจทำให้เกิดแลคในสนาม
         </div>
         <div class="card">
@@ -1081,12 +1082,12 @@
 
     <!-- Divine Intervention -->
     <div class="subsection">
-        <h3 class="subsection-title"><span class="icon">🚫</span> ลบระบบ Divine Intervention</h3>
+        <h3 class="subsection-title" data-en="<span class=&quot;icon&quot;>🚫</span> Divine Intervention Removed"><span class="icon">🚫</span> ลบระบบ Divine Intervention</h3>
         <div class="card">
             <div class="card-body">
                 <ul>
-                    <li>นำระบบอมตะของ Paladin ออกจากสคริปต์แผนที่อย่างถาวร</li>
-                    <li>แก้ไขปัญหาการค้างและการติดลูปที่อาจเกิดจากระบบอมตะ</li>
+                    <li data-en="Paladin's invulnerability system has been permanently removed from the map script">นำระบบอมตะของ Paladin ออกจากสคริปต์แผนที่อย่างถาวร</li>
+                    <li data-en="Fixes freezes and infinite loops the invulnerability system could cause">แก้ไขปัญหาการค้างและการติดลูปที่อาจเกิดจากระบบอมตะ</li>
                 </ul>
             </div>
         </div>
@@ -1098,7 +1099,7 @@
     <div class="section-header">
         <div class="section-number">6</div>
         <div class="section-title-group">
-            <h2 class="section-title">ปรับสมดุลออร่าฮีโร่</h2>
+            <h2 class="section-title" data-en="Hero Aura Balance">ปรับสมดุลออร่าฮีโร่</h2>
             <div class="section-subtitle">Hero Aura Buffs</div>
         </div>
     </div>
@@ -1108,10 +1109,10 @@
             <table class="data-table">
                 <thead>
                     <tr>
-                        <th>ฮีโร่</th>
-                        <th>ออร่า</th>
-                        <th>ค่าเดิม (Lv.1 / 2 / 3)</th>
-                        <th>ค่าใหม่ (Lv.1 / 2 / 3)</th>
+                        <th data-en="Hero">ฮีโร่</th>
+                        <th data-en="Aura">ออร่า</th>
+                        <th data-en="Old (Lv.1 / 2 / 3)">ค่าเดิม (Lv.1 / 2 / 3)</th>
+                        <th data-en="New (Lv.1 / 2 / 3)">ค่าใหม่ (Lv.1 / 2 / 3)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1123,8 +1124,8 @@
                             </div>
                         </td>
                         <td>Devotion Aura</td>
-                        <td>เกราะ +0.7 / +1.5 / +2.2</td>
-                        <td><span class="new-val-up">เกราะ +1.0 / +2.0 / +3.0</span></td>
+                        <td data-en="Armor +0.7 / +1.5 / +2.2">เกราะ +0.7 / +1.5 / +2.2</td>
+                        <td><span class="new-val-up" data-en="Armor +1.0 / +2.0 / +3.0">เกราะ +1.0 / +2.0 / +3.0</span></td>
                     </tr>
                     <tr>
                         <td>
@@ -1134,8 +1135,8 @@
                             </div>
                         </td>
                         <td>Unholy Aura</td>
-                        <td>ความเร็ว 5% / 10% / 15%<br>ฟื้นฟู HP 0.5% / 0.8% / 1.2%</td>
-                        <td><span class="new-val-up">ความเร็ว 10% / 16% / 22%<br>ฟื้นฟู HP 0.8% / 1.2% / 1.6%</span></td>
+                        <td data-en="Speed 5% / 10% / 15%<br>HP regen 0.5% / 0.8% / 1.2%">ความเร็ว 5% / 10% / 15%<br>ฟื้นฟู HP 0.5% / 0.8% / 1.2%</td>
+                        <td><span class="new-val-up" data-en="Speed 10% / 16% / 22%<br>HP regen 0.8% / 1.2% / 1.6%">ความเร็ว 10% / 16% / 22%<br>ฟื้นฟู HP 0.8% / 1.2% / 1.6%</span></td>
                     </tr>
                     <tr>
                         <td>
@@ -1145,8 +1146,8 @@
                             </div>
                         </td>
                         <td>Brilliance Aura</td>
-                        <td>มานา +0.05 / +0.10 / +0.15</td>
-                        <td><span class="new-val-up">มานา +0.07 / +0.12 / +0.18</span></td>
+                        <td data-en="Mana +0.05 / +0.10 / +0.15">มานา +0.05 / +0.10 / +0.15</td>
+                        <td><span class="new-val-up" data-en="Mana +0.07 / +0.12 / +0.18">มานา +0.07 / +0.12 / +0.18</span></td>
                     </tr>
                     <tr>
                         <td>
@@ -1167,8 +1168,8 @@
                             </div>
                         </td>
                         <td>Slow Aura</td>
-                        <td>ลดความเร็ว 15% / 30% / 45%</td>
-                        <td><span class="new-val-up">ลดความเร็ว 20% / 35% / 50%</span></td>
+                        <td data-en="Slow 15% / 30% / 45%">ลดความเร็ว 15% / 30% / 45%</td>
+                        <td><span class="new-val-up" data-en="Slow 20% / 35% / 50%">ลดความเร็ว 20% / 35% / 50%</span></td>
                     </tr>
                     <tr>
                         <td>
@@ -1178,8 +1179,8 @@
                             </div>
                         </td>
                         <td>Command Aura</td>
-                        <td>ดาเมจ +7% / +11% / +15%</td>
-                        <td><span class="new-val-up">ดาเมจ +8% / +12% / +16%</span></td>
+                        <td data-en="Damage +7% / +11% / +15%">ดาเมจ +7% / +11% / +15%</td>
+                        <td><span class="new-val-up" data-en="Damage +8% / +12% / +16%">ดาเมจ +8% / +12% / +16%</span></td>
                     </tr>
                     <tr>
                         <td>
@@ -1189,8 +1190,8 @@
                             </div>
                         </td>
                         <td>Endurance Aura</td>
-                        <td>ความเร็วโจมตี +5% / +7% / +10%</td>
-                        <td><span class="new-val-up">ความเร็วโจมตี +8% / +12% / +16%</span></td>
+                        <td data-en="Attack speed +5% / +7% / +10%">ความเร็วโจมตี +5% / +7% / +10%</td>
+                        <td><span class="new-val-up" data-en="Attack speed +8% / +12% / +16%">ความเร็วโจมตี +8% / +12% / +16%</span></td>
                     </tr>
                     <tr>
                         <td>
@@ -1200,8 +1201,8 @@
                             </div>
                         </td>
                         <td>Trueshot Aura</td>
-                        <td>ดาเมจระยะไกล +6% / +9% / +12%</td>
-                        <td><span class="new-val-up">ดาเมจระยะไกล +10% / +15% / +20%</span></td>
+                        <td data-en="Ranged damage +6% / +9% / +12%">ดาเมจระยะไกล +6% / +9% / +12%</td>
+                        <td><span class="new-val-up" data-en="Ranged damage +10% / +15% / +20%">ดาเมจระยะไกล +10% / +15% / +20%</span></td>
                     </tr>
                     <tr>
                         <td>
@@ -1211,8 +1212,8 @@
                             </div>
                         </td>
                         <td>Thorns Aura</td>
-                        <td>สะท้อนดาเมจ 15% / 30% / 45%</td>
-                        <td><span class="new-val-up">สะท้อนดาเมจ 20% / 40% / 60%</span></td>
+                        <td data-en="Damage reflect 15% / 30% / 45%">สะท้อนดาเมจ 15% / 30% / 45%</td>
+                        <td><span class="new-val-up" data-en="Damage reflect 20% / 40% / 60%">สะท้อนดาเมจ 20% / 40% / 60%</span></td>
                     </tr>
                     <tr>
                         <td>
@@ -1222,8 +1223,8 @@
                             </div>
                         </td>
                         <td>Darkness Aura</td>
-                        <td>ลดดาเมจศัตรู 5% / 10% / 15%</td>
-                        <td><span class="new-val-up">ลดดาเมจศัตรู 8% / 15% / 22%</span></td>
+                        <td data-en="Enemy damage -5% / -10% / -15%">ลดดาเมจศัตรู 5% / 10% / 15%</td>
+                        <td><span class="new-val-up" data-en="Enemy damage -8% / -15% / -22%">ลดดาเมจศัตรู 8% / 15% / 22%</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -1236,18 +1237,18 @@
     <div class="section-header">
         <div class="section-number">7</div>
         <div class="section-title-group">
-            <h2 class="section-title">แก้ไขบั๊กและข้อมูลในเกม</h2>
+            <h2 class="section-title" data-en="Bug Fixes &amp; In-Game Info">แก้ไขบั๊กและข้อมูลในเกม</h2>
             <div class="section-subtitle">Bug Fixes & Tooltips</div>
         </div>
     </div>
 
     <div class="subsection">
-        <h3 class="subsection-title"><span class="icon">📝</span> ข้อมูลฮีโร่</h3>
+        <h3 class="subsection-title" data-en="<span class=&quot;icon&quot;>📝</span> Hero Info"><span class="icon">📝</span> ข้อมูลฮีโร่</h3>
         <div class="card">
             <div class="card-body">
                 <ul>
-                    <li>ซิงก์ค่าดาเมจและ Tooltip ของฮีโร่ทุกตัวให้ตรงกับค่าจริงในระบบ</li>
-                    <li>แก้ไขรายละเอียดสกิลและค่าพลังที่แสดงไม่ถูกต้อง</li>
+                    <li data-en="Synced damage values and Tooltips for every hero with their actual in-game values">ซิงก์ค่าดาเมจและ Tooltip ของฮีโร่ทุกตัวให้ตรงกับค่าจริงในระบบ</li>
+                    <li data-en="Fixed incorrectly displayed skill descriptions and stats">แก้ไขรายละเอียดสกิลและค่าพลังที่แสดงไม่ถูกต้อง</li>
                 </ul>
             </div>
         </div>
@@ -1266,15 +1267,15 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>แก้ไขช่วงดาเมจใน Tooltip จาก <span class="old-val">150–171</span> <span class="arrow">→</span> <span class="new-val-up">151–170</span></li>
-                    <li>เพิ่มรายละเอียดสกิล Brilliance Aura และ Mana Burst ให้ครบถ้วน</li>
+                    <li data-en="Fixed the damage range in the Tooltip from <span class=&quot;old-val&quot;>150–171</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>151–170</span>">แก้ไขช่วงดาเมจใน Tooltip จาก <span class="old-val">150–171</span> <span class="arrow">→</span> <span class="new-val-up">151–170</span></li>
+                    <li data-en="Completed the skill descriptions for Brilliance Aura and Mana Burst">เพิ่มรายละเอียดสกิล Brilliance Aura และ Mana Burst ให้ครบถ้วน</li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="subsection">
-        <h3 class="subsection-title"><span class="icon">🐍</span> Medusa Lv.2 และ Lv.3</h3>
+        <h3 class="subsection-title" data-en="<span class=&quot;icon&quot;>🐍</span> Medusa Lv.2 and Lv.3"><span class="icon">🐍</span> Medusa Lv.2 และ Lv.3</h3>
         <div class="card">
             <div class="card-header">
                 <div class="card-icon"><img src="https://www.cybergamethai.com/assets/images/ltd-wiki/btnnagaseawitch-a5ac3f8966.png" alt="Medusa" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐍</div>'"></div>
@@ -1286,10 +1287,10 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>แก้ไขชื่อสกิลให้ถูกต้องเป็น <strong>Slow Aura</strong> และ <strong>Water Shield</strong></li>
-                    <li>แก้ไขชื่อสกิลเดิมที่แสดงผิดเป็น Trueshot Aura</li>
-                    <li>แก้ไขไอคอนร่างต่อสู้ให้แสดงเป็น <strong>Naga Sea Witch</strong></li>
-                    <li>แก้ไขจากไอคอนเดิมที่แสดงเป็น Priestess of the Moon</li>
+                    <li data-en="Corrected skill names to <strong>Slow Aura</strong> and <strong>Water Shield</strong>">แก้ไขชื่อสกิลให้ถูกต้องเป็น <strong>Slow Aura</strong> และ <strong>Water Shield</strong></li>
+                    <li data-en="Previously displayed incorrectly as Trueshot Aura">แก้ไขชื่อสกิลเดิมที่แสดงผิดเป็น Trueshot Aura</li>
+                    <li data-en="Battle form icon now shows <strong>Naga Sea Witch</strong>">แก้ไขไอคอนร่างต่อสู้ให้แสดงเป็น <strong>Naga Sea Witch</strong></li>
+                    <li data-en="Previously showed the Priestess of the Moon icon">แก้ไขจากไอคอนเดิมที่แสดงเป็น Priestess of the Moon</li>
                 </ul>
             </div>
         </div>
@@ -1300,12 +1301,12 @@
 <!-- ===== ปิดท้าย: ชวนเข้าชุมชน ===== -->
 <section class="section reveal" aria-labelledby="patch-cta-title">
     <div class="callout callout-info" style="text-align:center;">
-        <h2 id="patch-cta-title" style="font-family:var(--font-display);font-size:1.5rem;line-height:32px;color:var(--gold);margin-bottom:var(--space-100);">อ่านจบแล้วเจอกันในเกม</h2>
-        <p style="margin-bottom:var(--space-300);">โหลดแพตช์ 2.7 แล้วเข้าห้องได้เลย หรือทักมาถามในชุมชนก่อนก็ได้</p>
+        <h2 id="patch-cta-title" style="font-family:var(--font-display);font-size:1.5rem;line-height:32px;color:var(--gold);margin-bottom:var(--space-100);" data-en="Done reading? See you in game">อ่านจบแล้วเจอกันในเกม</h2>
+        <p style="margin-bottom:var(--space-300);" data-en="Grab patch 2.7 and jump into a lobby, or ask the community first if you have questions">โหลดแพตช์ 2.7 แล้วเข้าห้องได้เลย หรือทักมาถามในชุมชนก่อนก็ได้</p>
         <div style="display:flex;flex-wrap:wrap;gap:var(--space-100);justify-content:center;">
-            <a class="btn btn-primary" href="../../download/">ดาวน์โหลดแพตช์ 2.7</a>
-            <a class="btn btn-ghost" href="../../contact/">ติดต่อทีมงาน</a>
-            <a class="btn btn-ghost" href="../">ดูแพตช์ทั้งหมด</a>
+            <a class="btn btn-primary" href="../../download/" data-en="Download Patch 2.7">ดาวน์โหลดแพตช์ 2.7</a>
+            <a class="btn btn-ghost" href="../../contact/" data-en="Contact the Team">ติดต่อทีมงาน</a>
+            <a class="btn btn-ghost" href="../" data-en="View All Patches">ดูแพตช์ทั้งหมด</a>
         </div>
     </div>
 </section>
@@ -1318,7 +1319,7 @@
 <script src="../../assets/js/nav.js?v=7e7d7ae5" defer></script>
 <script src="../../assets/js/reveal.js?v=e543066f" defer></script>
 <script src="../../assets/js/toc.js?v=b417fc90" defer></script>
-<script src="../../assets/js/img-fallback.js?v=43ebe90d" defer></script>
+<script src="../../assets/js/img-fallback.js?v=030f9fc7" defer></script>
 <script src="../../assets/js/tilt.js?v=fed32629" defer></script>
 <script type="module" src="../../assets/js/scene3d.js?v=bb5a3885"></script>
 

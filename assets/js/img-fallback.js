@@ -15,7 +15,8 @@
         img.addEventListener('error', () => {
             const parent = img.parentElement;
             if (!parent || parent.querySelector('.img-fallback')) return;
-            parent.innerHTML = '<div class="img-fallback" aria-label="ไอคอนสำรอง">' + iconFor(img) + '</div>';
+            const label = window.LTD_I18N ? window.LTD_I18N.t('ไอคอนสำรอง', 'Fallback icon') : 'ไอคอนสำรอง';
+            parent.innerHTML = '<div class="img-fallback" aria-label="' + label + '">' + iconFor(img) + '</div>';
         }, { once: true });
 
         if (img.complete && img.naturalWidth === 0) img.dispatchEvent(new Event('error'));

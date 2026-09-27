@@ -173,6 +173,29 @@ h1, h2, h3, h4 { text-wrap: balance; }
 }
 .nav-cta i { font-size: 14px; }
 
+/* ปุ่มสลับภาษา (i18n.js ใส่ให้เอง) ภาษาที่ใช้อยู่เป็นสีทอง */
+.lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-50);
+    padding: var(--space-50) var(--space-100);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-full);
+    background: transparent;
+    color: var(--text-muted);
+    font-family: var(--font-display);
+    font-size: 0.8125rem;
+    line-height: 20px;
+    letter-spacing: 0.06em;
+    transition: border-color 300ms var(--ease-fluid), color 300ms var(--ease-fluid);
+}
+.lang-toggle:hover { border-color: var(--border-accent); color: var(--text-secondary); }
+.lang-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.lang-toggle .active { color: var(--gold); font-weight: 700; }
+.lang-sep { opacity: 0.5; }
+.nav-overlay-lang { margin-top: var(--space-200); }
+.nav-overlay-lang .lang-toggle { font-size: 1rem; padding: var(--space-75) var(--space-200); }
+
 .nav-brand {
     display: flex;
     align-items: center;

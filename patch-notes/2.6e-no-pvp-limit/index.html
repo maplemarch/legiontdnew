@@ -16,24 +16,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-    <link rel="stylesheet" href="../../assets/css/base.css?v=b7443688">
+    <link rel="stylesheet" href="../../assets/css/base.css?v=d3fd3e27">
+    <script src="../../assets/js/i18n.js?v=22cbfaa5"></script>
     <link rel="stylesheet" href="../../assets/css/patch-notes.css?v=d2a2e6d3">
 </head>
 <body>
 
-<a class="skip-link" href="#main">ข้ามไปเนื้อหาหลัก</a>
+<a class="skip-link" href="#main" data-en="Skip to main content">ข้ามไปเนื้อหาหลัก</a>
 
 <div class="scene3d scene3d-ambient" data-scene="ambient" data-circle="center" aria-hidden="true"></div>
 
 <!-- ===== เมนูหลัก ===== -->
-<nav class="site-nav" aria-label="เมนูหลัก">
+<nav class="site-nav" aria-label="เมนูหลัก" data-en-aria-label="Main menu">
     <div class="site-nav-inner">
         <a class="nav-brand" href="../../">
             <span class="nav-brand-mark" aria-hidden="true"><i class="ph ph-sword"></i></span>
             Legion TD NE
         </a>
         <ul class="nav-links">
-            <li><a class="nav-link" href="../../">หน้าแรก</a></li>
+            <li><a class="nav-link" href="../../" data-en="Home">หน้าแรก</a></li>
             <li><a class="nav-link" href="../../wiki/">Wiki</a></li>
             <li><a class="nav-link" href="../" aria-current="page">Patch</a></li>
             <li><a class="nav-link" href="../../download/">Download</a></li>
@@ -44,7 +45,7 @@
                 WC3TH
                 <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
             </a>
-            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-overlay" aria-label="เปิดเมนู">
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-overlay" aria-label="เปิดเมนู" data-en-aria-label="Open menu">
                 <span class="nav-toggle-bar"></span>
                 <span class="nav-toggle-bar"></span>
             </button>
@@ -54,7 +55,7 @@
 
 <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
     <ul class="nav-overlay-list">
-        <li><a href="../../">หน้าแรก</a></li>
+        <li><a href="../../" data-en="Home">หน้าแรก</a></li>
         <li><a href="../../wiki/">Wiki</a></li>
         <li><a href="../" aria-current="page">Patch</a></li>
         <li><a href="../../download/">Download</a></li>
@@ -63,14 +64,14 @@
     </ul>
 </div>
 
-<nav class="toc-nav" aria-label="สารบัญแพตช์">
+<nav class="toc-nav" aria-label="สารบัญแพตช์" data-en-aria-label="Patch contents">
     <div class="toc-nav-inner">
-        <a class="toc-back" href="../" aria-label="กลับไปหน้าแพตช์ทั้งหมด" title="แพตช์ทั้งหมด">
+        <a class="toc-back" href="../" aria-label="กลับไปหน้าแพตช์ทั้งหมด" data-en-aria-label="Back to all patches" title="แพตช์ทั้งหมด" data-en-title="All patches">
             <i class="ph ph-arrow-left" aria-hidden="true"></i>
-            <span>แพตช์ทั้งหมด</span>
+            <span data-en="All patches">แพตช์ทั้งหมด</span>
         </a>
         <div class="toc-links">
-            <a href="#section1" class="toc-link active">⚙️ ระบบ</a>
+            <a href="#section1" class="toc-link active" data-en="⚙️ System">⚙️ ระบบ</a>
         </div>
     </div>
 </nav>
@@ -78,7 +79,7 @@
 
 <header class="patch-intro">
     <h1 class="patch-intro-title">LTD Patch 2.6e no_pvp_limit</h1>
-    <p class="patch-intro-meta">Legion TD NewEdition · อัปเดต 25 กันยายน 2569 · แยกจากเวอร์ชัน 2.6e</p>
+    <p class="patch-intro-meta" data-en="Legion TD NewEdition · Updated 25 September 2026 · Branched from version 2.6e">Legion TD NewEdition · อัปเดต 25 กันยายน 2569 · แยกจากเวอร์ชัน 2.6e</p>
 </header>
 
 <!-- ─────────── SECTION 1: System ─────────── -->
@@ -86,7 +87,7 @@
     <div class="section-header">
         <div class="section-number">1</div>
         <div class="section-title-group">
-            <h2 class="section-title">ระบบ</h2>
+            <h2 class="section-title" data-en="System">ระบบ</h2>
             <div class="section-subtitle">System</div>
         </div>
     </div>
@@ -96,7 +97,7 @@
             <div class="card-header">
                 <div class="card-icon"><div class="card-icon-placeholder">⚔️</div></div>
                 <div>
-                    <div class="card-name">เอาเวลาจำกัด PvP ออก</div>
+                    <div class="card-name" data-en="PvP time limit removed">เอาเวลาจำกัด PvP ออก</div>
                     <div class="card-type">Arena Battle</div>
                 </div>
                 <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
@@ -113,7 +114,7 @@
 <script src="../../assets/js/nav.js?v=7e7d7ae5" defer></script>
 <script src="../../assets/js/reveal.js?v=e543066f" defer></script>
 <script src="../../assets/js/toc.js?v=b417fc90" defer></script>
-<script src="../../assets/js/img-fallback.js?v=43ebe90d" defer></script>
+<script src="../../assets/js/img-fallback.js?v=030f9fc7" defer></script>
 <script src="../../assets/js/tilt.js?v=fed32629" defer></script>
 <script type="module" src="../../assets/js/scene3d.js?v=bb5a3885"></script>
 

@@ -16,25 +16,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-    <link rel="stylesheet" href="../assets/css/base.css?v=b7443688">
+    <link rel="stylesheet" href="../assets/css/base.css?v=d3fd3e27">
+    <script src="../assets/js/i18n.js?v=22cbfaa5"></script>
     <link rel="stylesheet" href="../assets/css/landing.css?v=c1656a31">
-    <link rel="stylesheet" href="../assets/css/units.css?v=a76b923f">
+    <link rel="stylesheet" href="../assets/css/units.css?v=0d0e0100">
     <link rel="stylesheet" href="../assets/css/game.css?v=5e619912">
 </head>
 <body>
 
-<a class="skip-link" href="#main">ข้ามไปเนื้อหาหลัก</a>
+<a class="skip-link" href="#main" data-en="Skip to main content">ข้ามไปเนื้อหาหลัก</a>
 
 <div class="scene3d scene3d-ambient" data-scene="ambient" data-circle="center" aria-hidden="true"></div>
 
-<nav class="site-nav" aria-label="เมนูหลัก">
+<nav class="site-nav" aria-label="เมนูหลัก" data-en-aria-label="Main menu">
     <div class="site-nav-inner">
         <a class="nav-brand" href="../">
             <span class="nav-brand-mark" aria-hidden="true"><i class="ph ph-sword"></i></span>
             Legion TD NE
         </a>
         <ul class="nav-links">
-            <li><a class="nav-link" href="../">หน้าแรก</a></li>
+            <li><a class="nav-link" href="../" data-en="Home">หน้าแรก</a></li>
             <li><a class="nav-link" href="./" aria-current="page">Wiki</a></li>
             <li><a class="nav-link" href="../patch-notes/">Patch</a></li>
             <li><a class="nav-link" href="../download/">Download</a></li>
@@ -45,7 +46,7 @@
                 WC3TH
                 <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
             </a>
-            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-overlay" aria-label="เปิดเมนู">
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-overlay" aria-label="เปิดเมนู" data-en-aria-label="Open menu">
                 <span class="nav-toggle-bar"></span>
                 <span class="nav-toggle-bar"></span>
             </button>
@@ -55,7 +56,7 @@
 
 <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
     <ul class="nav-overlay-list">
-        <li><a href="../">หน้าแรก</a></li>
+        <li><a href="../" data-en="Home">หน้าแรก</a></li>
         <li><a href="./" aria-current="page">Wiki</a></li>
         <li><a href="../patch-notes/">Patch</a></li>
         <li><a href="../download/">Download</a></li>
@@ -64,9 +65,9 @@
     </ul>
 </div>
 
-<h1 class="sr-only">ข้อมูลยูนิต ครีป และ King — Legion TD NewEdition</h1>
+<h1 class="sr-only" data-en="Units, creeps and King data — Legion TD NewEdition">ข้อมูลยูนิต ครีป และ King — Legion TD NewEdition</h1>
 
-<nav class="toc-nav" aria-label="หมวดข้อมูล">
+<nav class="toc-nav" aria-label="หมวดข้อมูล" data-en-aria-label="Wiki sections">
     <div class="toc-nav-inner">
         <div class="toc-links">
             <a href="#map" class="toc-link active">🗺️ Map</a>
@@ -87,63 +88,76 @@
     เวลามีข้อมูลจริง แทนที่บล็อก empty-state ด้วยตารางหรือการ์ดได้เลย
 -->
 <section class="section" id="map" aria-labelledby="map-title">
-    <h2 class="section-heading" id="map-title">แผนที่</h2>
-    <p class="section-lede">ผังแผนที่ของเวอร์ชัน 2.7 เลนสองข้าง ฐาน King อยู่กลาง</p>
+    <h2 class="section-heading" id="map-title" data-en="Map">แผนที่</h2>
+    <p class="section-lede" data-en="Map layout for version 2.7: two lanes, with the King's base in the middle">ผังแผนที่ของเวอร์ชัน 2.7 เลนสองข้าง ฐาน King อยู่กลาง</p>
     <figure class="map-card reveal">
         <img src="../assets/img/map-preview.jpg?v=5c470d2c"
              alt="ผังแผนที่ Legion TD NewEdition มองจากด้านบน เห็นเลนสองข้างและฐาน King กลางแผนที่"
+             data-en-alt="Top-down layout of the Legion TD NewEdition map, showing the two lanes and the King's base in the middle"
              width="256" height="256" loading="lazy" decoding="async">
         <figcaption>Legion TD NewEdition 2.7</figcaption>
     </figure>
 </section>
 
 <section class="section" id="unit" aria-labelledby="unit-title" style="margin-top: var(--space-900);">
-    <h2 class="section-heading" id="unit-title">ยูนิต</h2>
-    <p class="section-lede">ค่าพลังชีวิต ดาเมจ ราคา สกิล และสายอัปเกรด เริ่มจากร่างแรก กดเข้าไปดูร่างอัปเกรดต่อได้</p>
+    <h2 class="section-heading" id="unit-title" data-en="Units">ยูนิต</h2>
+    <p class="section-lede" data-en="HP, damage, cost, skills and upgrade paths. Starts from the base forms; open one to browse its upgrades">ค่าพลังชีวิต ดาเมจ ราคา สกิล และสายอัปเกรด เริ่มจากร่างแรก กดเข้าไปดูร่างอัปเกรดต่อได้</p>
 
     <div class="unit-panel">
         <div class="unit-toolbar">
             <label class="unit-field">
-                <span class="sr-only">ค้นหายูนิต</span>
+                <span class="sr-only" data-en="Search units">ค้นหายูนิต</span>
                 <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
-                <input type="search" id="unit-search" placeholder="ชื่อ รหัส หรือชื่อสกิล" autocomplete="off">
+                <input type="search" id="unit-search" placeholder="ชื่อ รหัส หรือชื่อสกิล" data-en-placeholder="Name, ID or skill name" autocomplete="off">
             </label>
             <label class="unit-field unit-field-select">
-                <span class="sr-only">กรองตามระดับ</span>
+                <span class="sr-only" data-en="Filter by tier">กรองตาม Tier</span>
                 <select id="unit-tier">
-                    <option value="base" selected>ร่างแรกเท่านั้น</option>
-                    <option value="">ทุกร่าง</option>
+                    <option value="" selected data-en="All tiers">ทุก Tier</option>
                     <option value="1">Tier 1</option>
                     <option value="2">Tier 2</option>
                     <option value="3">Tier 3</option>
                     <option value="4">Tier 4</option>
+                    <option value="5">Tier 5</option>
+                    <option value="6">Tier 6</option>
                 </select>
                 <i class="ph ph-caret-down" aria-hidden="true"></i>
             </label>
-            <button class="btn btn-ghost btn-sm" type="button" id="unit-clear">ล้างตัวกรอง</button>
+            <label class="unit-field unit-field-select">
+                <span class="sr-only" data-en="Filter by upgrade">กรองตามขั้นอัปเกรด</span>
+                <select id="unit-stage">
+                    <option value="base" selected data-en="Base forms only">ร่างแรกเท่านั้น</option>
+                    <option value="" data-en="All forms">ทุกร่าง</option>
+                    <option value="2" data-en="Upgrade 1">อัปเกรด 1</option>
+                    <option value="3" data-en="Upgrade 2">อัปเกรด 2</option>
+                    <option value="4" data-en="Upgrade 3">อัปเกรด 3</option>
+                </select>
+                <i class="ph ph-caret-down" aria-hidden="true"></i>
+            </label>
+            <button class="btn btn-ghost btn-sm" type="button" id="unit-clear" data-en="Clear filters">ล้างตัวกรอง</button>
         </div>
 
-        <p class="unit-count" id="unit-count" role="status">กำลังโหลดข้อมูล</p>
+        <p class="unit-count" id="unit-count" role="status"><span data-en="Loading data">กำลังโหลดข้อมูล</span></p>
         <div class="unit-grid" id="unit-grid"></div>
     </div>
 </section>
 
 <section class="section" id="damage" aria-labelledby="damage-title" style="margin-top: var(--space-900);">
-    <h2 class="section-heading" id="damage-title">ประเภทโจมตีและเกราะ</h2>
-    <p class="section-lede">แต่ละชนิดโจมตีทำดาเมจใส่เกราะแต่ละแบบได้กี่เปอร์เซ็นต์</p>
+    <h2 class="section-heading" id="damage-title" data-en="Attack &amp; Armor Types">ประเภทโจมตีและเกราะ</h2>
+    <p class="section-lede" data-en="How much damage, in percent, each attack type deals to each armor type">แต่ละชนิดโจมตีทำดาเมจใส่เกราะแต่ละแบบได้กี่เปอร์เซ็นต์</p>
     <div class="game-panel" id="damage-data" hidden></div>
 </section>
 
 <section class="section" id="creep" aria-labelledby="creep-title" style="margin-top: var(--space-900);">
-    <h2 class="section-heading" id="creep-title">ครีป</h2>
-    <p class="section-lede">ศัตรูที่เดินมาแต่ละรอบ ค่าพลังชีวิต เกราะ และจำนวนต่อรอบ</p>
+    <h2 class="section-heading" id="creep-title" data-en="Creeps">ครีป</h2>
+    <p class="section-lede" data-en="The enemies sent each wave: HP, armor and count per wave">ศัตรูที่เดินมาแต่ละรอบ ค่าพลังชีวิต เกราะ และจำนวนต่อรอบ</p>
     <div class="game-panel" id="creep-data" hidden></div>
     <div class="empty-state reveal">
         <div class="empty-mark"><i class="ph ph-paw-print" aria-hidden="true"></i></div>
-        <h3 class="empty-title">กำลังรวบรวมข้อมูล</h3>
-        <p class="empty-body">ค่าของครีปแต่ละรอบยังไม่ได้ลงในหน้านี้</p>
+        <h3 class="empty-title" data-en="Still collecting data">กำลังรวบรวมข้อมูล</h3>
+        <p class="empty-body" data-en="Creep stats for each wave haven't been added to this page yet">ค่าของครีปแต่ละรอบยังไม่ได้ลงในหน้านี้</p>
         <div class="hero-actions" style="justify-content: center; margin-bottom: 0;">
-            <a class="btn btn-ghost" href="../contact/">
+            <a class="btn btn-ghost" href="../contact/" data-en="<i class=&quot;ph ph-users-three&quot; aria-hidden=&quot;true&quot;></i> Help send data">
                 <i class="ph ph-users-three" aria-hidden="true"></i>
                 ช่วยส่งข้อมูล
             </a>
@@ -153,20 +167,20 @@
 
 <section class="section" id="champion" aria-labelledby="champion-title" style="margin-top: var(--space-900);">
     <h2 class="section-heading" id="champion-title">Challenge Champion</h2>
-    <p class="section-lede">ท้าแชมเปี้ยนแต่ละเวฟได้ทองเท่าไหร่ โบนัส stack และแชมเปี้ยนแข็งขึ้นแค่ไหน</p>
+    <p class="section-lede" data-en="How much gold challenging a Champion gives each wave, the stack bonus, and how much stronger the Champion gets">ท้าแชมเปี้ยนแต่ละเวฟได้ทองเท่าไหร่ โบนัส stack และแชมเปี้ยนแข็งขึ้นแค่ไหน</p>
     <div class="game-panel" id="champion-data" hidden></div>
 </section>
 
 <section class="section" id="king" aria-labelledby="king-title" style="margin-top: var(--space-900);">
     <h2 class="section-heading" id="king-title">King</h2>
-    <p class="section-lede">ค่าพลังชีวิต สกิล และการอัปเกรดของ King</p>
+    <p class="section-lede" data-en="The King's HP, skills and upgrades">ค่าพลังชีวิต สกิล และการอัปเกรดของ King</p>
     <div class="game-panel" id="king-data" hidden></div>
     <div class="empty-state reveal">
         <div class="empty-mark"><i class="ph ph-crown-simple" aria-hidden="true"></i></div>
-        <h3 class="empty-title">กำลังรวบรวมข้อมูล</h3>
-        <p class="empty-body">แพตช์ 2.7 ปรับค่า King ไปหลายจุด อ่านรายละเอียดได้ในหน้าแพตช์ก่อน</p>
+        <h3 class="empty-title" data-en="Still collecting data">กำลังรวบรวมข้อมูล</h3>
+        <p class="empty-body" data-en="Patch 2.7 changed many King values. See the patch page for details for now">แพตช์ 2.7 ปรับค่า King ไปหลายจุด อ่านรายละเอียดได้ในหน้าแพตช์ก่อน</p>
         <div class="hero-actions" style="justify-content: center; margin-bottom: 0;">
-            <a class="btn btn-ghost" href="../patch-notes/2.7/#section3">
+            <a class="btn btn-ghost" href="../patch-notes/2.7/#section3" data-en="<i class=&quot;ph ph-scroll&quot; aria-hidden=&quot;true&quot;></i> King in patch 2.7">
                 <i class="ph ph-scroll" aria-hidden="true"></i>
                 King ในแพตช์ 2.7
             </a>
@@ -176,14 +190,14 @@
 
 <section class="section" id="wisp" aria-labelledby="wisp-title" style="margin-top: var(--space-900);">
     <h2 class="section-heading" id="wisp-title">Wisp &amp; Tree</h2>
-    <p class="section-lede">Wisp คนงานเก็บไม้ และค่าอัปเกรดการเก็บไม้ (tree) แต่ละขั้น</p>
+    <p class="section-lede" data-en="Wisp, the lumber-harvesting worker, and the cost of each lumber (tree) upgrade level">Wisp คนงานเก็บไม้ และค่าอัปเกรดการเก็บไม้ (tree) แต่ละขั้น</p>
     <div class="game-panel" id="wisp-data" hidden></div>
     <div class="empty-state reveal">
         <div class="empty-mark"><i class="ph ph-tree" aria-hidden="true"></i></div>
-        <h3 class="empty-title">กำลังรวบรวมข้อมูล</h3>
-        <p class="empty-body">ยังไม่ได้ลงข้อมูลส่วนนี้</p>
+        <h3 class="empty-title" data-en="Still collecting data">กำลังรวบรวมข้อมูล</h3>
+        <p class="empty-body" data-en="This section hasn't been filled in yet">ยังไม่ได้ลงข้อมูลส่วนนี้</p>
         <div class="hero-actions" style="justify-content: center; margin-bottom: 0;">
-            <a class="btn btn-ghost" href="../contact/">
+            <a class="btn btn-ghost" href="../contact/" data-en="<i class=&quot;ph ph-users-three&quot; aria-hidden=&quot;true&quot;></i> Help send data">
                 <i class="ph ph-users-three" aria-hidden="true"></i>
                 ช่วยส่งข้อมูล
             </a>
@@ -194,16 +208,16 @@
 </main>
 
 
-<dialog class="unit-dialog" id="unit-dialog" aria-label="รายละเอียดยูนิต">
-    <button class="unit-dialog-close" type="button" aria-label="ปิด"><i class="ph ph-x" aria-hidden="true"></i></button>
+<dialog class="unit-dialog" id="unit-dialog" aria-label="รายละเอียดยูนิต" data-en-aria-label="Unit details">
+    <button class="unit-dialog-close" type="button" aria-label="ปิด" data-en-aria-label="Close"><i class="ph ph-x" aria-hidden="true"></i></button>
     <div class="unit-dialog-body" id="unit-dialog-body"></div>
 </dialog>
 
 <script src="../assets/js/nav.js?v=7e7d7ae5" defer></script>
 <script src="../assets/js/reveal.js?v=e543066f" defer></script>
 <script src="../assets/js/toc.js?v=b417fc90" defer></script>
-<script src="../assets/js/units.js?v=234d2a3c" defer></script>
-<script src="../assets/js/game.js?v=ebaab39d" defer></script>
+<script src="../assets/js/units.js?v=e708d227" defer></script>
+<script src="../assets/js/game.js?v=b0699259" defer></script>
 <script src="../assets/js/tilt.js?v=fed32629" defer></script>
 <script type="module" src="../assets/js/scene3d.js?v=bb5a3885"></script>
 

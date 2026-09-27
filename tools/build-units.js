@@ -7,7 +7,7 @@
  *
  * แมพที่ผ่าน optimizer จะไม่มี war3map.w3u แต่ข้อมูลยูนิตถูกแปลงไปอยู่ใน Units\*.slk และ *Strings.txt
  * สคริปต์นี้อ่านจากไฟล์เหล่านั้น แล้วอัปเดตเฉพาะยูนิตที่เว็บมีอยู่แล้ว
- * ค่าที่เว็บกำหนดเอง (tier, base, skin, ไอคอนที่มีอยู่แล้ว) คงไว้ตามเดิม
+ * ค่าที่เว็บกำหนดเอง (stage, base, skin, ไอคอนที่มีอยู่แล้ว) คงไว้ตามเดิม ส่วน tier อ่านจากกลุ่มสุ่มในสคริปต์
  */
 
 const fs = require('fs');
@@ -88,10 +88,42 @@ const ids = new Set(next.map((u) => u.id));
 for (const u of next) { u.up = u.up.filter((x) => ids.has(x)); u.from = []; }
 for (const u of next) for (const x of u.up) next.find((v) => v.id === x).from.push(u.id);
 
+/* Tier ในเกม = ช่องสุ่ม 1-6 ของโหมด PR อ่านจากกลุ่มสุ่มใน POOL_FUNC ของสคริปต์ (MB = Tier 1 ... WB = Tier 6)
+   ร่างอัปเกรดใช้ Tier เดียวกับร่างแรกของสาย · ส่วนขั้นอัปเกรด (ร่างแรก = 1) เก็บใน stage
+   ถ้าแมพเวอร์ชันใหม่เปลี่ยนชื่อฟังก์ชัน ให้แก้ POOL_FUNC */
+const POOL_FUNC = 'QZE';
+const POOLS = ['MB', 'QB', 'SB', 'TB', 'UB', 'WB'];
+const jassFile = [path.join(SRC, 'Scripts/war3map.j'), path.join(SRC, 'war3map.j')].find(fs.existsSync);
+if (!jassFile) throw new Error('ไม่เจอ war3map.j');
+const J = fs.readFileSync(jassFile, 'latin1');
+const at = J.indexOf(`function ${POOL_FUNC} takes`);
+if (at < 0) throw new Error('หาในสคริปต์ไม่เจอ: ' + POOL_FUNC);
+const poolBody = J.slice(at, J.indexOf('endfunction', at));
+const poolTier = {};
+POOLS.forEach((arr, i) => {
+    for (const m of poolBody.matchAll(new RegExp(`set ${arr}\\[EE\\]='(\\w{4})'`, 'g'))) poolTier[m[1]] = i + 1;
+});
+
+const byId = new Map(next.map((u) => [u.id, u]));
+const rollTier = (u, seen = new Set()) => {
+    if (poolTier[u.id]) return poolTier[u.id];
+    for (const f of u.from) {
+        if (seen.has(f)) continue;
+        seen.add(f);
+        const t = rollTier(byId.get(f), seen);
+        if (t) return t;
+    }
+    return 0;
+};
+for (const u of next) { u.stage = u.stage ?? u.tier; }
+for (const u of next) u.tier = rollTier(u);
+const noTier = next.filter((u) => u.base && !u.tier).map((u) => u.name);
+
 fs.writeFileSync(OUT, JSON.stringify(next));
 
 console.log(`อัปเดต ${report.updated} ยูนิต`);
 console.log(`ค่าต่างจากเดิม ${report.changed.length} ยูนิต`);
+console.log(`Tier 1-6: ${POOLS.map((_, i) => next.filter((u) => u.base && u.tier === i + 1).length).join(' ')} ร่างแรก · ไม่อยู่ในกลุ่มสุ่ม: ${noTier.join(', ') || '-'}`);
 report.changed.slice(0, 40).forEach((c) => console.log('  ' + c));
 if (report.removed.length) console.log(`ไม่มีในแมพแล้ว ถอดออก ${report.removed.length}: ${report.removed.join(', ')}`);
 if (report.missingIcons.size) console.log(`ไอคอนสกิลที่ยังไม่มีรูป ${report.missingIcons.size}: ${[...report.missingIcons].join(', ')}`);

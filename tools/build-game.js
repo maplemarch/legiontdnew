@@ -195,13 +195,19 @@ const stageWaves = (() => {
     }
     return out;
 })();
+// ชื่อค่าในตารางสกิลเป็นภาษาอังกฤษ (หน้าเว็บสลับภาษาได้) หน่วย วิ = s
+const LABEL_EN = {
+    'ดาเมจ': 'Damage', 'สตัน': 'Stun', 'สตันบอส': 'Boss stun', 'รัศมี': 'Radius', 'คูลดาวน์': 'Cooldown',
+    'มานา': 'Mana', 'เผาต่อวิ': 'Burn/s', 'ระยะ': 'Range', 'ดาเมจต่อวิ': 'Damage/s', 'มานาต่อวิ': 'Mana/s',
+};
+const UNIT_EN = { 'วิ': 's' };
 const KING_SKILLS = [
-    // [ร้านโหวต, รหัสสกิลจริง, สรุปสั้น, รายการค่าที่แสดง [ชื่อ, ฟิลด์, หน่วย]]
-    ['uu9d', 'A022', 'กระแทกพื้น ทำดาเมจและสตันศัตรูทุกตัวรอบ King', [['ดาเมจ', 'DataA'], ['สตัน', 'Dur', 'วิ'], ['สตันบอส', 'HeroDur', 'วิ'], ['รัศมี', 'Area'], ['คูลดาวน์', 'Cool', 'วิ'], ['มานา', 'Cost']]],
-    ['uu9r', 'A982', 'ปล่อยคลื่นพลังเป็นเส้นตรง ทำดาเมจแล้วเผาต่อเนื่อง', [['ดาเมจ', 'DataA'], ['เผาต่อวิ', 'DataE'], ['ระยะ', 'Rng'], ['รัศมี', 'Area'], ['คูลดาวน์', 'Cool', 'วิ'], ['มานา', 'Cost']]],
-    ['uu1d', 'A01T', 'เผาศัตรูรอบตัวตลอดเวลาที่เปิด กินมานาทุกวินาที', [['ดาเมจต่อวิ', 'DataA'], ['รัศมี', 'Area'], ['มานาต่อวิ', 'DataB']]],
+    // [ร้านโหวต, รหัสสกิลจริง, [สรุปสั้น ไทย, อังกฤษ], รายการค่าที่แสดง [ชื่อ, ฟิลด์, หน่วย]]
+    ['uu9d', 'A022', ['กระแทกพื้น ทำดาเมจและสตันศัตรูทุกตัวรอบ King', 'Slams the ground, damaging and stunning every enemy around the King'], [['ดาเมจ', 'DataA'], ['สตัน', 'Dur', 'วิ'], ['สตันบอส', 'HeroDur', 'วิ'], ['รัศมี', 'Area'], ['คูลดาวน์', 'Cool', 'วิ'], ['มานา', 'Cost']]],
+    ['uu9r', 'A982', ['ปล่อยคลื่นพลังเป็นเส้นตรง ทำดาเมจแล้วเผาต่อเนื่อง', 'Fires a shockwave in a straight line that deals damage, then keeps burning'], [['ดาเมจ', 'DataA'], ['เผาต่อวิ', 'DataE'], ['ระยะ', 'Rng'], ['รัศมี', 'Area'], ['คูลดาวน์', 'Cool', 'วิ'], ['มานา', 'Cost']]],
+    ['uu1d', 'A01T', ['เผาศัตรูรอบตัวตลอดเวลาที่เปิด กินมานาทุกวินาที', 'Burns nearby enemies while toggled on, draining mana every second'], [['ดาเมจต่อวิ', 'DataA'], ['รัศมี', 'Area'], ['มานาต่อวิ', 'DataB']]],
 ];
-const kingSkills = KING_SKILLS.map(([shop, abil, summary, fields]) => {
+const kingSkills = KING_SKILLS.map(([shop, abil, [summary, summaryEn], fields]) => {
     const row = map.abilityData[abil] || {};
     const st = abilStr[abil] || {};
     const levels = +row.levels || 0;
@@ -210,7 +216,12 @@ const kingSkills = KING_SKILLS.map(([shop, abil, summary, fields]) => {
         const vals = fields.map(([label, f, unit]) => {
             const raw = row[f + lv] ?? map.w3a[abil]?.[`${f}@${lv}`];
             const v = raw === undefined || raw === '' || raw === '-' ? '' : Math.round(+raw * 10) / 10;
-            return { label, value: v === '' ? '' : `${v}${unit ? ' ' + unit : ''}` };
+            return {
+                label,
+                labelEn: LABEL_EN[label] || label,
+                value: v === '' ? '' : `${v}${unit ? ' ' + unit : ''}`,
+                valueEn: v === '' ? '' : `${v}${unit ? ' ' + (UNIT_EN[unit] || unit) : ''}`,
+            };
         });
         // ตาราง SLK เก็บได้ 4 เลเวล ถ้าเลเวลเกินนั้นไม่มีค่าใน war3map.w3a ก็ไม่รู้ค่าจริง ไม่แสดง
         if (vals.every((x) => x.value === '')) continue;
@@ -220,6 +231,7 @@ const kingSkills = KING_SKILLS.map(([shop, abil, summary, fields]) => {
         ...shopItem(shop),
         name: clean(st.Name) || shopItem(shop).name,
         summary,
+        summaryEn,
         stages,
         unknownFrom: stages.length < levels ? stageWaves[stages.length + 1] || '' : '',
     };
@@ -239,35 +251,37 @@ function presence() {
         return m ? +m[1] : 0;
     };
     const buyCount = (upg) => +(upgrades[upg]?.maxlevel || 0);
+    // แต่ละข้อเป็นคู่ [ไทย, อังกฤษ] แล้วแยกเป็น bullets กับ bulletsEn
     const common = (shop, upg) => [
-        `ทีมต้องซื้อครบ ${buyCount(upg)} ครั้งสกิลถึงจะใช้ได้ (ครั้งละ ${num(balance[shop]?.lumbercost)} ไม้ ได้ income +${income(shop)})`,
-        'เลือกได้ทีมละ 1 Presence ซื้ออันหนึ่งแล้วอีกอันจะซื้อไม่ได้',
-        'ติดตัว: ฟื้นมานา 1% ของมานาสูงสุดต่อวินาที',
+        [`ทีมต้องซื้อครบ ${buyCount(upg)} ครั้งสกิลถึงจะใช้ได้ (ครั้งละ ${num(balance[shop]?.lumbercost)} ไม้ ได้ income +${income(shop)})`,
+            `The team must buy it ${buyCount(upg)} times before the skill works (${num(balance[shop]?.lumbercost)} lumber each, +${income(shop)} income)`],
+        ['เลือกได้ทีมละ 1 Presence ซื้ออันหนึ่งแล้วอีกอันจะซื้อไม่ได้', 'Each team can pick only 1 Presence; buying one locks out the other'],
+        ['ติดตัว: ฟื้นมานา 1% ของมานาสูงสุดต่อวินาที', 'Passive: regenerates 1% of max mana per second'],
     ];
+    const card = (shop, [summary, summaryEn], list) => ({
+        ...shopItem(shop),
+        summary,
+        summaryEn,
+        bullets: list.map((b) => b[0]),
+        bulletsEn: list.map((b) => b[1]),
+    });
     return [
-        {
-            ...shopItem('u99r'),
-            summary: 'เผาเลือดศัตรูรอบตัว King เป็น % ของเลือดสูงสุด',
-            bullets: [
-                'ศัตรูในรัศมีเสียเลือด 2.5% ของ Max HP ต่อวินาที นาน 10 วินาที',
-                'ลดเลือดได้สูงสุด 25% และไม่ทำให้ตาย (เป้าจะเหลืออย่างน้อย 1%)',
-                `รัศมี ${abil('A975', 'Area')}`,
-                `คูลดาวน์ ${abil('A971', 'Cool')} วินาที · ใช้มานา ${abil('A971', 'Cost')}`,
-                ...common('u99r', 'R998'),
-            ],
-        },
-        {
-            ...shopItem('u99d'),
-            summary: 'King ตีแรงขึ้นหลายเท่า ตีเด้งหลายตัว และดูดเลือด',
-            bullets: [
-                `ดาเมจพื้นฐาน +${Math.round(abil('A969', 'DataA') * 100)}%`,
-                'การตีเด้งไปโดนได้ 3 เป้า เป้าที่ 2 รับ 75% เป้าที่ 3 รับ 56%',
-                'ดูดเลือด 45% ของดาเมจที่ทำ',
-                `นาน ${abil('A969', 'Dur')} วินาที · คูลดาวน์ ${abil('A969', 'Cool')} วินาที · ใช้มานา ${abil('A969', 'Cost')}`,
-                'หลังกดใช้ ให้รอ King ตีครั้งแรกก่อนค่อยเปลี่ยนเป้า',
-                ...common('u99d', 'R999'),
-            ],
-        },
+        card('u99r', ['เผาเลือดศัตรูรอบตัว King เป็น % ของเลือดสูงสุด', 'Burns enemies around the King for a % of their max HP'], [
+            ['ศัตรูในรัศมีเสียเลือด 2.5% ของ Max HP ต่อวินาที นาน 10 วินาที', 'Enemies in the radius lose 2.5% of Max HP per second for 10 seconds'],
+            ['ลดเลือดได้สูงสุด 25% และไม่ทำให้ตาย (เป้าจะเหลืออย่างน้อย 1%)', 'Removes at most 25% HP and cannot kill (targets keep at least 1%)'],
+            [`รัศมี ${abil('A975', 'Area')}`, `Radius ${abil('A975', 'Area')}`],
+            [`คูลดาวน์ ${abil('A971', 'Cool')} วินาที · ใช้มานา ${abil('A971', 'Cost')}`, `Cooldown ${abil('A971', 'Cool')} s · ${abil('A971', 'Cost')} mana`],
+            ...common('u99r', 'R998'),
+        ]),
+        card('u99d', ['King ตีแรงขึ้นหลายเท่า ตีเด้งหลายตัว และดูดเลือด', 'The King hits several times harder, bounces between targets and steals life'], [
+            [`ดาเมจพื้นฐาน +${Math.round(abil('A969', 'DataA') * 100)}%`, `Base damage +${Math.round(abil('A969', 'DataA') * 100)}%`],
+            ['การตีเด้งไปโดนได้ 3 เป้า เป้าที่ 2 รับ 75% เป้าที่ 3 รับ 56%', 'Attacks bounce to 3 targets: the 2nd takes 75%, the 3rd takes 56%'],
+            ['ดูดเลือด 45% ของดาเมจที่ทำ', 'Life steal 45% of damage dealt'],
+            [`นาน ${abil('A969', 'Dur')} วินาที · คูลดาวน์ ${abil('A969', 'Cool')} วินาที · ใช้มานา ${abil('A969', 'Cost')}`,
+                `Lasts ${abil('A969', 'Dur')} s · Cooldown ${abil('A969', 'Cool')} s · ${abil('A969', 'Cost')} mana`],
+            ['หลังกดใช้ ให้รอ King ตีครั้งแรกก่อนค่อยเปลี่ยนเป้า', 'After casting, wait for the King\'s first hit before switching targets'],
+            ...common('u99d', 'R999'),
+        ]),
     ];
 }
 
@@ -328,29 +342,42 @@ const champion = (() => {
             dmg: dmgByWave[c.wave] || 0,
         };
     });
+    // แต่ละข้อเป็นคู่ [ไทย, อังกฤษ] แล้วแยกเป็น bullets กับ bulletsEn
+    const bossWaves = blocked.filter((w) => w <= LAST_WAVE).join(', ');
+    const bullets = [
+        ['กดท้าก่อนเริ่มเวฟ ครีปตัวหนึ่งในเลนของคุณจะกลายเป็นแชมเปี้ยนที่แข็งกว่าปกติ แลกกับทองตอนจบเวฟ',
+            'Challenge before the wave starts: one creep in your lane becomes a Champion that is stronger than normal, in exchange for gold at the end of the wave'],
+        // รวมช่วงเวฟที่ตัวคูณเท่ากันเป็นข้อเดียว (ในสคริปต์เขียนแยกช่วงซ้อนกัน)
+        ...goldRules.reduce((acc, g) => {
+            const last = acc[acc.length - 1];
+            if (last && last.mult === g.mult && g.from <= last.to + 1) last.to = Math.max(last.to, g.to);
+            else acc.push({ ...g });
+            return acc;
+        }, []).map((g) => {
+            const to = Math.min(g.to, LAST_WAVE - (blocked.includes(LAST_WAVE) ? 1 : 0));
+            return [`เวฟ ${g.from}–${to}: ได้ทอง = เลขเวฟ × ${g.mult}`, `Waves ${g.from}–${to}: gold = wave number × ${g.mult}`];
+        }),
+        bossWaves ? [`ท้าไม่ได้ในเวฟบอส ${bossWaves}`, `Cannot challenge on boss wave ${bossWaves}`] : null,
+        [`Stack: ท้าติดกันทุกเวฟ stack เพิ่มทีละ 1 ได้โบนัส (stack − 1) × ${stackGold} ทอง ข้ามเวฟเมื่อไหร่ stack กลับเป็น 0`,
+            `Stack: challenge every wave in a row and the stack grows by 1, giving a bonus of (stack − 1) × ${stackGold} gold. Skip a wave and the stack resets to 0`],
+        ['ถ้าแชมเปี้ยนหลุดเลน ทองที่จะได้จากการท้าเวฟนั้นลดเหลือครึ่งเดียว', 'If the Champion leaks out of your lane, the challenge gold for that wave is cut in half'],
+    ].filter(Boolean);
+    const buffs = [
+        [`ดาเมจ +${Math.round(roar * 100)}%`, `Damage +${Math.round(roar * 100)}%`],
+        [`ลดเกราะศัตรูรอบตัว ${Math.abs(+armorAura.DataA1 || 0)} หน่วย รัศมี ${+armorAura.Area1 || 0}`,
+            `Reduces armor of nearby enemies by ${Math.abs(+armorAura.DataA1 || 0)}, radius ${+armorAura.Area1 || 0}`],
+        [`ออร่าฟื้นเลือด ${Math.round((+regenAura.DataB1 || 0) * 100)}% ของเลือดสูงสุดต่อวินาที รัศมี ${+regenAura.Area1 || 0}`,
+            `HP regen aura: ${Math.round((+regenAura.DataB1 || 0) * 100)}% of max HP per second, radius ${+regenAura.Area1 || 0}`],
+        [`สะท้อนดาเมจ ${Math.round(thorns * 100)}% กลับไปหาคนตี`, `Reflects ${Math.round(thorns * 100)}% of damage back to the attacker`],
+        ['ผิวต้านเวท (Resistant Skin) ติดสถานะสั้นลงและไม่โดนสกิลบางอย่าง', 'Resistant Skin: shorter debuff durations and immune to some skills'],
+    ];
     return {
         stackGold,
         rules: goldRules,
-        bullets: [
-            'กดท้าก่อนเริ่มเวฟ ครีปตัวหนึ่งในเลนของคุณจะกลายเป็นแชมเปี้ยนที่แข็งกว่าปกติ แลกกับทองตอนจบเวฟ',
-            // รวมช่วงเวฟที่ตัวคูณเท่ากันเป็นข้อเดียว (ในสคริปต์เขียนแยกช่วงซ้อนกัน)
-            ...goldRules.reduce((acc, g) => {
-                const last = acc[acc.length - 1];
-                if (last && last.mult === g.mult && g.from <= last.to + 1) last.to = Math.max(last.to, g.to);
-                else acc.push({ ...g });
-                return acc;
-            }, []).map((g) => `เวฟ ${g.from}–${Math.min(g.to, LAST_WAVE - (blocked.includes(LAST_WAVE) ? 1 : 0))}: ได้ทอง = เลขเวฟ × ${g.mult}`),
-            blocked.filter((w) => w <= LAST_WAVE).length ? `ท้าไม่ได้ในเวฟบอส ${blocked.filter((w) => w <= LAST_WAVE).join(', ')}` : '',
-            `Stack: ท้าติดกันทุกเวฟ stack เพิ่มทีละ 1 ได้โบนัส (stack − 1) × ${stackGold} ทอง ข้ามเวฟเมื่อไหร่ stack กลับเป็น 0`,
-            'ถ้าแชมเปี้ยนหลุดเลน ทองที่จะได้จากการท้าเวฟนั้นลดเหลือครึ่งเดียว',
-        ].filter(Boolean),
-        buffs: [
-            `ดาเมจ +${Math.round(roar * 100)}%`,
-            `ลดเกราะศัตรูรอบตัว ${Math.abs(+armorAura.DataA1 || 0)} หน่วย รัศมี ${+armorAura.Area1 || 0}`,
-            `ออร่าฟื้นเลือด ${Math.round((+regenAura.DataB1 || 0) * 100)}% ของเลือดสูงสุดต่อวินาที รัศมี ${+regenAura.Area1 || 0}`,
-            `สะท้อนดาเมจ ${Math.round(thorns * 100)}% กลับไปหาคนตี`,
-            'ผิวต้านเวท (Resistant Skin) ติดสถานะสั้นลงและไม่โดนสกิลบางอย่าง',
-        ],
+        bullets: bullets.map((b) => b[0]),
+        bulletsEn: bullets.map((b) => b[1]),
+        buffs: buffs.map((b) => b[0]),
+        buffsEn: buffs.map((b) => b[1]),
         waves,
     };
 })();
