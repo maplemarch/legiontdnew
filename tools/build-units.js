@@ -117,13 +117,19 @@ const rollTier = (u, seen = new Set()) => {
 };
 for (const u of next) { u.stage = u.stage ?? u.tier; }
 for (const u of next) u.tier = rollTier(u);
-const noTier = next.filter((u) => u.base && !u.tier).map((u) => u.name);
+
+// Altar of Heroes ไม่อยู่ในกลุ่มสุ่ม เกมให้ทุกคนตอนเริ่ม (สร้างได้ 1 หลัง) ตัวมันกับฮีโร่ที่สร้างจากมันจัดเป็นกลุ่ม 'hero'
+const HERO_ROOT = 'h996';
+const heroLine = (u, seen = new Set()) => u.id === HERO_ROOT
+    || u.from.some((f) => !seen.has(f) && seen.add(f) && heroLine(byId.get(f), seen));
+for (const u of next) if (!u.tier && heroLine(u)) u.tier = 'hero';
+const noTier = next.filter((u) => !u.tier).map((u) => u.name);
 
 fs.writeFileSync(OUT, JSON.stringify(next));
 
 console.log(`อัปเดต ${report.updated} ยูนิต`);
 console.log(`ค่าต่างจากเดิม ${report.changed.length} ยูนิต`);
-console.log(`Tier 1-6: ${POOLS.map((_, i) => next.filter((u) => u.base && u.tier === i + 1).length).join(' ')} ร่างแรก · ไม่อยู่ในกลุ่มสุ่ม: ${noTier.join(', ') || '-'}`);
+console.log(`Tier 1-6: ${POOLS.map((_, i) => next.filter((u) => u.base && u.tier === i + 1).length).join(' ')} ร่างแรก · Hero ${next.filter((u) => u.tier === 'hero').length} · ไม่มี Tier: ${noTier.join(', ') || '-'}`);
 report.changed.slice(0, 40).forEach((c) => console.log('  ' + c));
 if (report.removed.length) console.log(`ไม่มีในแมพแล้ว ถอดออก ${report.removed.length}: ${report.removed.join(', ')}`);
 if (report.missingIcons.size) console.log(`ไอคอนสกิลที่ยังไม่มีรูป ${report.missingIcons.size}: ${[...report.missingIcons].join(', ')}`);

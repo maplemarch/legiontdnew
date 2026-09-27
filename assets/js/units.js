@@ -24,6 +24,9 @@
     // ขั้นอัปเกรด: stage 1 คือร่างแรก 2 ขึ้นไปคืออัปเกรดขั้นที่ 1, 2, 3
     const stageLabel = (s) => (s > 1 ? t('อัปเกรด ' + (s - 1), 'Upgrade ' + (s - 1)) : t('ร่างแรก', 'Base form'));
 
+    // Tier 1-6 คือช่องสุ่ม ส่วน 'hero' คือ Altar of Heroes กับฮีโร่ที่สร้างจากมัน
+    const tierLabel = (tier) => (tier === 'hero' ? 'Hero' : 'Tier ' + tier);
+
     const iconTag = (u, cls) =>
         u.icon
             ? `<img class="${cls}" src="${esc(u.icon)}" alt="" loading="lazy" decoding="async" width="48" height="48">`
@@ -80,7 +83,7 @@
         return `<button class="unit-link" type="button" data-id="${esc(u.id)}">
                     ${iconTag(u, 'unit-link-icon')}
                     <span>${esc(u.name)}</span>
-                    ${u.tier ? `<span class="unit-link-tier">Tier ${esc(u.tier)}</span>` : ''}
+                    ${u.tier ? `<span class="unit-link-tier">${esc(tierLabel(u.tier))}</span>` : ''}
                 </button>`;
     };
 
@@ -121,7 +124,7 @@
                 <div>
                     ${u.base ? `<span class="unit-badge">${t('ยูนิตเริ่มต้น', 'Base unit')}</span>` : ''}
                     <h3 class="unit-detail-name">${esc(u.name)}</h3>
-                    <p class="unit-detail-id">${esc(u.id)}${u.tier ? ` · Tier ${esc(u.tier)}` : ''} · ${esc(stageLabel(u.stage))}</p>
+                    <p class="unit-detail-id">${esc(u.id)}${u.tier ? ` · ${esc(tierLabel(u.tier))}` : ''} · ${esc(stageLabel(u.stage))}</p>
                     ${u.tip ? `<p class="unit-detail-tip">${esc(u.tip)}</p>` : ''}
                 </div>
             </div>
@@ -191,7 +194,7 @@
     });
 
     /* ── โหลดข้อมูล ── */
-    fetch('../assets/data/units.json?v=5453328e')
+    fetch('../assets/data/units.json?v=3157f57b')
         .then((r) => {
             if (!r.ok) throw new Error(t('โหลดข้อมูลไม่สำเร็จ ', 'Load failed ') + r.status);
             return r.json();
