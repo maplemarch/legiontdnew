@@ -3,10 +3,11 @@
    ถ้าโหลดไม่ได้ กล่อง "กำลังรวบรวมข้อมูล" เดิมยังแสดงอยู่ตามปกติ */
 (function () {
     const creepEl = document.getElementById('creep-data');
+    const damageEl = document.getElementById('damage-data');
     const kingEl = document.getElementById('king-data');
     const champEl = document.getElementById('champion-data');
     const wispEl = document.getElementById('wisp-data');
-    if (!creepEl && !kingEl && !wispEl && !champEl) return;
+    if (!creepEl && !damageEl && !kingEl && !wispEl && !champEl) return;
 
     const esc = (s) => String(s == null ? '' : s)
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -55,6 +56,7 @@
     ].join('');
 
     const waveRow = (c) => {
+        const waveGold = c.count * c.bounty; // ทองที่ได้ถ้าฆ่าครบทั้งเลน
         const tag = c.boss ? '<span class="wave-flag wave-flag-boss">บอส</span>' : '';
         return `
         <details class="wave${c.boss ? ' wave-boss' : ''}">
@@ -66,17 +68,21 @@
                     <span class="wave-types">${typeTag(c.atkType, 'atk')}${typeTag(c.defType, 'def')}</span>
                 </span>
                 <span class="wave-nums">
-                    <span class="wave-num" title="พลังชีวิต"><i class="ph ph-heart" aria-hidden="true"></i>${fmt(c.hp)}</span>
-                    <span class="wave-num" title="โจมตี"><i class="ph ph-crosshair" aria-hidden="true"></i>${esc(c.dmg)}</span>
-                    <span class="wave-num" title="เกราะ"><i class="ph ph-shield-check" aria-hidden="true"></i>${esc(c.armor)}</span>
                     <span class="wave-num" title="จำนวนต่อเลน"><i class="ph ph-users-three" aria-hidden="true"></i>×${fmt(c.count)}</span>
                     <span class="wave-num wave-gold" title="ทองต่อตัว"><i class="ph ph-coins" aria-hidden="true"></i>${c.bounty ? '+' + c.bounty : '–'}</span>
-                    <span class="wave-num wave-gold" title="ทองจบเวฟ"><i class="ph ph-flag-checkered" aria-hidden="true"></i>${c.finish ? '+' + fmt(c.finish) : '–'}</span>
+                    <span class="wave-num wave-gold" title="โบนัสจบเวฟ"><i class="ph ph-flag-checkered" aria-hidden="true"></i>${c.finish ? '+' + fmt(c.finish) : '–'}</span>
+                    <span class="wave-num wave-gold" title="มูลค่าเวฟ (จำนวน × ทองต่อตัว)"><i class="ph ph-scales" aria-hidden="true"></i>${waveGold ? fmt(waveGold) : '–'}</span>
+                    <span class="wave-num" title="Valuekick ค่ายูนิตขั้นต่ำ ต่ำกว่านี้เกมเตะออกอัตโนมัติ"><i class="ph ph-sneaker" aria-hidden="true"></i>${c.kick ? fmt(c.kick) : '–'}</span>
                 </span>
                 <i class="ph ph-caret-down wave-caret" aria-hidden="true"></i>
             </summary>
             <div class="wave-body">
-                <div class="unit-stat-grid">${unitStats(c)}${stat('มูลค่าเวฟ', fmt(c.value), 'ph-scales')}</div>
+                <div class="unit-stat-grid">
+                    ${stat('พลังชีวิต', fmt(c.hp), 'ph-heart')}
+                    ${stat('โจมตี', c.dmg, 'ph-crosshair')}
+                    ${stat('เกราะ', c.armor, 'ph-shield-check')}
+                    ${unitStats(c)}
+                </div>
                 ${c.skills.length ? `<h4 class="unit-detail-sub"><i class="ph ph-magic-wand" aria-hidden="true"></i> สกิล</h4>${c.skills.map(skill).join('')}` : ''}
             </div>
         </details>`;
@@ -87,10 +93,26 @@
             ข้อมูลตามโหมด <code>-prmiccahx2</code> · เกมจบที่เวฟ ${creeps.length} · เวฟ 10 และ 20 ได้ทองจบเวฟสองเท่า</p>
         <div class="wave-head" aria-hidden="true">
             <span>เวฟ</span><span></span><span>ครีป</span>
-            <span>พลังชีวิต</span><span>โจมตี</span><span>เกราะ</span><span>จำนวน/เลน</span><span>ทอง/ตัว</span><span>จบเวฟ</span><span></span>
+            <span>จำนวน/เลน</span><span>ทอง/ตัว</span><span>โบนัสจบเวฟ</span><span>มูลค่าเวฟ</span><span>Valuekick</span><span></span>
         </div>
         <div class="wave-list">${creeps.map(waveRow).join('')}</div>
-        <p class="game-note">กดที่แถวเพื่อดูระยะโจมตี ความเร็ว และสกิลของครีป · จำนวนคือจำนวนครีปต่อเลนในเวฟนั้น</p>`;
+        <p class="game-note">กดที่แถวเพื่อดูพลังชีวิต โจมตี เกราะ ความเร็ว และสกิลของครีป · จำนวนคือจำนวนครีปต่อเลนในเวฟนั้น · มูลค่าเวฟคือจำนวน × ทองต่อตัว · Valuekick คือค่ายูนิตขั้นต่ำของเวฟนั้น ต่ำกว่านี้เกมเตะออกอัตโนมัติ</p>`;
+
+    /* ── ดาเมจตามชนิดโจมตีและเกราะ ── */
+    const dmgCell = (pct) => {
+        const cls = pct > 100 ? 'dmg-up' : pct < 100 ? 'dmg-down' : 'dmg-even';
+        return `<td class="dmg-cell ${cls}">${pct}%</td>`;
+    };
+    const renderDamage = (d) => `
+        <div class="lumber-wrap">
+            <table class="lumber-table dmg-table">
+                <thead><tr>
+                    <th>โจมตี \\ เกราะ</th>${d.armor.map((a) => `<th>${typeTag(a, 'def')}</th>`).join('')}
+                </tr></thead>
+                <tbody>${d.attack.map((a) => `<tr><th scope="row">${typeTag(a.name, 'atk')}</th>${a.pct.map(dmgCell).join('')}</tr>`).join('')}</tbody>
+            </table>
+        </div>
+        <p class="game-note">ตัวเลขคือดาเมจที่ทำได้จริงเทียบกับดาเมจปกติ เช่น Piercing ตี Light ได้ 145% · ค่าจากไฟล์แมพ (war3mapMisc) · Chaos แมพไม่ได้แก้ จึงเป็น 100% ทุกเกราะ</p>`;
 
     /* ── King ── */
     const shopCard = (item, extra = '') => `
@@ -321,9 +343,10 @@
         if (fallback) fallback.hidden = true;
     };
 
-    fetch('../assets/data/game.json?v=2b206317')
+    fetch('../assets/data/game.json?v=e1486b1f')
         .then((r) => r.json())
         .then((g) => {
+            if (g.damage) show(damageEl, renderDamage(g.damage));
             show(creepEl, renderCreeps(g.creeps));
             show(kingEl, renderKing(g.king));
             if (kingEl) bindKingToggle(kingEl);

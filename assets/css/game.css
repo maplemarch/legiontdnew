@@ -56,11 +56,11 @@
 .type-enchanted { color: #4ee04e; }
 
 /* ===== รายการเวฟ ===== */
-/* คอลัมน์: เลขเวฟ | ไอคอน | ชื่อ | HP | โจมตี | เกราะ | จำนวน | ทอง/ตัว | ทองจบเวฟ | ลูกศร */
+/* คอลัมน์: เลขเวฟ | ไอคอน | ชื่อ | จำนวน | ทอง/ตัว | โบนัสจบเวฟ | มูลค่าเวฟ | Valuekick | ลูกศร */
 .wave-head,
 .wave-sum {
     display: grid;
-    grid-template-columns: 52px 44px minmax(0, 1fr) 80px 88px 48px 76px 56px 64px 20px;
+    grid-template-columns: 52px 44px minmax(0, 1fr) 80px 64px 84px 80px 80px 20px;
     align-items: center;
     gap: var(--space-100);
 }
@@ -127,7 +127,8 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.wave-types { display: flex; flex-wrap: wrap; gap: var(--space-50); }
+/* ชนิดโจมตีอยู่บน ชนิดเกราะอยู่ล่าง */
+.wave-types { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-50); }
 
 .wave-flag {
     display: inline-block;
@@ -169,7 +170,7 @@
 /* จอกว้าง ตัวเลขแต่ละช่องเป็นคอลัมน์ของ grid เอง กล่องห่อจึงต้องหายไปจากเลย์เอาต์ */
 .wave-nums { display: contents; }
 
-/* จอแคบ: ตัวเลขทั้งห้าลงไปเป็นแถวที่สองใต้ชื่อ */
+/* จอแคบ: ตัวเลขลงไปเป็นแถวที่สองใต้ชื่อ */
 @media (max-width: 820px) {
     .wave-head { display: none; }
     .wave-sum {
@@ -336,7 +337,7 @@
     line-height: 20px;
     font-weight: 600;
     padding: var(--space-75) var(--space-200);
-    cursor: url('../img/cursor-link.svg?v=54df678c') 2 2, pointer;
+    cursor: url('../img/cursor-link.svg?v=735ff947') 2 2, pointer;
     transition: background 300ms var(--ease-fluid), color 300ms var(--ease-fluid);
 }
 .king-toggle-btn:hover { color: var(--text-primary); }
@@ -385,6 +386,14 @@
 /* ===== Challenge Champion ===== */
 .champ-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-400); }
 .champ-table td { vertical-align: middle; }
+
+/* ตารางดาเมจ: มากกว่า 100% สีเขียว น้อยกว่าสีแดง */
+.dmg-table th, .dmg-table td { text-align: center; }
+.dmg-table tbody th { text-align: left; background: none; }
+.dmg-cell { font-weight: 600; font-variant-numeric: tabular-nums; }
+.dmg-up { color: #5fd47a; }
+.dmg-down { color: #f07a6a; }
+.dmg-even { color: var(--text-muted); }
 .champ-table .wave-no { flex-direction: row; align-items: baseline; gap: var(--space-50); font-size: 1rem; }
 .champ-creep { display: inline-flex; align-items: center; gap: var(--space-100); }
 .champ-icon { width: 28px; height: 28px; border-radius: var(--radius-md); flex-shrink: 0; }

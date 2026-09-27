@@ -104,6 +104,17 @@ for (const m of funcBody(MODE_PR_FUNC).matchAll(/set OO\[(\d+)\]=(\d+)(?:-(\d+))
     finishGold[w] = (+m[2] - (+m[3] || 0)) * (w === 10 || w === 20 ? 2 : 1);
 }
 
+// Kick value ต่อเวฟ ตั้งใน main เป็นลูปช่วงละสูตร เช่น เวฟ 0-10 = 250*i แล้วเวฟ 11 = 455*i
+// ค่านี้ใช้เหมือนกันทุกโหมด (ฟังก์ชันอื่นที่ตั้งซ้ำก็ใช้ค่าเดียวกัน)
+const kickValue = {};
+{
+    let i = 0;
+    for (const m of funcBody('main').matchAll(/exitwhen i>(\d+)\r?\nset WAVE_KICK_VALUE\[i\]=(\d+)\*i/g)) {
+        for (; i <= +m[1]; i += 1) kickValue[i] = i * +m[2];
+    }
+    need(kickValue[LAST_WAVE] || null, 'WAVE_KICK_VALUE');
+}
+
 const creeps = waveIds.slice(0, LAST_WAVE).map((id, i) => {
     const wave = i + 1;
     return {
@@ -115,6 +126,7 @@ const creeps = waveIds.slice(0, LAST_WAVE).map((id, i) => {
         bounty: bounty[i] || 0,
         finish: finishGold[wave] || 0,
         value: value[wave] || 0,
+        kick: kickValue[wave] || 0,
         boss: wave % 10 === 0,
     };
 });
@@ -385,16 +397,37 @@ const wisp = {
     },
 };
 
+/* ── ตารางดาเมจตามชนิดโจมตีและเกราะ ───────────────────── */
+// war3mapMisc.txt เก็บเป็นลิสต์ตามลำดับเกราะของเกม: small medium large fort normal hero divine none
+// ชื่อที่เกมประกาศก่อนเวฟไม่ตรงกับรหัส: Fortified คือ normal, Enchanted คือ divine, Unarmored คือ none
+const misc = {};
+for (const line of fs.readFileSync(path.join(SRC, 'war3mapMisc.txt'), 'latin1').split(/\r?\n/)) {
+    const m = line.match(/^DamageBonus(\w+)=(.+)$/);
+    if (m) misc[m[1]] = m[2].split(',').map(Number);
+}
+const ARMOR_SLOT = { Light: 0, Medium: 1, Heavy: 2, Fortified: 4, Enchanted: 6, Unarmored: 7 };
+const ATTACK_KEY = { Piercing: 'Pierce', Normal: 'Normal', Magic: 'Magic', Siege: 'Siege', Chaos: 'Chaos' };
+const damage = {
+    armor: Object.keys(ARMOR_SLOT),
+    attack: Object.keys(ATTACK_KEY).map((name) => {
+        // แมพไม่ได้แก้ Chaos จึงใช้ค่าเดิมของ Warcraft III คือ 100% ทุกเกราะ
+        const row = misc[ATTACK_KEY[name]] || (name === 'Chaos' ? Array(8).fill(1) : need(null, 'DamageBonus' + ATTACK_KEY[name]));
+        return { name, pct: Object.values(ARMOR_SLOT).map((i) => Math.round(row[i] * 100)) };
+    }),
+};
+
 const info = fs.readFileSync(path.join(SRC, 'war3map.w3i'), 'latin1');
 // ชื่อแมพในไฟล์ข้อมูลแมพใส่รหัสสีคั่นทุกตัวอักษร ต้องลบรหัสสีก่อนค่อยหาเลขเวอร์ชัน
 const version = (stripCodes(info.replace(/[^\x20-\x7e]/g, ' ')).match(/Legion TD NewEdition\s+(\d+\.\d+\w*)/) || [])[1] || '';
 
-fs.writeFileSync(OUT, JSON.stringify({ version, creeps, king, wisp, champion }));
+fs.writeFileSync(OUT, JSON.stringify({ version, creeps, damage, king, wisp, champion }));
 
 console.log(`แมพเวอร์ชัน ${version}`);
 console.log(`ครีป ${creeps.length} เวฟ (บอส: ${creeps.filter((c) => c.boss).map((c) => c.wave).join(', ')})`);
 console.log(`ทองต่อตัว: ${creeps.map((c) => c.bounty).join(' ')}`);
 console.log(`ทองจบเวฟ (โหมด pr): ${creeps.map((c) => c.finish).join(' ')}`);
+console.log(`Kick value: ${creeps.map((c) => c.kick).join(' ')}`);
+console.log(`ดาเมจ (${damage.armor.join(' ')}): ${damage.attack.map((a) => a.name + ' ' + a.pct.join('/')).join(' · ')}`);
 console.log(`King HP ${king.hp} · อัปเต็ม HP +${kingMax.hp} ดาเมจ +${kingMax.dmg} ฟื้นเลือด +${kingMax.regen}/วิ`);
 console.log(`Wisp ราคา ${wisp.gold} · อัปเกรดเก็บไม้ ${lumberLevels.length} ขั้น`);
 if (missingIcons.size) console.log(`ไอคอนที่ยังไม่มีรูป ${missingIcons.size}: ${[...missingIcons].join(', ')}`);
