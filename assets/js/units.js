@@ -197,8 +197,9 @@
             return r.json();
         })
         .then((data) => {
-            units = data;
-            byId = new Map(data.map((u) => [u.id, u]));
+            // ยังไม่แสดงสกิน ([Skin] ...) ตัดออกทั้งจากตารางและลิงก์อัปเกรด ข้อมูลยังเก็บไว้ใน units.json
+            units = data.filter((u) => !u.skin);
+            byId = new Map(units.map((u) => [u.id, u]));
             apply();
         })
         .catch((err) => {

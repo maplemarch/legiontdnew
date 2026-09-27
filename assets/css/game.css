@@ -56,11 +56,11 @@
 .type-enchanted { color: #4ee04e; }
 
 /* ===== รายการเวฟ ===== */
-/* คอลัมน์: เลขเวฟ | ไอคอน | ชื่อ | จำนวน | ทอง/ตัว | โบนัสจบเวฟ | มูลค่าเวฟ | Valuekick | ลูกศร */
+/* คอลัมน์: เลขเวฟ | ไอคอน | ชื่อ | จำนวน | ทอง/ตัว | โบนัสจบเวฟ | มูลค่าเวฟ | Value แนะนำ | Valuekick | ลูกศร */
 .wave-head,
 .wave-sum {
     display: grid;
-    grid-template-columns: 52px 44px minmax(0, 1fr) 80px 64px 84px 80px 80px 20px;
+    grid-template-columns: 52px 44px minmax(0, 1fr) 76px 60px 80px 76px 84px 72px 20px;
     align-items: center;
     gap: var(--space-100);
 }

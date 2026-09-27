@@ -77,6 +77,7 @@
                     <span class="wave-num wave-gold" title="${t('ทองต่อตัว', 'Gold per unit')}"><i class="ph ph-coins" aria-hidden="true"></i>${c.bounty ? '+' + c.bounty : '–'}</span>
                     <span class="wave-num wave-gold" title="${t('โบนัสจบเวฟ', 'Wave clear bonus')}"><i class="ph ph-flag-checkered" aria-hidden="true"></i>${c.finish ? '+' + fmt(c.finish) : '–'}</span>
                     <span class="wave-num wave-gold" title="${t('มูลค่าเวฟ (จำนวน × ทองต่อตัว)', 'Wave value (count × gold per unit)')}"><i class="ph ph-scales" aria-hidden="true"></i>${waveGold ? fmt(waveGold) : '–'}</span>
+                    <span class="wave-num" title="${t('Value แนะนำ ค่ายูนิตที่ควรมีเพื่อรับเวฟนี้ (ที่เกมแสดงเป็น Value: ตอนประกาศเวฟ)', 'Recommended value: the unit value you should have to hold this wave (shown in game as Value:)')}"><i class="ph ph-thumbs-up" aria-hidden="true"></i>${c.value ? fmt(c.value) : '–'}</span>
                     <span class="wave-num" title="${t('Valuekick ค่ายูนิตขั้นต่ำ ต่ำกว่านี้เกมเตะออกอัตโนมัติ', 'Valuekick: minimum unit value, below this the game kicks you automatically')}"><i class="ph ph-sneaker" aria-hidden="true"></i>${c.kick ? fmt(c.kick) : '–'}</span>
                 </span>
                 <i class="ph ph-caret-down wave-caret" aria-hidden="true"></i>
@@ -99,11 +100,11 @@
                 `Data for mode <code>-prmiccahx2</code> · The game ends at wave ${creeps.length} · Waves 10 and 20 pay double wave clear gold`)}</p>
         <div class="wave-head" aria-hidden="true">
             <span>${t('เวฟ', 'Wave')}</span><span></span><span>${t('ครีป', 'Creep')}</span>
-            <span>${t('จำนวน/เลน', 'Count/lane')}</span><span>${t('ทอง/ตัว', 'Gold/unit')}</span><span>${t('โบนัสจบเวฟ', 'Wave clear bonus')}</span><span>${t('มูลค่าเวฟ', 'Wave value')}</span><span>Valuekick</span><span></span>
+            <span>${t('จำนวน/เลน', 'Count/lane')}</span><span>${t('ทอง/ตัว', 'Gold/unit')}</span><span>${t('โบนัสจบเวฟ', 'Wave clear bonus')}</span><span>${t('มูลค่าเวฟ', 'Wave value')}</span><span>${t('Value แนะนำ', 'Rec. value')}</span><span>Valuekick</span><span></span>
         </div>
         <div class="wave-list">${creeps.map(waveRow).join('')}</div>
-        <p class="game-note">${t('กดที่แถวเพื่อดูพลังชีวิต โจมตี เกราะ ความเร็ว และสกิลของครีป · จำนวนคือจำนวนครีปต่อเลนในเวฟนั้น · มูลค่าเวฟคือจำนวน × ทองต่อตัว · Valuekick คือค่ายูนิตขั้นต่ำของเวฟนั้น ต่ำกว่านี้เกมเตะออกอัตโนมัติ',
-            'Tap a row to see the creep\'s HP, damage, armor, speed and skills · Count is the number of creeps per lane in that wave · Wave value is count × gold per unit · Valuekick is the minimum unit value for that wave, below it the game kicks you automatically')}</p>`;
+        <p class="game-note">${t('กดที่แถวเพื่อดูพลังชีวิต โจมตี เกราะ ความเร็ว และสกิลของครีป · จำนวนคือจำนวนครีปต่อเลนในเวฟนั้น · มูลค่าเวฟคือจำนวน × ทองต่อตัว · Value แนะนำคือค่ายูนิตที่เกมแนะนำให้มีก่อนเวฟนั้น · Valuekick คือค่ายูนิตขั้นต่ำของเวฟนั้น ต่ำกว่านี้เกมเตะออกอัตโนมัติ',
+            'Tap a row to see the creep\'s HP, damage, armor, speed and skills · Count is the number of creeps per lane in that wave · Wave value is count × gold per unit · Rec. value is the unit value the game recommends for that wave · Valuekick is the minimum unit value for that wave, below it the game kicks you automatically')}</p>`;
 
     /* ── ดาเมจตามชนิดโจมตีและเกราะ ── */
     const dmgCell = (pct) => {
