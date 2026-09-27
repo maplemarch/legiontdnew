@@ -59,8 +59,10 @@
 }
 .unit-field input::placeholder { color: var(--text-muted); }
 
+/* ช่องค้นหาเต็มแถวบน ตัวกรองทั้งสี่กับปุ่มล้างอยู่แถวล่าง ยืดเต็มความกว้าง */
+.unit-toolbar > .unit-field:not(.unit-field-select) { flex-basis: 100%; }
 /* ช่องเลือกกางเต็มกล่อง กดตรงไหนของกล่องก็เปิดได้ ลูกศรให้คลิกทะลุลงไปที่ช่องเลือก */
-.unit-field-select { flex: 0 1 180px; height: 46px; }
+.unit-field-select { flex: 1 1 160px; height: 46px; }
 .unit-field-select select {
     appearance: none;
     position: absolute;
@@ -233,13 +235,8 @@
     line-height: 1.3;
     font-weight: 700;
 }
-.unit-detail-id { font-size: 0.75rem; line-height: 16px; color: var(--text-muted); }
-.unit-detail-tip {
-    margin-top: var(--space-75);
-    font-size: 0.875rem;
-    line-height: 20px;
-    color: var(--text-secondary);
-}
+/* ชนิดโจมตีอยู่บน ชนิดเกราะอยู่ล่าง เหมือนแถวครีป */
+.unit-detail-types { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-50); margin-top: var(--space-75); }
 
 .unit-stat-grid {
     display: grid;

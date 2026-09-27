@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="../assets/css/base.css?v=d3fd3e27">
     <script src="../assets/js/i18n.js?v=22cbfaa5"></script>
     <link rel="stylesheet" href="../assets/css/landing.css?v=c1656a31">
-    <link rel="stylesheet" href="../assets/css/units.css?v=0d0e0100">
-    <link rel="stylesheet" href="../assets/css/game.css?v=475cc578">
+    <link rel="stylesheet" href="../assets/css/units.css?v=4e36d084">
+    <link rel="stylesheet" href="../assets/css/game.css?v=809a2ee9">
 </head>
 <body>
 
@@ -135,6 +135,31 @@
                 </select>
                 <i class="ph ph-caret-down" aria-hidden="true"></i>
             </label>
+            <label class="unit-field unit-field-select">
+                <span class="sr-only" data-en="Filter by attack type">กรองตามประเภทโจมตี</span>
+                <select id="unit-atk">
+                    <option value="" selected data-en="All attack types">ทุกประเภทโจมตี</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Piercing">Piercing</option>
+                    <option value="Magic">Magic</option>
+                    <option value="Siege">Siege</option>
+                    <option value="Chaos">Chaos</option>
+                </select>
+                <i class="ph ph-caret-down" aria-hidden="true"></i>
+            </label>
+            <label class="unit-field unit-field-select">
+                <span class="sr-only" data-en="Filter by armor type">กรองตามประเภทเกราะ</span>
+                <select id="unit-def">
+                    <option value="" selected data-en="All armor types">ทุกประเภทเกราะ</option>
+                    <option value="Light">Light</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Heavy">Heavy</option>
+                    <option value="Fortified">Fortified</option>
+                    <option value="Unarmored">Unarmored</option>
+                    <option value="Hero">Hero</option>
+                </select>
+                <i class="ph ph-caret-down" aria-hidden="true"></i>
+            </label>
             <button class="btn btn-ghost btn-sm" type="button" id="unit-clear" data-en="Clear filters">ล้างตัวกรอง</button>
         </div>
 
@@ -217,7 +242,7 @@
 <script src="../assets/js/nav.js?v=7e7d7ae5" defer></script>
 <script src="../assets/js/reveal.js?v=e543066f" defer></script>
 <script src="../assets/js/toc.js?v=b417fc90" defer></script>
-<script src="../assets/js/units.js?v=bc7143b6" defer></script>
+<script src="../assets/js/units.js?v=bdbabdac" defer></script>
 <script src="../assets/js/game.js?v=85067858" defer></script>
 <script src="../assets/js/tilt.js?v=fed32629" defer></script>
 <script type="module" src="../assets/js/scene3d.js?v=bb5a3885"></script>

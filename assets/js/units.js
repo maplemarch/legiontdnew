@@ -7,6 +7,8 @@
     const search = document.getElementById('unit-search');
     const tierSel = document.getElementById('unit-tier');     // Tier ในเกม 1-6 (ช่องสุ่ม)
     const stageSel = document.getElementById('unit-stage');   // ร่างแรก หรือขั้นอัปเกรด
+    const atkSel = document.getElementById('unit-atk');       // ชนิดโจมตี (ชื่อที่เกมประกาศ เช่น Piercing)
+    const defSel = document.getElementById('unit-def');       // ชนิดเกราะ (เช่น Light)
     const countEl = document.getElementById('unit-count');
     const clearBtn = document.getElementById('unit-clear');
     const dialog = document.getElementById('unit-dialog');
@@ -21,11 +23,21 @@
     const esc = (s) => String(s == null ? '' : s)
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-    // ขั้นอัปเกรด: stage 1 คือร่างแรก 2 ขึ้นไปคืออัปเกรดขั้นที่ 1, 2, 3
-    const stageLabel = (s) => (s > 1 ? t('อัปเกรด ' + (s - 1), 'Upgrade ' + (s - 1)) : t('ร่างแรก', 'Base form'));
-
     // Tier 1-6 คือช่องสุ่ม ส่วน 'hero' คือ Altar of Heroes กับฮีโร่ที่สร้างจากมัน
     const tierLabel = (tier) => (tier === 'hero' ? 'Hero' : 'Tier ' + tier);
+
+    /* ชนิดโจมตีและเกราะ: ข้อมูลเก็บเป็นรหัสของเกม แปลงเป็นชื่อที่เกมประกาศ ใช้สีเดียวกับ tag ของครีป (game.css)
+       เกราะ normal ในแมพนี้คือ Fortified (ตารางดาเมจใช้ค่าเดียวกับ fort) */
+    const ATK = { Pierce: ['Piercing', 'pierce'], Normal: ['Normal', 'normal'], Magic: ['Magic', 'magic'], Siege: ['Siege', 'siege'], Chaos: ['Chaos', 'chaos'] };
+    const DEF = {
+        small: ['Light', 'light'], medium: ['Medium', 'medium'], large: ['Heavy', 'heavy'], normal: ['Fortified', 'fort'],
+        fort: ['Fortified', 'fort'], none: ['Unarmored', 'unarmored'], divine: ['Enchanted', 'enchanted'], hero: ['Hero', 'hero'],
+    };
+    const typeTag = (code, map, icon) => {
+        if (!code) return '';
+        const [label, cls] = map[code] || [code, 'normal'];
+        return `<span class="type-tag type-${cls}"><i class="ph ${icon}" aria-hidden="true"></i>${esc(label)}</span>`;
+    };
 
     const iconTag = (u, cls) =>
         u.icon
@@ -53,9 +65,13 @@
         const q = search.value.trim().toLowerCase();
         const tier = tierSel.value;
         const stage = stageSel.value;
+        const atk = atkSel.value;
+        const def = defSel.value;
 
         const list = units.filter((u) => {
             if (tier && String(u.tier) !== tier) return false;
+            if (atk && (ATK[u.atk] || [u.atk])[0] !== atk) return false;
+            if (def && (DEF[u.def] || [u.def])[0] !== def) return false;
             if (stage === 'base' && !u.base) return false;
             if (stage && stage !== 'base' && String(u.stage) !== stage) return false;
             if (!q) return true;
@@ -99,8 +115,6 @@
             statHtml(t('พลังโจมตี', 'Damage'), u.dmg, 'ph-crosshair'),
             statHtml(t('ความเร็วโจมตี', 'Attack Speed'), u.speed, 'ph-lightning'),
             statHtml(t('ระยะโจมตี', 'Attack Range'), u.range, 'ph-arrows-out-line-horizontal'),
-            statHtml(t('ชนิดโจมตี', 'Attack Type'), u.atk, 'ph-sword'),
-            statHtml(t('ชนิดเกราะ', 'Armor Type'), u.def, 'ph-shield'),
             statHtml(t('เกราะ', 'Armor'), u.armor, 'ph-shield-check'),
         ].join('');
 
@@ -124,8 +138,7 @@
                 <div>
                     ${u.base ? `<span class="unit-badge">${t('ยูนิตเริ่มต้น', 'Base unit')}</span>` : ''}
                     <h3 class="unit-detail-name">${esc(u.name)}</h3>
-                    <p class="unit-detail-id">${esc(u.id)}${u.tier ? ` · ${esc(tierLabel(u.tier))}` : ''} · ${esc(stageLabel(u.stage))}</p>
-                    ${u.tip ? `<p class="unit-detail-tip">${esc(u.tip)}</p>` : ''}
+                    <div class="unit-detail-types">${typeTag(u.atk, ATK, 'ph-sword')}${typeTag(u.def, DEF, 'ph-shield')}</div>
                 </div>
             </div>
 
@@ -171,10 +184,14 @@
     });
     tierSel.addEventListener('change', apply);
     stageSel.addEventListener('change', apply);
+    atkSel.addEventListener('change', apply);
+    defSel.addEventListener('change', apply);
     clearBtn.addEventListener('click', () => {
         search.value = '';
         tierSel.value = '';
         stageSel.value = 'base';
+        atkSel.value = '';
+        defSel.value = '';
         apply();
     });
 
