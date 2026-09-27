@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Patch Notes 2.7a — Legion TD NewEdition">Patch Notes 2.7a — Legion TD NewEdition</title>
+    <meta name="description" content="Legion TD NewEdition 2.7a แก้บัคจากแพตช์ 2.7 ค่ายูนิต ข้อมูลแมพ และ Arena ไม่จำกัดเวลา">
+    <link rel="canonical" href="https://ltdnew.online/patch-notes/2.7a/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Patch Notes 2.7a — Legion TD NewEdition">
+    <meta property="og:description" content="แก้บัคจากแพตช์ 2.7">
+    <meta property="og:image" content="https://ltdnew.online/assets/img/og-cover.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="../../assets/img/favicon.svg?v=08a1ed59" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="../../assets/css/base.css?v=d3fd3e27">
+    <script src="../../assets/js/i18n.js?v=22cbfaa5"></script>
+    <link rel="stylesheet" href="../../assets/css/patch-notes.css?v=d2a2e6d3">
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-en="Skip to main content">ข้ามไปเนื้อหาหลัก</a>
+
+<div class="scene3d scene3d-ambient" data-scene="ambient" data-circle="center" aria-hidden="true"></div>
+
+<!-- ===== เมนูหลัก ===== -->
+<nav class="site-nav" aria-label="เมนูหลัก" data-en-aria-label="Main menu">
+    <div class="site-nav-inner">
+        <a class="nav-brand" href="../../">
+            <span class="nav-brand-mark" aria-hidden="true"><i class="ph ph-sword"></i></span>
+            Legion TD NE
+        </a>
+        <ul class="nav-links">
+            <li><a class="nav-link" href="../../" data-en="Home">หน้าแรก</a></li>
+            <li><a class="nav-link" href="../../wiki/" data-en="Wiki">วิกิ</a></li>
+            <li><a class="nav-link" href="../" aria-current="page" data-en="Patch">แพตช์</a></li>
+            <li><a class="nav-link" href="../../download/" data-en="Download">ดาวน์โหลด</a></li>
+            <li><a class="nav-link" href="../../contact/" data-en="Contact">ติดต่อ</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a class="btn btn-ghost btn-sm nav-cta" href="https://wc3th.com" target="_blank" rel="noopener">
+                WC3TH
+                <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-overlay" aria-label="เปิดเมนู" data-en-aria-label="Open menu">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+    <ul class="nav-overlay-list">
+        <li><a href="../../" data-en="Home">หน้าแรก</a></li>
+        <li><a href="../../wiki/" data-en="Wiki">วิกิ</a></li>
+        <li><a href="../" aria-current="page" data-en="Patch">แพตช์</a></li>
+        <li><a href="../../download/" data-en="Download">ดาวน์โหลด</a></li>
+        <li><a href="../../contact/" data-en="Contact">ติดต่อ</a></li>
+        <li><a href="https://wc3th.com" target="_blank" rel="noopener">WC3TH</a></li>
+    </ul>
+</div>
+
+<nav class="toc-nav" aria-label="สารบัญแพตช์" data-en-aria-label="Patch contents">
+    <div class="toc-nav-inner">
+        <a class="toc-back" href="../" aria-label="กลับไปหน้าแพตช์ทั้งหมด" data-en-aria-label="Back to all patches" title="แพตช์ทั้งหมด" data-en-title="All patches">
+            <i class="ph ph-arrow-left" aria-hidden="true"></i>
+            <span data-en="All patches">แพตช์ทั้งหมด</span>
+        </a>
+        <div class="toc-links">
+            <a href="#section1" class="toc-link active" data-en="🔧 Unit fixes">🔧 แก้ค่ายูนิต</a>
+            <a href="#section2" class="toc-link" data-en="⚙️ System">⚙️ ระบบ</a>
+            <a href="#section3" class="toc-link" data-en="✨ New features">✨ ฟีเจอร์ใหม่</a>
+        </div>
+    </div>
+</nav>
+<main class="content-wrapper" id="main">
+
+<header class="patch-intro">
+    <h1 class="patch-intro-title">LTD Patch 2.7a</h1>
+    <p class="patch-intro-meta" data-en="Legion TD NewEdition · Updated 27 September 2026 · Bug fixes for patch 2.7">Legion TD NewEdition · อัปเดต 27 กันยายน 2569 · แก้บัคจากแพตช์ 2.7</p>
+</header>
+
+<!-- ─────────── SECTION 1: Unit fixes ─────────── -->
+<section class="section reveal" id="section1">
+    <div class="section-header">
+        <div class="section-number">1</div>
+        <div class="section-title-group">
+            <h2 class="section-title" data-en="Unit fixes">แก้ค่ายูนิต</h2>
+            <div class="section-subtitle">Unit Fixes</div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">🪓</div></div>
+                <div>
+                    <div class="card-name">Axe Master</div>
+                    <div class="card-type">Orc Builder</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Gold cost now matches patch 2.7 <span class=&quot;old-val&quot;>375</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>425</span>">ราคา Gold ใช้ค่าตามแพตช์ 2.7 แล้ว <span class="old-val">375</span> <span class="arrow">→</span> <span class="new-val-down">425</span></li>
+                    <li data-en="Total cost after upgrading is now <strong>725 Gold</strong>">ราคาสะสมรวมหลังอัปเกรดเป็น <strong>725 Gold</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">🪓</div></div>
+                <div>
+                    <div class="card-name">Chaos Axe Master</div>
+                    <div class="card-type">Orc Builder</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Upgrade cost now matches patch 2.7 <span class=&quot;old-val&quot;>280</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>400</span> lumber">ค่าอัปเกรดใช้ค่าตามแพตช์ 2.7 แล้ว <span class="old-val">280</span> <span class="arrow">→</span> <span class="new-val-down">400</span> ไม้</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">🐢</div></div>
+                <div>
+                    <div class="card-name">Giant Sea Turtle</div>
+                    <div class="card-type">Naga Builder</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="The battle form now gets the patch 2.7 HP <span class=&quot;old-val&quot;>1,635</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>2,000</span>">ร่างที่ลงสนามได้ HP ตามแพตช์ 2.7 แล้ว <span class="old-val">1,635</span> <span class="arrow">→</span> <span class="new-val-up">2,000</span></li>
+                    <li data-en="Previously only the tower form was changed; the unit that actually fights still had the old value">เดิมเปลี่ยนแค่ร่างป้อม ร่างที่ลงสู้จริงยังเป็นค่าเก่า</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">🏰</div></div>
+                <div>
+                    <div class="card-name" data-en="Tower form stats out of sync">ค่าร่างป้อมไม่ตรงกับร่างลงสนาม</div>
+                    <div class="card-type">Tower form</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="The stats shown on the placed tower now match the unit that fights">ค่าที่แสดงตอนวางป้อมตรงกับยูนิตที่ลงสู้จริงแล้ว</li>
+                    <li data-en="Skeletor attack speed <span class=&quot;old-val&quot;>0.90</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>0.75</span>">Skeletor ความเร็วโจมตี <span class="old-val">0.90</span> <span class="arrow">→</span> <span class="new-val-up">0.75</span></li>
+                    <li data-en="Gnoll Savage attack speed <span class=&quot;old-val&quot;>0.91</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>0.80</span>">Gnoll Savage ความเร็วโจมตี <span class="old-val">0.91</span> <span class="arrow">→</span> <span class="new-val-up">0.80</span></li>
+                    <li data-en="Flaming Shooter mana regen <span class=&quot;old-val&quot;>12.5</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>15</span>">Flaming Shooter ฟื้นมานา <span class="old-val">12.5</span> <span class="arrow">→</span> <span class="new-val-up">15</span></li>
+                    <li data-en="Hellraiser attack range <span class=&quot;old-val&quot;>435</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>450</span>">Hellraiser ระยะโจมตี <span class="old-val">435</span> <span class="arrow">→</span> <span class="new-val-up">450</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnsnipertom-31726cc450.png" alt="Rifle Man" onerror="this.parentElement.innerHTML='<div class=img-fallback>🔫</div>'"></div>
+                <div>
+                    <div class="card-name">Rifle Man</div>
+                    <div class="card-type" data-en="Infantry upgrade">ร่างอัปเกรดของ Infantry</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Fixed the missing (green) icon, the icon image from 2.6e is back in the map">แก้ไอคอนที่ขึ้นเป็นสีเขียว นำรูปไอคอนจาก 2.6e กลับมาใส่ในแมพ</li>
+                    <li data-en="Skill icons for Penetration Shot, Calibrate Focus and Assassinate are back too">ไอคอนสกิล Penetration Shot, Calibrate Focus และ Assassinate กลับมาแสดงด้วย</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────── SECTION 2: System ─────────── -->
+<section class="section reveal" id="section2">
+    <div class="section-header">
+        <div class="section-number">2</div>
+        <div class="section-title-group">
+            <h2 class="section-title" data-en="System">ระบบ</h2>
+            <div class="section-subtitle">System</div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">⚔️</div></div>
+                <div>
+                    <div class="card-name" data-en="Arena has no time limit">Arena ไม่จำกัดเวลา</div>
+                    <div class="card-type">Arena Battle</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Units in the Arena no longer die after 150 seconds; the fight goes on until one side is wiped out">ยูนิตที่เข้า Arena ไม่ตายเองเมื่อครบ 150 วินาทีแล้ว สู้กันจนฝั่งหนึ่งหมด</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">🗺️</div></div>
+                <div>
+                    <div class="card-name" data-en="Map info">ข้อมูลแมพ</div>
+                    <div class="card-type">Map</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="The map list shows the correct version <span class=&quot;old-val&quot;>2.0</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>2.7a</span>">ชื่อแมพในรายการแมพแสดงเวอร์ชันถูกต้อง <span class="old-val">2.0</span> <span class="arrow">→</span> <span class="new-val-up">2.7a</span></li>
+                    <li data-en="Player count in the map list <span class=&quot;old-val&quot;>0</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>8</span>">จำนวนผู้เล่นในรายการแมพ <span class="old-val">0</span> <span class="arrow">→</span> <span class="new-val-up">8</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">🔗</div></div>
+                <div>
+                    <div class="card-name" data-en="In-game links">ลิงก์ในเกม</div>
+                    <div class="card-type">Announcements</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="In-game announcements link to <strong>ltdnew.online</strong> and use the LegionTD NewEdition heading">ประกาศในเกมลิงก์ไปเว็บ <strong>ltdnew.online</strong> และหัวข้อประกาศเป็น LegionTD NewEdition</li>
+                    <li data-en="Discord links in the game and in the map description point to the new invite">ลิงก์ Discord ทั้งในเกมและในคำอธิบายแมพเปลี่ยนเป็นลิงก์ใหม่</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">🌀</div></div>
+                <div>
+                    <div class="card-name" data-en="Units teleporting back before the lane is cleared">ยูนิตวาปกลับก่อนเคลียร์เลน</div>
+                    <div class="card-type">Lane</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Units that reach the creep spawn point no longer teleport back while creeps in the lane are still alive">ยูนิตที่เดินไปถึงจุดเกิดครีปจะไม่วาปกลับเอง ขณะที่ครีปในเลนยังไม่หมด</li>
+                    <li data-en="The cause: sent units that died in another lane were counted as kills for the sender's own lane">สาเหตุ: ตัวส่งที่ตายในเลนอื่นถูกนับเป็นครีปที่ตายในเลนของคนส่ง</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────── SECTION 3: New features ─────────── -->
+<section class="section reveal" id="section3">
+    <div class="section-header">
+        <div class="section-number">3</div>
+        <div class="section-title-group">
+            <h2 class="section-title" data-en="New features">ฟีเจอร์ใหม่</h2>
+            <div class="section-subtitle">New Features</div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">🚫</div></div>
+                <div>
+                    <div class="card-name" data-en="No lumber sends from Wave 20">ส่งตัวที่ใช้ไม้ไม่ได้ตั้งแต่เวฟ 20</div>
+                    <div class="card-type">Wave 20</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="From the moment Wave 20 spawns until the end of the game, units that cost lumber can no longer be sent from any building">ตั้งแต่เวฟ 20 เริ่มเกิดจนจบเกม ส่งตัวจากบ้านที่ใช้ไม้ไม่ได้ทุกบ้าน</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">🪙</div></div>
+                <div>
+                    <div class="card-name" data-en="Lumber converted to gold at the start of Wave 20">แปลงไม้เป็นทองตอนเริ่มเวฟ 20</div>
+                    <div class="card-type">Wave 20</div>
+                </div>
+                <span class="tag tag-new" style="margin-left:auto;">NEW</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="As soon as Wave 20 starts, all lumber turns into gold at <strong>20 lumber = 1 gold</strong>; any remainder under 20 is dropped">พอเวฟ 20 เริ่ม ไม้ทั้งหมดแปลงเป็นทองอัตรา <strong>20 ไม้ = 1 ทอง</strong> เศษที่ไม่ครบ 20 ปัดทิ้ง</li>
+                    <li data-en="After the conversion, no player receives any more lumber for the rest of the game">หลังแปลงแล้ว ผู้เล่นทุกคนจะไม่ได้รับไม้อีกจนจบเกม</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">⚔️</div></div>
+                <div>
+                    <div class="card-name" data-en="Arena with uneven teams">Arena เมื่อผู้เล่นสองทีมไม่เท่ากัน</div>
+                    <div class="card-type">Arena Battle</div>
+                </div>
+                <span class="tag tag-new" style="margin-left:auto;">NEW</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Only units of players still in the game take part; players who left are not brought in">ใช้เฉพาะยูนิตของผู้เล่นที่ยังอยู่ในเกม คนที่ออกไปแล้วไม่ถูกนำมาสู้</li>
+                    <li data-en="If the teams are uneven, the bigger team only fields its highest-Value players, matching the size of the smaller team">ถ้าคนไม่เท่ากัน ทีมที่คนเยอะกว่าจะส่งเฉพาะคนที่มี Value สูงสุด ให้จำนวนเท่ากับทีมที่คนน้อยกว่า</li>
+                    <li data-en="Example 4 vs 3: the team of 4 sends the players ranked 1–3 by Value">ตัวอย่าง 4 ต่อ 3: ทีมที่มี 4 คนส่งคนที่ Value อันดับ 1–3 ลงสู้</li>
+                    <li data-en="Applies to both Arenas, after Wave 10 and after Wave 20">ใช้ทั้ง Arena หลังเวฟ 10 และหลังเวฟ 20</li>
+                    <li data-en="Helper bosses no longer join the smaller team; they only appear when the other team has no players left">บอสไม่มาช่วยทีมที่คนน้อยแล้ว จะมาเฉพาะตอนที่อีกทีมไม่เหลือคนเลย</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="card-icon-placeholder">🧪</div></div>
+                <div>
+                    <div class="card-name" data-en="New test mode commands">คำสั่งใหม่ในโหมดทดสอบ</div>
+                    <div class="card-type">Test Mode (tm)</div>
+                </div>
+                <span class="tag tag-new" style="margin-left:auto;">NEW</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="In <code>tm</code> mode, type <code>-wave x</code> (x = 1–20) to make the next wave Wave x">ในโหมด <code>tm</code> พิมพ์ <code>-wave x</code> (x = 1–20) เพื่อให้เวฟถัดไปเป็นเวฟ x</li>
+                    <li data-en="Using <code>-wave</code> turns off the Value kick for that game">ใช้ <code>-wave</code> แล้วระบบเตะตาม Value จะปิดสำหรับเกมนั้น</li>
+                    <li data-en="Before each wave the countdown is paused; type <code>-start</code> to begin the next wave">ก่อนเริ่มเวฟ เวลานับถอยหลังจะหยุดรอ พิมพ์ <code>-start</code> เพื่อเริ่มเวฟถัดไป</li>
+                    <li data-en="<code>-rd</code> re-rolls all 6 units (pr mode)"><code>-rd</code> สุ่มยูนิตใหม่ทั้ง 6 ตัว (โหมด pr)</li>
+                    <li data-en="<code>-arenatest</code> runs 6 test cases for the uneven-team Arena rule and shows PASS/FAIL"><code>-arenatest</code> รัน test case 6 เคสของกติกา Arena ผู้เล่นไม่เท่ากัน แล้วบอก PASS/FAIL</li>
+                    <li data-en="<code>-arenaout</code> makes your own units sit out the next Arena, to check the rule with real units"><code>-arenaout</code> ให้ยูนิตของตัวเองไม่ลง Arena ครั้งถัดไป ไว้เช็กกับยูนิตจริง</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+
+
+<script src="../../assets/js/nav.js?v=7e7d7ae5" defer></script>
+<script src="../../assets/js/reveal.js?v=e543066f" defer></script>
+<script src="../../assets/js/toc.js?v=b417fc90" defer></script>
+<script src="../../assets/js/img-fallback.js?v=030f9fc7" defer></script>
+<script src="../../assets/js/tilt.js?v=fed32629" defer></script>
+<script type="module" src="../../assets/js/scene3d.js?v=bb5a3885"></script>
+
+</body>
+</html>

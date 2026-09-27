@@ -22,7 +22,8 @@ const { balance, weapons, abilities, upgrades, unitStr, upgradeStr, abilStr } = 
 
 const jassFile = [path.join(SRC, 'Scripts/war3map.j'), path.join(SRC, 'war3map.j')].find(fs.existsSync);
 if (!jassFile) throw new Error('ไม่เจอ war3map.j');
-const J = fs.readFileSync(jassFile, 'latin1');
+// สคริปต์ในแมพจริงขึ้นบรรทัดปนกันทั้ง CR อย่างเดียวและ LF ทำให้เป็น LF ก่อน regex ด้านล่างจะได้ใช้ได้ทุกแบบ
+const J = fs.readFileSync(jassFile, 'latin1').replace(/\r\n?/g, '\n');
 
 /* ชื่อฟังก์ชันในสคริปต์ที่ถูก optimizer ตั้งชื่อสั้นให้ ถ้าแมพเวอร์ชันใหม่เปลี่ยนชื่อ ให้แก้ตรงนี้
    - WAVE_FUNC     ตั้งค่าเวฟชุดที่เกมใช้จริงตอนเริ่มแมพ (จำนวนครีปต่อเลน ทองต่อตัว ชนิดโจมตี/เกราะ)
@@ -109,7 +110,7 @@ for (const m of funcBody(MODE_PR_FUNC).matchAll(/set OO\[(\d+)\]=(\d+)(?:-(\d+))
 const kickValue = {};
 {
     let i = 0;
-    for (const m of funcBody('main').matchAll(/exitwhen i>(\d+)\r?\nset WAVE_KICK_VALUE\[i\]=(\d+)\*i/g)) {
+    for (const m of funcBody('main').matchAll(/exitwhen i>(\d+)(?:\r\n|\r|\n)set WAVE_KICK_VALUE\[i\]=(\d+)\*i/g)) {
         for (; i <= +m[1]; i += 1) kickValue[i] = i * +m[2];
     }
     need(kickValue[LAST_WAVE] || null, 'WAVE_KICK_VALUE');

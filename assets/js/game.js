@@ -385,7 +385,7 @@
         document.querySelectorAll('[data-game-version]').forEach((el) => { el.textContent = g.version; });
     };
 
-    fetch('../assets/data/game.json?v=95c48015')
+    fetch('../assets/data/game.json?v=6e9d5e67')
         .then((r) => r.json())
         .then((g) => {
             data = g;
