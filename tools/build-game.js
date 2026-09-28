@@ -400,15 +400,18 @@ for (const upg of ['R003', 'R00H']) {
         });
     }
 }
-const wispUnit = unitInfo('ewsp');
+// Wisp ที่ผู้เล่นผลิตจริงคือ e003 (Town h023 ผลิต ในเกมชื่อ Worker) ส่วน ewsp ไม่มีตึกไหนผลิต
+const WISP = 'e003';
+const wispUnit = unitInfo(WISP);
 const wisp = {
     ...wispUnit,
-    gold: num(balance.ewsp.goldcost),
-    desc: clean(unitStr.ewsp?.Ubertip),
+    name: 'Wisp',
+    gold: num(balance[WISP].goldcost),
+    desc: clean(unitStr[WISP]?.Ubertip),
     // การเก็บไม้ของ Wisp มาจากความสามารถ Harvest (Wisp) รหัส Awha: DataA = ไม้ต่อรอบ, Dur = วินาทีต่อรอบ
     // งานวิจัย R003/R00H ชี้มาที่ Awha (code1) เพิ่มไม้ต่อรอบทีละ base1
     gather: (() => {
-        const id = (abilities.ewsp?.abilList || '').split(',').find((a) => map.abilityData[a]?.code === 'Awha');
+        const id = (abilities[WISP]?.abilList || '').split(',').find((a) => map.abilityData[a]?.code === 'Awha');
         const row = map.abilityData[id] || {};
         return { per: +row.DataA1 || 0, every: +row.Dur1 || 0 };
     })(),
