@@ -329,6 +329,10 @@ const champion = (() => {
     const armorAura = map.abilityData.A933 || {};
     const regenAura = map.abilityData.A945 || {};
     const thorns = +(map.abilityData.A929?.DataA1 || 0);
+    // เกราะเพิ่ม (AIde) ที่ใส่ต่อจากสกิลแชมเปี้ยน A921 ทุกเวฟ
+    const armorAdd = [...new Set([...J.matchAll(/UnitAddAbility\(BHE,'A921'\)\s*\ncall UnitAddAbility\(BHE,'(\w{4})'\)/g)].map((m) => m[1]))]
+        .filter((a) => map.abilityData[a]?.code === 'AIde')
+        .reduce((s, a) => s + (+map.abilityData[a].DataA1 || 0), 0);
 
     const waves = creeps.map((c) => {
         const canChallenge = !blocked.includes(c.wave) && goldFor(c.wave) > 0;
@@ -365,13 +369,14 @@ const champion = (() => {
     ].filter(Boolean);
     const buffs = [
         [`ดาเมจ +${Math.round(roar * 100)}%`, `Damage +${Math.round(roar * 100)}%`],
+        armorAdd ? [`เกราะ +${armorAdd}`, `Armor +${armorAdd}`] : null,
         [`ลดเกราะศัตรูรอบตัว ${Math.abs(+armorAura.DataA1 || 0)} หน่วย รัศมี ${+armorAura.Area1 || 0}`,
             `Reduces armor of nearby enemies by ${Math.abs(+armorAura.DataA1 || 0)}, radius ${+armorAura.Area1 || 0}`],
         [`ออร่าฟื้นเลือด ${Math.round((+regenAura.DataB1 || 0) * 100)}% ของเลือดสูงสุดต่อวินาที รัศมี ${+regenAura.Area1 || 0}`,
             `HP regen aura: ${Math.round((+regenAura.DataB1 || 0) * 100)}% of max HP per second, radius ${+regenAura.Area1 || 0}`],
         [`สะท้อนดาเมจ ${Math.round(thorns * 100)}% กลับไปหาคนตี`, `Reflects ${Math.round(thorns * 100)}% of damage back to the attacker`],
         ['ผิวต้านเวท (Resistant Skin) ติดสถานะสั้นลงและไม่โดนสกิลบางอย่าง', 'Resistant Skin: shorter debuff durations and immune to some skills'],
-    ];
+    ].filter(Boolean);
     return {
         stackGold,
         rules: goldRules,
@@ -407,6 +412,7 @@ const wisp = {
     ...wispUnit,
     name: 'Wisp',
     gold: num(balance[WISP].goldcost),
+    time: num(balance[WISP].bldtm),
     desc: clean(unitStr[WISP]?.Ubertip),
     // การเก็บไม้ของ Wisp มาจากความสามารถ Harvest (Wisp) รหัส Awha: DataA = ไม้ต่อรอบ, Dur = วินาทีต่อรอบ
     // งานวิจัย R003/R00H ชี้มาที่ Awha (code1) เพิ่มไม้ต่อรอบทีละ base1

@@ -262,7 +262,7 @@
         <h3 class="game-sub"><i class="ph ph-sparkle" aria-hidden="true"></i> Presence <small>${t('เลือกได้ 1 แบบ', 'Pick 1')}</small></h3>
         <div class="shop-grid shop-grid-2">${k.presence.map(presenceCard).join('')}</div>
 
-        <h3 class="game-sub"><i class="ph ph-hand-pointing" aria-hidden="true"></i> ${t('สกิลของ King', 'King Skills')} <small>${t('ทีมโหวตเลือก เลเวลขึ้นเองตามเวฟ', 'Chosen by team vote, levels up automatically with the waves')}</small></h3>
+        <h3 class="game-sub"><i class="ph ph-hand-pointing" aria-hidden="true"></i> ${t('สกิลของ King', 'King Skills')} <small>${t('ทีมโหวตเลือก ต้องโหวตครบทุกคนในทีมที่ยังเล่นอยู่ เลเวลขึ้นเองตามเวฟ', 'Chosen by team vote, everyone still playing on the team must vote, levels up automatically with the waves')}</small></h3>
         <div class="shop-grid shop-grid-2">${k.skills.map(kingSkill).join('')}</div>`;
 
     /* ── Challenge Champion ── */
@@ -336,6 +336,7 @@
             ${stat(t('เก็บไม้เริ่มต้น', 'Base harvest'), g.per ? t(`${g.per} ไม้ ทุก ${g.every} วิ`, `${g.per} lumber every ${g.every} s`) : '', 'ph-tree')}
             ${stat(t('เฉลี่ยต่อนาที', 'Average per minute'), g.per ? t(`${perMin(g.per)} ไม้/นาที ต่อตัว`, `${perMin(g.per)} lumber/min per Wisp`) : '', 'ph-timer')}
             ${stat(t('ราคา', 'Cost'), t(`${fmt(w.gold)} ทอง`, `${fmt(w.gold)} gold`), 'ph-coins')}
+            ${w.time ? stat(t('เวลาผลิต', 'Build time'), t(`${w.time} วิ`, `${w.time} s`), 'ph-hourglass') : ''}
             ${stat(t('พลังชีวิต', 'HP'), fmt(w.hp), 'ph-heart')}
             ${stat(t('ความเร็วเคลื่อนที่', 'Move Speed'), w.move, 'ph-sneaker-move')}
         </div>
@@ -385,7 +386,7 @@
         document.querySelectorAll('[data-game-version]').forEach((el) => { el.textContent = g.version; });
     };
 
-    fetch('../assets/data/game.json?v=320c23b6')
+    fetch('../assets/data/game.json?v=06863cb3')
         .then((r) => r.json())
         .then((g) => {
             data = g;
