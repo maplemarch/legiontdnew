@@ -84,7 +84,7 @@ html {
 
 body {
     /* เคอร์เซอร์ลูกศรทองแบบเกมแฟนตาซี ถ้าโหลดรูปไม่ได้จะใช้ลูกศรปกติ */
-    cursor: url('../img/cursor.svg?v=acdafd3a') 2 2, auto;
+    cursor: url('../img/cursor.svg?v=24326a75') 2 2, auto;
     font-family: var(--font-body);
     background: var(--bg-dark);
     color: var(--text-primary);
@@ -254,7 +254,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
     border: 1px solid var(--border-color);
     border-radius: var(--radius-full);
     background: transparent;
-    cursor: url('../img/cursor-link.svg?v=54df678c') 2 2, pointer;
+    cursor: url('../img/cursor-link.svg?v=735ff947') 2 2, pointer;
     transition: border-color 700ms var(--ease-fluid), background 700ms var(--ease-fluid);
 }
 .nav-toggle:hover { background: rgba(255, 255, 255, 0.05); border-color: var(--border-accent); }
@@ -328,7 +328,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
     line-height: 24px;
     font-weight: 600;
     text-decoration: none;
-    cursor: url('../img/cursor-link.svg?v=54df678c') 2 2, pointer;
+    cursor: url('../img/cursor-link.svg?v=735ff947') 2 2, pointer;
     border: 1px solid transparent;
     border-radius: var(--radius-full);
     padding: var(--space-100) var(--space-300);
@@ -666,5 +666,5 @@ body > main { position: relative; z-index: 1; }
 }
 
 /* ลิงก์กับปุ่มทุกตัวใช้เคอร์เซอร์เรืองแสง ช่องพิมพ์ยังเป็นเคอร์เซอร์ตัวอักษรตามปกติ */
-a, button, summary, label, select, [role="button"] { cursor: url('../img/cursor-link.svg?v=54df678c') 2 2, pointer; }
+a, button, summary, label, select, [role="button"] { cursor: url('../img/cursor-link.svg?v=735ff947') 2 2, pointer; }
 input:not([type="checkbox"]):not([type="radio"]), textarea { cursor: text; }
