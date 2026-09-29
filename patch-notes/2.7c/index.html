@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
     <link rel="stylesheet" href="../../assets/css/base.css?v=d3fd3e27">
     <script src="../../assets/js/i18n.js?v=22cbfaa5"></script>
-    <link rel="stylesheet" href="../../assets/css/patch-notes.css?v=d2a2e6d3">
+    <link rel="stylesheet" href="../../assets/css/patch-notes.css?v=bc771417">
 </head>
 <body>
 
@@ -310,6 +310,41 @@
                 </ul>
             </div>
         </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icons"><div class="card-icon"><img src="../../assets/img/units/btnchaoswarlock-882dced62b.png" alt="Blood Orc Warlock" onerror="this.parentElement.innerHTML='<div class=img-fallback>🩸</div>'"></div><div class="card-icon"><img src="../../assets/img/units/btnmedivh-f18fc951f5.png" alt="Soul of Villain" onerror="this.parentElement.innerHTML='<div class=img-fallback>🩸</div>'"></div><div class="card-icon"><img src="../../assets/img/units/btnsorceress-90b847f843.png" alt="Ascendant" onerror="this.parentElement.innerHTML='<div class=img-fallback>🩸</div>'"></div></div>
+                <div>
+                    <div class="card-name" data-en="Blood Orc Warlock, Soul of Villain and Ascendant">Blood Orc Warlock, Soul of Villain และ Ascendant</div>
+                    <div class="card-type" data-en="Armor reducers">ตัวลดเกราะ</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Targeting <span class=&quot;old-val&quot;>whatever it finds</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>the Challenge Champion in range first</span>">เลือกเป้า <span class="old-val">ตีตัวที่เจอ</span> <span class="arrow">→</span> <span class="new-val-up">ตี Challenge Champion ในระยะก่อน</span></li>
+                    <li data-en="With no Champion in range, it attacks the enemy with the most HP first">ถ้าในระยะไม่มี Champion จะตีศัตรูที่เลือดเหลือมากที่สุดก่อน</li>
+                    <li data-en="Armor reduction is unchanged">ค่าลดเกราะเท่าเดิม</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnspiritofvengeance-52eb7cb519.png" alt="Spirit Of Vengeance" onerror="this.parentElement.innerHTML='<div class=img-fallback>👻</div>'"></div>
+                <div>
+                    <div class="card-name">Spirit Of Vengeance</div>
+                    <div class="card-type">Reduced protection</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Aura enemy armor reduction <span class=&quot;old-val&quot;>1</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>2</span>">ออร่าลดเกราะศัตรูในระยะ <span class="old-val">1</span> <span class="arrow">→</span> <span class="new-val-up">2</span></li>
+                    <li data-en="Aura radius 1000 (the tooltip said 700, now fixed)">ระยะออร่า 1000 (คำอธิบายเดิมเขียน 700 แก้ให้ตรงแล้ว)</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -352,7 +387,7 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li data-en="Build time <span class=&quot;old-val&quot;>15</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>17</span> seconds (move speed stays 522)">เวลาผลิต <span class="old-val">15</span> <span class="arrow">→</span> <span class="new-val-down">17</span> วินาที (ความเร็ว 522 เท่าเดิม)</li>
+                    <li data-en="Build time <span class=&quot;old-val&quot;>15</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>20</span> seconds (move speed stays 522)">เวลาผลิต <span class="old-val">15</span> <span class="arrow">→</span> <span class="new-val-down">20</span> วินาที (ความเร็ว 522 เท่าเดิม)</li>
                 </ul>
             </div>
         </div>
@@ -384,6 +419,7 @@
                     <li data-en="Gold on waves 1–10 <span class=&quot;old-val&quot;>wave × 17</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>wave × 15</span>">ทองเวฟ 1–10 <span class="old-val">เลขเวฟ × 17</span> <span class="arrow">→</span> <span class="new-val-down">เลขเวฟ × 15</span></li>
                     <li data-en="Gold on waves 11–19 stays at wave × 20">ทองเวฟ 11–19 = เลขเวฟ × 20 เท่าเดิม</li>
                     <li data-en="Stack gold <span class=&quot;old-val&quot;>(stack − 1) × 10</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>(stack − 1) × 7</span>">ทองจาก Stack <span class="old-val">(stack − 1) × 10</span> <span class="arrow">→</span> <span class="new-val-down">(stack − 1) × 7</span></li>
+                    <li data-en="Champion armor on every wave <span class=&quot;old-val&quot;>+0</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>+3</span>">เกราะของ Champion ทุกเวฟ <span class="old-val">+0</span> <span class="arrow">→</span> <span class="new-val-down">+3</span></li>
                 </ul>
             </div>
         </div>
@@ -441,10 +477,10 @@
 
         <div class="card">
             <div class="card-header">
-                <div class="card-icon"><img src="../../assets/img/units/btnquillbeast-81f43e5c35.png" alt="Wave 4 and wave 8 creeps" onerror="this.parentElement.innerHTML='<div class=img-fallback>👾</div>'"></div>
+                <div class="card-icons"><div class="card-icon"><img src="../../assets/img/units/btnquillbeast-81f43e5c35.png" alt="Quilbeast" onerror="this.parentElement.innerHTML='<div class=img-fallback>👾</div>'"></div><div class="card-icon"><img src="../../assets/img/units/btnacolyte-85435c1ff3.png" alt="Acolyte" onerror="this.parentElement.innerHTML='<div class=img-fallback>👾</div>'"></div><div class="card-icon"><img src="../../assets/img/units/btnzombie-0b4519452c.png" alt="Zombie" onerror="this.parentElement.innerHTML='<div class=img-fallback>👾</div>'"></div><div class="card-icon"><img src="../../assets/img/units/btnwindserpent-ac5f8138f5.png" alt="Couatl" onerror="this.parentElement.innerHTML='<div class=img-fallback>👾</div>'"></div><div class="card-icon"><img src="../../assets/img/units/btnfleshgolem-7a78dfcd9f.png" alt="Flesh Golem" onerror="this.parentElement.innerHTML='<div class=img-fallback>👾</div>'"></div></div>
                 <div>
-                    <div class="card-name" data-en="Wave 4 and wave 8 creeps">มอนเวฟ 4 และเวฟ 8</div>
-                    <div class="card-type">Quilbeast · Acolyte</div>
+                    <div class="card-name" data-en="Creeps of waves 4, 8, 9, 13 and 17">มอนเวฟ 4, 8, 9, 13 และ 17</div>
+                    <div class="card-type">Quilbeast · Acolyte · Zombie · Couatl · Flesh Golem</div>
                 </div>
                 <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
             </div>
@@ -452,6 +488,9 @@
                 <ul>
                     <li data-en="Quilbeast (wave 4) damage <span class=&quot;old-val&quot;>16-18</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>14-16</span>, attack speed <span class=&quot;old-val&quot;>0.8</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>0.9</span>">Quilbeast (เวฟ 4) พลังโจมตี <span class="old-val">16-18</span> <span class="arrow">→</span> <span class="new-val-down">14-16</span> ความเร็วโจมตี <span class="old-val">0.8</span> <span class="arrow">→</span> <span class="new-val-down">0.9</span></li>
                     <li data-en="Acolyte (wave 8) damage <span class=&quot;old-val&quot;>56-59</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>53-56</span>, attack speed <span class=&quot;old-val&quot;>0.85</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>0.9</span>">Acolyte (เวฟ 8) พลังโจมตี <span class="old-val">56-59</span> <span class="arrow">→</span> <span class="new-val-down">53-56</span> ความเร็วโจมตี <span class="old-val">0.85</span> <span class="arrow">→</span> <span class="new-val-down">0.9</span></li>
+                    <li data-en="Zombie (wave 9) HP regen <span class=&quot;old-val&quot;>7.5</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>10</span> per second">Zombie (เวฟ 9) ฟื้นเลือด <span class="old-val">7.5</span> <span class="arrow">→</span> <span class="new-val-down">10</span> ต่อวิ</li>
+                    <li data-en="Couatl (wave 13) HP <span class=&quot;old-val&quot;>4000</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>4200</span>">Couatl (เวฟ 13) พลังชีวิต <span class="old-val">4000</span> <span class="arrow">→</span> <span class="new-val-down">4200</span></li>
+                    <li data-en="Flesh Golem (wave 17) HP regen <span class=&quot;old-val&quot;>5</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>10</span> per second">Flesh Golem (เวฟ 17) ฟื้นเลือด <span class="old-val">5</span> <span class="arrow">→</span> <span class="new-val-down">10</span> ต่อวิ</li>
                 </ul>
             </div>
         </div>
