@@ -123,13 +123,19 @@ const HERO_ROOT = 'h996';
 const heroLine = (u, seen = new Set()) => u.id === HERO_ROOT
     || u.from.some((f) => !seen.has(f) && seen.add(f) && heroLine(byId.get(f), seen));
 for (const u of next) if (!u.tier && heroLine(u)) u.tier = 'hero';
+// มังกร: ไม่อยู่ในช่องสุ่ม Tier แต่สุ่มขายในช่องที่ 7 (LTD_DragonSlotRoll) ตัวมันกับร่างอัปเกรดจัดเป็นกลุ่ม 'dragon'
+const slotAt = J.indexOf('function LTD_DragonSlotRoll');
+const DRAGON_ROOTS = slotAt < 0 ? [] : [...J.slice(slotAt, J.indexOf('endfunction', slotAt)).matchAll(/set ltdT='(\w{4})'/g)].map((m) => m[1]);
+const dragonLine = (u, seen = new Set()) => DRAGON_ROOTS.includes(u.id)
+    || u.from.some((f) => !seen.has(f) && seen.add(f) && dragonLine(byId.get(f), seen));
+for (const u of next) if (!u.tier && dragonLine(u)) u.tier = 'dragon';
 const noTier = next.filter((u) => !u.tier).map((u) => u.name);
 
 fs.writeFileSync(OUT, JSON.stringify(next));
 
 console.log(`อัปเดต ${report.updated} ยูนิต`);
 console.log(`ค่าต่างจากเดิม ${report.changed.length} ยูนิต`);
-console.log(`Tier 1-6: ${POOLS.map((_, i) => next.filter((u) => u.base && u.tier === i + 1).length).join(' ')} ร่างแรก · Hero ${next.filter((u) => u.tier === 'hero').length} · ไม่มี Tier: ${noTier.join(', ') || '-'}`);
+console.log(`Tier 1-6: ${POOLS.map((_, i) => next.filter((u) => u.base && u.tier === i + 1).length).join(' ')} ร่างแรก · Hero ${next.filter((u) => u.tier === 'hero').length} · Dragon ${next.filter((u) => u.tier === 'dragon').length} · ไม่มี Tier: ${noTier.join(', ') || '-'}`);
 report.changed.slice(0, 40).forEach((c) => console.log('  ' + c));
 if (report.removed.length) console.log(`ไม่มีในแมพแล้ว ถอดออก ${report.removed.length}: ${report.removed.join(', ')}`);
 if (report.missingIcons.size) console.log(`ไอคอนสกิลที่ยังไม่มีรูป ${report.missingIcons.size}: ${[...report.missingIcons].join(', ')}`);

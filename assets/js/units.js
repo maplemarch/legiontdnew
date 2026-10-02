@@ -23,8 +23,8 @@
     const esc = (s) => String(s == null ? '' : s)
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-    // Tier 1-6 คือช่องสุ่ม ส่วน 'hero' คือ Altar of Heroes กับฮีโร่ที่สร้างจากมัน
-    const tierLabel = (tier) => (tier === 'hero' ? 'Hero' : 'Tier ' + tier);
+    // Tier 1-6 คือช่องสุ่ม ส่วน 'hero' คือ Altar of Heroes กับฮีโร่ที่สร้างจากมัน และ 'dragon' คือมังกรในช่องที่ 7
+    const tierLabel = (tier) => (tier === 'hero' ? 'Hero' : tier === 'dragon' ? 'Dragon' : 'Tier ' + tier);
 
     /* ชนิดโจมตีและเกราะ: ข้อมูลเก็บเป็นรหัสของเกม แปลงเป็นชื่อที่เกมประกาศ ใช้สีเดียวกับ tag ของครีป (game.css)
        เกราะ normal ในแมพนี้คือ Fortified (ตารางดาเมจใช้ค่าเดียวกับ fort) */
@@ -211,7 +211,7 @@
     });
 
     /* ── โหลดข้อมูล ── */
-    fetch('../assets/data/units.json?v=84719428')
+    fetch('../assets/data/units.json?v=d6d84ec2')
         .then((r) => {
             if (!r.ok) throw new Error(t('โหลดข้อมูลไม่สำเร็จ ', 'Load failed ') + r.status);
             return r.json();
