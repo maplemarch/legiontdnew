@@ -197,7 +197,6 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li data-en="Attack speed <span class=&quot;old-val&quot;>0.65</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>0.6</span>">ความเร็วโจมตี <span class="old-val">0.65</span> <span class="arrow">→</span> <span class="new-val-up">0.6</span></li>
                     <li data-en="Attack range <span class=&quot;old-val&quot;>600</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>650</span>">ระยะโจมตี <span class="old-val">600</span> <span class="arrow">→</span> <span class="new-val-up">650</span></li>
                     <li data-en="New skill <b>Wild Hunt</b>: whenever it picks a new target, it attacks a random enemy within <b>650</b> range">สกิลใหม่ <b>Wild Hunt</b>: ทุกครั้งที่หาเป้าใหม่ จะสุ่มตีศัตรูในระยะ <b>650</b> แทนการรุมตัวเดียว</li>
                 </ul>
@@ -391,7 +390,8 @@
             <div class="card-body">
                 <ul>
                     <li data-en="Hit points <span class=&quot;old-val&quot;>1750</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>2000</span>">พลังชีวิต <span class="old-val">1750</span> <span class="arrow">→</span> <span class="new-val-up">2000</span></li>
-                    <li data-en="Evasion <span class=&quot;old-val&quot;>75%</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>65%</span>">Evasion หลบ <span class="old-val">75%</span> <span class="arrow">→</span> <span class="new-val-down">65%</span></li>
+                    <li data-en="Attack speed <span class=&quot;old-val&quot;>0.65</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>0.5</span>">ความเร็วโจมตี <span class="old-val">0.65</span> <span class="arrow">→</span> <span class="new-val-up">0.5</span></li>
+                    <li data-en="Evasion <span class=&quot;old-val&quot;>75%</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>70%</span>">Evasion หลบ <span class="old-val">75%</span> <span class="arrow">→</span> <span class="new-val-down">70%</span></li>
                     <li data-en="New skill <b>Double Strike</b>: after a kill, instantly strikes the nearest enemy for <b>224-268</b> damage">สกิลใหม่ <b>Double Strike</b>: ฆ่าศัตรูได้ ฟันตัวที่ใกล้สุดทันที <b>224-268</b> ดาเมจ</li>
                 </ul>
             </div>
@@ -421,14 +421,11 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li data-en="Own at least <b>1 dragon</b> → every random unit has a <b>15%</b> chance to be a dragon">มีมังกรอย่างน้อย <b>1 ตัว</b> → สุ่มยูนิตทุกครั้งมีโอกาส <b>15%</b> ได้มังกร</li>
-                    <li data-en="<b>Tier 2</b> — Egg Sack (upgrades to Sky Dragon)"><b>Tier 2</b> — Egg Sack (อัปเป็น Sky Dragon)</li>
-                    <li data-en="<b>Tier 4</b> — Prisoner (upgrades to Maverick)"><b>Tier 4</b> — Prisoner (อัปเป็น Maverick)</li>
-                    <li data-en="<b>Tier 5</b> — Wyvern (upgrades to Wind Rider, which also counts as a dragon)"><b>Tier 5</b> — Wyvern (อัปเป็น Wind Rider ซึ่งนับเป็นมังกรด้วย)</li>
-                    <li data-en="<b>Tier 6</b> — Spawn of Dragon or Guardian of Death"><b>Tier 6</b> — Spawn of Dragon หรือ Guardian of Death</li>
-                    <li data-en="Tiers 1 and 3 have no dragons and roll as usual">Tier 1 และ 3 ไม่มีมังกร สุ่มตามปกติ</li>
-                    <li data-en="Units that count as dragons show the <b>Dragon Kin</b> icon in game">ตัวที่นับเป็นมังกร มีไอคอน <b>Dragon Kin</b> ในเกม</li>
-                    <li data-en="When the roll lands a dragon, a <b>Dragon found!</b> message and sound tell you which dragon you got">สุ่มติดมังกรเมื่อไหร่ มีข้อความ <b>Dragon found!</b> พร้อมเสียงแจ้ง บอกชื่อมังกรที่ได้</li>
+                    <li data-en="Dragons show the <b>Dragon Kin</b> icon · they roll in the Tier 2 / 4 / 5 / 6 slots">ตัวที่นับเป็นมังกร มีไอคอน <b>Dragon Kin</b> · มังกรอยู่ในช่องสุ่ม Tier 2 / 4 / 5 / 6</li>
+                    <li data-en="<b>Tier 2</b> Egg Sack (to Sky Dragon) · <b>Tier 4</b> Prisoner (to Maverick) · <b>Tier 5</b> Wyvern (to Wind Rider) · <b>Tier 6</b> Spawn of Dragon / Guardian of Death"><b>Tier 2</b> Egg Sack (อัปเป็น Sky Dragon) · <b>Tier 4</b> Prisoner (อัปเป็น Maverick) · <b>Tier 5</b> Wyvern (อัปเป็น Wind Rider) · <b>Tier 6</b> Spawn of Dragon / Guardian of Death</li>
+                    <li data-en="Own at least <b>1 dragon</b> → every other wave, the wave-start roll <b>guarantees 1 dragon</b>">มีมังกรอย่างน้อย <b>1 ตัว</b> → การสุ่มตอนเริ่มเวฟ <b>การันตีมังกร 1 ช่อง</b> แบบเวฟเว้นเวฟ</li>
+                    <li data-en="Counting starts the wave after your first dragon · counted per player">เริ่มนับจากเวฟถัดไปหลังได้มังกรตัวแรก · นับแยกแต่ละคน</li>
+                    <li data-en="Other waves roll normally · Re-Roll is never guaranteed">เวฟที่ไม่การันตีสุ่มปกติ · กดสุ่มใหม่ (Re-Roll) ไม่การันตี</li>
                 </ul>
             </div>
         </div>
@@ -486,6 +483,11 @@
                     <li data-en="The buffs from the 5 dragon aspects now reach <b>every dragon</b> that counts as Dragon Kin, not only other aspects">บัฟจากร่างมังกร 5 สี มีผลกับ <b>มังกรทุกตัว</b> ที่นับเป็น Dragon Kin แล้ว ไม่ใช่แค่ร่างมังกรด้วยกัน</li>
                     <li data-en="Now included: Sky Dragon, Maverick, Wyvern, Wind Rider, Spawn of Dragon, Guardian of Death, Death Dragon">ได้เพิ่ม: Sky Dragon, Maverick, Wyvern, Wind Rider, Spawn of Dragon, Guardian of Death, Death Dragon</li>
                     <li data-en="An aspect now <b>buffs itself too</b>">ร่างมังกร <b>บัฟตัวเองด้วย</b> แล้ว</li>
+                    <li data-en="Red: <span class=&quot;old-val&quot;>HP +500 · regen +20</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>HP +500</span>">Red: <span class="old-val">HP +500 · ฟื้นเลือด +20</span> <span class="arrow">→</span> <span class="new-val-down">HP +500</span></li>
+                    <li data-en="Green: <span class=&quot;old-val&quot;>attack speed +20%</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>hp regen +20</span>">Green: <span class="old-val">ความเร็วโจมตี +20%</span> <span class="arrow">→</span> <span class="new-val-up">ฟื้นเลือด +20</span></li>
+                    <li data-en="Bronze: <span class=&quot;old-val&quot;>no effect</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>attack speed +20%</span>">Bronze: <span class="old-val">ไม่มีผล</span> <span class="arrow">→</span> <span class="new-val-up">ความเร็วโจมตี +20%</span></li>
+                    <li data-en="Black: <span class=&quot;old-val&quot;>+80 damage</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>+10% damage</span>">Black: <span class="old-val">ดาเมจ +80</span> <span class="arrow">→</span> <span class="new-val-up">ดาเมจ +10%</span></li>
+                    <li data-en="Azure: armor <span class=&quot;old-val&quot;>+6</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>+3</span>">Azure: เกราะ <span class="old-val">+6</span> <span class="arrow">→</span> <span class="new-val-down">+3</span></li>
                 </ul>
             </div>
         </div>
@@ -535,6 +537,8 @@
                     <li data-en="Lv3 heal <span class=&quot;old-val&quot;>400</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>500</span> HP">Lv3 ฮีล <span class="old-val">400</span> <span class="arrow">→</span> <span class="new-val-up">500</span> HP</li>
                     <li data-en="Mana <span class=&quot;old-val&quot;>2</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>10</span> · cooldown <span class=&quot;old-val&quot;>1</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>5</span> seconds">มานา <span class="old-val">2</span> <span class="arrow">→</span> <span class="new-val-down">10</span> · คูลดาวน์ <span class="old-val">1</span> <span class="arrow">→</span> <span class="new-val-down">5</span> วินาที</li>
                     <li data-en="Bug fix: Devotion Aura kept working while the tower was hidden during a wave">แก้บัค: ตอนตึกซ่อนระหว่างเวฟ Devotion Aura ยังทำงาน ตอนนี้ปิดตอนซ่อน</li>
+                    <li data-en="Bug fix: stood still after healing → now goes straight back to attacking">แก้บัค: ฮีลเสร็จแล้วยืนนิ่งไม่ตี → กลับไปตีต่อทันที</li>
+                    <li data-en="Bug fix: the hidden tower could still heal after the fighter died → only the fighter heals now">แก้บัค: ตึกที่ซ่อนอยู่ยังฮีลได้หลังตัวลงสู้ตาย → ฮีลได้แค่ตัวที่ลงสู้</li>
                 </ul>
             </div>
         </div>
@@ -638,6 +642,23 @@
     <div class="subsection">
         <div class="card">
             <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnwisp-01c99b596b.png" alt="Wave creep speed" onerror="this.parentElement.innerHTML='<div class=img-fallback>👾</div>'"></div>
+                <div>
+                    <div class="card-name" data-en="Wave creep speed">ความเร็วมอนเวฟ</div>
+                    <div class="card-type" data-en="All waves">มอนทุกเวฟ</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Every wave creep moves <b>5%</b> slower, e.g. <span class=&quot;old-val&quot;>300</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>285</span> · <span class=&quot;old-val&quot;>400</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>380</span> · <span class=&quot;old-val&quot;>500</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>475</span>">มอนทุกตัวเดินช้าลง <b>5%</b> เช่น <span class="old-val">300</span> <span class="arrow">→</span> <span class="new-val-up">285</span> · <span class="old-val">400</span> <span class="arrow">→</span> <span class="new-val-up">380</span> · <span class="old-val">500</span> <span class="arrow">→</span> <span class="new-val-up">475</span></li>
+                    <li data-en="New creeps start <span class=&quot;old-val&quot;>6%</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>50%</span> visible and are fully visible within <span class=&quot;old-val&quot;>12</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>2</span> seconds">มอนเกิดใหม่ชัด <span class="old-val">6%</span> <span class="arrow">→</span> <span class="new-val-up">50%</span> ตั้งแต่แรก และชัดเต็มภายใน <span class="old-val">12</span> <span class="arrow">→</span> <span class="new-val-up">2</span> วินาที</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
                 <div class="card-icons"><div class="card-icon"><img src="../../assets/img/units/btnsatyr-a76ac334d3.png" alt="Satyr" onerror="this.parentElement.innerHTML='<div class=img-fallback>👾</div>'"></div><div class="card-icon"><img src="../../assets/img/units/btnfleshgolem-7a78dfcd9f.png" alt="Flesh Golem" onerror="this.parentElement.innerHTML='<div class=img-fallback>👾</div>'"></div><div class="card-icon"><img src="../../assets/img/units/btnseaturtlered-6103da77ae.png" alt="Fish Eater" onerror="this.parentElement.innerHTML='<div class=img-fallback>👾</div>'"></div></div>
                 <div>
                     <div class="card-name" data-en="Creeps of waves 7, 17 and 20">มอนเวฟ 7, 17 และ 20</div>
@@ -721,16 +742,19 @@
 
         <div class="card">
             <div class="card-header">
-                <div class="card-icon"><img src="../../assets/img/units/btnspiritofvengeance-52eb7cb519.png" alt="Spectra (send)" onerror="this.parentElement.innerHTML='<div class=img-fallback>👻</div>'"></div>
+                <div class="card-icon"><img src="../../assets/img/units/btnspiritofvengeance-52eb7cb519.png" alt="1500-lumber sends" onerror="this.parentElement.innerHTML='<div class=img-fallback>👻</div>'"></div>
                 <div>
-                    <div class="card-name" data-en="Spectra (send)">Spectra (ตัวส่ง)</div>
-                    <div class="card-type" data-en="Lumber send">ตัวส่งไม้</div>
+                    <div class="card-name" data-en="1500-lumber sends">ตัวส่งไม้ 1500</div>
+                    <div class="card-type" data-en="Lumber sends">ตัวส่งไม้</div>
                 </div>
-                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
             </div>
             <div class="card-body">
                 <ul>
-                    <li data-en="Cost <span class=&quot;old-val&quot;>1700</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>1500</span> lumber">ราคา <span class="old-val">1700</span> <span class="arrow">→</span> <span class="new-val-up">1500</span> ไม้</li>
+                    <li data-en="Spectra cost <span class=&quot;old-val&quot;>1700</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>1500</span> lumber">Spectra ราคา <span class="old-val">1700</span> <span class="arrow">→</span> <span class="new-val-up">1500</span> ไม้</li>
+                    <li data-en="Spectra income <span class=&quot;old-val&quot;>+85</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>+50</span>">Spectra income <span class="old-val">+85</span> <span class="arrow">→</span> <span class="new-val-down">+50</span></li>
+                    <li data-en="Demon · Doom Guard · Fire Lord · Thaumaturgist income <span class=&quot;old-val&quot;>+70</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>+50</span>">Demon · Doom Guard · Fire Lord · Thaumaturgist income <span class="old-val">+70</span> <span class="arrow">→</span> <span class="new-val-down">+50</span></li>
+                    <li data-en="In-game tooltips now say +50, matching the real value (some used to say +40)">คำอธิบายในเกมเขียน +50 ตรงกับค่าจริงแล้ว (เดิมบางตัวเขียน +40)</li>
                 </ul>
             </div>
         </div>
@@ -746,8 +770,7 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li data-en="Levels 1–8: <span class=&quot;old-val&quot;>10, 12 … 24</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>12, 14 … 26</span> seconds">ขั้น 1–8: <span class="old-val">10, 12 … 24</span> <span class="arrow">→</span> <span class="new-val-up">12, 14 … 26</span> วินาที</li>
-                    <li data-en="Levels 9–15: <span class=&quot;old-val&quot;>30, 32 … 42</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>28, 30 … 40</span> seconds">ขั้น 9–15: <span class="old-val">30, 32 … 42</span> <span class="arrow">→</span> <span class="new-val-up">28, 30 … 40</span> วินาที</li>
+                    <li data-en="Levels 9–15: <span class=&quot;old-val&quot;>30, 32 … 42</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>26, 28 … 38</span> seconds">ขั้น 9–15: <span class="old-val">30, 32 … 42</span> <span class="arrow">→</span> <span class="new-val-up">26, 28 … 38</span> วินาที</li>
                     <li data-en="Every level is 2 seconds longer than the last, from level 1 to 15">ทุกขั้นห่างกัน 2 วินาที ต่อเนื่องตั้งแต่ขั้น 1 ถึง 15</li>
                 </ul>
             </div>
@@ -766,6 +789,24 @@
     </div>
 
     <div class="subsection">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnbanish-594803186a.png" alt="Lag and disconnects" onerror="this.parentElement.innerHTML='<div class=img-fallback>⚡</div>'"></div>
+                <div>
+                    <div class="card-name" data-en="Lag and disconnects">เกมกระตุกและหลุด</div>
+                    <div class="card-type" data-en="System">ระบบ</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Fixed the spread-attack system piling up data (late-wave lag)">แก้ระบบตีกระจายที่สะสมข้อมูลไม่ล้าง (กระตุกช่วงเวฟหลัง)</li>
+                    <li data-en="Creep fade-in effect now uses half the work">เอฟเฟคมอนค่อยๆ โผล่ใช้งานเครื่องน้อยลงครึ่งหนึ่ง</li>
+                    <li data-en="Fixed the end-of-game rank save making machines disagree (game splitting)">แก้ระบบเซฟแรงค์ตอนจบเกมที่ทำให้แต่ละเครื่องค่าไม่ตรงกัน (หลุดแยกห้อง)</li>
+                </ul>
+            </div>
+        </div>
+
         <div class="card">
             <div class="card-header">
                 <div class="card-icon"><img src="../../assets/img/units/btnhellscream-221afbcf30.png" alt="Axe Master sell value" onerror="this.parentElement.innerHTML='<div class=img-fallback>🪓</div>'"></div>
@@ -945,6 +986,7 @@
                 <ul>
                     <li data-en="Referees see King status (HP, attack, regen, heals) and both teams&#39; King upgrade/skill messages">กรรมการเห็นสถานะ King (HP โจมตี ฟื้นเลือด ฮีล) และข้อความอัป/สกิล King ทั้งสองฝั่ง</li>
                     <li data-en="<b>-king</b> shows both Kings&#39; upgrades and skill (referees only)"><b>-king</b> ดูอัปเกรดและสกิล King ทั้งสองฝั่ง (เฉพาะกรรมการ)</li>
+                    <li data-en="Works in every referee slot">ใช้ได้ทุกช่องกรรมการ</li>
                     <li data-en="<b>-cls</b> clears messages · <b>-zoom</b> now sticks instead of resetting every 30 s"><b>-cls</b> ล้างข้อความ · <b>-zoom</b> ซูมค้างไว้ ไม่เด้งกลับทุก 30 วิ</li>
                 </ul>
             </div>
