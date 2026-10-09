@@ -13,7 +13,8 @@
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    // threshold 0: ส่วนที่สูงมาก (เช่น การ์ดบัพหลายสิบใบบนมือถือ) ไม่มีทางเห็นถึง 10% ของตัว เลยไม่เคยโผล่
+    }, { threshold: 0, rootMargin: '0px 0px -50px 0px' });
 
     reveals.forEach((el) => observer.observe(el));
 })();
