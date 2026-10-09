@@ -112,7 +112,8 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li data-en="Wrath of Nature casts every <span class=&quot;old-val&quot;>~10</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>~5</span> seconds (mana regen 1 → 2 per second)">Wrath of Nature ร่ายทุก <span class="old-val">~10</span> <span class="arrow">→</span> <span class="new-val-up">~5</span> วินาที (มานาฟื้น 1 → 2 ต่อวินาที)</li>
+                    <li data-en="<strong>Before:</strong> Wrath of Nature has no cooldown; it casts when mana is full (10) · mana regen 1 per second, so about every <strong>10 seconds</strong>"><strong>เดิม:</strong> Wrath of Nature ไม่มีคูลดาวน์ ร่ายเองเมื่อมานาเต็ม 10 · มานาฟื้น 1 ต่อวินาที จึงร่ายได้ประมาณทุก <strong>10 วินาที</strong></li>
+                    <li data-en="<strong>Now:</strong> mana regen <strong>2</strong> per second → casts about every <strong>5 seconds</strong>"><strong>ใหม่:</strong> มานาฟื้น <strong>2</strong> ต่อวินาที → ร่ายได้ประมาณทุก <strong>5 วินาที</strong></li>
                 </ul>
             </div>
         </div>
@@ -441,52 +442,96 @@
     <div class="subsection">
         <div class="card">
             <div class="card-header">
-                <div class="card-icon"><img src="../../assets/img/units/btnspidercrab-af5802536b.png" alt="Wave creep speed" onerror="this.parentElement.innerHTML='<div class=img-fallback>👾</div>'"></div>
+                <div class="card-icon"><img src="../../assets/img/units/btnbootsofspeed-9824b8effd.png" alt="Creep move speed"></div>
                 <div>
-                    <div class="card-name" data-en="Wave creep speed">ความเร็วมอนเวฟ</div>
-                    <div class="card-type" data-en="All waves">มอนทุกเวฟ</div>
+                    <div class="card-name" data-en="Creep move speed">ความเร็วเดินของมอน</div>
+                    <div class="card-type" data-en="Normal waves">เวฟปกติ</div>
                 </div>
                 <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
             </div>
             <div class="card-body">
-                <ul>
-                    <li data-en="Every wave creep moves <b>5%</b> faster (back to 2.7c) e.g. wave 1 <span class=&quot;old-val&quot;>214</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>225</span> · wave 5 <span class=&quot;old-val&quot;>333</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>350</span> · wave 31 <span class=&quot;old-val&quot;>475</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>500</span>">มอนทุกเวฟเดินเร็วขึ้น <b>5%</b> (กลับเท่า 2.7c) เช่น เวฟ 1 <span class="old-val">214</span> <span class="arrow">→</span> <span class="new-val-up">225</span> · เวฟ 5 <span class="old-val">333</span> <span class="arrow">→</span> <span class="new-val-up">350</span> · เวฟ 31 <span class="old-val">475</span> <span class="arrow">→</span> <span class="new-val-up">500</span></li>
-                    <li data-en="Except wave 11 (Clockwerk Goblin) <span class=&quot;old-val&quot;>285</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>285</span> · wave 14 (Tuskarr) <span class=&quot;old-val&quot;>347</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>330</span> · wave 15 (Centaur) <span class=&quot;old-val&quot;>314</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>310</span> · wave 17 (Flesh Golem) <span class=&quot;old-val&quot;>361</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>340</span>">ยกเว้น เวฟ 11 (Clockwerk Goblin) <span class="old-val">285</span> <span class="arrow">→</span> <span class="new-val-up">285</span> · เวฟ 14 (Tuskarr) <span class="old-val">347</span> <span class="arrow">→</span> <span class="new-val-down">330</span> · เวฟ 15 (Centaur) <span class="old-val">314</span> <span class="arrow">→</span> <span class="new-val-down">310</span> · เวฟ 17 (Flesh Golem) <span class="old-val">361</span> <span class="arrow">→</span> <span class="new-val-down">340</span></li>
-                </ul>
+                <p class="value-change" data-en="Every wave moves <strong>5%</strong> faster, back to 2.7c">มอนทุกเวฟเดินเร็วขึ้น <strong>5%</strong> กลับไปเท่า 2.7c</p>
+                <table class="data-table">
+                    <thead>
+                        <tr><th data-en="Wave">เวฟ</th><th data-en="Creep">มอน</th><th data-en="2.7d">2.7d</th><th data-en="2.8">2.8</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td data-en="All waves (example)">ทุกเวฟ (ตัวอย่าง)</td><td><span class="old-val">214</span></td><td><strong>225</strong></td></tr>
+                        <tr><td>5</td><td data-en="All waves (example)">ทุกเวฟ (ตัวอย่าง)</td><td><span class="old-val">333</span></td><td><strong>350</strong></td></tr>
+                        <tr><td>31</td><td data-en="All waves (example)">ทุกเวฟ (ตัวอย่าง)</td><td><span class="old-val">475</span></td><td><strong>500</strong></td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
         <div class="card">
             <div class="card-header">
-                <div class="card-icon"><img src="../../assets/img/units/btnclockwerkgoblin-c4f430ec8e.png" alt="Clockwerk Goblin" onerror="this.parentElement.innerHTML='<div class=img-fallback>⚙️</div>'"></div>
+                <div class="card-icon"><img src="../../assets/img/units/btntuskaarbrown-a708caf0ee.png" alt="Move speed, set per wave"></div>
                 <div>
-                    <div class="card-name">Clockwerk Goblin</div>
+                    <div class="card-name" data-en="Move speed, set per wave">ความเร็วเดิน เวฟที่ปรับแยก</div>
+                    <div class="card-type" data-en="Not part of the +5%">ไม่ได้เร็วขึ้น 5% ตามเวฟอื่น</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <table class="data-table">
+                    <thead>
+                        <tr><th data-en="Wave">เวฟ</th><th data-en="Creep">มอน</th><th data-en="2.7d">2.7d</th><th data-en="2.8">2.8</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>11</td><td>Clockwerk Goblin</td><td><span class="old-val">285</span></td><td><strong>285</strong> <span data-en="(unchanged)">(เท่าเดิม)</span></td></tr>
+                        <tr><td>14</td><td>Tuskarr</td><td><span class="old-val">347</span></td><td><strong>330</strong></td></tr>
+                        <tr><td>15</td><td>Centaur</td><td><span class="old-val">314</span></td><td><strong>310</strong></td></tr>
+                        <tr><td>17</td><td>Flesh Golem</td><td><span class="old-val">361</span></td><td><strong>340</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnclockwerkgoblin-c4f430ec8e.png" alt="Clockwerk Goblin"></div>
+                <div>
+                    <div class="card-name" data-en="Clockwerk Goblin">Clockwerk Goblin</div>
                     <div class="card-type" data-en="Wave 11">เวฟ 11</div>
                 </div>
                 <span class="tag tag-nerf" style="margin-left:auto;">NERF</span>
             </div>
             <div class="card-body">
-                <ul>
-                    <li data-en="Hit points <span class=&quot;old-val&quot;>1600</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>1500</span>">พลังชีวิต <span class="old-val">1600</span> <span class="arrow">→</span> <span class="new-val-down">1500</span></li>
-                    <li data-en="Armor <span class=&quot;old-val&quot;>10</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-down&quot;>6</span>">เกราะ <span class="old-val">10</span> <span class="arrow">→</span> <span class="new-val-down">6</span></li>
-                </ul>
+                <table class="data-table">
+                    <thead>
+                        <tr><th data-en="Stat">รายการ</th><th data-en="2.7d">2.7d</th><th data-en="2.8">2.8</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-en="HP">พลังชีวิต</td><td><span class="old-val">1600</span></td><td><strong>1500</strong></td></tr>
+                        <tr><td data-en="Armor">เกราะ</td><td><span class="old-val">10</span></td><td><strong>6</strong></td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
         <div class="card">
             <div class="card-header">
-                <div class="card-icon"><img src="../../assets/img/units/btnclockwerkgoblin-c4f430ec8e.png" alt="Creep spawning" onerror="this.parentElement.innerHTML='<div class=img-fallback>⏱️</div>'"></div>
+                <div class="card-icon"><img src="../../assets/img/units/btnabomination-8ea97f37f3.png" alt="Time to spawn a full wave"></div>
                 <div>
-                    <div class="card-name" data-en="Creep spawning">การปล่อยมอน</div>
-                    <div class="card-type" data-en="All waves">ทุกเวฟ</div>
+                    <div class="card-name" data-en="Time to spawn a full wave">เวลาปล่อยมอนจนครบเวฟ</div>
+                    <div class="card-type" data-en="Creeps spawn more spread out, less stutter">มอนทยอยออกห่างขึ้น ลดกระตุกตอนเริ่มเวฟ</div>
                 </div>
                 <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
             </div>
             <div class="card-body">
-                <ul>
-                    <li data-en="A full wave spawns over <span class=&quot;old-val&quot;>14</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>17</span> seconds (slower trickle, less stutter at wave start)">ปล่อยครบทั้งเวฟใน <span class="old-val">14</span> <span class="arrow">→</span> <span class="new-val-up">17</span> วินาที (ทยอยออกช้าลง ลดกระตุกตอนเริ่มเวฟ)</li>
-                    <li data-en="Waves 11–13 spawn over <span class=&quot;old-val&quot;>14</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>15</span> s · wave 14 <span class=&quot;old-val&quot;>14</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>30</span> s · wave 15 <span class=&quot;old-val&quot;>14</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>15</span> s · waves 16–19 <span class=&quot;old-val&quot;>14</span> <span class=&quot;arrow&quot;>→</span> <span class=&quot;new-val-up&quot;>20</span> s">เวฟ 11–13 ครบใน <span class="old-val">14</span> <span class="arrow">→</span> <span class="new-val-up">15</span> วิ · เวฟ 14 <span class="old-val">14</span> <span class="arrow">→</span> <span class="new-val-up">30</span> วิ · เวฟ 15 <span class="old-val">14</span> <span class="arrow">→</span> <span class="new-val-up">15</span> วิ · เวฟ 16–19 <span class="old-val">14</span> <span class="arrow">→</span> <span class="new-val-up">20</span> วิ</li>
-                </ul>
+                <table class="data-table">
+                    <thead>
+                        <tr><th data-en="Wave">เวฟ</th><th data-en="2.7d">2.7d</th><th data-en="2.8">2.8</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-en="All other waves">เวฟอื่นทั้งหมด</td><td><span class="old-val">14 วิ</span></td><td><strong>17 วิ</strong></td></tr>
+                        <tr><td>11 – 13</td><td><span class="old-val">14 วิ</span></td><td><strong>15 วิ</strong></td></tr>
+                        <tr><td>14</td><td><span class="old-val">14 วิ</span></td><td><strong>30 วิ</strong></td></tr>
+                        <tr><td>15</td><td><span class="old-val">14 วิ</span></td><td><strong>15 วิ</strong></td></tr>
+                        <tr><td>16 – 19</td><td><span class="old-val">14 วิ</span></td><td><strong>20 วิ</strong></td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -610,7 +655,8 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li data-en="Casts about every 5 seconds (mana regen 1 → 3 per second)">ร่ายได้ทุก ~5 วินาที (มานาฟื้น 1 → 3 ต่อวินาที)</li>
+                    <li data-en="<strong>Before:</strong> Frost Nova has no cooldown; it casts when mana is full (15) · mana regen 1 per second, so about every 15 seconds"><strong>เดิม:</strong> Frost Nova ไม่มีคูลดาวน์ ร่ายเองเมื่อมานาเต็ม 15 · มานาฟื้น 1 ต่อวินาที จึงร่ายได้ประมาณทุก 15 วินาที</li>
+                    <li data-en="<strong>Now:</strong> mana regen <strong>3</strong> per second → casts about every <strong>5 seconds</strong>"><strong>ใหม่:</strong> มานาฟื้น <strong>3</strong> ต่อวินาที → ร่ายได้ประมาณทุก <strong>5 วินาที</strong></li>
                     <li data-en="Frost Nova never cast by itself (wrong order) → it now casts when attacking at full mana">Frost Nova ไม่เคยร่ายเอง (สั่งผิดคำสั่ง) → ร่ายได้แล้ว เมื่อตีตอนมานาเต็ม</li>
                     <li data-en="Targets the densest creep cluster within 1100 · usable from wave <b>5</b> in every mode (could slip out in waves 1–4)">เล็งจุดที่มอนรวมกันมากที่สุดในระยะ 1100 · ใช้ได้ตั้งแต่เวฟ <b>5</b> ทุกโหมด (เดิมหลุดใช้ในเวฟ 1–4 ได้)</li>
                 </ul>
