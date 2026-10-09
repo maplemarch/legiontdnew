@@ -43,7 +43,7 @@ for (const js of jsFiles) {
   let src = fs.readFileSync(js, 'utf8');
   const before = src;
   src = src.replace(
-    /(fetch\('\.\.\/assets\/data\/([\w-]+\.json))(?:\?v=[\w]+)?(')/g,
+    /('\.\.\/assets\/data\/([\w-]+\.json))(?:\?v=[\w]+)?(')/g, // ทุกสตริง '../assets/data/x.json' (รวมที่เลือกตามแพตช์)
     (m, pre, name, post) => {
       const h = hashOf(path.join(ROOT, 'assets/data', name));
       return h ? `${pre}?v=${h}${post}` : m;
