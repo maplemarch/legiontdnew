@@ -441,8 +441,31 @@
 @media (max-width: 380px) { .cmd-card { grid-template-columns: repeat(4, 48px); grid-auto-rows: 48px; } .cmd-btn { width: 48px; height: 48px; } }
 
 /* ===== เลือกแพตช์ของข้อมูลวิกิ (dropdown มุมซ้าย) ===== */
-.patch-pick { display: flex; align-items: center; justify-content: flex-start; gap: var(--space-100); margin-bottom: var(--space-200); }
-.patch-pick-label { color: var(--text-muted); font-size: 0.875rem; }
-.patch-pick-field { flex: 0 0 auto; width: auto; }
-.patch-pick-field select { flex: 0 0 auto; min-width: 150px; }
+.patch-pick { display: flex; justify-content: flex-start; margin-bottom: var(--space-200); }
+.pp { position: relative; }
+.pp-btn {
+    display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 14px 0 16px;
+    border: 1px solid var(--border-color); border-radius: 999px; background: var(--bg-card);
+    color: var(--text-primary); font: inherit; font-size: 0.9375rem; transition: border-color 300ms var(--ease-fluid);
+}
+.pp-btn:hover, .pp-btn[aria-expanded="true"] { border-color: var(--border-accent, #f0b429); }
+.pp-btn:focus-visible { outline: 2px solid #f0b429; outline-offset: 2px; }
+.pp-btn > .ph:first-child { color: var(--text-muted); font-size: 18px; }
+.pp-label { color: var(--text-muted); font-size: 0.8125rem; }
+.pp-cur { font-weight: 700; color: #f0b429; font-size: 1rem; }
+.pp-badge { font-size: 0.6875rem; padding: 2px 8px; border-radius: 999px; background: rgba(240,180,41,.15); color: #f0b429; border: 1px solid rgba(240,180,41,.4); }
+.pp-caret { color: var(--text-muted); transition: transform 200ms; }
+.pp-btn[aria-expanded="true"] .pp-caret { transform: rotate(180deg); }
+.pp-menu {
+    position: absolute; z-index: 30; top: calc(100% + 6px); left: 0; min-width: 240px; margin: 0; padding: 6px; list-style: none;
+    background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; box-shadow: 0 12px 32px rgba(0,0,0,.45);
+}
+.pp-opt { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; cursor: pointer; }
+.pp-opt:hover, .pp-opt:focus-visible { background: rgba(255,255,255,.06); outline: none; }
+.pp-opt[aria-selected="true"] { background: rgba(240,180,41,.10); }
+.pp-opt-name { font-weight: 700; }
+.pp-opt-sub { color: var(--text-muted); font-size: 0.8125rem; }
+.pp-warn { color: #f0b429; }
+.pp-check { color: #f0b429; visibility: hidden; }
+.pp-opt[aria-selected="true"] .pp-check { visibility: visible; }
 .patch-pick-note { text-align: left; color: #f0b429; font-size: 0.875rem; margin: 0 0 var(--space-300); }

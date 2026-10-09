@@ -20,7 +20,7 @@
     <script src="../assets/js/i18n.js?v=22cbfaa5"></script>
     <link rel="stylesheet" href="../assets/css/landing.css?v=8c89fec1">
     <link rel="stylesheet" href="../assets/css/units.css?v=5ae0492b">
-    <link rel="stylesheet" href="../assets/css/game.css?v=c4a38d6f">
+    <link rel="stylesheet" href="../assets/css/game.css?v=f5370c57">
 </head>
 <body>
 
@@ -84,25 +84,42 @@
 
 <main class="container" id="main" style="padding-top: var(--space-600); padding-bottom: var(--space-900);">
 <div class="patch-pick">
-    <label class="unit-field patch-pick-field" for="patch-pick-sel">
-        <i class="ph ph-git-branch" aria-hidden="true"></i>
-        <span class="patch-pick-label" data-en="Patch">แพตช์</span>
-        <select id="patch-pick-sel">
-        <option value="2.7d">2.7d</option>
-        <option value="2.8" data-en="2.8 (not released)">2.8 (ยังไม่ปล่อย)</option>
-        </select>
-    </label>
+    <div class="pp" id="patch-pick">
+        <button type="button" class="pp-btn" id="pp-btn" aria-haspopup="listbox" aria-expanded="false">
+            <i class="ph ph-git-branch" aria-hidden="true"></i>
+            <span class="pp-label" data-en="Patch">แพตช์</span>
+            <span class="pp-cur" id="pp-cur">2.7d</span>
+            <span class="pp-badge" id="pp-badge" hidden data-en="not released">ยังไม่ปล่อย</span>
+            <i class="ph ph-caret-down pp-caret" aria-hidden="true"></i>
+        </button>
+        <ul class="pp-menu" id="pp-menu" role="listbox" hidden>
+            <li role="option" class="pp-opt" data-patch="2.7d"><span class="pp-opt-name">2.7d</span><span class="pp-opt-sub" data-en="Current release">แพตช์ปัจจุบัน</span><i class="ph ph-check pp-check" aria-hidden="true"></i></li>
+            <li role="option" class="pp-opt" data-patch="2.8"><span class="pp-opt-name">2.8</span><span class="pp-opt-sub pp-warn" data-en="Not released yet">ยังไม่ปล่อย</span><i class="ph ph-check pp-check" aria-hidden="true"></i></li>
+        </ul>
+    </div>
 </div>
 <p class="patch-pick-note" id="patch-pick-note" hidden data-en="Patch 2.8 is not released yet. Values may still change before release.">แพตช์ 2.8 ยังไม่ปล่อย ค่ายังอาจเปลี่ยนก่อนปล่อยจริง</p>
 <script>
 (function () {
-    var cur = window.LTD_PATCH, sel = document.getElementById('patch-pick-sel');
-    sel.value = cur;
-    sel.addEventListener('change', function () {
-        try { localStorage.setItem('ltd-wiki-patch', sel.value); } catch (e) {}
-        var u = new URL(location.href); u.searchParams.set('patch', sel.value); location.href = u.toString();
+    var cur = window.LTD_PATCH, btn = document.getElementById('pp-btn'), menu = document.getElementById('pp-menu');
+    document.getElementById('pp-cur').textContent = cur;
+    document.getElementById('pp-badge').hidden = cur !== '2.8';
+    document.getElementById('patch-pick-note').hidden = cur !== '2.8';
+    var opts = menu.querySelectorAll('.pp-opt');
+    opts.forEach(function (o) {
+        var on = o.dataset.patch === cur; o.setAttribute('aria-selected', String(on)); o.tabIndex = 0;
+        var go = function () {
+            if (o.dataset.patch === cur) { close(); return; }
+            try { localStorage.setItem('ltd-wiki-patch', o.dataset.patch); } catch (e) {}
+            var u = new URL(location.href); u.searchParams.set('patch', o.dataset.patch); location.href = u.toString();
+        };
+        o.addEventListener('click', go);
+        o.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } if (e.key === 'Escape') { close(); btn.focus(); } });
     });
-    if (cur === '2.8') document.getElementById('patch-pick-note').hidden = false;
+    function open() { menu.hidden = false; btn.setAttribute('aria-expanded', 'true'); var s = menu.querySelector('[aria-selected="true"]'); if (s) s.focus(); }
+    function close() { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+    btn.addEventListener('click', function () { menu.hidden ? open() : close(); });
+    document.addEventListener('click', function (e) { if (!document.getElementById('patch-pick').contains(e.target)) close(); });
 })();
 </script>
 
