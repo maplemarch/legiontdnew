@@ -8,7 +8,8 @@
     const kingEl = document.getElementById('king-data');
     const champEl = document.getElementById('champion-data');
     const wispEl = document.getElementById('wisp-data');
-    if (!creepEl && !damageEl && !kingEl && !wispEl && !champEl) return;
+    const sendEl = document.getElementById('send-data');
+    if (!creepEl && !damageEl && !kingEl && !wispEl && !champEl && !sendEl) return;
 
     const t = (th, en) => (window.LTD_I18N ? window.LTD_I18N.t(th, en) : th);
     const esc = (s) => String(s == null ? '' : s)
@@ -20,6 +21,9 @@
         Piercing: 'pierce', Normal: 'normal', Magic: 'magic', Siege: 'siege', Chaos: 'chaos',
         Light: 'light', Medium: 'medium', Heavy: 'heavy', Fortified: 'fort', Unarmored: 'unarmored', Enchanted: 'enchanted',
     };
+    // ชนิดในตาราง SLK ของแมพ -> ชื่อที่เกมแสดง (แมพนี้ใช้ normal เป็น Fortified)
+    const SLK_DEF = { small: 'Light', medium: 'Medium', large: 'Heavy', fort: 'Fortified', normal: 'Fortified', none: 'Unarmored', hero: 'Enchanted', divine: 'Enchanted' };
+    const SLK_ATK = { Pierce: 'Piercing', Normal: 'Normal', Magic: 'Magic', Siege: 'Siege', Chaos: 'Chaos', Hero: 'Hero', Spells: 'Magic' };
     const typeTag = (type, kind) => type
         ? `<span class="type-tag type-${TYPE_CLASS[type] || 'normal'}"><i class="ph ${kind === 'atk' ? 'ph-sword' : 'ph-shield'}" aria-hidden="true"></i>${esc(type)}</span>`
         : '';
@@ -105,6 +109,45 @@
         <div class="wave-list">${creeps.map(waveRow).join('')}</div>
         <p class="game-note">${t('กดที่แถวเพื่อดูพลังชีวิต โจมตี เกราะ ความเร็ว และสกิลของครีป · จำนวนคือจำนวนครีปต่อเลนในเวฟนั้น · มูลค่าเวฟคือจำนวน × ทองต่อตัว · Value แนะนำคือค่ายูนิตที่เกมแนะนำให้มีก่อนเวฟนั้น · Valuekick คือค่ายูนิตขั้นต่ำของเวฟนั้น ต่ำกว่านี้เกมเตะออกอัตโนมัติ',
             'Tap a row to see the creep\'s HP, damage, armor, speed and skills · Count is the number of creeps per lane in that wave · Wave value is count × gold per unit · Rec. value is the unit value the game recommends for that wave · Valuekick is the minimum unit value for that wave, below it the game kicks you automatically')}</p>`;
+
+    /* ── ตัวส่ง ── */
+    // ร้านส่งแบบในเกม: ปุ่ม 4x3 ต่อร้าน กดปุ่มเพื่ออ่านรายละเอียดด้านล่าง
+    let sendSel = null;
+    const sendDetail = (u) => u ? `
+        <div class="cmd-detail">
+            <div class="cmd-detail-head">
+                ${iconTag(u.icon, 'wave-icon', 'ph-paper-plane-tilt')}
+                <div>
+                    <div class="wave-name">${esc(u.name)}</div>
+                    <div class="wave-types">${typeTag(SLK_ATK[u.atk] || u.atk, 'atk')}${typeTag(SLK_DEF[u.def] || u.def, 'def')}</div>
+                </div>
+                <div class="cmd-detail-cost">
+                    <span class="game-cost game-cost-lumber" title="${t('ราคาไม้', 'Lumber cost')}"><i class="ph ph-tree" aria-hidden="true"></i>${fmt(u.lumber)}</span>
+                    <span class="game-cost" title="${t('รายได้ที่เพิ่ม', 'Income gained')}"><i class="ph ph-trend-up" aria-hidden="true"></i>${u.income ? '+' + u.income : '–'}</span>
+                </div>
+            </div>
+            <div class="unit-stat-grid">
+                ${stat(t('พลังชีวิต', 'HP'), fmt(u.hp), 'ph-heart')}
+                ${stat(t('พลังโจมตี', 'Damage'), u.dmg, 'ph-crosshair')}
+                ${stat(t('เกราะ', 'Armor'), u.armor, 'ph-shield-check')}
+                ${unitStats(u)}
+            </div>
+            ${u.skills && u.skills.length ? `<h4 class="unit-detail-sub"><i class="ph ph-magic-wand" aria-hidden="true"></i> ${t('สกิล', 'Skills')}</h4>${u.skills.map(skill).join('')}` : u.ability ? `<h4 class="unit-detail-sub"><i class="ph ph-magic-wand" aria-hidden="true"></i> ${t('สกิล', 'Skill')}</h4><div class="unit-skill"><div><p class="unit-skill-desc">${esc(u.ability)}</p></div></div>` : ''}
+        </div>` : `<p class="game-note">${t('กดที่ปุ่มเพื่อดูรายละเอียดตัวส่ง', 'Tap a button to see the send')}</p>`;
+    const cmdCard = (list, tier) => {
+        const cells = Array.from({ length: 12 }, () => null);
+        list.filter((u) => u.tier === tier).forEach((u) => { const k = u.pos[1] * 4 + u.pos[0]; if (k >= 0 && k < 12 && !cells[k]) cells[k] = u; });
+        return `<div class="cmd-card" role="group" aria-label="${t('ร้านส่งชั้น', 'Send shop tier')} ${tier}">${cells.map((u) => u
+            ? `<button type="button" class="cmd-btn${sendSel === u.id ? ' is-sel' : ''}" data-send="${esc(u.id)}" aria-pressed="${sendSel === u.id}" title="${esc(u.name)}">${u.icon ? `<img src="${esc(u.icon)}" alt="${esc(u.name)}" loading="lazy" width="64" height="64">` : `<i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>`}<span class="cmd-cost">${fmt(u.lumber)}</span></button>`
+            : '<span class="cmd-btn cmd-empty" aria-hidden="true"></span>').join('')}</div>`;
+    };
+    const renderSends = (list) => {
+        const tiers = [...new Set(list.map((u) => u.tier))];
+        return `
+        <div class="cmd-shops">${tiers.map((tr) => `<div class="cmd-shop"><h3 class="cmd-shop-title">${t('ร้านส่งชั้น', 'Send shop tier')} ${tr}</h3>${cmdCard(list, tr)}</div>`).join('')}</div>
+        <p class="game-note">${t('เรียงปุ่มตามในเกม (ปุ่มลัด QWER / ASDF / ZXCV) · ตัวเลขบนปุ่มคือราคาไม้ · รายได้คือทองต่อเวฟที่เพิ่มถาวรเมื่อส่ง · ค่าจากไฟล์แมพ',
+            'Buttons are laid out as in game (hotkeys QWER / ASDF / ZXCV) · The number is the lumber cost · Income is the permanent gold per wave you gain · Values from the map file')}</p>`;
+    };
 
     /* ── ดาเมจตามชนิดโจมตีและเกราะ ── */
     const dmgCell = (pct) => {
@@ -379,6 +422,9 @@
         const open = creepEl ? Array.from(creepEl.querySelectorAll('.wave'), (d) => d.open) : [];
         show(creepEl, renderCreeps(g.creeps));
         if (creepEl) creepEl.querySelectorAll('.wave').forEach((d, i) => { if (open[i]) d.open = true; });
+        if (g.sends && g.sends.length) {
+            show(sendEl, renderSends(g.sends));
+        }
         show(kingEl, renderKing(g.king));
         if (kingEl && kingMode !== 'base') setKingMode(kingEl, kingMode);
         show(wispEl, renderWisp(g.wisp));
@@ -386,7 +432,26 @@
         document.querySelectorAll('[data-game-version]').forEach((el) => { el.textContent = g.version; });
     };
 
-    fetch('../assets/data/game.json?v=5cac7a0f')
+    // กดปุ่มตัวส่ง -> เปิดหน้าต่าง (popup) รายละเอียด
+    const sendDlg = document.getElementById('send-dialog');
+    const sendDlgBody = document.getElementById('send-dialog-body');
+    const openSend = (id) => {
+        if (!data || !sendDlg) return;
+        sendSel = id;
+        sendDlgBody.innerHTML = sendDetail(data.sends.find((u) => u.id === id));
+        sendEl.querySelectorAll('.cmd-btn[data-send]').forEach((b) => { const on = b.dataset.send === id; b.classList.toggle('is-sel', on); b.setAttribute('aria-pressed', String(on)); });
+        if (!sendDlg.open) sendDlg.showModal();
+    };
+    if (sendEl) sendEl.addEventListener('click', (ev) => {
+        const b = ev.target.closest('.cmd-btn[data-send]');
+        if (b) openSend(b.dataset.send);
+    });
+    if (sendDlg) {
+        sendDlg.addEventListener('click', (e) => { if (e.target === sendDlg) sendDlg.close(); });
+        sendDlg.querySelector('.unit-dialog-close').addEventListener('click', () => sendDlg.close());
+    }
+
+    fetch('../assets/data/game.json?v=e7d5bbb7')
         .then((r) => r.json())
         .then((g) => {
             data = g;

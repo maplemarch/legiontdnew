@@ -132,6 +132,34 @@ const creeps = waveIds.slice(0, LAST_WAVE).map((id, i) => {
     };
 });
 
+/* ── ตัวส่ง ──────────────────────────────────────────── */
+// ร้านตัวส่งมาตรฐาน 3 ชั้น (ร้านของสกิน builder บางตัวขายชุดเดียวกันแต่หน้าตาต่าง)
+// ไม้/รายได้: ราคาไม้จาก UnitBalance, รายได้ (+N income) และสกิลอ่านจากคำอธิบายในร้าน
+const SEND_SHOPS = [['h05C', 1], ['h0AZ', 2], ['h31D', 3]]; // ชั้น 2 = ร้านหลัง Arena แรก (Advanced Barracks3) ที่ใช้เกือบทั้งเกม
+const sends = [];
+for (const [shop, tier] of SEND_SHOPS) {
+    const list = need(unitStr[shop]?.Sellunits, 'ร้านตัวส่ง ' + shop).split(',').map((x) => x.trim()).filter(Boolean);
+    for (const id of list) {
+        const u = unitInfo(id), tip = clean(unitStr[id]?.Ubertip || '');
+        const inc = tip.match(/\+\s*(\d+)\s*income/i);
+        const abil = tip.match(/Abilit(?:y|ies)\s*:\s*(.*?)(?:\s*\+\s*\d+\s*income|$)/i);
+        sends.push({
+            tier, id, name: u.name.replace(/^Summon\s+/i, ''), icon: u.icon,
+            lumber: num(balance[id]?.lumbercost), income: inc ? +inc[1] : 0,
+            hp: u.hp, armor: u.armor, def: u.def, dmg: u.dmg, speed: u.speed, range: u.range, atk: u.atk, move: u.move,
+            ability: abil && !/^none$/i.test(abil[1].trim()) ? abil[1].trim() : '',
+            skills: u.skills,
+            // ตำแหน่งปุ่มในร้านแบบในเกม (4x3) จากปุ่มลัด QWER / ASDF / ZXCV ถ้าไม่มีใช้ลำดับในร้าน
+            pos: (() => {
+                const hk = (unitStr[id]?.Hotkey || (clean(unitStr[id]?.Tip || '').match(/[([]\s*([A-Z])\s*[)\]]/) || [])[1] || '').toUpperCase();
+                const k = 'QWERASDFZXCV'.indexOf(hk);
+                const n = k >= 0 ? k : list.indexOf(id);
+                return [n % 4, Math.floor(n / 4)];
+            })(),
+        });
+    }
+}
+
 /* ── King ────────────────────────────────────────────── */
 // ของในร้าน King: อัปเกรด ค่าสถานะ, Presence และสกิลสุ่มของ King
 const shopItem = (id) => {
@@ -457,7 +485,7 @@ const info = fs.readFileSync(path.join(SRC, 'war3map.w3i'), 'latin1');
 // ชื่อแมพในไฟล์ข้อมูลแมพใส่รหัสสีคั่นทุกตัวอักษร ต้องลบรหัสสีก่อนค่อยหาเลขเวอร์ชัน
 const version = (stripCodes(info.replace(/[^\x20-\x7e]/g, ' ')).match(/Legion TD NewEdition\s+(\d+\.\d+\w*)/) || [])[1] || '';
 
-fs.writeFileSync(OUT, JSON.stringify({ version, creeps, damage, king, wisp, champion }));
+fs.writeFileSync(OUT, JSON.stringify({ version, creeps, sends, damage, king, wisp, champion }));
 
 console.log(`แมพเวอร์ชัน ${version}`);
 console.log(`ครีป ${creeps.length} เวฟ (บอส: ${creeps.filter((c) => c.boss).map((c) => c.wave).join(', ')})`);
