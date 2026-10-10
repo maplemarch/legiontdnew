@@ -83,6 +83,15 @@
 </nav>
 
 <main class="container" id="main" style="padding-top: var(--space-600); padding-bottom: var(--space-900);">
+<script>
+/* เลือกแพตช์ของข้อมูลวิกิ: ?patch=2.8 หรือที่จำไว้ (ค่าเริ่มต้น = แพตช์ที่ปล่อยแล้ว) */
+(function () {
+    var ok = { '2.7d': 1, '2.8': 1 }, p = null;
+    try { p = new URLSearchParams(location.search).get('patch'); } catch (e) {}
+    if (!ok[p]) { try { p = localStorage.getItem('ltd-wiki-patch'); } catch (e) {} }
+    window.LTD_PATCH = ok[p] ? p : '2.7d';
+})();
+</script>
 <div class="patch-pick">
     <div class="pp" id="patch-pick">
         <button type="button" class="pp-btn" id="pp-btn" aria-haspopup="listbox" aria-expanded="false">
@@ -290,15 +299,6 @@
     <div class="unit-dialog-body" id="unit-dialog-body"></div>
 </dialog>
 
-<script>
-/* เลือกแพตช์ของข้อมูลวิกิ: ?patch=2.8 หรือที่จำไว้ (ค่าเริ่มต้น = แพตช์ที่ปล่อยแล้ว) */
-(function () {
-    var ok = { '2.7d': 1, '2.8': 1 }, p = null;
-    try { p = new URLSearchParams(location.search).get('patch'); } catch (e) {}
-    if (!ok[p]) { try { p = localStorage.getItem('ltd-wiki-patch'); } catch (e) {} }
-    window.LTD_PATCH = ok[p] ? p : '2.7d';
-})();
-</script>
 <script src="../assets/js/nav.js?v=7e7d7ae5" defer></script>
 <script src="../assets/js/reveal.js?v=19990738" defer></script>
 <script src="../assets/js/toc.js?v=16e254ea" defer></script>
