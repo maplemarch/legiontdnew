@@ -89,7 +89,7 @@
     var ok = { '2.7d': 1, '2.8': 1 }, p = null;
     try { p = new URLSearchParams(location.search).get('patch'); } catch (e) {}
     if (!ok[p]) { try { p = localStorage.getItem('ltd-wiki-patch'); } catch (e) {} }
-    window.LTD_PATCH = ok[p] ? p : '2.7d';
+    window.LTD_PATCH = ok[p] ? p : '2.8';
 })();
 </script>
 <div class="patch-pick">
@@ -97,13 +97,13 @@
         <button type="button" class="pp-btn" id="pp-btn" aria-haspopup="listbox" aria-expanded="false">
             <i class="ph ph-git-branch" aria-hidden="true"></i>
             <span class="pp-label" data-en="Patch">แพตช์</span>
-            <span class="pp-cur" id="pp-cur">2.7d</span>
+            <span class="pp-cur" id="pp-cur">2.8</span>
             <span class="pp-badge" id="pp-badge" hidden data-en="not released">ยังไม่ปล่อย</span>
             <i class="ph ph-caret-down pp-caret" aria-hidden="true"></i>
         </button>
         <ul class="pp-menu" id="pp-menu" role="listbox" hidden>
-            <li role="option" class="pp-opt" data-patch="2.7d"><span class="pp-opt-name">2.7d</span><span class="pp-opt-sub" data-en="Current release">แพตช์ปัจจุบัน</span><i class="ph ph-check pp-check" aria-hidden="true"></i></li>
-            <li role="option" class="pp-opt" data-patch="2.8"><span class="pp-opt-name">2.8</span><span class="pp-opt-sub pp-warn" data-en="Not released yet">ยังไม่ปล่อย</span><i class="ph ph-check pp-check" aria-hidden="true"></i></li>
+            <li role="option" class="pp-opt" data-patch="2.7d"><span class="pp-opt-name">2.7d</span><span class="pp-opt-sub" data-en="Previous release">แพตช์ก่อนหน้า</span><i class="ph ph-check pp-check" aria-hidden="true"></i></li>
+            <li role="option" class="pp-opt" data-patch="2.8"><span class="pp-opt-name">2.8</span><span class="pp-opt-sub" data-en="Current release">แพตช์ปัจจุบัน</span><i class="ph ph-check pp-check" aria-hidden="true"></i></li>
         </ul>
     </div>
 </div>
@@ -112,8 +112,8 @@
 (function () {
     var cur = window.LTD_PATCH, btn = document.getElementById('pp-btn'), menu = document.getElementById('pp-menu');
     document.getElementById('pp-cur').textContent = cur;
-    document.getElementById('pp-badge').hidden = cur !== '2.8';
-    document.getElementById('patch-pick-note').hidden = cur !== '2.8';
+    document.getElementById('pp-badge').hidden = true;
+    document.getElementById('patch-pick-note').hidden = true;
     var opts = menu.querySelectorAll('.pp-opt');
     opts.forEach(function (o) {
         var on = o.dataset.patch === cur; o.setAttribute('aria-selected', String(on)); o.tabIndex = 0;
@@ -138,13 +138,13 @@
 -->
 <section class="section" id="map" aria-labelledby="map-title">
     <h2 class="section-heading" id="map-title" data-en="Map">แผนที่</h2>
-    <p class="section-lede" data-en="Map layout for version 2.7d: two lanes, with the King's base in the middle">ผังแผนที่ของเวอร์ชัน <span data-game-version>2.7d</span> เลนสองข้าง ฐาน King อยู่กลาง</p>
+    <p class="section-lede" data-en="Map layout for version 2.8: two lanes, with the King's base in the middle">ผังแผนที่ของเวอร์ชัน <span data-game-version>2.8</span> เลนสองข้าง ฐาน King อยู่กลาง</p>
     <figure class="map-card reveal">
         <img src="../assets/img/map-preview.jpg?v=5c470d2c"
              alt="ผังแผนที่ Legion TD NewEdition มองจากด้านบน เห็นเลนสองข้างและฐาน King กลางแผนที่"
              data-en-alt="Top-down layout of the Legion TD NewEdition map, showing the two lanes and the King's base in the middle"
              width="256" height="256" loading="lazy" decoding="async">
-        <figcaption>Legion TD NewEdition <span data-game-version>2.7d</span></figcaption>
+        <figcaption>Legion TD NewEdition <span data-game-version>2.8</span></figcaption>
     </figure>
 </section>
 
