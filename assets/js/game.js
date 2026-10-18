@@ -451,7 +451,7 @@
         sendDlg.querySelector('.unit-dialog-close').addEventListener('click', () => sendDlg.close());
     }
 
-    fetch(window.LTD_PATCH === '2.8a' ? '../assets/data/game-28a.json?v=8763b78c' : window.LTD_PATCH === '2.8' ? '../assets/data/game-28.json?v=2783b03a' : '../assets/data/game.json?v=918a67ec')
+    fetch(window.LTD_PATCH === '2.8b' ? '../assets/data/game-28b.json?v=71b00f8c' : window.LTD_PATCH === '2.8a' ? '../assets/data/game-28a.json?v=8763b78c' : window.LTD_PATCH === '2.8' ? '../assets/data/game-28.json?v=2783b03a' : '../assets/data/game.json?v=918a67ec')
         .then((r) => r.json())
         .then((g) => {
             data = g;
