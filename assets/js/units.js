@@ -49,7 +49,7 @@
         <button class="unit-card" type="button" data-id="${esc(u.id)}">
             ${iconTag(u, 'unit-card-icon')}
             <span class="unit-card-name">${esc(u.name)}</span>
-            ${u.cost ? `<span class="unit-card-cost"><i class="ph ph-coins" aria-hidden="true"></i>${esc(u.cost)}</span>` : ''}
+            ${u.cost || +u.food ? `<span class="unit-card-meta">${u.cost ? `<span class="unit-card-cost"><i class="ph ph-coins" aria-hidden="true"></i>${esc(u.cost)}</span>` : ''}${+u.food ? `<span class="unit-card-food"><i class="ph ph-fork-knife" aria-hidden="true"></i>${esc(u.food)}</span>` : ''}</span>` : ''}
         </button>`;
 
     const render = (list) => {
@@ -111,6 +111,7 @@
         const stats = [
             statHtml(t('ระดับ', 'Level'), u.level, 'ph-stack'),
             statHtml(t('ค่าใช้จ่าย', 'Cost'), u.cost, 'ph-coins'),
+            statHtml(t('อาหาร', 'Food'), +u.food ? u.food : '', 'ph-fork-knife'),
             statHtml(t('พลังชีวิต', 'HP'), u.hp, 'ph-heart'),
             statHtml(t('พลังโจมตี', 'Damage'), u.dmg, 'ph-crosshair'),
             statHtml(t('ความเร็วโจมตี', 'Attack Speed'), u.speed, 'ph-lightning'),
@@ -211,7 +212,7 @@
     });
 
     /* ── โหลดข้อมูล ── */
-    fetch(window.LTD_PATCH === '2.8b' ? '../assets/data/units-28b.json?v=e5441a05' : window.LTD_PATCH === '2.8a' ? '../assets/data/units-28a.json?v=6a8cb8a2' : window.LTD_PATCH === '2.8' ? '../assets/data/units-28.json?v=4afcc8e2' : '../assets/data/units.json?v=2860ec9f')
+    fetch(window.LTD_PATCH === '2.8b' ? '../assets/data/units-28b.json?v=fdf7b278' : window.LTD_PATCH === '2.8a' ? '../assets/data/units-28a.json?v=6c641557' : window.LTD_PATCH === '2.8' ? '../assets/data/units-28.json?v=0f9eaae6' : '../assets/data/units.json?v=2860ec9f')
         .then((r) => {
             if (!r.ok) throw new Error(t('โหลดข้อมูลไม่สำเร็จ ', 'Load failed ') + r.status);
             return r.json();

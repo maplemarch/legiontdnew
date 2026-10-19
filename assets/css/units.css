@@ -140,6 +140,21 @@
 }
 .unit-card-cost i { font-size: 14px; }
 
+.unit-card-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-100);
+}
+.unit-card-food {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-50);
+    font-size: 0.75rem;
+    line-height: 16px;
+    color: var(--text-secondary, var(--text-muted));
+}
+.unit-card-food i { font-size: 14px; }
+
 
 .unit-empty-note {
     font-size: 0.875rem;

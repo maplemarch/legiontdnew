@@ -64,6 +64,7 @@ for (const u of old) {
         tip: clean(s.Tip) || u.tip,
         desc: clean(s.Ubertip) || u.desc,
         cost: num(b.goldcost),
+        food: String(+(b.fused || 0)),
         hp: num(b.HP),
         level: num(b.level) || u.level,
         dmg: damageOf(w),
