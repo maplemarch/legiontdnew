@@ -212,7 +212,7 @@
     });
 
     /* ── โหลดข้อมูล ── */
-    fetch(window.LTD_PATCH === '2.8b' ? '../assets/data/units-28b.json?v=fdf7b278' : window.LTD_PATCH === '2.8a' ? '../assets/data/units-28a.json?v=6c641557' : window.LTD_PATCH === '2.8' ? '../assets/data/units-28.json?v=0f9eaae6' : '../assets/data/units.json?v=2860ec9f')
+    fetch(window.LTD_PATCH === '2.8c' ? '../assets/data/units-28c.json?v=1a5afa49' : window.LTD_PATCH === '2.8b' ? '../assets/data/units-28b.json?v=fdf7b278' : window.LTD_PATCH === '2.8a' ? '../assets/data/units-28a.json?v=6c641557' : window.LTD_PATCH === '2.8' ? '../assets/data/units-28.json?v=0f9eaae6' : '../assets/data/units.json?v=2860ec9f')
         .then((r) => {
             if (!r.ok) throw new Error(t('โหลดข้อมูลไม่สำเร็จ ', 'Load failed ') + r.status);
             return r.json();
