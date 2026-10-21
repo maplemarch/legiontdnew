@@ -87,10 +87,10 @@
 <script>
 /* เลือกแพตช์ของข้อมูลวิกิ: ?patch=2.8 หรือที่จำไว้ (ค่าเริ่มต้น = แพตช์ที่ปล่อยแล้ว) */
 (function () {
-    var ok = { '2.7d': 1, '2.8': 1, '2.8a': 1, '2.8b': 1, '2.8c': 1 }, p = null;
+    var ok = { '2.7d': 1, '2.8': 1, '2.8a': 1, '2.8b': 1, '2.8c': 1, '2.8d': 1 }, p = null;
     try { p = new URLSearchParams(location.search).get('patch'); } catch (e) {}
     if (!ok[p]) { try { p = localStorage.getItem('ltd-wiki-patch'); } catch (e) {} }
-    window.LTD_PATCH = ok[p] ? p : '2.8c';
+    window.LTD_PATCH = ok[p] ? p : '2.8d';
 })();
 </script>
 <div class="patch-pick">
@@ -98,7 +98,7 @@
         <button type="button" class="pp-btn" id="pp-btn" aria-haspopup="listbox" aria-expanded="false">
             <i class="ph ph-git-branch" aria-hidden="true"></i>
             <span class="pp-label" data-en="Patch">แพตช์</span>
-            <span class="pp-cur" id="pp-cur">2.8c</span>
+            <span class="pp-cur" id="pp-cur">2.8d</span>
             <span class="pp-badge" id="pp-badge" hidden data-en="not released">ยังไม่ปล่อย</span>
             <i class="ph ph-caret-down pp-caret" aria-hidden="true"></i>
         </button>
@@ -106,8 +106,9 @@
             <li role="option" class="pp-opt" data-patch="2.7d"><span class="pp-opt-name">2.7d</span><span class="pp-opt-sub" data-en="Older release">แพตช์เก่า</span><i class="ph ph-check pp-check" aria-hidden="true"></i></li>
             <li role="option" class="pp-opt" data-patch="2.8"><span class="pp-opt-name">2.8</span><span class="pp-opt-sub" data-en="Older release">แพตช์เก่า</span><i class="ph ph-check pp-check" aria-hidden="true"></i></li>
             <li role="option" class="pp-opt" data-patch="2.8a"><span class="pp-opt-name">2.8a</span><span class="pp-opt-sub" data-en="Older release">แพตช์เก่า</span><i class="ph ph-check pp-check" aria-hidden="true"></i></li>
-            <li role="option" class="pp-opt" data-patch="2.8b"><span class="pp-opt-name">2.8b</span><span class="pp-opt-sub" data-en="Previous release">แพตช์ก่อนหน้า</span><i class="ph ph-check pp-check" aria-hidden="true"></i></li>
-            <li role="option" class="pp-opt" data-patch="2.8c"><span class="pp-opt-name">2.8c</span><span class="pp-opt-sub" data-en="Current release">แพตช์ปัจจุบัน</span><i class="ph ph-check pp-check" aria-hidden="true"></i></li>
+            <li role="option" class="pp-opt" data-patch="2.8b"><span class="pp-opt-name">2.8b</span><span class="pp-opt-sub" data-en="Older release">แพตช์เก่า</span><i class="ph ph-check pp-check" aria-hidden="true"></i></li>
+            <li role="option" class="pp-opt" data-patch="2.8c"><span class="pp-opt-name">2.8c</span><span class="pp-opt-sub" data-en="Previous release">แพตช์ก่อนหน้า</span><i class="ph ph-check pp-check" aria-hidden="true"></i></li>
+            <li role="option" class="pp-opt" data-patch="2.8d"><span class="pp-opt-name">2.8d</span><span class="pp-opt-sub" data-en="Current release">แพตช์ปัจจุบัน</span><i class="ph ph-check pp-check" aria-hidden="true"></i></li>
         </ul>
     </div>
 </div>
@@ -484,8 +485,8 @@
 <script src="../assets/js/nav.js?v=7e7d7ae5" defer></script>
 <script src="../assets/js/reveal.js?v=19990738" defer></script>
 <script src="../assets/js/toc.js?v=16e254ea" defer></script>
-<script src="../assets/js/units.js?v=7b9dff2b" defer></script>
-<script src="../assets/js/game.js?v=fed41e49" defer></script>
+<script src="../assets/js/units.js?v=eef0b210" defer></script>
+<script src="../assets/js/game.js?v=2a0245d5" defer></script>
 
 <script src="../assets/js/tilt.js?v=e7356e05" defer></script>
 <script type="module" src="../assets/js/scene3d.js?v=bb5a3885"></script>
