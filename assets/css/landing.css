@@ -716,3 +716,38 @@
     .hero-stat:nth-child(n+3) { border-top: 1px solid rgba(255, 255, 255, 0.06); }
     .hero-stat-link { border-radius: 0 0 var(--radius-2xl) 0; }
 }
+
+
+/* ===== หน้าแข่งขัน: กรอบตารางสาย Challonge ===== */
+.bracket-card {
+    margin-top: var(--space-500);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-2xl);
+    background: var(--bg-card);
+    padding: var(--space-300);
+    box-shadow: 0 0 0 1px rgba(240, 180, 41, 0.06), 0 24px 48px -24px rgba(240, 180, 41, 0.18);
+}
+.bracket-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-200);
+    margin-bottom: var(--space-200);
+}
+.bracket-frame {
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    background: var(--bg-section);
+}
+.bracket-frame iframe {
+    display: block;
+    width: 100%;
+    height: 620px;
+    border: 0;
+}
+@media (max-width: 640px) {
+    .bracket-card { padding: var(--space-200); }
+    .bracket-frame iframe { height: 520px; }
+}
