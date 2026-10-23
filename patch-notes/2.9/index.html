@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Patch Notes 2.9 — Legion TD NewEdition">Patch Notes 2.9 — Legion TD NewEdition</title>
+    <meta name="description" content="Legion TD NewEdition 2.9 ปรับสมดุลยูนิต ตัวส่ง และสกิล King">
+    <link rel="canonical" href="https://ltdnew.online/patch-notes/2.9/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Patch Notes 2.9 — Legion TD NewEdition">
+    <meta property="og:description" content="ปรับสมดุลยูนิต ตัวส่ง และสกิล King">
+    <meta property="og:image" content="https://ltdnew.online/assets/img/og-cover.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="../../assets/img/favicon.svg?v=6537390b" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="../../assets/css/base.css?v=ca092192">
+    <script src="../../assets/js/i18n.js?v=22cbfaa5"></script>
+    <link rel="stylesheet" href="../../assets/css/patch-notes.css?v=bc771417">
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-en="Skip to main content">ข้ามไปเนื้อหาหลัก</a>
+
+<div class="scene3d scene3d-ambient" data-scene="ambient" data-circle="center" aria-hidden="true"></div>
+
+<!-- ===== เมนูหลัก ===== -->
+<nav class="site-nav" aria-label="เมนูหลัก" data-en-aria-label="Main menu">
+    <div class="site-nav-inner">
+        <a class="nav-brand" href="../../">
+            <span class="nav-brand-mark" aria-hidden="true"><i class="ph ph-sword"></i></span>
+            Legion TD NE
+        </a>
+        <ul class="nav-links">
+            <li><a class="nav-link" href="../../" data-en="Home">หน้าแรก</a></li>
+            <li><a class="nav-link" href="../../wiki/" data-en="Wiki">วิกิ</a></li>
+            <li><a class="nav-link" href="../" aria-current="page" data-en="Patch">แพตช์</a></li>
+            <li><a class="nav-link" href="../../download/" data-en="Download">ดาวน์โหลด</a></li>
+            <li><a class="nav-link" href="../../tournament/" data-en="Tournament">แข่งขัน</a></li>
+            <li><a class="nav-link" href="../../contact/" data-en="Contact">ติดต่อ</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a class="btn btn-ghost btn-sm nav-cta" href="https://wc3th.com" target="_blank" rel="noopener">
+                WC3TH
+                <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-overlay" aria-label="เปิดเมนู" data-en-aria-label="Open menu">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+    <ul class="nav-overlay-list">
+        <li><a href="../../" data-en="Home">หน้าแรก</a></li>
+        <li><a href="../../wiki/" data-en="Wiki">วิกิ</a></li>
+        <li><a href="../" aria-current="page" data-en="Patch">แพตช์</a></li>
+        <li><a href="../../download/" data-en="Download">ดาวน์โหลด</a></li>
+        <li><a href="../../tournament/" data-en="Tournament">แข่งขัน</a></li>
+        <li><a href="../../contact/" data-en="Contact">ติดต่อ</a></li>
+        <li><a href="https://wc3th.com" target="_blank" rel="noopener">WC3TH</a></li>
+    </ul>
+</div>
+
+<nav class="toc-nav" aria-label="สารบัญแพตช์" data-en-aria-label="Patch contents">
+    <div class="toc-nav-inner">
+        <a class="toc-back" href="../" aria-label="กลับไปหน้าแพตช์ทั้งหมด" data-en-aria-label="Back to all patches" title="แพตช์ทั้งหมด" data-en-title="All patches">
+            <i class="ph ph-arrow-left" aria-hidden="true"></i>
+            <span data-en="All patches">แพตช์ทั้งหมด</span>
+        </a>
+        <div class="toc-links">
+            <a href="#s1" class="toc-link active" data-en="⚔️ Units">⚔️ ยูนิต</a>
+            <a href="#s2" class="toc-link" data-en="📦 Sends">📦 ตัวส่ง</a>
+            <a href="#s3" class="toc-link" data-en="👑 Systems">👑 ระบบ</a>
+            <a href="#s4" class="toc-link" data-en="🐞 Bug fixes">🐞 แก้บัค</a>
+        </div>
+    </div>
+</nav>
+<main class="content-wrapper" id="main">
+
+<header class="patch-intro">
+    <h1 class="patch-intro-title">LTD Patch 2.9</h1>
+    <p class="patch-intro-meta" data-en="Legion TD NewEdition · Preview · map not released yet · after 2.8d">Legion TD NewEdition · สปอย · แมพยังไม่ปล่อย · ต่อจาก 2.8d</p>
+</header>
+
+<!-- ─────────── SECTION 1 ─────────── -->
+<section class="section reveal" id="s1">
+    <div class="section-header">
+        <div class="section-number">1</div>
+        <div class="section-title-group">
+            <h2 class="section-title" data-en="Units">ยูนิต</h2>
+            <div class="section-subtitle">Units</div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnavengingwatcher-1b110efc98.png" alt="Proton → Adept → Quantum" onerror="this.parentElement.innerHTML='<div class=img-fallback>✨</div>'"></div>
+                <div>
+                    <div class="card-name">Proton → Adept → Quantum</div>
+                    <div class="card-type">Tier 1</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Adept cost: &lt;span class=&quot;old-val&quot;&gt;100&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;90&lt;/span&gt;">ราคา Adept: <span class="old-val">100</span> <span class="arrow">→</span> <span class="new-val-up">90</span></li>
+                    <li data-en="Quantum cost: &lt;span class=&quot;old-val&quot;&gt;120&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;110&lt;/span&gt;">ราคา Quantum: <span class="old-val">120</span> <span class="arrow">→</span> <span class="new-val-up">110</span></li>
+                    <li data-en="Food: Proton &lt;span class=&quot;old-val&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;0&lt;/span&gt; · Adept &lt;span class=&quot;old-val&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;0&lt;/span&gt; · Quantum &lt;b&gt;1&lt;/b&gt; (food is used from Quantum)">อาหาร: Proton <span class="old-val">1</span> <span class="arrow">→</span> <span class="new-val-up">0</span> · Adept <span class="old-val">1</span> <span class="arrow">→</span> <span class="new-val-up">0</span> · Quantum <b>1</b> (เริ่มใช้อาหารตอนเป็น Quantum)</li>
+                    <li data-en="Quantum attack speed: &lt;span class=&quot;old-val&quot;&gt;0.4&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;0.35&lt;/span&gt;">ความเร็วโจมตี Quantum: <span class="old-val">0.4</span> <span class="arrow">→</span> <span class="new-val-up">0.35</span></li>
+                    <li data-en="Gathered Spirits damage: &lt;span class=&quot;old-val&quot;&gt;+4 / +8 / +12 / +16&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;&lt;b&gt;+5&lt;/b&gt; per Quantum (up to 12 = &lt;b&gt;+60&lt;/b&gt;)&lt;/span&gt;">Gathered Spirits ดาเมจ: <span class="old-val">+4 / +8 / +12 / +16</span> <span class="arrow">→</span> <span class="new-val-up"><b>+5</b> ต่อ Quantum 1 ตัว (สูงสุด 12 ตัว = <b>+60</b>)</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnherodreadlord-0e7bbaec74.png" alt="Vampire" onerror="this.parentElement.innerHTML='<div class=img-fallback>🧛</div>'"></div>
+                <div>
+                    <div class="card-name">Vampire</div>
+                    <div class="card-type">Tier 2</div>
+                </div>
+                <span class="tag tag-rework" style="margin-left:auto;">REWORK</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Upgrade cost: &lt;span class=&quot;old-val&quot;&gt;130&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;150&lt;/span&gt;">ราคาอัป: <span class="old-val">130</span> <span class="arrow">→</span> <span class="new-val-down">150</span></li>
+                    <li data-en="Damage: &lt;span class=&quot;old-val&quot;&gt;179&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;235-245&lt;/span&gt;">ดาเมจ: <span class="old-val">179</span> <span class="arrow">→</span> <span class="new-val-up">235-245</span></li>
+                    <li data-en="Attack speed: &lt;span class=&quot;old-val&quot;&gt;0.55&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;0.33&lt;/span&gt;">ความเร็วโจมตี: <span class="old-val">0.55</span> <span class="arrow">→</span> <span class="new-val-up">0.33</span></li>
+                    <li data-en="Removed &lt;b&gt;Night Survivability&lt;/b&gt;">ลบ <b>Night Survivability</b> ออก</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btneredarwarlockpurple-912338b976.png" alt="Eredar Warlock" onerror="this.parentElement.innerHTML='<div class=img-fallback>😈</div>'"></div>
+                <div>
+                    <div class="card-name">Eredar Warlock</div>
+                    <div class="card-type">Tier 6</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Attack range: &lt;span class=&quot;old-val&quot;&gt;600&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;700&lt;/span&gt;">ระยะโจมตี: <span class="old-val">600</span> <span class="arrow">→</span> <span class="new-val-up">700</span></li>
+                    <li data-en="Attack speed: &lt;span class=&quot;old-val&quot;&gt;1.0&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;0.5&lt;/span&gt;">ความเร็วโจมตี: <span class="old-val">1.0</span> <span class="arrow">→</span> <span class="new-val-up">0.5</span></li>
+                    <li data-en="Bash chance: &lt;span class=&quot;old-val&quot;&gt;40%&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;50%&lt;/span&gt;">Bash โอกาสติด: <span class="old-val">40%</span> <span class="arrow">→</span> <span class="new-val-up">50%</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnhuntress-4f3c9242b6.png" alt="Nightsaber" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐆</div>'"></div>
+                <div>
+                    <div class="card-name">Nightsaber</div>
+                    <div class="card-type">Pack Instinct</div>
+                </div>
+                <span class="tag tag-nerf" style="margin-left:auto;">NERF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Damage per tier: &lt;span class=&quot;old-val&quot;&gt;+6 / +12 / +18 / +24&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;+3 / +6 / +9 / +12&lt;/span&gt;">ดาเมจต่อขั้น: <span class="old-val">+6 / +12 / +18 / +24</span> <span class="arrow">→</span> <span class="new-val-down">+3 / +6 / +9 / +12</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnrevenant-66a1377363.png" alt="The Ghost of Pain" onerror="this.parentElement.innerHTML='<div class=img-fallback>👻</div>'"></div>
+                <div>
+                    <div class="card-name">The Ghost of Pain</div>
+                    <div class="card-type">Tier 1</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Attack speed: &lt;span class=&quot;old-val&quot;&gt;0.5&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;0.45&lt;/span&gt;">ความเร็วโจมตี: <span class="old-val">0.5</span> <span class="arrow">→</span> <span class="new-val-up">0.45</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnharpyqueen-86713e5e81.png" alt="Medusa" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐍</div>'"></div>
+                <div>
+                    <div class="card-name">Medusa</div>
+                    <div class="card-type" data-en="Tier 3 (not the hero)">Tier 3 (ไม่ใช่ฮีโร่)</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Attack range: &lt;span class=&quot;old-val&quot;&gt;500&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;650&lt;/span&gt;">ระยะโจมตี: <span class="old-val">500</span> <span class="arrow">→</span> <span class="new-val-up">650</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnhippogriffrider-d4c315ce1f.png" alt="Rider" onerror="this.parentElement.innerHTML='<div class=img-fallback>🏇</div>'"></div>
+                <div>
+                    <div class="card-name">Rider</div>
+                    <div class="card-type">Tier 1</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Attack range: &lt;span class=&quot;old-val&quot;&gt;675&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;700&lt;/span&gt;">ระยะโจมตี: <span class="old-val">675</span> <span class="arrow">→</span> <span class="new-val-up">700</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btngnollarcher-7c68a55b1a.png" alt="Gnoll Savage" onerror="this.parentElement.innerHTML='<div class=img-fallback>🏹</div>'"></div>
+                <div>
+                    <div class="card-name">Gnoll Savage</div>
+                    <div class="card-type">Tier 1</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Attack range: &lt;span class=&quot;old-val&quot;&gt;550&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;600&lt;/span&gt;">ระยะโจมตี: <span class="old-val">550</span> <span class="arrow">→</span> <span class="new-val-up">600</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnspiritofvengeance-52eb7cb519.png" alt="Mercurial" onerror="this.parentElement.innerHTML='<div class=img-fallback>💧</div>'"></div>
+                <div>
+                    <div class="card-name">Mercurial</div>
+                    <div class="card-type">Tier 1</div>
+                </div>
+                <span class="tag tag-nerf" style="margin-left:auto;">NERF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Attack range: &lt;span class=&quot;old-val&quot;&gt;650&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;600&lt;/span&gt;">ระยะโจมตี: <span class="old-val">650</span> <span class="arrow">→</span> <span class="new-val-down">600</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnwyvernrider-6c73c29dc4.png" alt="Wind rider" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐉</div>'"></div>
+                <div>
+                    <div class="card-name">Wind rider</div>
+                    <div class="card-type">Poisoned weapon</div>
+                </div>
+                <span class="tag tag-nerf" style="margin-left:auto;">NERF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Poison damage per second: &lt;span class=&quot;old-val&quot;&gt;100&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;50&lt;/span&gt;">ดาเมจพิษต่อวิ: <span class="old-val">100</span> <span class="arrow">→</span> <span class="new-val-down">50</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnjaina-7bc33897da.png" alt="Crystal Frozen" onerror="this.parentElement.innerHTML='<div class=img-fallback>❄️</div>'"></div>
+                <div>
+                    <div class="card-name">Crystal Frozen</div>
+                    <div class="card-type">Frost Nova</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Cooldown: &lt;span class=&quot;old-val&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;7.5&lt;/span&gt;">คูลดาวน์: <span class="old-val">10</span> <span class="arrow">→</span> <span class="new-val-up">7.5</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnseaturtlered-6103da77ae.png" alt="Dragon Turtle" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐢</div>'"></div>
+                <div>
+                    <div class="card-name">Dragon Turtle</div>
+                    <div class="card-type" data-en="Tier 2 · from Egg Sack">Tier 2 · อัปจาก Egg Sack</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Name: &lt;span class=&quot;old-val&quot;&gt;Giant Sea Turtle&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;Dragon Turtle&lt;/span&gt;">ชื่อ: <span class="old-val">Giant Sea Turtle</span> <span class="arrow">→</span> <span class="new-val-up">Dragon Turtle</span></li>
+                    <li data-en="Armor: &lt;span class=&quot;old-val&quot;&gt;Heavy&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;Medium&lt;/span&gt;">เกราะ: <span class="old-val">Heavy</span> <span class="arrow">→</span> <span class="new-val-down">Medium</span></li>
+                    <li data-en="Now part of the &lt;b&gt;dragon family&lt;/b&gt;; gets every dragon effect such as Union of the Aspects">เข้า<b>เผ่ามังกร</b> ได้ผลจากทุกอย่างที่ส่งผลกับมังกร เช่น Union of the Aspects</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────── SECTION 2 ─────────── -->
+<section class="section reveal" id="s2">
+    <div class="section-header">
+        <div class="section-number">2</div>
+        <div class="section-title-group">
+            <h2 class="section-title" data-en="Sends">ตัวส่ง</h2>
+            <div class="section-subtitle">Sends</div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnmilitia-dde86e3511.png" alt="Militia" onerror="this.parentElement.innerHTML='<div class=img-fallback>🛡️</div>'"></div>
+                <div>
+                    <div class="card-name">Militia</div>
+                    <div class="card-type" data-en="Send">ตัวส่ง</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="HP: &lt;span class=&quot;old-val&quot;&gt;100&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;200&lt;/span&gt;">HP: <span class="old-val">100</span> <span class="arrow">→</span> <span class="new-val-up">200</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnhighelvenarcher-d63d925a84.png" alt="Bowman" onerror="this.parentElement.innerHTML='<div class=img-fallback>🏹</div>'"></div>
+                <div>
+                    <div class="card-name">Bowman</div>
+                    <div class="card-type" data-en="Send">ตัวส่ง</div>
+                </div>
+                <span class="tag tag-nerf" style="margin-left:auto;">NERF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="HP: &lt;span class=&quot;old-val&quot;&gt;250&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;200&lt;/span&gt;">HP: <span class="old-val">250</span> <span class="arrow">→</span> <span class="new-val-down">200</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnghoul-c418a293ed.png" alt="Ghoul" onerror="this.parentElement.innerHTML='<div class=img-fallback>🧟</div>'"></div>
+                <div>
+                    <div class="card-name">Ghoul</div>
+                    <div class="card-type" data-en="Send">ตัวส่ง</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="HP: &lt;span class=&quot;old-val&quot;&gt;325&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;300&lt;/span&gt;">HP: <span class="old-val">325</span> <span class="arrow">→</span> <span class="new-val-down">300</span></li>
+                    <li data-en="Attack type: &lt;span class=&quot;old-val&quot;&gt;Normal&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;Chaos&lt;/span&gt;">ประเภทโจมตี: <span class="old-val">Normal</span> <span class="arrow">→</span> <span class="new-val-up">Chaos</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btngrunt-1ee8095f30.png" alt="Warrior" onerror="this.parentElement.innerHTML='<div class=img-fallback>⚔️</div>'"></div>
+                <div>
+                    <div class="card-name">Warrior</div>
+                    <div class="card-type" data-en="Send">ตัวส่ง</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="HP: &lt;span class=&quot;old-val&quot;&gt;500&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;450&lt;/span&gt;">HP: <span class="old-val">500</span> <span class="arrow">→</span> <span class="new-val-down">450</span></li>
+                    <li data-en="Income: &lt;span class=&quot;old-val&quot;&gt;+2&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;+3&lt;/span&gt;">Income: <span class="old-val">+2</span> <span class="arrow">→</span> <span class="new-val-up">+3</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnthunderlizard-1b6f48c1a8.png" alt="Salamander" onerror="this.parentElement.innerHTML='<div class=img-fallback>🦎</div>'"></div>
+                <div>
+                    <div class="card-name">Salamander</div>
+                    <div class="card-type" data-en="Send">ตัวส่ง</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Cost: &lt;span class=&quot;old-val&quot;&gt;120 ไม้&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;100 ไม้&lt;/span&gt;">ราคา: <span class="old-val">120 ไม้</span> <span class="arrow">→</span> <span class="new-val-up">100 ไม้</span></li>
+                    <li data-en="Income: &lt;span class=&quot;old-val&quot;&gt;+6&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;+5&lt;/span&gt;">Income: <span class="old-val">+6</span> <span class="arrow">→</span> <span class="new-val-down">+5</span></li>
+                    <li data-en="Attack range: &lt;span class=&quot;old-val&quot;&gt;300&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;400&lt;/span&gt;">ระยะโจมตี: <span class="old-val">300</span> <span class="arrow">→</span> <span class="new-val-up">400</span></li>
+                    <li data-en="Attack type: &lt;span class=&quot;old-val&quot;&gt;Pierce&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;Magic&lt;/span&gt;">ประเภทโจมตี: <span class="old-val">Pierce</span> <span class="arrow">→</span> <span class="new-val-up">Magic</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────── SECTION 3 ─────────── -->
+<section class="section reveal" id="s3">
+    <div class="section-header">
+        <div class="section-number">3</div>
+        <div class="section-title-group">
+            <h2 class="section-title" data-en="Systems">ระบบ</h2>
+            <div class="section-subtitle">Systems</div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnkiljaedin-b7842dc920.png" alt="FINAL WAVE" onerror="this.parentElement.innerHTML='<div class=img-fallback>🔥</div>'"></div>
+                <div>
+                    <div class="card-name" data-en="FINAL WAVE">FINAL WAVE</div>
+                    <div class="card-type" data-en="End game">จบเกม</div>
+                </div>
+                <span class="tag tag-new" style="margin-left:auto;">NEW</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="No more &lt;b&gt;Arena PvP&lt;/b&gt; after wave 20">จบเวฟ 20 <b>ไม่มี Arena PvP</b> แล้ว</li>
+                    <li data-en="A 60 s &lt;b&gt;FINAL WAVE&lt;/b&gt; countdown; you can still build and upgrade">นับถอยหลัง <b>FINAL WAVE</b> 60 วิ ช่วงนี้สร้าง/อัปป้อมได้</li>
+                    <li data-en="When it ends, units from every tower warp in front of your King">หมดเวลา: ยูนิตจากป้อมทุกหลังวาร์ปไปหน้า King</li>
+                    <li data-en="&lt;b&gt;The Burning Legion&lt;/b&gt; spawns in every played lane">ปล่อยบอส <b>The Burning Legion</b> ทุกเลนที่มีคนเล่น</li>
+                    <li data-en="HP &lt;b&gt;50,000&lt;/b&gt; · damage &lt;b&gt;9,999&lt;/b&gt; · attacks every &lt;b&gt;0.5&lt;/b&gt; s · burns &lt;b&gt;100&lt;/b&gt;/s around it (ground and air)">HP <b>50,000</b> · ดาเมจ <b>9,999</b> · ตีทุก <b>0.5</b> วิ · เผารอบตัว <b>100</b>/วิ (พื้นและอากาศ)</li>
+                    <li data-en="When both teams kill all bosses, a new round spawns">ทั้ง 2 ทีมฆ่าบอสหมด → บอสมาใหม่อีกรอบ</li>
+                    <li data-en="&lt;b&gt;The first King to die loses&lt;/b&gt;"><b>King ฝั่งไหนตายก่อนแพ้</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="img-fallback">👑</div></div>
+                <div>
+                    <div class="card-name">King</div>
+                    <div class="card-type" data-en="King skill">สกิล King</div>
+                </div>
+                <span class="tag tag-rework" style="margin-left:auto;">REWORK</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="King skill &lt;b&gt;voting removed&lt;/b&gt;; the skill is picked at random from wave 5"><b>ยกเลิกโหวต</b>สกิล King เริ่มเวฟ 5 สุ่มสกิลให้เลย</li>
+                    <li data-en="Lumber from the roll: &lt;span class=&quot;old-val&quot;&gt;+300&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;ไม่ได้&lt;/span&gt;">ไม้ที่ได้ตอนสุ่ม: <span class="old-val">+300</span> <span class="arrow">→</span> <span class="new-val-down">ไม่ได้</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="img-fallback">📦</div></div>
+                <div>
+                    <div class="card-name" data-en="Map file">ไฟล์แมพ</div>
+                    <div class="card-type" data-en="Size">Size</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="File size: &lt;span class=&quot;old-val&quot;&gt;140 MB&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;114 MB&lt;/span&gt;">ขนาดไฟล์: <span class="old-val">140 MB</span> <span class="arrow">→</span> <span class="new-val-up">114 MB</span></li>
+                    <li data-en="Removed unused files">ลบไฟล์ที่ไม่ได้ใช้ออก</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────── SECTION 4 ─────────── -->
+<section class="section reveal" id="s4">
+    <div class="section-header">
+        <div class="section-number">4</div>
+        <div class="section-title-group">
+            <h2 class="section-title" data-en="Bug fixes">แก้บัค</h2>
+            <div class="section-subtitle">Bug fixes</div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnnagamyrmidonroyalguard-5501ba9dd2.png" alt="Skill icons" onerror="this.parentElement.innerHTML='<div class=img-fallback>🛡️</div>'"></div>
+                <div>
+                    <div class="card-name" data-en="Skill icons">ไอคอนสกิล</div>
+                    <div class="card-type">UI</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="The &lt;b&gt;Durable Skin&lt;/b&gt; (Naga Royal Guard and heroes) and &lt;b&gt;Union of the Aspects&lt;/b&gt; icons were hidden behind other buttons; they now show">ไอคอน <b>Durable Skin</b> (Naga Royal Guard และฮีโร่) และ <b>Union of the Aspects</b> ถูกปุ่มบังจนมองไม่เห็น ตอนนี้แสดงแล้ว</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnforgottenone-25d865ebb6.png" alt="Send auras" onerror="this.parentElement.innerHTML='<div class=img-fallback>🦑</div>'"></div>
+                <div>
+                    <div class="card-name" data-en="Send auras">ออร่าตัวส่ง</div>
+                    <div class="card-type">Tooltips</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Added the missing aura tooltips: Hermit / Kraken (healing), Defiler (Despair Aura), Demon (damage aura)">เพิ่มคำอธิบายออร่าที่เคยไม่มี: Hermit / Kraken (ฟื้นเลือด), Defiler (Despair Aura), Demon (ออร่าดาเมจ)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="img-fallback">🐞</div></div>
+                <div>
+                    <div class="card-name" data-en="Other fixes">แก้บัคอื่นๆ</div>
+                    <div class="card-type" data-en="Fix">Fix</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Bug fixes">แก้บัค</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+
+<script src="../../assets/js/nav.js?v=7e7d7ae5" defer></script>
+<script src="../../assets/js/reveal.js?v=19990738" defer></script>
+<script src="../../assets/js/toc.js?v=16e254ea" defer></script>
+<script src="../../assets/js/img-fallback.js?v=030f9fc7" defer></script>
+
+<script src="../../assets/js/tilt.js?v=e7356e05" defer></script>
+<script type="module" src="../../assets/js/scene3d.js?v=bb5a3885"></script>
+
+</body>
+</html>
