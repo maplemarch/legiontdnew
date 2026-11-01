@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Add-ons — Legion TD NewEdition">แอดออน — Legion TD NewEdition</title>
+    <meta name="description" content="ออกแบบสีชื่อผู้เล่นในแมพ Legion TD NewEdition เลือกสีทีละตัวอักษร แล้วคัดลอกข้อความส่งให้ทีมงาน">
+    <link rel="canonical" href="https://ltdnew.online/addon/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="แอดออน — Legion TD NewEdition">
+    <meta property="og:description" content="ออกแบบสีชื่อผู้เล่นในแมพ แล้วคัดลอกข้อความส่งให้ทีมงาน">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" href="../assets/img/favicon.svg?v=6537390b" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="../assets/css/base.css?v=ca092192">
+    <script src="../assets/js/i18n.js?v=22cbfaa5"></script>
+    <link rel="stylesheet" href="../assets/css/landing.css?v=82e51cc4">
+    <style>
+        .addon-tabs { display: flex; gap: var(--space-200); margin: var(--space-600) 0 var(--space-400); border-bottom: 1px solid var(--border-color); flex-wrap: wrap; }
+        .addon-tab { background: none; border: 0; border-bottom: 2px solid transparent; color: var(--text-secondary); font: inherit; font-weight: 600; padding: var(--space-200) var(--space-300); cursor: pointer; display: inline-flex; align-items: center; gap: var(--space-100); }
+        .addon-tab[aria-selected="true"] { color: var(--gold); border-bottom-color: var(--gold); }
+        .nc-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: var(--space-500); display: grid; gap: var(--space-500); }
+        .nc-step { display: grid; gap: var(--space-200); }
+        .nc-label { font-weight: 600; color: var(--text-primary); }
+        .nc-hint { color: var(--text-muted); font-size: 0.9rem; }
+        .nc-input { width: 100%; max-width: 420px; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary); font: inherit; font-size: 1.1rem; padding: var(--space-200) var(--space-300); }
+        .nc-input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+        .nc-letters { display: flex; flex-wrap: wrap; gap: 6px; }
+        .nc-letter { min-width: 40px; height: 48px; padding: 0 6px; background: #0b0e14; border: 2px solid var(--border-color); border-radius: var(--radius-md); font: 700 1.3rem/1 var(--font-body); cursor: pointer; }
+        .nc-letter[aria-pressed="true"] { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(0,0,0,.4) inset; }
+        .nc-letter.space { color: var(--text-muted); font-size: .8rem; }
+        .nc-row { display: flex; flex-wrap: wrap; gap: var(--space-200); align-items: center; }
+        .nc-swatch { width: 34px; height: 34px; border-radius: 50%; border: 2px solid rgba(255,255,255,.25); cursor: pointer; }
+        .nc-swatch:focus-visible, .nc-letter:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+        .nc-color { width: 52px; height: 38px; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-dark); padding: 2px; cursor: pointer; }
+        .nc-preview { background: #05070b; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: var(--space-400); font: 700 1.6rem/1.3 var(--font-body); min-height: 3.2rem; word-break: break-all; }
+        .nc-preview.empty { color: var(--text-muted); font-size: 1rem; font-weight: 400; }
+        .nc-code { width: 100%; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-secondary); font: .9rem/1.5 ui-monospace, Consolas, monospace; padding: var(--space-300); resize: vertical; min-height: 7rem; }
+        .nc-status { color: var(--green-light); font-size: .95rem; min-height: 1.4em; }
+        .nc-warn { color: var(--orange); font-size: .95rem; }
+        @media (max-width: 600px) { .nc-card { padding: var(--space-400); } .nc-letter { min-width: 34px; height: 42px; font-size: 1.1rem; } }
+    </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-en="Skip to main content">ข้ามไปเนื้อหาหลัก</a>
+
+<div class="scene3d scene3d-ambient" data-scene="ambient" data-circle="center" aria-hidden="true"></div>
+
+<nav class="site-nav" aria-label="เมนูหลัก" data-en-aria-label="Main menu">
+    <div class="site-nav-inner">
+        <a class="nav-brand" href="../">
+            <span class="nav-brand-mark" aria-hidden="true"><i class="ph ph-sword"></i></span>
+            Legion TD NE
+        </a>
+        <ul class="nav-links">
+            <li><a class="nav-link" href="../" data-en="Home">หน้าแรก</a></li>
+            <li><a class="nav-link" href="../wiki/" data-en="Wiki">วิกิ</a></li>
+            <li><a class="nav-link" href="../patch-notes/" data-en="Patch">แพตช์</a></li>
+            <li><a class="nav-link" href="../download/" data-en="Download">ดาวน์โหลด</a></li>
+            <li><a class="nav-link" href="../tournament/" data-en="Tournament">แข่งขัน</a></li>
+            <li><a class="nav-link" href="./" aria-current="page" data-en="Add-ons">แอดออน</a></li>
+            <li><a class="nav-link" href="../contact/" data-en="Contact">ติดต่อ</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a class="btn btn-ghost btn-sm nav-cta" href="https://wc3th.com" target="_blank" rel="noopener">
+                WC3TH
+                <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-overlay" aria-label="เปิดเมนู" data-en-aria-label="Open menu">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+    <ul class="nav-overlay-list">
+        <li><a href="../" data-en="Home">หน้าแรก</a></li>
+        <li><a href="../wiki/" data-en="Wiki">วิกิ</a></li>
+        <li><a href="../patch-notes/" data-en="Patch">แพตช์</a></li>
+        <li><a href="../download/" data-en="Download">ดาวน์โหลด</a></li>
+        <li><a href="../tournament/" data-en="Tournament">แข่งขัน</a></li>
+        <li><a href="./" aria-current="page" data-en="Add-ons">แอดออน</a></li>
+        <li><a href="../contact/" data-en="Contact">ติดต่อ</a></li>
+        <li><a href="https://wc3th.com" target="_blank" rel="noopener">WC3TH</a></li>
+    </ul>
+</div>
+
+<main id="main">
+
+<section class="page-section" style="padding-top: var(--space-900);">
+    <div class="container">
+        <span class="eyebrow">Add-ons</span>
+        <h1 class="hero-title" style="font-size: 3rem;" data-en="Add-ons for your in-game look">แอดออนในแมพ</h1>
+        <p class="section-lede" data-en="Design it here, copy the text, and send it to the team on Discord or LINE.">
+            ออกแบบที่หน้านี้ คัดลอกข้อความ แล้วส่งให้ทีมงานทาง Discord หรือ LINE
+        </p>
+
+        <div class="addon-tabs" role="tablist" aria-label="ประเภทแอดออน" data-en-aria-label="Add-on types">
+            <button class="addon-tab" type="button" role="tab" id="tab-namecolor" aria-selected="true" aria-controls="panel-namecolor" data-en="<i class=&quot;ph ph-palette&quot; aria-hidden=&quot;true&quot;></i> Name color">
+                <i class="ph ph-palette" aria-hidden="true"></i> สีชื่อ
+            </button>
+        </div>
+
+        <div class="nc-card" role="tabpanel" id="panel-namecolor" aria-labelledby="tab-namecolor">
+            <div class="nc-step">
+                <label class="nc-label" for="nc-name" data-en="1. Your in-game name">1. ชื่อในเกม</label>
+                <input class="nc-input" id="nc-name" type="text" maxlength="15" autocomplete="off" spellcheck="false" placeholder="เช่น [Harutya]" data-en-placeholder="e.g. [Harutya]">
+                <span class="nc-hint" data-en="Type it exactly as in the game, including brackets and capital letters (up to 15 characters).">พิมพ์ให้ตรงกับในเกม รวมวงเล็บและตัวพิมพ์ใหญ่เล็ก (ไม่เกิน 15 ตัว)</span>
+            </div>
+
+            <div class="nc-step">
+                <span class="nc-label" data-en="2. Pick the letters to color">2. เลือกตัวอักษรที่จะใส่สี</span>
+                <span class="nc-hint" data-en="Tap letters to select them. Hold Shift to select a range.">แตะตัวอักษรเพื่อเลือก กด Shift ค้างไว้เพื่อเลือกเป็นช่วง</span>
+                <div class="nc-letters" id="nc-letters"></div>
+                <div class="nc-row">
+                    <button class="btn btn-ghost btn-sm" type="button" id="nc-all" data-en="Select all">เลือกทั้งหมด</button>
+                    <button class="btn btn-ghost btn-sm" type="button" id="nc-inner" data-en="Letters only (no brackets)">เฉพาะตัวอักษร (ไม่รวมวงเล็บ)</button>
+                    <button class="btn btn-ghost btn-sm" type="button" id="nc-none" data-en="Clear selection">ล้างที่เลือก</button>
+                </div>
+            </div>
+
+            <div class="nc-step">
+                <span class="nc-label" data-en="3. Choose a color">3. เลือกสี</span>
+                <div class="nc-row" id="nc-swatches"></div>
+                <div class="nc-row">
+                    <input class="nc-color" type="color" id="nc-pick" value="#66ccff" aria-label="เลือกสีเอง" data-en-aria-label="Custom color">
+                    <button class="btn btn-primary btn-sm" type="button" id="nc-apply" data-en="Color the selected letters">ใส่สีให้ตัวที่เลือก</button>
+                </div>
+                <div class="nc-row">
+                    <input class="nc-color" type="color" id="nc-g1" value="#ff1a00" aria-label="สีเริ่ม" data-en-aria-label="Start color">
+                    <input class="nc-color" type="color" id="nc-g2" value="#ffe600" aria-label="สีจบ" data-en-aria-label="End color">
+                    <button class="btn btn-ghost btn-sm" type="button" id="nc-grad" data-en="Gradient across the selection">ไล่สีตัวที่เลือก</button>
+                </div>
+            </div>
+
+            <div class="nc-step">
+                <span class="nc-label" data-en="4. Preview">4. ตัวอย่าง</span>
+                <div class="nc-preview empty" id="nc-preview" aria-live="polite"></div>
+            </div>
+
+            <div class="nc-step">
+                <label class="nc-label" for="nc-code" data-en="5. Copy and send to the team">5. คัดลอกแล้วส่งให้ทีมงาน</label>
+                <textarea class="nc-code" id="nc-code" readonly></textarea>
+                <div class="nc-row">
+                    <button class="btn btn-primary" type="button" id="nc-copy" data-en="<i class=&quot;ph ph-copy&quot; aria-hidden=&quot;true&quot;></i> Copy text">
+                        <i class="ph ph-copy" aria-hidden="true"></i> คัดลอกข้อความ
+                    </button>
+                    <a class="btn btn-ghost" href="../contact/" data-en="<i class=&quot;ph ph-chat-circle-dots&quot; aria-hidden=&quot;true&quot;></i> Discord / LINE">
+                        <i class="ph ph-chat-circle-dots" aria-hidden="true"></i> Discord / LINE
+                    </a>
+                </div>
+                <div class="nc-status" id="nc-status" role="status"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+    const t = (th, en) => (window.LTD_I18N ? LTD_I18N.t(th, en) : th);
+    const SWATCHES = ['#ffffff', '#ffcc00', '#ff9900', '#ff1a4d', '#ff66cc', '#cc66ff', '#66ccff', '#0077cc', '#00cc66', '#88e600', '#808080', '#000000'];
+    const $ = (id) => document.getElementById(id);
+    const nameEl = $('nc-name'), lettersEl = $('nc-letters'), previewEl = $('nc-preview'), codeEl = $('nc-code'), statusEl = $('nc-status');
+    let chars = [], colors = [], selected = [], last = -1;
+
+    const hex = (c) => c.replace('#', '').toUpperCase();
+    const isBracket = (ch) => '[](){}<>'.includes(ch);
+
+    function setName(v) {
+        const next = Array.from(v);
+        const old = chars;
+        // เก็บสีเดิมไว้ ถ้าตัวอักษรตำแหน่งเดิมยังเหมือนเดิม
+        colors = next.map((ch, i) => (old[i] === ch && colors[i]) ? colors[i] : '#ffffff');
+        selected = next.map((_, i) => old[i] === next[i] ? !!selected[i] : true);
+        chars = next;
+        last = -1;
+        render();
+    }
+
+    function code() {
+        let out = '', run = '', cur = null;
+        chars.forEach((ch, i) => {
+            if (colors[i] !== cur) {
+                if (cur !== null) out += '|cFF' + hex(cur) + run + '|r';
+                cur = colors[i]; run = '';
+            }
+            run += ch;
+        });
+        if (cur !== null) out += '|cFF' + hex(cur) + run + '|r';
+        return out;
+    }
+
+    function render() {
+        lettersEl.textContent = '';
+        chars.forEach((ch, i) => {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'nc-letter' + (ch === ' ' ? ' space' : '');
+            b.textContent = ch === ' ' ? t('เว้น', 'space') : ch;
+            b.style.color = ch === ' ' ? '' : colors[i];
+            b.setAttribute('aria-pressed', selected[i] ? 'true' : 'false');
+            b.addEventListener('click', (e) => {
+                if (e.shiftKey && last >= 0) {
+                    const [a, z] = last < i ? [last, i] : [i, last];
+                    for (let k = a; k <= z; k++) selected[k] = true;
+                } else {
+                    selected[i] = !selected[i];
+                }
+                last = i;
+                render();
+            });
+            lettersEl.appendChild(b);
+        });
+
+        previewEl.textContent = '';
+        previewEl.classList.toggle('empty', chars.length === 0);
+        if (!chars.length) previewEl.textContent = t('พิมพ์ชื่อด้านบนก่อน', 'Type a name above first');
+        chars.forEach((ch, i) => {
+            const s = document.createElement('span');
+            s.textContent = ch;
+            s.style.color = colors[i];
+            previewEl.appendChild(s);
+        });
+
+        const c = code();
+        codeEl.value = chars.length
+            ? t('สั่งทำสีชื่อ', 'Name color request') + '\n' + t('ชื่อในเกม', 'In-game name') + ': ' + chars.join('') + '\n' + t('โค้ดสี', 'Color code') + ': ' + c
+            : '';
+        statusEl.textContent = '';
+    }
+
+    function paint(fn) {
+        const idx = selected.map((s, i) => (s ? i : -1)).filter((i) => i >= 0);
+        if (!idx.length) { statusEl.textContent = t('ยังไม่ได้เลือกตัวอักษร', 'No letters selected'); return; }
+        idx.forEach((i, n) => { colors[i] = fn(n, idx.length); });
+        render();
+    }
+
+    function mix(a, b, f) {
+        const p = (h, k) => parseInt(h.substr(1 + k * 2, 2), 16);
+        return '#' + [0, 1, 2].map((k) => Math.round(p(a, k) + (p(b, k) - p(a, k)) * f).toString(16).padStart(2, '0')).join('');
+    }
+
+    SWATCHES.forEach((c) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'nc-swatch';
+        b.style.background = c;
+        b.setAttribute('aria-label', c);
+        b.addEventListener('click', () => { $('nc-pick').value = c; paint(() => c); });
+        $('nc-swatches').appendChild(b);
+    });
+
+    nameEl.addEventListener('input', () => setName(nameEl.value));
+    $('nc-apply').addEventListener('click', () => { const c = $('nc-pick').value; paint(() => c); });
+    $('nc-grad').addEventListener('click', () => {
+        const a = $('nc-g1').value, b = $('nc-g2').value;
+        paint((n, total) => mix(a, b, total > 1 ? n / (total - 1) : 0));
+    });
+    $('nc-all').addEventListener('click', () => { selected = chars.map(() => true); render(); });
+    $('nc-none').addEventListener('click', () => { selected = chars.map(() => false); render(); });
+    $('nc-inner').addEventListener('click', () => { selected = chars.map((ch) => !isBracket(ch) && ch !== ' '); render(); });
+    $('nc-copy').addEventListener('click', async () => {
+        if (!codeEl.value) { statusEl.textContent = t('พิมพ์ชื่อก่อน', 'Type a name first'); return; }
+        try {
+            await navigator.clipboard.writeText(codeEl.value);
+        } catch (e) {
+            codeEl.select();
+            document.execCommand('copy');
+        }
+        statusEl.textContent = t('คัดลอกแล้ว ส่งข้อความนี้ให้ทีมงานได้เลย', 'Copied. Send this text to the team.');
+    });
+    document.addEventListener('langchange', render);
+
+    render();
+})();
+</script>
+<script src="../assets/js/nav.js?v=7e7d7ae5" defer></script>
+<script src="../assets/js/reveal.js?v=19990738" defer></script>
+<script src="../assets/js/tilt.js?v=e7356e05" defer></script>
+<script type="module" src="../assets/js/scene3d.js?v=bb5a3885"></script>
+
+</body>
+</html>
