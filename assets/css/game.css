@@ -469,3 +469,6 @@
 .pp-check { color: #f0b429; visibility: hidden; }
 .pp-opt[aria-selected="true"] .pp-check { visibility: visible; }
 .patch-pick-note { text-align: left; color: #f0b429; font-size: 0.875rem; margin: 0 0 var(--space-300); }
+.skill-calc { margin-top: var(--space-150); }
+.skill-calc-title { margin: 0 0 var(--space-50); font-size: 1rem; }
+.skill-calc-formula { margin: 0 0 var(--space-50); font-weight: 600; }

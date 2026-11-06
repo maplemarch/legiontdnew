@@ -250,7 +250,7 @@
                 ${iconTag(s.icon, 'shop-icon', 'ph-lightning')}
                 <div>
                     <div class="shop-name">${esc(s.name)}</div>
-                    <div class="shop-costs"><span class="game-cost game-cost-max">${t('โหวตครั้งละ', 'Per vote')}</span>${cost(s)}</div>
+                    ${s.noVote ? `<div class="shop-costs"><span class="game-cost game-cost-max">${t('สุ่มตอนจบเวฟ 4', 'Rolled at the end of wave 4')}</span></div>` : `<div class="shop-costs"><span class="game-cost game-cost-max">${t('โหวตครั้งละ', 'Per vote')}</span>${cost(s)}</div>`}
                 </div>
             </div>
             <p class="shop-summary">${esc(t(s.summary, s.summaryEn))}</p>
@@ -262,6 +262,7 @@
                     </tbody>
                 </table>
             </div>
+            ${s.calc ? `<div class="skill-calc"><h4 class="skill-calc-title">${t('วิธีคำนวณดาเมจ', 'How damage is calculated')}</h4><p class="skill-calc-formula">${esc(t(s.calc.formula, s.calc.formulaEn))}</p><p class="game-note" style="margin-top: 0;">${esc(t(s.calc.kind, s.calc.kindEn))}</p><div class="lumber-wrap"><table class="lumber-table skill-table"><thead><tr><th>${t('ตัวอย่าง', 'Example')}</th><th>${t('วิธีคิด', 'Calculation')}</th><th>${t('ดาเมจ', 'Damage')}</th></tr></thead><tbody>${s.calc.ex.map((e) => `<tr><th scope="row">${esc(t(e.a, e.aEn))}</th><td>${esc(e.calc)}</td><td>${esc(t(e.res, e.res.replace('/วิ', '/s')))}</td></tr>`).join('')}</tbody></table></div><p class="game-note" style="margin-top: 0;">${t('ตัวเลขยังไม่หักเกราะหรือสกิลลดดาเมจของเป้า', 'Before armor and damage-reduction skills')}</p></div>` : ''}
             ${s.unknownFrom ? `<p class="game-note" style="margin-top: 0;">${t(`เวฟ ${esc(s.unknownFrom)} เกมขึ้นเป็นเลเวล 5 แต่ไฟล์แมพไม่มีค่าของเลเวลนี้`, `In waves ${esc(s.unknownFrom)} the game raises it to level 5, but the map file has no values for that level`)}</p>` : ''}
         </article>`;
 
@@ -451,7 +452,7 @@
         sendDlg.querySelector('.unit-dialog-close').addEventListener('click', () => sendDlg.close());
     }
 
-    fetch('../assets/data/game-28d.json?v=a49b05d0')
+    fetch(window.LTD_PATCH === '2.8d' ? '../assets/data/game-28d.json?v=a49b05d0' : '../assets/data/game-29.json?v=2173bb73')
         .then((r) => r.json())
         .then((g) => {
             data = g;

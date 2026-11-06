@@ -212,7 +212,7 @@
     });
 
     /* ── โหลดข้อมูล ── */
-    fetch('../assets/data/units-28d.json?v=c065f21b')
+    fetch(window.LTD_PATCH === '2.8d' ? '../assets/data/units-28d.json?v=c065f21b' : '../assets/data/units-29.json?v=ecf86369')
         .then((r) => {
             if (!r.ok) throw new Error(t('โหลดข้อมูลไม่สำเร็จ ', 'Load failed ') + r.status);
             return r.json();
