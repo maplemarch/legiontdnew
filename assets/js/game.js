@@ -306,7 +306,7 @@
         <h3 class="game-sub"><i class="ph ph-sparkle" aria-hidden="true"></i> Presence <small>${t('เลือกได้ 1 แบบ', 'Pick 1')}</small></h3>
         <div class="shop-grid shop-grid-2">${k.presence.map(presenceCard).join('')}</div>
 
-        <h3 class="game-sub"><i class="ph ph-hand-pointing" aria-hidden="true"></i> ${t('สกิลของ King', 'King Skills')} <small>${t('ทีมโหวตเลือก ต้องโหวตครบทุกคนในทีมที่ยังเล่นอยู่ เลเวลขึ้นเองตามเวฟ', 'Chosen by team vote, everyone still playing on the team must vote, levels up automatically with the waves')}</small></h3>
+        <h3 class="game-sub"><i class="ph ph-hand-pointing" aria-hidden="true"></i> ${t('สกิลของ King', 'King Skills')} <small>${window.LTD_PATCH === '2.9' ? t('ทีมโหวตเลือก ต้องโหวตครบทุกคนในทีมที่ยังเล่นอยู่ เลเวลขึ้นเองตามเวฟ', 'Chosen by team vote, everyone still playing on the team must vote, levels up automatically with the waves') : t('สุ่มให้ทีมตอนจบเวฟ 4 สกิลไม่มีเลเวล ค่าเท่ากันทุกเวฟ', 'Rolled for the team at the end of wave 4. Skills have no levels; the values are the same every wave')}</small></h3>
         <div class="shop-grid shop-grid-2">${k.skills.map(kingSkill).join('')}</div>`;
 
     /* ── Challenge Champion ── */
@@ -452,7 +452,7 @@
         sendDlg.querySelector('.unit-dialog-close').addEventListener('click', () => sendDlg.close());
     }
 
-    fetch(window.LTD_PATCH === '2.8d' ? '../assets/data/game-28d.json?v=a49b05d0' : '../assets/data/game-29.json?v=15b2a88d')
+    fetch(window.LTD_PATCH === '2.9' ? '../assets/data/game-29.json?v=15b2a88d' : '../assets/data/game-29a.json?v=20ae3977')
         .then((r) => r.json())
         .then((g) => {
             data = g;

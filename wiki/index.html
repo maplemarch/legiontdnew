@@ -91,10 +91,10 @@
 <script>
 /* เลือกแพตช์ของข้อมูลวิกิ: ?patch=2.8 หรือที่จำไว้ (ค่าเริ่มต้น = แพตช์ที่ปล่อยแล้ว) */
 (function () {
-    var ok = { '2.9': 1, '2.8d': 1 }, p = null;
+    var ok = { '2.9a': 1, '2.9': 1 }, p = null;
     try { p = new URLSearchParams(location.search).get('patch'); } catch (e) {}
     if (!ok[p]) { try { p = localStorage.getItem('ltd-wiki-patch'); } catch (e) {} }
-    window.LTD_PATCH = ok[p] ? p : '2.9';
+    window.LTD_PATCH = ok[p] ? p : '2.9a';
 })();
 </script>
 <div class="patch-pick">
@@ -102,13 +102,13 @@
         <button type="button" class="pp-btn" id="pp-btn" aria-haspopup="listbox" aria-expanded="false">
             <i class="ph ph-git-branch" aria-hidden="true"></i>
             <span class="pp-label" data-en="Patch">แพตช์</span>
-            <span class="pp-cur" id="pp-cur">2.9</span>
+            <span class="pp-cur" id="pp-cur">2.9a</span>
             <span class="pp-badge" id="pp-badge" hidden data-en="not released">ยังไม่ปล่อย</span>
             <i class="ph ph-caret-down pp-caret" aria-hidden="true"></i>
         </button>
         <ul class="pp-menu" id="pp-menu" role="listbox" hidden>
-            <li role="option" class="pp-opt" data-patch="2.9"><span class="pp-opt-name">2.9</span><span class="pp-opt-sub" data-en="Current release">แพตช์ปัจจุบัน</span></li>
-            <li role="option" class="pp-opt" data-patch="2.8d"><span class="pp-opt-name">2.8d</span><span class="pp-opt-sub" data-en="Previous release">แพตช์ก่อนหน้า</span></li>
+            <li role="option" class="pp-opt" data-patch="2.9a"><span class="pp-opt-name">2.9a</span><span class="pp-opt-sub" data-en="Current release">แพตช์ปัจจุบัน</span></li>
+            <li role="option" class="pp-opt" data-patch="2.9"><span class="pp-opt-name">2.9</span><span class="pp-opt-sub" data-en="Previous release">แพตช์ก่อนหน้า</span></li>
         </ul>
     </div>
 </div>
@@ -143,7 +143,7 @@
 -->
 <section class="section" id="map" aria-labelledby="map-title">
     <h2 class="section-heading" id="map-title" data-en="Map">แผนที่</h2>
-    <p class="section-lede" data-en="Map layout for version 2.9: two lanes, with the King's base in the middle">ผังแผนที่ของเวอร์ชัน <span data-game-version>2.8</span> เลนสองข้าง ฐาน King อยู่กลาง</p>
+    <p class="section-lede" data-en="Map layout for version 2.9a: two lanes, with the King's base in the middle">ผังแผนที่ของเวอร์ชัน <span data-game-version>2.8</span> เลนสองข้าง ฐาน King อยู่กลาง</p>
     <figure class="map-card reveal">
         <img src="../assets/img/map-preview.jpg?v=5c470d2c"
              alt="ผังแผนที่ Legion TD NewEdition มองจากด้านบน เห็นเลนสองข้างและฐาน King กลางแผนที่"
@@ -293,7 +293,7 @@
 
 <section class="section" id="economy" aria-labelledby="economy-title" style="margin-top: var(--space-900);">
     <h2 class="section-heading" id="economy-title" data-en="Economy">การเงิน</h2>
-    <p class="section-lede" data-en="Where gold and lumber come from, and how much you get from each source (values from patch 2.9)">ทองและไม้ได้มาจากทางไหน และได้เท่าไหร่ (ค่าจากแพตช์ 2.9)</p>
+    <p class="section-lede" data-en="Where gold and lumber come from, and how much you get from each source (values from patch 2.9a)">ทองและไม้ได้มาจากทางไหน และได้เท่าไหร่ (ค่าจากแพตช์ 2.9a)</p>
     <div class="shop-grid">
         <article class="shop-card">
             <div class="shop-head">
@@ -485,8 +485,8 @@
 <script src="../assets/js/nav.js?v=7e7d7ae5" defer></script>
 <script src="../assets/js/reveal.js?v=19990738" defer></script>
 <script src="../assets/js/toc.js?v=16e254ea" defer></script>
-<script src="../assets/js/units.js?v=27b2cdda" defer></script>
-<script src="../assets/js/game.js?v=9ebaf07f" defer></script>
+<script src="../assets/js/units.js?v=155a3d39" defer></script>
+<script src="../assets/js/game.js?v=7003c74c" defer></script>
 
 <script src="../assets/js/tilt.js?v=e7356e05" defer></script>
 <script type="module" src="../assets/js/scene3d.js?v=bb5a3885"></script>
