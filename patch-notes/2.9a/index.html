@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Patch Notes 2.9a — Legion TD NewEdition">Patch Notes 2.9a — Legion TD NewEdition</title>
+    <meta name="description" content="Legion TD NewEdition 2.9a สกิล King ไม่มีเลเวล และแก้บัคครีปไม่ออก">
+    <link rel="canonical" href="https://ltdnew.online/patch-notes/2.9a/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Patch Notes 2.9a — Legion TD NewEdition">
+    <meta property="og:description" content="สกิล King ไม่มีเลเวล และแก้บัคครีปไม่ออก">
+    <meta property="og:image" content="https://ltdnew.online/assets/img/og-cover.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="../../assets/img/favicon.svg?v=6537390b" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="../../assets/css/base.css?v=af3e9dfe">
+    <script src="../../assets/js/i18n.js?v=22cbfaa5"></script>
+    <link rel="stylesheet" href="../../assets/css/patch-notes.css?v=bc771417">
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-en="Skip to main content">ข้ามไปเนื้อหาหลัก</a>
+
+<div class="scene3d scene3d-ambient" data-scene="ambient" data-circle="center" aria-hidden="true"></div>
+
+<!-- ===== เมนูหลัก ===== -->
+<nav class="site-nav" aria-label="เมนูหลัก" data-en-aria-label="Main menu">
+    <div class="site-nav-inner">
+        <a class="nav-brand" href="../../">
+            <span class="nav-brand-mark" aria-hidden="true"><i class="ph ph-sword"></i></span>
+            Legion TD NE
+        </a>
+        <ul class="nav-links">
+            <li><a class="nav-link" href="../../" data-en="Home">หน้าแรก</a></li>
+            <li><a class="nav-link" href="../../wiki/" data-en="Wiki">วิกิ</a></li>
+            <li><a class="nav-link" href="../" aria-current="page" data-en="Patch">แพตช์</a></li>
+            <li><a class="nav-link" href="../../download/" data-en="Download">ดาวน์โหลด</a></li>
+            <li><a class="nav-link" href="../../tournament/" data-en="Tournament">แข่งขัน</a></li>
+
+            <li><a class="nav-link" href="../../addon/" data-en="Add-ons">แอดออน</a></li>
+            <li><a class="nav-link" href="../../contact/" data-en="Contact">ติดต่อ</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a class="btn btn-ghost btn-sm nav-cta" href="https://wc3th.com" target="_blank" rel="noopener">
+                WC3TH
+                <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-overlay" aria-label="เปิดเมนู" data-en-aria-label="Open menu">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+    <ul class="nav-overlay-list">
+        <li><a href="../../" data-en="Home">หน้าแรก</a></li>
+        <li><a href="../../wiki/" data-en="Wiki">วิกิ</a></li>
+        <li><a href="../" aria-current="page" data-en="Patch">แพตช์</a></li>
+        <li><a href="../../download/" data-en="Download">ดาวน์โหลด</a></li>
+        <li><a href="../../tournament/" data-en="Tournament">แข่งขัน</a></li>
+
+        <li><a href="../../addon/" data-en="Add-ons">แอดออน</a></li>
+        <li><a href="../../contact/" data-en="Contact">ติดต่อ</a></li>
+        <li><a href="https://wc3th.com" target="_blank" rel="noopener">WC3TH</a></li>
+    </ul>
+</div>
+
+<nav class="toc-nav" aria-label="สารบัญแพตช์" data-en-aria-label="Patch contents">
+    <div class="toc-nav-inner">
+        <a class="toc-back" href="../" aria-label="กลับไปหน้าแพตช์ทั้งหมด" data-en-aria-label="Back to all patches" title="แพตช์ทั้งหมด" data-en-title="All patches">
+            <i class="ph ph-arrow-left" aria-hidden="true"></i>
+            <span data-en="All patches">แพตช์ทั้งหมด</span>
+        </a>
+        <div class="toc-links">
+            <a href="#s1" class="toc-link active" data-en="🔧 Changes">🔧 ปรับระบบ</a>
+            <a href="#s2" class="toc-link" data-en="🐞 Bug fixes">🐞 แก้บัค</a>
+        </div>
+    </div>
+</nav>
+<main class="content-wrapper" id="main">
+
+<header class="patch-intro">
+    <h1 class="patch-intro-title">LTD Patch 2.9a</h1>
+    <p class="patch-intro-meta" data-en="Legion TD NewEdition · 8 November 2026 · after 2.9">Legion TD NewEdition · 8 พฤศจิกายน 2569 · ต่อจาก 2.9</p>
+</header>
+
+<!-- ─────────── SECTION 1 ─────────── -->
+<section class="section reveal" id="s1">
+    <div class="section-header">
+        <div class="section-number">1</div>
+        <div class="section-title-group">
+            <h2 class="section-title" data-en="Changes">ปรับระบบ</h2>
+            <div class="section-subtitle">Changes</div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnhumanlumberupgrade1-0eaa8be178.png" alt="Advanced Lumberjack Training" onerror="this.parentElement.innerHTML='<div class=img-fallback>🌳</div>'"></div>
+                <div>
+                    <div class="card-name">Advanced Lumberjack Training</div>
+                    <div class="card-type" data-en="Lumber upgrade">อัปเกรดไม้</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Lumber per cycle at level 14: &lt;span class=&quot;old-val&quot;&gt;16&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;&lt;b&gt;17&lt;/b&gt;&lt;/span&gt; (level 14 gives +2)">ไม้ต่อรอบ ขั้น 14: <span class="old-val">16</span> <span class="arrow">→</span> <span class="new-val-up"><b>17</b></span> (ขั้น 14 ได้ +2)</li>
+                    <li data-en="Lumber per cycle at level 15: &lt;span class=&quot;old-val&quot;&gt;22&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;&lt;b&gt;19&lt;/b&gt;&lt;/span&gt; (level 15 gives +2 instead of the +5 bonus)">ไม้ต่อรอบ ขั้น 15: <span class="old-val">22</span> <span class="arrow">→</span> <span class="new-val-down"><b>19</b></span> (ขั้น 15 ได้ +2 แทนโบนัส +5)</li>
+                    <li data-en="Levels 1–13 still give +1 each">ขั้น 1–13 ยังได้ขั้นละ +1 เหมือนเดิม</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnpossession-b7a2b3db11.png" alt="Dark Presence" onerror="this.parentElement.innerHTML='<div class=img-fallback>😈</div>'"></div>
+                <div>
+                    <div class="card-name">Dark Presence</div>
+                    <div class="card-type" data-en="King skill">สกิล King</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Bounce, 2nd target: &lt;span class=&quot;old-val&quot;&gt;50%&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;60%&lt;/span&gt;">ชิ่ง เป้าที่ 2: <span class="old-val">50%</span> <span class="arrow">→</span> <span class="new-val-up">60%</span></li>
+                    <li data-en="Bounce, 3rd target: &lt;span class=&quot;old-val&quot;&gt;25%&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;36%&lt;/span&gt;">ชิ่ง เป้าที่ 3: <span class="old-val">25%</span> <span class="arrow">→</span> <span class="new-val-up">36%</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnheropaladin-9429867f65.png" alt="King" onerror="this.parentElement.innerHTML='<div class=img-fallback>👑</div>'"></div>
+                <div>
+                    <div class="card-name">King</div>
+                    <div class="card-type" data-en="King skill">สกิล King</div>
+                </div>
+                <span class="tag tag-rework" style="margin-left:auto;">REWORK</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="King skills &lt;b&gt;no longer have levels&lt;/b&gt;; the values are the same every wave">สกิล King <b>ไม่มีเลเวลแล้ว</b> ค่าเท่ากันทุกเวฟ</li>
+                    <li data-en="Before: the level went up with the waves (level 2 at wave 5, level 3 at wave 7, level 4 at wave 13)">เดิม: เลเวลขึ้นเองตามเวฟ (เลเวล 2 เวฟ 5, เลเวล 3 เวฟ 7, เลเวล 4 เวฟ 13)</li>
+                    <li data-en="Immolation mana to turn on: &lt;span class=&quot;old-val&quot;&gt;30&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;14&lt;/span&gt; (same as mana per second)">Immolation มานาตอนเปิด: <span class="old-val">30</span> <span class="arrow">→</span> <span class="new-val-up">14</span> (เท่ากับมานาต่อวิ)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnwarstomp-3ffe15833a.png" alt="King's War Stomp" onerror="this.parentElement.innerHTML='<div class=img-fallback>👑</div>'"></div>
+                <div>
+                    <div class="card-name">King's War Stomp</div>
+                    <div class="card-type" data-en="King skill">สกิล King</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Stun: &lt;span class=&quot;old-val&quot;&gt;3.8 / 4.75 / 6 / 7 s (by level)&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;&lt;b&gt;4 s&lt;/b&gt;&lt;/span&gt;">สตัน: <span class="old-val">3.8 / 4.75 / 6 / 7 วิ (ตามเลเวล)</span> <span class="arrow">→</span> <span class="new-val-down"><b>4 วิ</b></span></li>
+                    <li data-en="Boss stun: &lt;span class=&quot;old-val&quot;&gt;2.85 / 3.3 / 4 / 4.5 s (by level)&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;&lt;b&gt;2 s&lt;/b&gt;&lt;/span&gt;">สตันบอส: <span class="old-val">2.85 / 3.3 / 4 / 4.5 วิ (ตามเลเวล)</span> <span class="arrow">→</span> <span class="new-val-down"><b>2 วิ</b></span></li>
+                    <li data-en="Damage: &lt;span class=&quot;old-val&quot;&gt;100 + 25 × wave + 3% max HP&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;&lt;b&gt;100 + 20 × wave + 3% max HP&lt;/b&gt;&lt;/span&gt;">ดาเมจ: <span class="old-val">100 + 25 × เวฟ + 3% HP สูงสุด</span> <span class="arrow">→</span> <span class="new-val-down"><b>100 + 20 × เวฟ + 3% HP สูงสุด</b></span></li>
+                    <li data-en="Wave 20 boss: &lt;span class=&quot;old-val&quot;&gt;1,290&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;1,190&lt;/span&gt;">บอสเวฟ 20: <span class="old-val">1,290</span> <span class="arrow">→</span> <span class="new-val-down">1,190</span></li>
+                    <li data-en="Cooldown: &lt;span class=&quot;old-val&quot;&gt;10 s&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;15 s&lt;/span&gt;">คูลดาวน์: <span class="old-val">10 วิ</span> <span class="arrow">→</span> <span class="new-val-down">15 วิ</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnshockwave-9f6cf6f5d8.png" alt="King's Shockwave" onerror="this.parentElement.innerHTML='<div class=img-fallback>🌊</div>'"></div>
+                <div>
+                    <div class="card-name">King's Shockwave</div>
+                    <div class="card-type" data-en="King skill">สกิล King</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Burn per second: &lt;span class=&quot;old-val&quot;&gt;3.5 / 7 / 14 / 28 (by level)&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;&lt;b&gt;1% max HP + 10&lt;/b&gt;&lt;/span&gt;">ไฟเผาต่อวิ: <span class="old-val">3.5 / 7 / 14 / 28 (ตามเลเวล)</span> <span class="arrow">→</span> <span class="new-val-up"><b>1% HP สูงสุด + 10</b></span></li>
+                    <li data-en="Example: a 2,000 HP creep burns for &lt;b&gt;30&lt;/b&gt; per second for 10 s">ตัวอย่าง: ครีป 2,000 HP โดนเผา <b>30</b> ต่อวิ นาน 10 วิ</li>
+                    <li data-en="Range: &lt;span class=&quot;old-val&quot;&gt;1,000 / 1,200 / 1,300 / 1,400 (by level)&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;1,400&lt;/span&gt;">ระยะ: <span class="old-val">1,000 / 1,200 / 1,300 / 1,400 (ตามเลเวล)</span> <span class="arrow">→</span> <span class="new-val-up">1,400</span></li>
+                    <li data-en="Damage now &lt;b&gt;travels with the wave&lt;/b&gt;; nearer units are hit first (before, the whole line was hit instantly)">ดาเมจ<b>วิ่งไปตามคลื่น</b> ตัวใกล้โดนก่อน (เดิมโดนทั้งแนวทันทีตอนกด)</li>
+                    <li data-en="Hit width: &lt;span class=&quot;old-val&quot;&gt;350&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;425&lt;/span&gt; (matches the visible wave)">ความกว้างที่โดนดาเมจ: <span class="old-val">350</span> <span class="arrow">→</span> <span class="new-val-up">425</span> (เท่ากับคลื่นที่เห็น)</li>
+                    <li data-en="Damage: &lt;span class=&quot;old-val&quot;&gt;100 + 50 × wave + 3% max HP&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;&lt;b&gt;100 + 60 × wave + 3% max HP&lt;/b&gt;&lt;/span&gt;">ดาเมจ: <span class="old-val">100 + 50 × เวฟ + 3% HP สูงสุด</span> <span class="arrow">→</span> <span class="new-val-up"><b>100 + 60 × เวฟ + 3% HP สูงสุด</b></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────── SECTION 2 ─────────── -->
+<section class="section reveal" id="s2">
+    <div class="section-header">
+        <div class="section-number">2</div>
+        <div class="section-title-group">
+            <h2 class="section-title" data-en="Bug fixes">แก้บัค</h2>
+            <div class="section-subtitle">Bug fixes</div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="img-fallback">👾</div></div>
+                <div>
+                    <div class="card-name" data-en="Wave creeps not spawning">ครีปเวฟไม่ออก</div>
+                    <div class="card-type" data-en="Bug fix">แก้บัค</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Fixed: when a wave started early (for example with &lt;b&gt;-start&lt;/b&gt;), &lt;b&gt;no creeps spawned in any lane&lt;/b&gt; and the wave was skipped">แก้บัค: เวฟเริ่มเร็วกว่าปกติ (เช่นพิมพ์ <b>-start</b>) แล้ว<b>ครีปไม่ออกทุกเลน</b> เวฟถูกข้าม</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="img-fallback">🎮</div></div>
+                <div>
+                    <div class="card-name" data-en="Mode select">เลือกโหมด</div>
+                    <div class="card-type" data-en="Bug fix">แก้บัค</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Fixed: a Host command starting with &lt;b&gt;-&lt;/b&gt; (such as -zoom or -g) typed before picking a mode was counted as the mode pick">แก้บัค: Host พิมพ์คำสั่งที่ขึ้นต้นด้วย <b>-</b> (เช่น -zoom, -g) ก่อนเลือกโหมด แล้วถูกนับเป็นการเลือกโหมด</li>
+                    <li data-en="Before: the game started with no mode and the mode buttons did not work">ผลเดิม: เกมเริ่มแบบไม่มีโหมด และปุ่มเลือกโหมดกดไม่ได้</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnpossession-b7a2b3db11.png" alt="Dark Presence" onerror="this.parentElement.innerHTML='<div class=img-fallback>😈</div>'"></div>
+                <div>
+                    <div class="card-name">Dark Presence</div>
+                    <div class="card-type" data-en="Bug fix">แก้บัค</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Fixed: sometimes the King &lt;b&gt;did not switch to the bouncing attack&lt;/b&gt; after casting">แก้บัค: กดสกิลแล้วบางครั้ง King <b>ไม่เปลี่ยนเป็นท่าตีเด้ง</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="img-fallback">🔧</div></div>
+                <div>
+                    <div class="card-name" data-en="Other">อื่นๆ</div>
+                    <div class="card-type" data-en="Bug fix">แก้บัค</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Minor bug fixes">แก้บัคเล็กน้อย</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+
+<script src="../../assets/js/nav.js?v=7e7d7ae5" defer></script>
+<script src="../../assets/js/reveal.js?v=19990738" defer></script>
+<script src="../../assets/js/toc.js?v=16e254ea" defer></script>
+<script src="../../assets/js/img-fallback.js?v=030f9fc7" defer></script>
+
+<script src="../../assets/js/tilt.js?v=e7356e05" defer></script>
+<script type="module" src="../../assets/js/scene3d.js?v=bb5a3885"></script>
+
+</body>
+</html>
