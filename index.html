@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
     <link rel="stylesheet" href="assets/css/base.css?v=af3e9dfe">
     <script src="assets/js/i18n.js?v=22cbfaa5"></script>
-    <link rel="stylesheet" href="assets/css/landing.css?v=82e51cc4">
+    <link rel="stylesheet" href="assets/css/landing.css?v=f6b769f1">
 </head>
 <body class="page-home">
 
@@ -36,7 +36,6 @@
             <li><a class="nav-link" href="wiki/" data-en="Wiki">วิกิ</a></li>
             <li><a class="nav-link" href="patch-notes/" data-en="Patch">แพตช์</a></li>
             <li><a class="nav-link" href="download/" data-en="Download">ดาวน์โหลด</a></li>
-            <li><a class="nav-link" href="tournament/" data-en="Tournament">แข่งขัน</a></li>
             <li><a class="nav-link" href="addon/" data-en="Add-ons">แอดออน</a></li>
             <li><a class="nav-link" href="contact/" data-en="Contact">ติดต่อ</a></li>
         </ul>
@@ -59,7 +58,6 @@
         <li><a href="wiki/" data-en="Wiki">วิกิ</a></li>
         <li><a href="patch-notes/" data-en="Patch">แพตช์</a></li>
         <li><a href="download/" data-en="Download">ดาวน์โหลด</a></li>
-        <li><a href="tournament/" data-en="Tournament">แข่งขัน</a></li>
         <li><a href="addon/" data-en="Add-ons">แอดออน</a></li>
         <li><a href="contact/" data-en="Contact">ติดต่อ</a></li>
         <li><a href="https://wc3th.com" target="_blank" rel="noopener">WC3TH</a></li>
@@ -72,52 +70,67 @@
 <header class="landing-hero">
     <div class="hero-bg" aria-hidden="true"><img src="assets/img/bg.png?v=07409233" alt=""></div>
     <div class="hero-particles" id="particles" aria-hidden="true"></div>
-    <div class="scene3d" data-scene="hero" aria-hidden="true"></div>
-    <div class="container">
-        <span class="eyebrow eyebrow-live"><span class="live-dot" aria-hidden="true"></span><span data-en="Patch 2.9a is out">แพตช์ 2.9a มาแล้ว</span></span>
-        <h1 class="hero-title" data-en="Legion TD NewEdition<br>Rebalanced from top to bottom, made by the Thai community">Legion TD NewEdition<br>สมดุลใหม่ทั้งแผ่น ฝีมือชุมชนไทย</h1>
-        <p class="hero-sub" data-en="Patch 2.7a fixes the bugs from 2.7, keeps the Arena fair when teams are uneven by fielding the top players by value, and turns lumber into gold as Wave 20 starts. It builds on 2.7, which reworked all 10 heroes, removed 12 units nobody picked and made 25+ balance changes.">
-            แพตช์ 2.7a แก้บัคจาก 2.7 จัด Arena ให้ยุติธรรมเมื่อผู้เล่นไม่เท่ากัน โดยส่งคนที่ Value สูงสุดลงสู้
-            และแปลงไม้เป็นทองตอนเริ่มเวฟ 20 ต่อยอดจาก 2.7 ที่รื้อฮีโร่ทั้ง 10 ตัว ถอดยูนิตออก 12 ตัว และปรับสมดุลกว่า 25 จุด
-        </p>
-        <div class="hero-actions">
-            <a class="btn btn-primary" href="patch-notes/2.9a/" data-en="<i class=&quot;ph ph-scroll&quot; aria-hidden=&quot;true&quot;></i> Read Patch Notes 2.9a">
-                <i class="ph ph-scroll" aria-hidden="true"></i>
-                อ่าน Patch Notes 2.9a
-            </a>
-            <a class="btn btn-ghost" href="download/" data-en="<i class=&quot;ph ph-download-simple&quot; aria-hidden=&quot;true&quot;></i> Download the map">
-                <i class="ph ph-download-simple" aria-hidden="true"></i>
-                ดาวน์โหลดแผนที่
-            </a>
-            <a class="btn btn-ghost" href="tournament/" data-en="<i class=&quot;ph ph-trophy&quot; aria-hidden=&quot;true&quot;></i> Tournament SS2">
-                <i class="ph ph-trophy" aria-hidden="true"></i>
-                แข่งขัน SS2
-            </a>
-        </div>
-        <ul class="hero-stats" aria-label="สรุปแพตช์ 2.7" data-en-aria-label="Patch 2.7 summary">
-            <li class="hero-stat">
-                <span class="hero-stat-value">10</span>
-                <span class="hero-stat-label" data-en="Heroes reworked">ฮีโร่ที่รื้อใหม่</span>
-            </li>
-            <li class="hero-stat">
-                <span class="hero-stat-value">12</span>
-                <span class="hero-stat-label" data-en="Units removed">ยูนิตที่ถอดออก</span>
-            </li>
-            <li class="hero-stat">
-                <span class="hero-stat-value">25+</span>
-                <span class="hero-stat-label" data-en="Balance changes">จุดปรับสมดุล</span>
-            </li>
-            <li class="hero-stat">
-                <a class="hero-stat-link" href="wiki/#unit">
-                    <span class="hero-stat-value">262</span>
-                    <span class="hero-stat-label" data-en="Searchable units <i class=&quot;ph ph-arrow-right&quot; aria-hidden=&quot;true&quot;></i>">ยูนิตให้ค้นหา <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+    <div class="hero-aura" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <span class="eyebrow eyebrow-live"><span class="live-dot" aria-hidden="true"></span><span data-en="Patch 2.9b is out">แพตช์ 2.9b มาแล้ว</span></span>
+            <h1 class="hero-title2">
+                <span class="hero-title2-top">Legion TD</span>
+                <span class="hero-title2-main">NewEdition</span>
+            </h1>
+            <p class="hero-tagline" data-en="Rebalanced from top to bottom, made by the Thai community">สมดุลใหม่ทั้งแผ่น ฝีมือชุมชนไทย</p>
+            <p class="hero-lead" data-en="A Warcraft III tower defense map kept alive by Thai players. Build your army, send creeps at the other team and protect your King for 20 waves.">
+                แผนที่ Tower Defense ของ Warcraft III ที่คนไทยช่วยกันดูแล สร้างกองทัพ ส่งครีปไปกดดันอีกฝั่ง แล้วปกป้อง King ให้รอดครบ 20 เวฟ
+            </p>
+            <div class="hero-actions">
+                <a class="btn btn-primary btn-shine" href="download/" data-en="<i class=&quot;ph ph-download-simple&quot; aria-hidden=&quot;true&quot;></i> Download 2.9b">
+                    <i class="ph ph-download-simple" aria-hidden="true"></i>
+                    ดาวน์โหลด 2.9b
                 </a>
-            </li>
-        </ul>
-        <p class="hero-proof">
-            <i class="ph ph-clock-counter-clockwise" aria-hidden="true"></i>
-            <span data-en="Last updated <strong>28 September 2026</strong> · Unit data sourced from the Thai LTD Wiki">ปรับปรุงล่าสุด <strong>28 กันยายน 2569</strong> · ข้อมูลยูนิตอ้างอิงจาก LTD Wiki ภาษาไทย</span>
-        </p>
+                <a class="btn btn-ghost" href="patch-notes/2.9b/" data-en="<i class=&quot;ph ph-scroll&quot; aria-hidden=&quot;true&quot;></i> Patch Notes">
+                    <i class="ph ph-scroll" aria-hidden="true"></i>
+                    Patch Notes
+                </a>
+                <a class="btn btn-ghost" href="wiki/" data-en="<i class=&quot;ph ph-book-open&quot; aria-hidden=&quot;true&quot;></i> Wiki">
+                    <i class="ph ph-book-open" aria-hidden="true"></i>
+                    วิกิ
+                </a>
+            </div>
+            <ul class="hero-facts" aria-label="ข้อมูลแมพ" data-en-aria-label="Map facts">
+                <li><span class="hero-fact"><span class="hero-fact-value">4v4</span><span class="hero-fact-label" data-en="Up to 8 players">เล่นได้ 8 คน</span></span></li>
+                <li><span class="hero-fact"><span class="hero-fact-value">20</span><span class="hero-fact-label" data-en="Waves + Arena">เวฟ + Arena</span></span></li>
+                <li><a href="wiki/#unit"><span class="hero-fact-value">270</span><span class="hero-fact-label" data-en="Units in the Wiki <i class=&quot;ph ph-arrow-right&quot; aria-hidden=&quot;true&quot;></i>">ยูนิตในวิกิ <i class="ph ph-arrow-right" aria-hidden="true"></i></span></a></li>
+            </ul>
+        </div>
+
+        <aside class="hero-card" aria-labelledby="hero-card-title">
+            <div class="hero-card-head">
+                <span class="hero-card-version">2.9b</span>
+                <div>
+                    <h2 class="hero-card-title" id="hero-card-title" data-en="What's new">มีอะไรใหม่</h2>
+                    <p class="hero-card-date" data-en="10 November 2026">10 พฤศจิกายน 2569</p>
+                </div>
+            </div>
+            <ul class="hero-card-list">
+                <li>
+                    <span class="hero-card-icon"><i class="ph ph-crown" aria-hidden="true"></i></span>
+                    <span data-en="King skills <b>hit harder</b>: War Stomp / Shockwave 5% HP, Immolation 3% + 15">สกิล King <b>แรงขึ้น</b>: War Stomp / Shockwave 5% HP, Immolation 3% + 15</span>
+                </li>
+                <li>
+                    <span class="hero-card-icon"><i class="ph ph-lightning" aria-hidden="true"></i></span>
+                    <span data-en="Thunderbird gets the new skill <b>Gravity Slam</b>">Thunderbird ได้สกิลใหม่ <b>Gravity Slam</b></span>
+                </li>
+                <li>
+                    <span class="hero-card-icon"><i class="ph ph-tree" aria-hidden="true"></i></span>
+                    <span data-en="<b>Yggdrasil</b> rework: every upgrade costs 330, Tree of Battle gets Death Roots">ปรับสาย <b>Yggdrasil</b>: อัพ 330 ทุกร่าง, Tree of Battle ได้ Death Roots</span>
+                </li>
+                <li>
+                    <span class="hero-card-icon"><i class="ph ph-arrows-left-right" aria-hidden="true"></i></span>
+                    <span data-en="<b>Ogre Mage removed</b>; its skills move to Ogre Pulverizer"><b>เอา Ogre Mage ออก</b> สกิลย้ายไป Ogre Pulverizer</span>
+                </li>
+            </ul>
+            <a class="hero-card-link" href="patch-notes/2.9b/" data-en="Read the full patch notes <i class=&quot;ph ph-arrow-right&quot; aria-hidden=&quot;true&quot;></i>">อ่านแพตช์โน้ตทั้งหมด <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+        </aside>
     </div>
 </header>
 
@@ -130,7 +143,6 @@
 <script src="assets/js/particles.js?v=8c8d8e94" defer></script>
 
 <script src="assets/js/tilt.js?v=e7356e05" defer></script>
-<script type="module" src="assets/js/scene3d.js?v=bb5a3885"></script>
 
 </body>
 </html>

@@ -113,6 +113,8 @@
             statHtml(t('ค่าใช้จ่าย', 'Cost'), u.cost, 'ph-coins'),
             statHtml(t('อาหาร', 'Food'), +u.food ? u.food : '', 'ph-fork-knife'),
             statHtml(t('พลังชีวิต', 'HP'), u.hp, 'ph-heart'),
+            statHtml(t('มานา (เริ่ม / สูงสุด)', 'Mana (start / max)'), u.mana ? `${u.mana0 || 0} / ${u.mana}` : '', 'ph-drop'),
+            statHtml(t('ฟื้นมานา', 'Mana regen'), u.manaRegen ? t(`${u.manaRegen} ต่อวิ`, `${u.manaRegen} / s`) : '', 'ph-drop-half'),
             statHtml(t('พลังโจมตี', 'Damage'), u.dmg, 'ph-crosshair'),
             statHtml(t('ความเร็วโจมตี', 'Attack Speed'), u.speed, 'ph-lightning'),
             statHtml(t('ระยะโจมตี', 'Attack Range'), u.range, 'ph-arrows-out-line-horizontal'),
@@ -212,7 +214,7 @@
     });
 
     /* ── โหลดข้อมูล ── */
-    fetch(window.LTD_PATCH === '2.9' ? '../assets/data/units-29.json?v=ecf86369' : '../assets/data/units-29a.json?v=ecf86369')
+    fetch(window.LTD_PATCH === '2.9a' ? '../assets/data/units-29a.json?v=9e6b7705' : '../assets/data/units-29b.json?v=5374c08b')
         .then((r) => {
             if (!r.ok) throw new Error(t('โหลดข้อมูลไม่สำเร็จ ', 'Load failed ') + r.status);
             return r.json();

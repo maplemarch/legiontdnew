@@ -66,6 +66,10 @@ for (const u of old) {
         cost: num(b.goldcost),
         food: String(+(b.fused || 0)),
         hp: num(b.HP),
+        // มานา: สูงสุด / ตอนเกิด / ฟื้นต่อวิ (ยูนิตไม่มีมานา = ค่าว่าง)
+        mana: +b.manaN > 0 ? String(+b.manaN) : '',
+        mana0: +b.manaN > 0 ? String(+b.mana0 || 0) : '',
+        manaRegen: +b.manaN > 0 && +b.regenMana > 0 ? String(+b.regenMana) : '',
         level: num(b.level) || u.level,
         dmg: damageOf(w),
         speed: num(w.cool1),
