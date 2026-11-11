@@ -87,12 +87,14 @@
 
 <main class="container" id="main" style="padding-top: var(--space-600); padding-bottom: var(--space-900);">
 <script>
-/* เลือกแพตช์ของข้อมูลวิกิ: ?patch=2.8 หรือที่จำไว้ (ค่าเริ่มต้น = แพตช์ที่ปล่อยแล้ว) */
+/* เลือกแพตช์ของข้อมูลวิกิ: ?patch=2.8 หรือที่จำไว้ (ค่าเริ่มต้น = แพตช์ที่ปล่อยแล้ว)
+   ค่าที่จำไว้ผูกกับแพตช์ปัจจุบัน (คีย์มีเลขแพตช์) ปล่อยแพตช์ใหม่แล้วทุกคนเริ่มที่แพตช์ใหม่ ไม่ค้างแพตช์เก่า */
 (function () {
-    var ok = { '2.9b': 1, '2.9a': 1 }, p = null;
+    var CUR = '2.9b', ok = { '2.9b': 1, '2.9a': 1 }, p = null;
+    window.LTD_PATCH_KEY = 'ltd-wiki-patch:' + CUR;
     try { p = new URLSearchParams(location.search).get('patch'); } catch (e) {}
-    if (!ok[p]) { try { p = localStorage.getItem('ltd-wiki-patch'); } catch (e) {} }
-    window.LTD_PATCH = ok[p] ? p : '2.9b';
+    if (!ok[p]) { try { p = localStorage.getItem(window.LTD_PATCH_KEY); } catch (e) {} }
+    window.LTD_PATCH = ok[p] ? p : CUR;
 })();
 </script>
 <div class="patch-pick">
@@ -122,7 +124,7 @@
         var on = o.dataset.patch === cur; o.setAttribute('aria-selected', String(on)); o.tabIndex = 0;
         var go = function () {
             if (o.dataset.patch === cur) { close(); return; }
-            try { localStorage.setItem('ltd-wiki-patch', o.dataset.patch); } catch (e) {}
+            try { localStorage.setItem(window.LTD_PATCH_KEY, o.dataset.patch); } catch (e) {}
             var u = new URL(location.href); u.searchParams.set('patch', o.dataset.patch); location.href = u.toString();
         };
         o.addEventListener('click', go);
@@ -484,7 +486,7 @@
 <script src="../assets/js/reveal.js?v=19990738" defer></script>
 <script src="../assets/js/toc.js?v=16e254ea" defer></script>
 <script src="../assets/js/units.js?v=7fca7042" defer></script>
-<script src="../assets/js/game.js?v=42e3809f" defer></script>
+<script src="../assets/js/game.js?v=05044e2b" defer></script>
 
 <script src="../assets/js/tilt.js?v=e7356e05" defer></script>
 <script type="module" src="../assets/js/scene3d.js?v=bb5a3885"></script>

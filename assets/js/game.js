@@ -98,15 +98,43 @@
         </details>`;
     };
 
-    const renderCreeps = (creeps) => `
+    // แถว FINAL WAVE ต่อท้ายเวฟ 20 (ไม่มีทอง/Value ; มีกติกาเป็นรายการ)
+    const finalRow = (f) => !f ? '' : `
+        <details class="wave wave-boss wave-final">
+            <summary class="wave-sum">
+                <span class="wave-no"><small>${t('เวฟ', 'Wave')}</small>FINAL</span>
+                ${iconTag(f.icon, 'wave-icon', 'ph-fire')}
+                <span class="wave-main">
+                    <span class="wave-name">${esc(f.name)} <span class="wave-flag wave-flag-boss">FINAL WAVE</span></span>
+                    <span class="wave-types">${typeTag(f.atkType, 'atk')}${typeTag(f.defType, 'def')}</span>
+                </span>
+                <span class="wave-nums">
+                    <span class="wave-num" title="${t('จำนวนต่อเลน', 'Count per lane')}"><i class="ph ph-users-three" aria-hidden="true"></i>×${fmt(f.count)}</span>
+                    <span class="wave-num wave-gold">–</span><span class="wave-num wave-gold">–</span><span class="wave-num wave-gold">–</span><span class="wave-num">–</span><span class="wave-num">–</span>
+                </span>
+                <i class="ph ph-caret-down wave-caret" aria-hidden="true"></i>
+            </summary>
+            <div class="wave-body">
+                <ul class="shop-bullets">${t(f.rules, f.rulesEn).map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
+                <div class="unit-stat-grid">
+                    ${stat(t('พลังชีวิต', 'HP'), fmt(f.hp), 'ph-heart')}
+                    ${stat(t('พลังโจมตี', 'Damage'), f.dmg, 'ph-crosshair')}
+                    ${stat(t('เกราะ', 'Armor'), f.armor, 'ph-shield-check')}
+                    ${unitStats(f)}
+                </div>
+                ${f.skills.length ? `<h4 class="unit-detail-sub"><i class="ph ph-magic-wand" aria-hidden="true"></i> ${t('สกิล', 'Skills')}</h4>${f.skills.map(skill).join('')}` : ''}
+            </div>
+        </details>`;
+
+    const renderCreeps = (creeps, final) => `
         <p class="game-mode"><i class="ph ph-sliders-horizontal" aria-hidden="true"></i>
-            ${t(`ข้อมูลตามโหมด <code>-prmiccahx2</code> · เกมจบที่เวฟ ${creeps.length} · เวฟ 10 และ 20 ได้ทองจบเวฟสองเท่า`,
-                `Data for mode <code>-prmiccahx2</code> · The game ends at wave ${creeps.length} · Waves 10 and 20 pay double wave clear gold`)}</p>
+            ${t(`ข้อมูลตามโหมด <code>-prmiccahx2</code> · เกมจบที่เวฟ ${creeps.length}${final ? ' + FINAL WAVE' : ''} · เวฟ 10 และ 20 ได้ทองจบเวฟสองเท่า`,
+                `Data for mode <code>-prmiccahx2</code> · The game ends at wave ${creeps.length}${final ? ' + FINAL WAVE' : ''} · Waves 10 and 20 pay double wave clear gold`)}</p>
         <div class="wave-head" aria-hidden="true">
             <span>${t('เวฟ', 'Wave')}</span><span></span><span>${t('ครีป', 'Creep')}</span>
             <span>${t('จำนวน/เลน', 'Count/lane')}</span><span>${t('ทอง/ตัว', 'Gold/unit')}</span><span>${t('โบนัสจบเวฟ', 'Wave clear bonus')}</span><span>${t('มูลค่าเวฟ', 'Wave value')}</span><span>${t('Value แนะนำ', 'Rec. value')}</span><span>Valuekick</span><span></span>
         </div>
-        <div class="wave-list">${creeps.map(waveRow).join('')}</div>
+        <div class="wave-list">${creeps.map(waveRow).join('')}${finalRow(final)}</div>
         <p class="game-note">${t('กดที่แถวเพื่อดูพลังชีวิต โจมตี เกราะ ความเร็ว และสกิลของครีป · จำนวนคือจำนวนครีปต่อเลนในเวฟนั้น · มูลค่าเวฟคือจำนวน × ทองต่อตัว · Value แนะนำคือค่ายูนิตที่เกมแนะนำให้มีก่อนเวฟนั้น · Valuekick คือค่ายูนิตขั้นต่ำของเวฟนั้น ต่ำกว่านี้เกมเตะออกอัตโนมัติ',
             'Tap a row to see the creep\'s HP, damage, armor, speed and skills · Count is the number of creeps per lane in that wave · Wave value is count × gold per unit · Rec. value is the unit value the game recommends for that wave · Valuekick is the minimum unit value for that wave, below it the game kicks you automatically')}</p>`;
 
@@ -421,7 +449,7 @@
         if (g.damage) show(damageEl, renderDamage(g.damage));
         // เวฟที่เปิดดูอยู่ เปิดค้างไว้เหมือนเดิมหลังวาดใหม่
         const open = creepEl ? Array.from(creepEl.querySelectorAll('.wave'), (d) => d.open) : [];
-        show(creepEl, renderCreeps(g.creeps));
+        show(creepEl, renderCreeps(g.creeps, g.finalWave));
         if (creepEl) creepEl.querySelectorAll('.wave').forEach((d, i) => { if (open[i]) d.open = true; });
         if (g.sends && g.sends.length) {
             show(sendEl, renderSends(g.sends));
@@ -452,7 +480,7 @@
         sendDlg.querySelector('.unit-dialog-close').addEventListener('click', () => sendDlg.close());
     }
 
-    fetch(window.LTD_PATCH === '2.9a' ? '../assets/data/game-29a.json?v=9d3985e2' : '../assets/data/game-29b.json?v=f5f12009')
+    fetch(window.LTD_PATCH === '2.9a' ? '../assets/data/game-29a.json?v=741e20a3' : '../assets/data/game-29b.json?v=da2e209f')
         .then((r) => r.json())
         .then((g) => {
             data = g;
