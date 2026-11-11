@@ -480,7 +480,7 @@
         sendDlg.querySelector('.unit-dialog-close').addEventListener('click', () => sendDlg.close());
     }
 
-    fetch(window.LTD_PATCH === '2.9a' ? '../assets/data/game-29a.json?v=741e20a3' : '../assets/data/game-29b.json?v=da2e209f')
+    fetch(window.LTD_PATCH === '2.9a' ? '../assets/data/game-29a.json?v=11b07c85' : '../assets/data/game-29b.json?v=d849544e')
         .then((r) => r.json())
         .then((g) => {
             data = g;
