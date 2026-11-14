@@ -470,7 +470,7 @@ for (const line of fs.readFileSync(path.join(SRC, 'war3mapMisc.txt'), 'latin1').
     const m = line.match(/^DamageBonus(\w+)=(.+)$/);
     if (m) misc[m[1]] = m[2].split(',').map(Number);
 }
-const ARMOR_SLOT = { Light: 0, Medium: 1, Heavy: 2, Fortified: 4, Enchanted: 6, Unarmored: 7 };
+const ARMOR_SLOT = { Light: 0, Medium: 1, Heavy: 2, Fortified: 4, Enchanted: 6, Unarmored: 7, Hero: 5 };
 const ATTACK_KEY = { Piercing: 'Pierce', Normal: 'Normal', Magic: 'Magic', Siege: 'Siege', Chaos: 'Chaos' };
 const damage = {
     armor: Object.keys(ARMOR_SLOT),

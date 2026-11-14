@@ -19,10 +19,10 @@
     // สีตามที่เกมใช้ประกาศชนิดโจมตีและเกราะก่อนเริ่มเวฟ (ปรับสีเข้มบางตัวให้อ่านออกบนพื้นมืด)
     const TYPE_CLASS = {
         Piercing: 'pierce', Normal: 'normal', Magic: 'magic', Siege: 'siege', Chaos: 'chaos',
-        Light: 'light', Medium: 'medium', Heavy: 'heavy', Fortified: 'fort', Unarmored: 'unarmored', Enchanted: 'enchanted',
+        Light: 'light', Medium: 'medium', Heavy: 'heavy', Fortified: 'fort', Unarmored: 'unarmored', Enchanted: 'enchanted', Hero: 'hero',
     };
     // ชนิดในตาราง SLK ของแมพ -> ชื่อที่เกมแสดง (แมพนี้ใช้ normal เป็น Fortified)
-    const SLK_DEF = { small: 'Light', medium: 'Medium', large: 'Heavy', fort: 'Fortified', normal: 'Fortified', none: 'Unarmored', hero: 'Enchanted', divine: 'Enchanted' };
+    const SLK_DEF = { small: 'Light', medium: 'Medium', large: 'Heavy', fort: 'Fortified', normal: 'Fortified', none: 'Unarmored', hero: 'Hero', divine: 'Enchanted' };
     const SLK_ATK = { Pierce: 'Piercing', Normal: 'Normal', Magic: 'Magic', Siege: 'Siege', Chaos: 'Chaos', Hero: 'Hero', Spells: 'Magic' };
     const typeTag = (type, kind) => type
         ? `<span class="type-tag type-${TYPE_CLASS[type] || 'normal'}"><i class="ph ${kind === 'atk' ? 'ph-sword' : 'ph-shield'}" aria-hidden="true"></i>${esc(type)}</span>`
@@ -480,7 +480,7 @@
         sendDlg.querySelector('.unit-dialog-close').addEventListener('click', () => sendDlg.close());
     }
 
-    fetch(window.LTD_PATCH === '2.9a' ? '../assets/data/game-29a.json?v=11b07c85' : '../assets/data/game-29b.json?v=d849544e')
+    fetch(window.LTD_PATCH === '2.9b' ? '../assets/data/game-29b.json?v=e7df3921' : '../assets/data/game-29c.json?v=8cde2de7')
         .then((r) => r.json())
         .then((g) => {
             data = g;
