@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Patch Notes 2.9d — Legion TD NewEdition">Patch Notes 2.9d — Legion TD NewEdition</title>
+    <meta name="description" content="Legion TD NewEdition 2.9d ปรับระบบมานา สกิล King FINAL WAVE และ Thunderbird">
+    <link rel="canonical" href="https://ltdnew.online/patch-notes/2.9d/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Patch Notes 2.9d — Legion TD NewEdition">
+    <meta property="og:description" content="บัพสกิล King เนิฟ Steamroller และแก้บัค PvP">
+    <meta property="og:image" content="https://ltdnew.online/assets/img/og-cover.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="../../assets/img/favicon.svg?v=6537390b" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="../../assets/css/base.css?v=ca092192">
+    <script src="../../assets/js/i18n.js?v=22cbfaa5"></script>
+    <link rel="stylesheet" href="../../assets/css/patch-notes.css?v=bc771417">
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-en="Skip to main content">ข้ามไปเนื้อหาหลัก</a>
+
+<div class="scene3d scene3d-ambient" data-scene="ambient" data-circle="center" aria-hidden="true"></div>
+
+<!-- ===== เมนูหลัก ===== -->
+<nav class="site-nav" aria-label="เมนูหลัก" data-en-aria-label="Main menu">
+    <div class="site-nav-inner">
+        <a class="nav-brand" href="../../">
+            <span class="nav-brand-mark" aria-hidden="true"><i class="ph ph-sword"></i></span>
+            Legion TD NE
+        </a>
+        <ul class="nav-links">
+            <li><a class="nav-link" href="../../" data-en="Home">หน้าแรก</a></li>
+            <li><a class="nav-link" href="../../wiki/" data-en="Wiki">วิกิ</a></li>
+            <li><a class="nav-link" href="../" aria-current="page" data-en="Patch">แพตช์</a></li>
+            <li><a class="nav-link" href="../../download/" data-en="Download">ดาวน์โหลด</a></li>
+
+            <li><a class="nav-link" href="../../addon/" data-en="Add-ons">แอดออน</a></li>
+            <li><a class="nav-link" href="../../contact/" data-en="Contact">ติดต่อ</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a class="btn btn-ghost btn-sm nav-cta" href="https://wc3th.com" target="_blank" rel="noopener">
+                WC3TH
+                <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-overlay" aria-label="เปิดเมนู" data-en-aria-label="Open menu">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+    <ul class="nav-overlay-list">
+        <li><a href="../../" data-en="Home">หน้าแรก</a></li>
+        <li><a href="../../wiki/" data-en="Wiki">วิกิ</a></li>
+        <li><a href="../" aria-current="page" data-en="Patch">แพตช์</a></li>
+        <li><a href="../../download/" data-en="Download">ดาวน์โหลด</a></li>
+
+        <li><a href="../../addon/" data-en="Add-ons">แอดออน</a></li>
+        <li><a href="../../contact/" data-en="Contact">ติดต่อ</a></li>
+        <li><a href="https://wc3th.com" target="_blank" rel="noopener">WC3TH</a></li>
+    </ul>
+</div>
+
+<nav class="toc-nav" aria-label="สารบัญแพตช์" data-en-aria-label="Patch contents">
+    <div class="toc-nav-inner">
+        <a class="toc-back" href="../" aria-label="กลับไปหน้าแพตช์ทั้งหมด" data-en-aria-label="Back to all patches" title="แพตช์ทั้งหมด" data-en-title="All patches">
+            <i class="ph ph-arrow-left" aria-hidden="true"></i>
+            <span data-en="All patches">แพตช์ทั้งหมด</span>
+        </a>
+        <div class="toc-links">
+            <a href="#s1" class="toc-link active" data-en="⬆️ Buffs">⬆️ บัพ</a>
+            <a href="#s2" class="toc-link" data-en="⬇️ Nerfs">⬇️ เนิฟ</a>
+            <a href="#s3" class="toc-link" data-en="🔧 Changes">🔧 ปรับระบบ</a>
+            <a href="#s4" class="toc-link" data-en="🐞 Bug fixes">🐞 แก้บัค</a>
+        </div>
+    </div>
+</nav>
+<main class="content-wrapper" id="main">
+
+<header class="patch-intro">
+    <h1 class="patch-intro-title">LTD Patch 2.9d</h1>
+    <p class="patch-intro-meta" data-en="Legion TD NewEdition · after 2.9c">Legion TD NewEdition · ต่อจาก 2.9c</p>
+</header>
+
+<!-- ─────────── SECTION 1 ─────────── -->
+<section class="section reveal" id="s1">
+    <div class="section-header">
+        <div class="section-number">1</div>
+        <div class="section-title-group">
+            <h2 class="section-title" data-en="Buffs">บัพ</h2>
+            <div class="section-subtitle">Buffs</div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnwarstomp-3ffe15833a.png" alt="King's War Stomp" onerror="this.parentElement.innerHTML='<div class=img-fallback>👑</div>'"></div>
+                <div>
+                    <div class="card-name">King's War Stomp</div>
+                    <div class="card-type" data-en="King skill">สกิล King</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Cooldown: &lt;span class=&quot;old-val&quot;&gt;12 s&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;&lt;b&gt;10 s&lt;/b&gt;&lt;/span&gt;">คูลดาวน์: <span class="old-val">12 วิ</span> <span class="arrow">→</span> <span class="new-val-up"><b>10 วิ</b></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnimmolationon-3daf4d72b3.png" alt="King's Immolation" onerror="this.parentElement.innerHTML='<div class=img-fallback>🔥</div>'"></div>
+                <div>
+                    <div class="card-name">King's Immolation</div>
+                    <div class="card-type" data-en="King skill">สกิล King</div>
+                </div>
+                <span class="tag tag-buff" style="margin-left:auto;">BUFF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Mana per second: &lt;span class=&quot;old-val&quot;&gt;20&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;&lt;b&gt;13&lt;/b&gt;&lt;/span&gt;">มานาต่อวิ: <span class="old-val">20</span> <span class="arrow">→</span> <span class="new-val-up"><b>13</b></span></li>
+                    <li data-en="Mana to turn on stays &lt;b&gt;20&lt;/b&gt;">มานาตอนเปิด <b>20</b> เท่าเดิม</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────── SECTION 2 ─────────── -->
+<section class="section reveal" id="s2">
+    <div class="section-header">
+        <div class="section-number">2</div>
+        <div class="section-title-group">
+            <h2 class="section-title" data-en="Nerfs">เนิฟ</h2>
+            <div class="section-subtitle">Nerfs</div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnshockwave-9f6cf6f5d8.png" alt="King's Shockwave" onerror="this.parentElement.innerHTML='<div class=img-fallback>🌊</div>'"></div>
+                <div>
+                    <div class="card-name">King's Shockwave</div>
+                    <div class="card-type" data-en="King skill">สกิล King</div>
+                </div>
+                <span class="tag tag-nerf" style="margin-left:auto;">NERF</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Wave width: &lt;span class=&quot;old-val&quot;&gt;950&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-down&quot;&gt;&lt;b&gt;930&lt;/b&gt;&lt;/span&gt;">ความกว้างคลื่น: <span class="old-val">950</span> <span class="arrow">→</span> <span class="new-val-down"><b>930</b></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────── SECTION 3 ─────────── -->
+<section class="section reveal" id="s3">
+    <div class="section-header">
+        <div class="section-number">3</div>
+        <div class="section-title-group">
+            <h2 class="section-title" data-en="Changes">ปรับระบบ</h2>
+            <div class="section-subtitle">Changes</div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="img-fallback">💧</div></div>
+                <div>
+                    <div class="card-name" data-en="Mana system">ระบบมานา</div>
+                    <div class="card-type" data-en="Mana regen auras">ออร่าฟื้นมานา</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Mana regen auras &lt;b&gt;changed from % of max mana to a flat amount&lt;/b&gt;: every unit gets the same, whatever its max mana">ออร่าฟื้นมานา<b>เปลี่ยนจาก % ของมานาสูงสุด เป็นค่าคงที่</b> ทุกตัวได้เท่ากัน ไม่ว่ามานาสูงสุดเท่าไหร่</li>
+                    <li data-en="Disciple and Messiah &lt;b&gt;do not stack&lt;/b&gt; (the stronger one counts) but &lt;b&gt;stack with Archmage&lt;/b&gt;">Disciple กับ Messiah <b>ไม่ซ้อนกัน</b> (ใช้ตัวที่แรงกว่า) แต่<b>ซ้อนกับ Archmage ได้</b></li>
+                </ul>
+                <table class="data-table">
+                    <thead>
+                        <tr><th data-en="Aura">ออร่า</th><th data-en="Unit">ตัวที่มี</th><th data-en="Extra mana regen">ฟื้นมานาเพิ่ม</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Amplify Magic</td><td>Disciple</td><td data-en="&lt;span class=&quot;old-val&quot;&gt;5% of max mana/s&lt;/span&gt; → &lt;b&gt;0.25/s&lt;/b&gt;"><span class="old-val">5% ของมานาสูงสุด/วิ</span> → <b>0.25/วิ</b></td></tr>
+                        <tr><td>Amplify Magic</td><td>Messiah</td><td data-en="&lt;span class=&quot;old-val&quot;&gt;5% of max mana/s&lt;/span&gt; → &lt;b&gt;0.5/s&lt;/b&gt;"><span class="old-val">5% ของมานาสูงสุด/วิ</span> → <b>0.5/วิ</b></td></tr>
+                        <tr><td>Brilliance Aura</td><td>Archmage Lv1</td><td data-en="&lt;span class=&quot;old-val&quot;&gt;7% of max mana/s&lt;/span&gt; → &lt;b&gt;0.25/s&lt;/b&gt;"><span class="old-val">7% ของมานาสูงสุด/วิ</span> → <b>0.25/วิ</b></td></tr>
+                        <tr><td>Brilliance Aura</td><td>Archmage Lv2</td><td data-en="&lt;span class=&quot;old-val&quot;&gt;12% of max mana/s&lt;/span&gt; → &lt;b&gt;0.5/s&lt;/b&gt;"><span class="old-val">12% ของมานาสูงสุด/วิ</span> → <b>0.5/วิ</b></td></tr>
+                        <tr><td>Brilliance Aura</td><td>Archmage Lv3</td><td data-en="&lt;span class=&quot;old-val&quot;&gt;18% of max mana/s&lt;/span&gt; → &lt;b&gt;0.75/s&lt;/b&gt;"><span class="old-val">18% ของมานาสูงสุด/วิ</span> → <b>0.75/วิ</b></td></tr>
+                        <tr><td>Brilliance Aura</td><td>Archmage Lv11</td><td data-en="&lt;span class=&quot;old-val&quot;&gt;5% of max mana/s&lt;/span&gt; → &lt;b&gt;0.25/s&lt;/b&gt;"><span class="old-val">5% ของมานาสูงสุด/วิ</span> → <b>0.25/วิ</b></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="img-fallback">⏱️</div></div>
+                <div>
+                    <div class="card-name" data-en="Cooldowns and mana">คูลดาวน์และมานา</div>
+                    <div class="card-type" data-en="Units with mana skills">ตัวที่ใช้สกิลด้วยมานา</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Aura columns = &lt;b&gt;seconds between casts&lt;/b&gt; (the longer of the cooldown and the time to regain the mana)">ช่องออร่า = <b>ใช้สกิลได้ทุกกี่วิ</b> (นานสุดระหว่างคูลดาวน์ กับเวลาฟื้นมานาให้พอ)</li>
+                    <li data-en="Hades: max mana &lt;b&gt;60 → 50&lt;/b&gt;, casts Diablo at full mana">Hades: มานาสูงสุด <b>60 → 50</b> ร่าย Diablo ตอนมานาเต็ม</li>
+                    <li data-en="Blademaster and Maverick: mana regen &lt;b&gt;0.5 → 1&lt;/b&gt; per second">Blademaster และ Maverick: ฟื้นมานา <b>0.5 → 1</b> ต่อวิ</li>
+                    <li data-en="Arcane Refresh also resets on-attack skills (Archdruid, Crystal Frozen, Thunderbird)">Arcane Refresh รีเซ็ตสกิลที่ร่ายเองตอนตี (Archdruid, Crystal Frozen, Thunderbird) ด้วย</li>
+                </ul>
+                <table class="data-table">
+                    <thead>
+                        <tr><th data-en="Unit (skill)">ตัว (สกิล)</th><th data-en="Cooldown">คูลดาวน์</th><th data-en="Mana cost/max">มานาที่ใช้/สูงสุด</th><th data-en="No aura">ไม่มีออร่า</th><th data-en="Disciple">Disciple</th><th data-en="Messiah">Messiah</th><th data-en="Archmage Lv3">Archmage Lv3</th><th data-en="Messiah + Archmage Lv3">Messiah + Archmage Lv3</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Lich King (Summon Icecrown Overlord)<br>Necromancer (Raise Dead)<br>Snake Hunter (Summon Snake)</td><td><span class="old-val">40</span> → <b>30</b></td><td><b>60/60</b></td><td><b>60</b></td><td><span class="old-val">40</span> → <b>48</b></td><td><b>40</b></td><td><span class="old-val">40</span> → <b>34.3</b></td><td><span class="old-val">40</span> → <b>30</b></td></tr>
+                        <tr><td>Blood Raider (Summon Blood Wolf)<br>Blood Raider Alpha (Summon Blood Wolf)<br>Harbinger (Conjure Fanatic)<br>Harbinger Elder (Conjure Fanatic)</td><td><span class="old-val">35</span> → <b>27</b></td><td><b>60/60</b></td><td><b>60</b></td><td><span class="old-val">35</span> → <b>48</b></td><td><span class="old-val">35</span> → <b>40</b></td><td><span class="old-val">35</span> → <b>34.3</b></td><td><span class="old-val">35</span> → <b>27</b></td></tr>
+                        <tr><td>Raider (Summon Wolf)<br>Gateguard (Conjure Fiend)<br>Necrolyte (Mass Dead)</td><td><span class="old-val">30</span> → <b>27</b></td><td><b>60/60</b></td><td><b>60</b></td><td><span class="old-val">30</span> → <b>48</b></td><td><span class="old-val">30</span> → <b>40</b></td><td><span class="old-val">30</span> → <b>34.3</b></td><td><span class="old-val">30</span> → <b>27</b></td></tr>
+                        <tr><td>Battleship (Dron)</td><td><span class="old-val">50</span> → <b>37.5</b></td><td><b>60/60</b></td><td><b>60</b></td><td><span class="old-val">50</span> → <b>48</b></td><td><span class="old-val">50</span> → <b>40</b></td><td><span class="old-val">50</span> → <b>37.5</b></td><td><span class="old-val">50</span> → <b>37.5</b></td></tr>
+                        <tr><td>Crystal Frozen (Frost Nova)</td><td><span class="old-val">7.5</span> → <b>7</b></td><td><b>15/15</b></td><td><b>15</b></td><td><span class="old-val">8.6</span> → <b>12</b></td><td><span class="old-val">8.6</span> → <b>10</b></td><td><span class="old-val">7.5</span> → <b>8.6</b></td><td><span class="old-val">7.5</span> → <b>7</b></td></tr>
+                        <tr><td>Ogre Mage (Blood Rush)</td><td><span class="old-val">10</span> → <b>9</b></td><td><b>20/20</b></td><td><b>20</b></td><td><span class="old-val">10</span> → <b>16</b></td><td><span class="old-val">10</span> → <b>13.3</b></td><td><span class="old-val">10</span> → <b>11.4</b></td><td><span class="old-val">10</span> → <b>9</b></td></tr>
+                        <tr><td>Greymane (Battle Cry)</td><td><span class="old-val">15</span> → <b>11.5</b></td><td><b>20/100</b></td><td><b>20</b></td><td><span class="old-val">15</span> → <b>16</b></td><td><span class="old-val">15</span> → <b>13.3</b></td><td><span class="old-val">15</span> → <b>11.5</b></td><td><span class="old-val">15</span> → <b>11.5</b></td></tr>
+                        <tr><td>Minotaur (Tremor)</td><td><span class="old-val">10</span> → <b>7.5</b></td><td><b>15/15</b></td><td><b>12.5</b></td><td><span class="old-val">10</span> → <b>10.3</b></td><td><span class="old-val">10</span> → <b>8.8</b></td><td><span class="old-val">10</span> → <b>7.7</b></td><td><span class="old-val">10</span> → <b>7.5</b></td></tr>
+                        <tr><td>Mercurial (Traumatize)</td><td><span class="old-val">10</span> → <b>7.5</b></td><td><b>30/30</b></td><td><b>10</b></td><td><span class="old-val">10</span> → <b>9.2</b></td><td><span class="old-val">10</span> → <b>8.6</b></td><td><span class="old-val">10</span> → <b>8</b></td><td><span class="old-val">10</span> → <b>7.5</b></td></tr>
+                        <tr><td>The Stomper Beast (Chilling Growl)</td><td><span class="old-val">15</span> → <b>14.5</b></td><td><b>60/60</b></td><td><b>20</b></td><td><span class="old-val">15</span> → <b>18.5</b></td><td><span class="old-val">15</span> → <b>17.1</b></td><td><span class="old-val">15</span> → <b>16</b></td><td><span class="old-val">15</span> → <b>14.5</b></td></tr>
+                        <tr><td>Snow Beorn (Ice Star)</td><td><span class="old-val">7</span> → <b>6</b></td><td><b>10/10</b></td><td><b>20</b></td><td><span class="old-val">10</span> → <b>13.3</b></td><td><b>10</b></td><td><span class="old-val">7</span> → <b>8</b></td><td><span class="old-val">7</span> → <b>6</b></td></tr>
+                        <tr><td>Druid (Wrath of Nature)<br>Archdruid (Wrath of Nature)<br>Charmcaster (Wrath of Nature)</td><td><span class="old-val">5</span> → <b>4.5</b></td><td><b>10/10</b></td><td><b>10</b></td><td><span class="old-val">6.7</span> → <b>8</b></td><td><b>6.7</b></td><td><span class="old-val">5</span> → <b>5.7</b></td><td><span class="old-val">5</span> → <b>4.5</b></td></tr>
+                        <tr><td>Young Frost Dragon / Azure Dragon (Ice Breath)</td><td><span class="old-val">5</span> → <b>4.5</b></td><td><b>10/10</b></td><td><b>10</b></td><td><span class="old-val">6.7</span> → <b>8</b></td><td><b>6.7</b></td><td><span class="old-val">5</span> → <b>5.7</b></td><td><span class="old-val">5</span> → <b>4.5</b></td></tr>
+                        <tr><td>Clockwreck (Cluster Rockets)</td><td><span class="old-val">6</span> → <b>4.5</b></td><td><b>10/20</b></td><td><b>10</b></td><td><span class="old-val">6</span> → <b>8</b></td><td><span class="old-val">6</span> → <b>6.7</b></td><td><span class="old-val">6</span> → <b>5.7</b></td><td><span class="old-val">6</span> → <b>4.5</b></td></tr>
+                        <tr><td>Death Knight L2-3 (Unholy Rush)<br>Dragon Knight L2-3 (Dragon Roar)<br>Dread Lord L2-3 (Blood Frenzy)<br>Mountain King L2-3 (War Cry)<br>Paladin L2-3 (Holy Armor)<br>Priestess of the Moon L2-3 (Moonlight Volley)<br>Tauren Chieftain L2-3 (Warchief Roar)</td><td><span class="old-val">15</span> → <b>11.5</b></td><td><span class="old-val">15/15</span> → <b>20/20</b></td><td><span class="old-val">15</span> → <b>20</b></td><td><span class="old-val">15</span> → <b>16</b></td><td><span class="old-val">15</span> → <b>13.3</b></td><td><span class="old-val">15</span> → <b>11.5</b></td><td><span class="old-val">15</span> → <b>11.5</b></td></tr>
+                        <tr><td>Priestess of the Moon L11 (Moonlight Volley)</td><td><span class="old-val">15</span> → <b>11.5</b></td><td><span class="old-val">15/10</span> → <b>20/20</b></td><td><span class="old-val">15</span> → <b>20</b></td><td><span class="old-val">15</span> → <b>16</b></td><td><span class="old-val">15</span> → <b>13.3</b></td><td><span class="old-val">15</span> → <b>11.5</b></td><td><span class="old-val">15</span> → <b>11.5</b></td></tr>
+                        <tr><td>Blademaster (Mirror Image)</td><td><span class="old-val">45</span> → <b>34</b></td><td><span class="old-val">30/30</span> → <b>60/60</b></td><td><b>60</b></td><td><span class="old-val">45</span> → <b>48</b></td><td><span class="old-val">45</span> → <b>40</b></td><td><span class="old-val">45</span> → <b>34.3</b></td><td><span class="old-val">45</span> → <b>34</b></td></tr>
+                        <tr><td>Maverick (Mirage)</td><td><span class="old-val">45</span> → <b>34</b></td><td><span class="old-val">30/30</span> → <b>60/60</b></td><td><b>60</b></td><td><span class="old-val">45</span> → <b>48</b></td><td><span class="old-val">45</span> → <b>40</b></td><td><span class="old-val">45</span> → <b>34.3</b></td><td><span class="old-val">45</span> → <b>34</b></td></tr>
+                        <tr><td>Chaos Blademaster (Mirror Image)</td><td><span class="old-val">45</span> → <b>34</b></td><td><span class="old-val">30/30</span> → <b>45/45</b></td><td><b>45</b></td><td><span class="old-val">45</span> → <b>36</b></td><td><span class="old-val">45</span> → <b>34</b></td><td><span class="old-val">45</span> → <b>34</b></td><td><span class="old-val">45</span> → <b>34</b></td></tr>
+                        <tr><td>Hades (Diablo)</td><td><span class="old-val">30</span> → <b>22.5</b></td><td><span class="old-val">40/60</span> → <b>50/50</b></td><td><span class="old-val">32</span> → <b>40</b></td><td><span class="old-val">30</span> → <b>33.3</b></td><td><span class="old-val">30</span> → <b>28.6</b></td><td><span class="old-val">30</span> → <b>25</b></td><td><span class="old-val">30</span> → <b>22.5</b></td></tr>
+                        <tr><td>Holy Knight (Divine Intervention)</td><td><span class="old-val">12</span> → <b>9</b></td><td><span class="old-val">12/12</span> → <b>15/15</b></td><td><span class="old-val">12</span> → <b>15</b></td><td><b>12</b></td><td><span class="old-val">12</span> → <b>10</b></td><td><span class="old-val">12</span> → <b>9</b></td><td><span class="old-val">12</span> → <b>9</b></td></tr>
+                        <tr><td>Keeper of the Grove L11 (Healing Wave)</td><td><span class="old-val">8</span> → <b>6</b></td><td><span class="old-val">5/10</span> → <b>8/10</b></td><td><b>8</b></td><td><span class="old-val">8</span> → <b>6.4</b></td><td><span class="old-val">8</span> → <b>6</b></td><td><span class="old-val">8</span> → <b>6</b></td><td><span class="old-val">8</span> → <b>6</b></td></tr>
+                        <tr><td>Bigfoot (Fissure)</td><td><span class="old-val">9</span> → <b>7</b></td><td><span class="old-val">10/10</span> → <b>12/12</b></td><td><span class="old-val">10</span> → <b>12</b></td><td><span class="old-val">9</span> → <b>9.6</b></td><td><span class="old-val">9</span> → <b>8</b></td><td><span class="old-val">9</span> → <b>7</b></td><td><span class="old-val">9</span> → <b>7</b></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnchimaera-53afdf9ff6.png" alt="Thunderbird" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐦</div>'"></div>
+                <div>
+                    <div class="card-name">Thunderbird</div>
+                    <div class="card-type" data-en="Gravity Slam → Wrath of Nature">Gravity Slam → Wrath of Nature</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="&lt;b&gt;Gravity Slam removed&lt;/b&gt;, replaced by &lt;b&gt;Wrath of Nature&lt;/b&gt; (cast on attack)"><b>เอา Gravity Slam ออก</b> ได้ <b>Wrath of Nature</b> แทน (ร่ายเองตอนตี)</li>
+                    <li data-en="&lt;b&gt;350&lt;/b&gt; damage, bounces &lt;b&gt;8&lt;/b&gt; times, &lt;b&gt;10%&lt;/b&gt; less per bounce">ดาเมจ <b>350</b> เด้ง <b>8</b> ครั้ง ลดลงครั้งละ <b>10%</b></li>
+                    <li data-en="Costs &lt;b&gt;10&lt;/b&gt; mana, &lt;b&gt;5 s&lt;/b&gt; cooldown">ใช้มานา <b>10</b> คูลดาวน์ <b>5 วิ</b></li>
+                    <li data-en="Max mana: &lt;span class=&quot;old-val&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;&lt;b&gt;10&lt;/b&gt;&lt;/span&gt;">มานาสูงสุด: <span class="old-val">15</span> <span class="arrow">→</span> <span class="new-val-up"><b>10</b></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnogremagi-d201fb7ba6.png" alt="Ogre Mage" onerror="this.parentElement.innerHTML='<div class=img-fallback>👹</div>'"></div>
+                <div>
+                    <div class="card-name">Ogre Mage</div>
+                    <div class="card-type" data-en="Blood Rush">Blood Rush</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="&lt;b&gt;Random target&lt;/b&gt;: an ally within &lt;b&gt;600&lt;/b&gt; that does not have the buff yet (no repeat on the same unit, no buildings)"><b>สุ่มเป้า</b> เป็นพวกเดียวกันในระยะ <b>600</b> ที่ยังไม่มีบัพ (ไม่ร่ายใส่ตัวเดิมซ้ำ ไม่ร่ายใส่อาคาร)</li>
+                    <li data-en="No valid target = no cast">ไม่มีเป้าที่ร่ายได้ = ไม่ร่าย</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnkiljaedin-b7842dc920.png" alt="FINAL WAVE" onerror="this.parentElement.innerHTML='<div class=img-fallback>😈</div>'"></div>
+                <div>
+                    <div class="card-name" data-en="FINAL WAVE">FINAL WAVE</div>
+                    <div class="card-type" data-en="After wave 20">หลังเวฟ 20</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Start: at 0 &lt;b&gt;your fighters load first&lt;/b&gt;, after &lt;b&gt;5 s&lt;/b&gt; all fighters warp to the King, then The Burning Legion is released">เริ่ม: นับถึง 0 แล้ว<b>โหลดตัวสู้ก่อน</b> รอ <b>5 วิ</b> ค่อยวาร์ปตัวสู้ทั้งหมดไปหน้า King แล้วปล่อย The Burning Legion</li>
+                    <li data-en="Board: Creeps column removed, &lt;b&gt;creeps per team are counted in the Alive row&lt;/b&gt;">ตาราง: เลิกคอลัมน์ Creeps <b>นับครีปรวมต่อทีมในแถว Alive</b> แทน</li>
+                    <li data-en="&lt;b&gt;Enemy value is shown&lt;/b&gt; during FINAL WAVE (in hidden-value modes)"><b>เห็น value ของทีมศัตรู</b> ตอน FINAL WAVE (โหมดซ่อน value)</li>
+                    <li data-en="&lt;b&gt;Command Attack (D)&lt;/b&gt;: works at &lt;b&gt;any range&lt;/b&gt;, sends your side's fighters within &lt;b&gt;1,000&lt;/b&gt; of the point to your lane's top gate, like in normal waves"><b>Command Attack (D)</b>: กดได้<b>ทุกระยะ</b> สั่งตัวสู้ฝั่งเราในวง <b>1,000</b> รอบจุดที่กด ให้บุกไปประตูบนสุดของเลนตัวเองเหมือนเวฟปกติ</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="img-fallback">⚔️</div></div>
+                <div>
+                    <div class="card-name" data-en="PvP (wave 10 Arena)">PvP (Arena เวฟ 10)</div>
+                    <div class="card-type" data-en="Time and units">เวลาและยูนิตที่ลงสู้</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Max fight time: &lt;span class=&quot;old-val&quot;&gt;no limit&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;&lt;b&gt;120 s&lt;/b&gt;&lt;/span&gt;">เวลาสู้สูงสุด: <span class="old-val">ไม่จำกัด</span> <span class="arrow">→</span> <span class="new-val-up"><b>120 วิ</b></span></li>
+                    <li data-en="Time runs out = &lt;b&gt;draw&lt;/b&gt;, the remaining units are removed">หมดเวลาแล้วยังไม่จบ = <b>เสมอ</b> ยูนิตที่เหลือหายไป</li>
+                    <li data-en="Units of &lt;b&gt;players who left also fight&lt;/b&gt;, like 2.6e">ยูนิตของ<b>คนที่ออกเกมแล้วลงสู้ด้วย</b> เหมือน 2.6e</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="img-fallback">🧱</div></div>
+                <div>
+                    <div class="card-name" data-en="Builder buttons">ปุ่ม Builder</div>
+                    <div class="card-type" data-en="Every builder">ทุก Builder</div>
+                </div>
+                <span class="tag tag-adjust" style="margin-left:auto;">ADJUST</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="New button layout: &lt;b&gt;V&lt;/b&gt; skill, &lt;b&gt;D&lt;/b&gt; Command Attack, &lt;b&gt;F&lt;/b&gt;, &lt;b&gt;C&lt;/b&gt; field">จัดปุ่มใหม่: <b>V</b> สกิล, <b>D</b> Command Attack, <b>F</b>, <b>C</b> วางพื้น</li>
+                    <li data-en="Field hotkey: &lt;span class=&quot;old-val&quot;&gt;G&lt;/span&gt; &lt;span class=&quot;arrow&quot;&gt;→&lt;/span&gt; &lt;span class=&quot;new-val-up&quot;&gt;&lt;b&gt;C&lt;/b&gt;&lt;/span&gt;">ปุ่มวางพื้น: <span class="old-val">G</span> <span class="arrow">→</span> <span class="new-val-up"><b>C</b></span></li>
+                    <li data-en="Command &lt;b&gt;-z 50 to 450&lt;/b&gt; zooms the camera (same as -zoom)">คำสั่ง <b>-z 50 ถึง 450</b> ซูมกล้อง (เหมือน -zoom)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─────────── SECTION 4 ─────────── -->
+<section class="section reveal" id="s4">
+    <div class="section-header">
+        <div class="section-number">4</div>
+        <div class="section-title-group">
+            <h2 class="section-title" data-en="Bug fixes">แก้บัค</h2>
+            <div class="section-subtitle">Bug fixes</div>
+        </div>
+    </div>
+
+    <div class="subsection">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnbearform-7a34c0a1bb.png" alt="Shaggy Brotherhood" onerror="this.parentElement.innerHTML='<div class=img-fallback>🐻</div>'"></div>
+                <div>
+                    <div class="card-name">Shaggy Brotherhood</div>
+                    <div class="card-type" data-en="Bigfoot + The Stomper Beast + Greymane">Bigfoot + The Stomper Beast + Greymane</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="&lt;b&gt;Works now&lt;/b&gt; (it was only an icon): at wave start, with all 3, each of them gets &lt;b&gt;+500 max HP&lt;/b&gt;"><b>ทำงานแล้ว</b> (เดิมมีแค่ไอคอน): ต้นเวฟ ถ้ามีครบ 3 ตัว ทุกตัวในกลุ่มได้ <b>HP สูงสุด +500</b></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btnthrall-c976cfefc5.png" alt="Thrall" onerror="this.parentElement.innerHTML='<div class=img-fallback>⚡</div>'"></div>
+                <div>
+                    <div class="card-name">Thrall</div>
+                    <div class="card-type" data-en="Storm Bolt">Storm Bolt</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="&lt;b&gt;Auto Storm Bolt&lt;/b&gt; at the nearest enemy within &lt;b&gt;600&lt;/b&gt; when mana is full &lt;b&gt;works now&lt;/b&gt; (it did not work in 2.9c)"><b>ขว้าง Storm Bolt เอง</b> ใส่ศัตรูที่ใกล้ที่สุดในระยะ <b>600</b> เมื่อมานาเต็ม <b>ทำงานแล้ว</b> (ใน 2.9c ไม่ทำงาน)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><img src="../../assets/img/units/btndragonhawk-3a67456f2d.png" alt="Maverick" onerror="this.parentElement.innerHTML='<div class=img-fallback>🪞</div>'"></div>
+                <div>
+                    <div class="card-name">Maverick</div>
+                    <div class="card-type" data-en="Mirage">Mirage</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Illusions &lt;b&gt;get the group buffs (Union, etc.) of the real unit&lt;/b&gt;">ร่างปลอม<b>ได้บัพกลุ่ม (Union ฯลฯ) ตามตัวจริง</b></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="img-fallback">🐉</div></div>
+                <div>
+                    <div class="card-name">Union</div>
+                    <div class="card-type" data-en="Dragon group buff">บัพกลุ่มมังกร</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Buffs come &lt;b&gt;only from your own dragons&lt;/b&gt; (it used to take teammates' dragons too)">ได้บัพจาก<b>มังกรของตัวเองเท่านั้น</b> (เดิมได้จากมังกรของเพื่อนร่วมทีมด้วย)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><div class="img-fallback">🧩</div></div>
+                <div>
+                    <div class="card-name" data-en="Other">อื่นๆ</div>
+                    <div class="card-type" data-en="Creeps / sends">ครีป / ตัวส่ง</div>
+                </div>
+                <span class="tag tag-fix" style="margin-left:auto;">FIX</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li data-en="Creeps that leak &lt;b&gt;keep walking to the King&lt;/b&gt; instead of being pulled back">ครีปที่หลุดเลน<b>เดินไปหา King ต่อ</b> ไม่ถูกดึงกลับจุดเดิม</li>
+                    <li data-en="Sent units &lt;b&gt;no longer get pushed out of the pen&lt;/b&gt; when it is full">ตัวส่ง<b>ไม่หลุดออกนอกคอก</b> ตอนคอกเต็ม</li>
+                    <li data-en="Bug fixes">แก้บัค</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+
+<script src="../../assets/js/nav.js?v=7e7d7ae5" defer></script>
+<script src="../../assets/js/reveal.js?v=19990738" defer></script>
+<script src="../../assets/js/toc.js?v=16e254ea" defer></script>
+<script src="../../assets/js/img-fallback.js?v=030f9fc7" defer></script>
+
+<script src="../../assets/js/tilt.js?v=e7356e05" defer></script>
+<script type="module" src="../../assets/js/scene3d.js?v=bb5a3885"></script>
+
+</body>
+</html>
