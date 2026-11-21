@@ -21,6 +21,13 @@
     <link rel="stylesheet" href="../assets/css/landing.css?v=dd6685c5">
     <link rel="stylesheet" href="../assets/css/units.css?v=e1fa282f">
     <link rel="stylesheet" href="../assets/css/game.css?v=f3f2b468">
+    <style>
+        .mana-wrap { overflow-x: auto; }
+        #mana .data-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+        #mana .data-table th { background: rgba(240, 180, 41, 0.08); color: var(--gold); padding: 0.7rem 1rem; text-align: left; font-weight: 600; font-size: 0.8rem; border-bottom: 2px solid var(--border-accent); white-space: nowrap; }
+        #mana .data-table td { padding: 0.6rem 1rem; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); }
+        #mana .old-val { color: var(--text-muted, #888); text-decoration: line-through; }
+    </style>
 </head>
 <body>
 
@@ -74,6 +81,7 @@
         <div class="toc-links">
             <a href="#map" class="toc-link active" data-en="🗺️ Map">🗺️ แผนที่</a>
             <a href="#unit" class="toc-link" data-en="⚔️ Unit">⚔️ ยูนิต</a>
+            <a href="#mana" class="toc-link" id="toc-mana" hidden data-en="💧 Mana">💧 มานา</a>
             <a href="#damage" class="toc-link" data-en="⚔️ Atk &amp; Armor">⚔️ โจมตี &amp; เกราะ</a>
             <a href="#creep" class="toc-link" data-en="🐾 Creep">🐾 ครีป</a>
             <a href="#send" class="toc-link" data-en="📨 Sends">📨 ตัวส่ง</a>
@@ -90,7 +98,7 @@
 /* เลือกแพตช์ของข้อมูลวิกิ: ?patch=2.8 หรือที่จำไว้ (ค่าเริ่มต้น = แพตช์ที่ปล่อยแล้ว)
    ค่าที่จำไว้ผูกกับแพตช์ปัจจุบัน (คีย์มีเลขแพตช์) ปล่อยแพตช์ใหม่แล้วทุกคนเริ่มที่แพตช์ใหม่ ไม่ค้างแพตช์เก่า */
 (function () {
-    var CUR = '2.9c', ok = { '2.9c': 1, '2.9b': 1 }, p = null;
+    var CUR = '2.9e', ok = { '2.9e': 1, '2.9c': 1 }, p = null;
     window.LTD_PATCH_KEY = 'ltd-wiki-patch:' + CUR;
     try { p = new URLSearchParams(location.search).get('patch'); } catch (e) {}
     if (!ok[p]) { try { p = localStorage.getItem(window.LTD_PATCH_KEY); } catch (e) {} }
@@ -102,13 +110,13 @@
         <button type="button" class="pp-btn" id="pp-btn" aria-haspopup="listbox" aria-expanded="false">
             <i class="ph ph-git-branch" aria-hidden="true"></i>
             <span class="pp-label" data-en="Patch">แพตช์</span>
-            <span class="pp-cur" id="pp-cur">2.9c</span>
+            <span class="pp-cur" id="pp-cur">2.9e</span>
             <span class="pp-badge" id="pp-badge" hidden data-en="not released">ยังไม่ปล่อย</span>
             <i class="ph ph-caret-down pp-caret" aria-hidden="true"></i>
         </button>
         <ul class="pp-menu" id="pp-menu" role="listbox" hidden>
-            <li role="option" class="pp-opt" data-patch="2.9c"><span class="pp-opt-name">2.9c</span><span class="pp-opt-sub" data-en="Current release">แพตช์ปัจจุบัน</span></li>
-            <li role="option" class="pp-opt" data-patch="2.9b"><span class="pp-opt-name">2.9b</span><span class="pp-opt-sub" data-en="Previous release">แพตช์ก่อนหน้า</span></li>
+            <li role="option" class="pp-opt" data-patch="2.9e"><span class="pp-opt-name">2.9e</span><span class="pp-opt-sub" data-en="Current release">แพตช์ปัจจุบัน</span></li>
+            <li role="option" class="pp-opt" data-patch="2.9c"><span class="pp-opt-name">2.9c</span><span class="pp-opt-sub" data-en="Previous release">แพตช์ก่อนหน้า</span></li>
         </ul>
     </div>
 </div>
@@ -143,7 +151,7 @@
 -->
 <section class="section" id="map" aria-labelledby="map-title">
     <h2 class="section-heading" id="map-title" data-en="Map">แผนที่</h2>
-    <p class="section-lede" data-en="Map layout for version 2.9c: two lanes, with the King's base in the middle">ผังแผนที่ของเวอร์ชัน <span data-game-version>2.8</span> เลนสองข้าง ฐาน King อยู่กลาง</p>
+    <p class="section-lede" data-en="Map layout for version 2.9e: two lanes, with the King's base in the middle">ผังแผนที่ของเวอร์ชัน <span data-game-version>2.8</span> เลนสองข้าง ฐาน King อยู่กลาง</p>
     <figure class="map-card reveal">
         <img src="../assets/img/map-preview.jpg?v=5c470d2c"
              alt="ผังแผนที่ Legion TD NewEdition มองจากด้านบน เห็นเลนสองข้างและฐาน King กลางแผนที่"
@@ -222,6 +230,58 @@
     </div>
 </section>
 
+<section class="section" id="mana" aria-labelledby="mana-title" style="margin-top: var(--space-900);" hidden>
+    <h2 class="section-heading" id="mana-title" data-en="Mana &amp; Cooldowns">มานาและคูลดาวน์</h2>
+    <p class="section-lede" data-en="Since 2.9e, auras add a fixed amount of mana per second. Crossed-out values are from 2.9c">ตั้งแต่ 2.9e ออร่าเพิ่มมานาเป็นค่าคงที่ต่อวิ ตัวเลขขีดฆ่าคือค่าใน 2.9c</p>
+    <h3 class="game-sub" data-en="Mana regen auras">ออร่าฟื้นมานา</h3>
+    <div class="mana-wrap">
+    <table class="data-table">
+                    <thead>
+                        <tr><th data-en="Aura">ออร่า</th><th data-en="Unit">ตัวที่มี</th><th data-en="Extra mana regen">ฟื้นมานาเพิ่ม</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Amplify Magic</td><td>Disciple</td><td data-en="&lt;span class=&quot;old-val&quot;&gt;5% of max mana/s&lt;/span&gt; → &lt;b&gt;0.25/s&lt;/b&gt;"><span class="old-val">5% ของมานาสูงสุด/วิ</span> → <b>0.25/วิ</b></td></tr>
+                        <tr><td>Amplify Magic</td><td>Messiah</td><td data-en="&lt;span class=&quot;old-val&quot;&gt;5% of max mana/s&lt;/span&gt; → &lt;b&gt;0.5/s&lt;/b&gt;"><span class="old-val">5% ของมานาสูงสุด/วิ</span> → <b>0.5/วิ</b></td></tr>
+                        <tr><td>Brilliance Aura</td><td>Archmage Lv1</td><td data-en="&lt;span class=&quot;old-val&quot;&gt;7% of max mana/s&lt;/span&gt; → &lt;b&gt;0.25/s&lt;/b&gt;"><span class="old-val">7% ของมานาสูงสุด/วิ</span> → <b>0.25/วิ</b></td></tr>
+                        <tr><td>Brilliance Aura</td><td>Archmage Lv2</td><td data-en="&lt;span class=&quot;old-val&quot;&gt;12% of max mana/s&lt;/span&gt; → &lt;b&gt;0.5/s&lt;/b&gt;"><span class="old-val">12% ของมานาสูงสุด/วิ</span> → <b>0.5/วิ</b></td></tr>
+                        <tr><td>Brilliance Aura</td><td>Archmage Lv3</td><td data-en="&lt;span class=&quot;old-val&quot;&gt;18% of max mana/s&lt;/span&gt; → &lt;b&gt;0.75/s&lt;/b&gt;"><span class="old-val">18% ของมานาสูงสุด/วิ</span> → <b>0.75/วิ</b></td></tr>
+                    </tbody>
+                </table>
+    </div>
+    <h3 class="game-sub" data-en="Seconds between casts">ใช้สกิลได้ทุกกี่วิ</h3>
+    <div class="mana-wrap">
+    <table class="data-table">
+                    <thead>
+                        <tr><th data-en="Unit (skill)">ตัว (สกิล)</th><th data-en="Cooldown">คูลดาวน์</th><th data-en="Mana cost/max">มานาที่ใช้/สูงสุด</th><th data-en="No aura">ไม่มีออร่า</th><th data-en="Disciple">Disciple</th><th data-en="Messiah">Messiah</th><th data-en="Archmage Lv3">Archmage Lv3</th><th data-en="Messiah + Archmage Lv3">Messiah + Archmage Lv3</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Lich King (Summon Icecrown Overlord)<br>Necromancer (Raise Dead)<br>Snake Hunter (Summon Snake)</td><td><span class="old-val">40</span> → <b>30</b></td><td><b>60/60</b></td><td><b>60</b></td><td><span class="old-val">40</span> → <b>48</b></td><td><b>40</b></td><td><span class="old-val">40</span> → <b>34.3</b></td><td><span class="old-val">40</span> → <b>30</b></td></tr>
+                        <tr><td>Blood Raider (Summon Blood Wolf)<br>Blood Raider Alpha (Summon Blood Wolf)<br>Harbinger (Conjure Fanatic)<br>Harbinger Elder (Conjure Fanatic)</td><td><span class="old-val">35</span> → <b>27</b></td><td><b>60/60</b></td><td><b>60</b></td><td><span class="old-val">35</span> → <b>48</b></td><td><span class="old-val">35</span> → <b>40</b></td><td><span class="old-val">35</span> → <b>34.3</b></td><td><span class="old-val">35</span> → <b>27</b></td></tr>
+                        <tr><td>Raider (Summon Wolf)<br>Gateguard (Conjure Fiend)<br>Necrolyte (Mass Dead)</td><td><span class="old-val">30</span> → <b>27</b></td><td><b>60/60</b></td><td><b>60</b></td><td><span class="old-val">30</span> → <b>48</b></td><td><span class="old-val">30</span> → <b>40</b></td><td><span class="old-val">30</span> → <b>34.3</b></td><td><span class="old-val">30</span> → <b>27</b></td></tr>
+                        <tr><td>Battleship (Dron)</td><td><span class="old-val">50</span> → <b>37.5</b></td><td><b>60/60</b></td><td><b>60</b></td><td><span class="old-val">50</span> → <b>48</b></td><td><span class="old-val">50</span> → <b>40</b></td><td><span class="old-val">50</span> → <b>37.5</b></td><td><span class="old-val">50</span> → <b>37.5</b></td></tr>
+                        <tr><td>Crystal Frozen (Frost Nova)</td><td><span class="old-val">7.5</span> → <b>7</b></td><td><b>15/15</b></td><td><b>15</b></td><td><span class="old-val">8.6</span> → <b>12</b></td><td><span class="old-val">8.6</span> → <b>10</b></td><td><span class="old-val">7.5</span> → <b>8.6</b></td><td><span class="old-val">7.5</span> → <b>7</b></td></tr>
+                        <tr><td>Ogre Mage (Blood Rush)</td><td><span class="old-val">10</span> → <b>9</b></td><td><b>20/20</b></td><td><b>20</b></td><td><span class="old-val">10</span> → <b>16</b></td><td><span class="old-val">10</span> → <b>13.3</b></td><td><span class="old-val">10</span> → <b>11.4</b></td><td><span class="old-val">10</span> → <b>9</b></td></tr>
+                        <tr><td>Greymane (Battle Cry)</td><td><span class="old-val">15</span> → <b>11.5</b></td><td><b>20/100</b></td><td><b>20</b></td><td><span class="old-val">15</span> → <b>16</b></td><td><span class="old-val">15</span> → <b>13.3</b></td><td><span class="old-val">15</span> → <b>11.5</b></td><td><span class="old-val">15</span> → <b>11.5</b></td></tr>
+                        <tr><td>Minotaur (Tremor)</td><td><span class="old-val">10</span> → <b>7.5</b></td><td><b>15/15</b></td><td><b>12.5</b></td><td><span class="old-val">10</span> → <b>10.3</b></td><td><span class="old-val">10</span> → <b>8.8</b></td><td><span class="old-val">10</span> → <b>7.7</b></td><td><span class="old-val">10</span> → <b>7.5</b></td></tr>
+                        <tr><td>Mercurial (Traumatize)</td><td><span class="old-val">10</span> → <b>7.5</b></td><td><b>30/30</b></td><td><b>10</b></td><td><span class="old-val">10</span> → <b>9.2</b></td><td><span class="old-val">10</span> → <b>8.6</b></td><td><span class="old-val">10</span> → <b>8</b></td><td><span class="old-val">10</span> → <b>7.5</b></td></tr>
+                        <tr><td>The Stomper Beast (Chilling Growl)</td><td><span class="old-val">15</span> → <b>14.5</b></td><td><b>60/60</b></td><td><b>20</b></td><td><span class="old-val">15</span> → <b>18.5</b></td><td><span class="old-val">15</span> → <b>17.1</b></td><td><span class="old-val">15</span> → <b>16</b></td><td><span class="old-val">15</span> → <b>14.5</b></td></tr>
+                        <tr><td>Snow Beorn (Ice Star)</td><td><span class="old-val">7</span> → <b>6</b></td><td><b>10/10</b></td><td><b>20</b></td><td><span class="old-val">10</span> → <b>13.3</b></td><td><b>10</b></td><td><span class="old-val">7</span> → <b>8</b></td><td><span class="old-val">7</span> → <b>6</b></td></tr>
+                        <tr><td>Druid (Wrath of Nature)<br>Archdruid (Wrath of Nature)<br>Charmcaster (Wrath of Nature)</td><td><span class="old-val">5</span> → <b>4.5</b></td><td><b>10/10</b></td><td><b>10</b></td><td><span class="old-val">6.7</span> → <b>8</b></td><td><b>6.7</b></td><td><span class="old-val">5</span> → <b>5.7</b></td><td><span class="old-val">5</span> → <b>4.5</b></td></tr>
+                        <tr><td>Young Frost Dragon / Azure Dragon (Ice Breath)</td><td><span class="old-val">5</span> → <b>4.5</b></td><td><b>10/10</b></td><td><b>10</b></td><td><span class="old-val">6.7</span> → <b>8</b></td><td><b>6.7</b></td><td><span class="old-val">5</span> → <b>5.7</b></td><td><span class="old-val">5</span> → <b>4.5</b></td></tr>
+                        <tr><td>Clockwreck (Cluster Rockets)</td><td><span class="old-val">6</span> → <b>4.5</b></td><td><b>10/20</b></td><td><b>10</b></td><td><span class="old-val">6</span> → <b>8</b></td><td><span class="old-val">6</span> → <b>6.7</b></td><td><span class="old-val">6</span> → <b>5.7</b></td><td><span class="old-val">6</span> → <b>4.5</b></td></tr>
+                        <tr><td>Death Knight L2-3 (Unholy Rush)<br>Dragon Knight L2-3 (Dragon Roar)<br>Dread Lord L2-3 (Blood Frenzy)<br>Mountain King L2-3 (War Cry)<br>Paladin L2-3 (Holy Armor)<br>Priestess of the Moon L2-3 (Moonlight Volley)<br>Tauren Chieftain L2-3 (Warchief Roar)</td><td><span class="old-val">15</span> → <b>11.5</b></td><td><span class="old-val">15/15</span> → <b>20/20</b></td><td><span class="old-val">15</span> → <b>20</b></td><td><span class="old-val">15</span> → <b>16</b></td><td><span class="old-val">15</span> → <b>13.3</b></td><td><span class="old-val">15</span> → <b>11.5</b></td><td><span class="old-val">15</span> → <b>11.5</b></td></tr>
+                        <tr><td>Blademaster (Mirror Image)</td><td><span class="old-val">45</span> → <b>34</b></td><td><span class="old-val">30/30</span> → <b>60/60</b></td><td><b>60</b></td><td><span class="old-val">45</span> → <b>48</b></td><td><span class="old-val">45</span> → <b>40</b></td><td><span class="old-val">45</span> → <b>34.3</b></td><td><span class="old-val">45</span> → <b>34</b></td></tr>
+                        <tr><td>Maverick (Mirage)</td><td><span class="old-val">45</span> → <b>34</b></td><td><span class="old-val">30/30</span> → <b>60/60</b></td><td><b>60</b></td><td><span class="old-val">45</span> → <b>48</b></td><td><span class="old-val">45</span> → <b>40</b></td><td><span class="old-val">45</span> → <b>34.3</b></td><td><span class="old-val">45</span> → <b>34</b></td></tr>
+                        <tr><td>Chaos Blademaster (Mirror Image)</td><td><span class="old-val">45</span> → <b>34</b></td><td><span class="old-val">30/30</span> → <b>45/45</b></td><td><b>45</b></td><td><span class="old-val">45</span> → <b>36</b></td><td><span class="old-val">45</span> → <b>34</b></td><td><span class="old-val">45</span> → <b>34</b></td><td><span class="old-val">45</span> → <b>34</b></td></tr>
+                        <tr><td>Hades (Diablo)</td><td><span class="old-val">30</span> → <b>22.5</b></td><td><span class="old-val">40/60</span> → <b>50/50</b></td><td><span class="old-val">32</span> → <b>40</b></td><td><span class="old-val">30</span> → <b>33.3</b></td><td><span class="old-val">30</span> → <b>28.6</b></td><td><span class="old-val">30</span> → <b>25</b></td><td><span class="old-val">30</span> → <b>22.5</b></td></tr>
+                        <tr><td>Bigfoot (Fissure)</td><td><span class="old-val">9</span> → <b>7</b></td><td><span class="old-val">10/10</span> → <b>12/12</b></td><td><span class="old-val">10</span> → <b>12</b></td><td><span class="old-val">9</span> → <b>9.6</b></td><td><span class="old-val">9</span> → <b>8</b></td><td><span class="old-val">9</span> → <b>7</b></td><td><span class="old-val">9</span> → <b>7</b></td></tr>
+                    </tbody>
+                </table>
+    </div>
+</section>
+<script>/* ตารางมานาเป็นค่าของ 2.9e: แพตช์อื่นเอาออกทั้งส่วน (ไม่ให้ toc.js นับส่วนที่ซ่อนอยู่) */
+(function () { var s = document.getElementById('mana'), l = document.getElementById('toc-mana'); if (window.LTD_PATCH === '2.9e') { s.hidden = false; l.hidden = false; } else { s.remove(); l.remove(); } })();</script>
+
 <section class="section" id="damage" aria-labelledby="damage-title" style="margin-top: var(--space-900);">
     <h2 class="section-heading" id="damage-title" data-en="Attack &amp; Armor Types">ประเภทโจมตีและเกราะ</h2>
     <p class="section-lede" data-en="How much damage, in percent, each attack type deals to each armor type">แต่ละชนิดโจมตีทำดาเมจใส่เกราะแต่ละแบบได้กี่เปอร์เซ็นต์</p>
@@ -293,7 +353,7 @@
 
 <section class="section" id="economy" aria-labelledby="economy-title" style="margin-top: var(--space-900);">
     <h2 class="section-heading" id="economy-title" data-en="Economy">การเงิน</h2>
-    <p class="section-lede" data-en="Where gold and lumber come from, and how much you get from each source (values from patch 2.9c)">ทองและไม้ได้มาจากทางไหน และได้เท่าไหร่ (ค่าจากแพตช์ 2.9c)</p>
+    <p class="section-lede" data-en="Where gold and lumber come from, and how much you get from each source (values from patch 2.9e)">ทองและไม้ได้มาจากทางไหน และได้เท่าไหร่ (ค่าจากแพตช์ 2.9c)</p>
     <div class="shop-grid">
         <article class="shop-card">
             <div class="shop-head">
@@ -485,8 +545,8 @@
 <script src="../assets/js/nav.js?v=7e7d7ae5" defer></script>
 <script src="../assets/js/reveal.js?v=19990738" defer></script>
 <script src="../assets/js/toc.js?v=16e254ea" defer></script>
-<script src="../assets/js/units.js?v=8874323c" defer></script>
-<script src="../assets/js/game.js?v=46c2147d" defer></script>
+<script src="../assets/js/units.js?v=414c3b8a" defer></script>
+<script src="../assets/js/game.js?v=f8a8e170" defer></script>
 
 <script src="../assets/js/tilt.js?v=e7356e05" defer></script>
 <script type="module" src="../assets/js/scene3d.js?v=bb5a3885"></script>
