@@ -22,7 +22,9 @@
     <link rel="stylesheet" href="../assets/css/units.css?v=e1fa282f">
     <link rel="stylesheet" href="../assets/css/game.css?v=162883bd">
     <style>
-        .mana-wrap { overflow-x: auto; }
+        .mana-wrap { overflow-x: auto; border: 1px solid var(--border-color); border-radius: var(--radius-xl); background: var(--bg-card); }
+        #mana .mana-wrap .data-table { margin: 0; }
+        #mana .mana-wrap tbody tr:last-child td { border-bottom: 0; }
         #mana .data-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
         #mana .data-table th { background: rgba(240, 180, 41, 0.08); color: var(--gold); padding: 0.7rem 1rem; text-align: left; font-weight: 600; font-size: 0.8rem; border-bottom: 2px solid var(--border-accent); white-space: nowrap; }
         #mana .data-table td { padding: 0.6rem 1rem; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); }
