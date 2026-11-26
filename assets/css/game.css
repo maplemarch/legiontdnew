@@ -236,6 +236,8 @@
 
 .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-100); }
 .shop-grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+/* การ์ดในกริดต้องหดได้ ไม่งั้นตารางข้างใน (nowrap) ดันจอมือถือให้กว้างเกิน */
+.shop-grid > * { min-width: 0; }
 
 .shop-card {
     display: flex;
@@ -291,7 +293,7 @@
 
 @media (max-width: 768px) {
     .game-panel { padding: var(--space-200); border-radius: var(--radius-2xl); }
-    .shop-grid-2 { grid-template-columns: 1fr; }
+    .shop-grid-2 { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ===== ป้ายโหมดเกม ===== */
@@ -389,7 +391,8 @@
 }
 
 /* ===== Challenge Champion ===== */
-.champ-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-400); }
+.champ-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: var(--space-400); }
+.champ-cols > * { min-width: 0; }
 .champ-table td { vertical-align: middle; }
 
 /* ตารางดาเมจ: มากกว่า 100% สีเขียว น้อยกว่าสีแดง */
